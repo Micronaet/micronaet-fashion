@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <!--Create Workflow-->
+
+        <record id="wkf_fashion_form" model="workflow">
+            <field name="name">wkf</field>
+            <field name="osv">fashion.form</field>
+            <field name="on_create">True</field>
+        </record>
+
+        <!--Activity-->
+
+        <record id="act_draft" model="workflow.activity">
+            <field name="wkf_id" ref="wkf_fashion_form" />
+            <field name="flow_start">True</field>
+            <field name="name">draft</field>
+            <field name="kind">function</field>
+            <field name="action">form_draft()</field>
+        </record>
+        
+        <record id="act_sample" model="workflow.activity" >
+            <field name="wkf_id" ref="wkf_fashion_form" />
+            <field name="name">sample</field>
+            <field name="kind">function</field>
+            <field name="action">form_sample()</field>
+        </record>
+
+        <record id="act_ok" model="workflow.activity" >
+            <field name="wkf_id" ref="wkf_fashion_form" />
+            <field name="name">ok</field>
+            <field name="kind">function</field>
+            <field name="action">form_ok()</field>
+        </record>
+
+        <record id="act_produced" model="workflow.activity">
+            <field name="wkf_id" ref="wkf_fashion_form" />
+            <field name="name">produced</field>
+            <field name="kind">function</field>
+            <field name="action">form_produced()</field>
+        </record>
+
+        <record id="act_discarded" model="workflow.activity">
+            <field name="wkf_id" ref="wkf_fashion_form" />
+            <field name="name">discarded</field>
+            <field name="kind">function</field>
+            <field name="action">form_discarded()</field>
+        </record>
+
+        <!--Transition-->
+
+        <record id="form_t1a" model="workflow.transition">
+            <field name="act_from" ref="act_draft" />
+            <field name="act_to" ref="act_sample" />
+            <field name="signal">form_draft_sample</field>
+        </record>
+        <record id="form_t1b" model="workflow.transition">
+            <field name="act_from" ref="act_draft" />
+            <field name="act_to" ref="act_discarded" />
+            <field name="signal">form_draft_discarded</field>
+        </record>
+
+        <record id="form_t2a" model="workflow.transition">
+            <field name="act_from" ref="act_sample" />
+            <field name="act_to" ref="act_ok" />
+            <field name="signal">form_sample_ok</field>
+        </record>
+        <record id="form_t2b" model="workflow.transition">
+            <field name="act_from" ref="act_sample" />
+            <field name="act_to" ref="act_discarded" />
+            <field name="signal">form_sample_discarded</field>
+        </record>
+
+        <record id="form_t3a" model="workflow.transition">
+            <field name="act_from" ref="act_ok" />
+            <field name="act_to" ref="act_discarded" />
+            <field name="signal">form_ok_discarded</field>
+        </record>
+        <record id="form_t3b" model="workflow.transition">
+            <field name="act_from" ref="act_ok" />
+            <field name="act_to" ref="act_produced" />
+            <field name="signal">form_ok_produced</field>
+        </record>
+
+        <record id="form_t4a" model="workflow.transition">
+            <field name="act_from" ref="act_produced" />
+            <field name="act_to" ref="act_discarded" />
+            <field name="signal">form_produced_discarded</field>
+        </record>
+
+        <record id="form_t5a" model="workflow.transition">
+            <field name="act_from" ref="act_discarded" />
+            <field name="act_to" ref="act_draft" />
+            <field name="signal">form_discarded_draft</field>
+        </record>
+    </data>
+</openerp>

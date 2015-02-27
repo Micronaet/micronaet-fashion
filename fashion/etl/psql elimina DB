@@ -1,0 +1,28 @@
+delete from fashion_article ;
+delete from fashion_article_fashion_form_measure_rel ;
+delete from fashion_duplication ;
+delete from fashion_form ;
+delete from fashion_form_accessory ;
+delete from fashion_form_accessory_rel ;
+delete from fashion_form_article_rel ;
+delete from fashion_form_characteristic ;
+delete from fashion_form_characteristic_rel ;
+delete from fashion_form_comment_rel ;
+delete from fashion_form_cost ;
+delete from fashion_form_cost_rel ;
+delete from fashion_form_fabric ;
+delete from fashion_form_measure ;
+delete from fashion_form_measure_rel ;
+delete from fashion_form_modify_rel ;
+delete from fashion_form_partner_rel ;
+delete from fashion_form_stitch ;
+delete from fashion_form_stitch_rel ;
+delete from fashion_report_wizard ;
+delete from fashion_season ;
+delete from wkf_workitem;
+delete from  wkf_instance;
+delete from res_partner where id > 278;
+
+# eliminare anche i prodotti!!!!
+update fashion_form set create_date = to_timestamp(to_char(date,'yyyy-mm-dd 08:00:00'),'yyyy-mm-dd HH:MI:SS') where date is not null;
+

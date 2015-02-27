@@ -1,0 +1,15 @@
+Fashion module require:
+
+1. Installation of font: New Symbol Fonts (see data folder)
+   from data folder:
+   sudo gnome-font-viewer MICRONAET\ NewSymbolFontBig.TTF
+   In the window click Install
+   
+2. Image folder
+   Create a ~/etl/fashion/image folder
+   SMB that folder for access image from LAN (for modify)
+
+3. Client installation:
+   a. Install fashion:// particular link
+   b. Install fashion agent for open image and modify from client PC   
+   

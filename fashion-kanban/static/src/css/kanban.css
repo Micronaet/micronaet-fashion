@@ -1,0 +1,27 @@
+/* Fashion Kanban: */
+
+.openerp .oe_kanban_image_200 {
+    border-radius: 3px 3px 3px 3px;
+    display: inline-block;
+    overflow: hidden;
+    text-align: center;
+    vertical-align: top;
+    width: 400px;
+    /*max-width: 400px;*/
+}
+
+.openerp .oe_fashion_image_600 {
+    max-width: 600px;
+    width: 600px;
+}
+
+.openerp .oe_fashion_image_800 {
+    max-width: 800px;
+    width: 800px;
+}
+
+.openerp .oe_fashion_image_900 {
+    max-width: 900px;
+    width: 900px;
+}
+

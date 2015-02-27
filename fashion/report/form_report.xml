@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+<openerp>
+<data noupdate="1">
+    <!--Aeroo Report A-->
+    <record id="aeroo_fashion_form_A" model="ir.actions.report.xml">
+        <field name="name">Fashion form A</field>
+        <field name="type">ir.actions.report.xml</field>
+        <field name="model">fashion.form</field>
+        <field name="report_name">fashion_form_A</field>
+        <field name="report_type">aeroo</field>
+        <field name="in_format">oo-odt</field>
+        <field name="out_format" eval="ref('report_aeroo_ooo.report_mimetypes_pdf_odt')"></field>        
+        <field name="parser_loc">fashion/report/form_parser.py</field>
+        <field name="report_rml">fashion/report/form_A.odt</field>
+        <field name="parser_state">loc</field>
+        <field name="tml_source">file</field>
+    </record>
+
+    <ir_set>
+        <field eval="'action'" name="key"/>
+        <field eval="'client_print_multi'" name="key2"/>
+        <field eval="['fashion.form']" name="models"/>
+        <field name="name">Fashion form A</field>
+        <field eval="'ir.actions.report.xml,'+str(aeroo_fashion_form_A)" name="value"/>
+        <field eval="True" name="isobject"/>
+        <field eval="True" name="replace"/>
+    </ir_set>
+
+    <!--Aeroo Report B-->
+
+    <record id="aeroo_fashion_form_B" model="ir.actions.report.xml">
+        <field name="name">Fashion form B</field>
+        <field name="type">ir.actions.report.xml</field>
+        <field name="model">fashion.form</field>
+        <field name="report_name">fashion_form_B</field>
+        <field name="report_type">aeroo</field>
+        <field name="in_format">oo-odt</field>
+        <field name="out_format" eval="ref('report_aeroo_ooo.report_mimetypes_pdf_odt')"></field>        
+        <field name="parser_loc">fashion/report/form_parser.py</field>
+        <field name="report_rml">fashion/report/form_B.odt</field>
+        <field name="parser_state">loc</field>
+        <field name="tml_source">file</field>
+    </record>
+
+    <ir_set>
+        <field eval="'action'" name="key"/>
+        <field eval="'client_print_multi'" name="key2"/>
+        <field eval="['fashion.form']" name="models"/>
+        <field name="name">Fashion form B</field>
+        <field eval="'ir.actions.report.xml,'+str(aeroo_fashion_form_B)" name="value"/>
+        <field eval="True" name="isobject"/>
+        <field eval="True" name="replace"/>
+    </ir_set>
+    
+    <!--Aeroo Report C-->
+
+    <record id="aeroo_fashion_form_C" model="ir.actions.report.xml">
+        <field name="name">Fashion form C</field>
+        <field name="type">ir.actions.report.xml</field>
+        <field name="model">fashion.form</field>
+        <field name="report_name">fashion_form_C</field>
+        <field name="report_type">aeroo</field>
+        <field name="in_format">oo-odt</field>
+        <field name="out_format" eval="ref('report_aeroo_ooo.report_mimetypes_pdf_odt')"></field>        
+        <field name="parser_loc">fashion/report/form_parser.py</field>
+        <field name="report_rml">fashion/report/form_C.odt</field>
+        <field name="parser_state">loc</field>
+        <field name="tml_source">file</field>
+    </record>
+
+    <ir_set>
+        <field eval="'action'" name="key"/>
+        <field eval="'client_print_multi'" name="key2"/>
+        <field eval="['fashion.form']" name="models"/>
+        <field name="name">Fashion form C</field>
+        <field eval="'ir.actions.report.xml,'+str(aeroo_fashion_form_C)" name="value"/>
+        <field eval="True" name="isobject"/>
+        <field eval="True" name="replace"/>
+    </ir_set>
+
+    <!--Aeroo Report D-->
+
+    <record id="aeroo_fashion_form_D" model="ir.actions.report.xml">
+        <field name="name">Fashion form D</field>
+        <field name="type">ir.actions.report.xml</field>
+        <field name="model">fashion.form</field>
+        <field name="report_name">fashion_form_D</field>
+        <field name="report_type">aeroo</field>
+        <field name="in_format">oo-odt</field>
+        <field name="out_format" eval="ref('report_aeroo_ooo.report_mimetypes_pdf_odt')"></field>        
+        <field name="parser_loc">fashion/report/form_parser.py</field>
+        <field name="report_rml">fashion/report/form_D.odt</field>
+        <field name="parser_state">loc</field>
+        <field name="tml_source">file</field>
+    </record>
+
+    <ir_set>
+        <field eval="'action'" name="key"/>
+        <field eval="'client_print_multi'" name="key2"/>
+        <field eval="['fashion.form']" name="models"/>
+        <field name="name">Fashion form D</field>
+        <field eval="'ir.actions.report.xml,'+str(aeroo_fashion_form_D)" name="value"/>
+        <field eval="True" name="isobject"/>
+        <field eval="True" name="replace"/>
+    </ir_set>
+
+    <!--Aeroo Report E-->
+
+    <record id="aeroo_fashion_form_E" model="ir.actions.report.xml">
+        <field name="name">Fashion form E</field>
+        <field name="type">ir.actions.report.xml</field>
+        <field name="model">fashion.form</field>
+        <field name="report_name">fashion_form_E</field>
+        <field name="report_type">aeroo</field>
+        <field name="in_format">oo-odt</field>
+        <field name="out_format" eval="ref('report_aeroo_ooo.report_mimetypes_pdf_odt')"></field>        
+        <field name="parser_loc">fashion/report/form_parser.py</field>
+        <field name="report_rml">fashion/report/form_E.odt</field>
+        <field name="parser_state">loc</field>
+        <field name="tml_source">file</field>
+    </record>
+
+    <ir_set>
+        <field eval="'action'" name="key"/>
+        <field eval="'client_print_multi'" name="key2"/>
+        <field eval="['fashion.form']" name="models"/>
+        <field name="name">Fashion form E</field>
+        <field eval="'ir.actions.report.xml,'+str(aeroo_fashion_form_E)" name="value"/>
+        <field eval="True" name="isobject"/>
+        <field eval="True" name="replace"/>
+    </ir_set>
+</data>
+</openerp>
+

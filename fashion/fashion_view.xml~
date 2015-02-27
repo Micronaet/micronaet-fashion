@@ -1,0 +1,1107 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+    <!--fashion.season-->
+    <record id="fashion_season_form" model="ir.ui.view">
+        <field name="name">fashion.season.form</field>
+        <field name="model">fashion.season</field>
+        <field name="arch" type="xml">
+            <form string="Season" version="7.0">
+            <sheet>
+                <group colspan='4' col='6'>
+                    <field name="sequence"/>
+                    <field name="code"/>
+                    <field name="name"/>
+                    <separator string='Note' colspan='6'/>
+                    <field name="note" nolabel='1' colspan='6'/>
+                </group>
+            </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="fashion_season_tree" model="ir.ui.view">
+        <field name="name">fashion.season.tree</field>
+        <field name="model">fashion.season</field>
+        <field name="arch" type="xml">
+            <tree string="Season">
+                <field name="sequence"/>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="note"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_fashion_season" model="ir.actions.act_window">
+            <field name="name">Fashion season</field>
+            <field name="res_model">fashion.season</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="fashion_season_tree"/>
+    </record>
+
+    <!--fashion.form.characteristic-->
+
+    <record id="fashion_form_characteristic_form" model="ir.ui.view">
+        <field name="name">fashion.form.characteristic.form</field>
+        <field name="model">fashion.form.characteristic</field>
+        <field name="arch" type="xml">
+            <form string="Characteristic" version="7.0">
+            <sheet>
+                <group colspan='4' col='4'>
+                    <field name="sequence"/>
+                    <field name="name"/>
+                    <separator string='Note' colspan='4'/>
+                    <field name="note" nolabel='1' colspan='4'/>
+                </group>
+            </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="fashion_form_characteristic_tree" model="ir.ui.view">
+        <field name="name">fashion.form.characteristic.tree</field>
+        <field name="model">fashion.form.characteristic</field>
+        <field name="arch" type="xml">
+            <tree string="Characteristic" version="7.0">
+                <field name="sequence" style="width='30'"/>
+                <field name="name"/>
+                <field name="note"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_fashion_form_characteristic" model="ir.actions.act_window">
+            <field name="name">Fashion characteristic</field>
+            <field name="res_model">fashion.form.characteristic</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="fashion_form_characteristic_tree"/>
+    </record>
+
+    <!--fashion.form.cost-->
+    <record id="fashion_form_cost_form" model="ir.ui.view">
+        <field name="name">fashion.form.cost.form</field>
+        <field name="model">fashion.form.cost</field>
+        <field name="arch" type="xml">
+            <form string="Cost" version="7.0">
+            <sheet>
+                <group colspan='4' col='4'>
+                    <field name="sequence"/>
+                    <field name="name"/>
+                    <field name="default"/>
+                    <field name="cost"/>
+                    <separator string='Note' colspan='4'/>
+                    <field name="note" nolabel='1' colspan='4'/>
+                </group>
+            </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="fashion_form_cost_tree" model="ir.ui.view">
+        <field name="name">fashion.form.cost.tree</field>
+        <field name="model">fashion.form.cost</field>
+        <field name="arch" type="xml">
+            <tree string="Cost">
+                <field name="sequence"/>
+                <field name="default"/>
+                <field name="name"/>
+                <field name="cost"/>
+                <field name="note"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_fashion_form_cost_fixed" model="ir.actions.act_window">
+            <field name="name">Fashion cost</field>
+            <field name="res_model">fashion.form.cost</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="fashion_form_cost_tree"/>
+    </record>
+
+    <!--fashion.form.accessory.pricelist-->
+    <record id="fashion_form_accessory_pricelist_search" model="ir.ui.view">
+        <field name="name">fashion.form.accessory.pricelist.search</field>
+        <field name="model">fashion.form.accessory.pricelist</field>
+        <field name="arch" type="xml">
+            <search string="Accessory pricelist">
+                <field name="accessory_id" filter_domain="[('accessory_id','ilike',self)]"/>
+                <field name="supplier_id" filter_domain="[('supplier_id','ilike',self)]"/>
+                <field name="name" filter_domain="[('name','ilike',self)]"/>
+                <field name="extra_info" filter_domain="[('extra_info','ilike',self)]"/>
+
+                <group expand="1" string="Group By...">
+                    <filter string="Accessory" domain="[]" context="{'group_by':'accessory_id'}"/>
+                    <filter string="Supplier" domain="[]" context="{'group_by':'supplier_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="fashion_form_accessory_pricelist_form" model="ir.ui.view">
+        <field name="name">fashion.form.accessory.pricelist.form</field>
+        <field name="model">fashion.form.accessory.pricelist</field>
+        <field name="arch" type="xml">
+            <form string="Accessory" version="7.0">
+                <group colspan="4" col="4">
+                    <field name="accessory_id" />
+                    <field name="supplier_id" />
+                    <field name="name" />
+                    <field name="um" />
+                    <field name="extra_info" />
+                    <field name="cost" />
+                    <field name="note" />
+                    <field name="create_date" />                
+                </group>
+            </form>
+        </field>
+    </record>    
+    <record id="fashion_form_accessory_pricelist_tree" model="ir.ui.view">
+        <field name="name">fashion.form.accessory.pricelist.tree</field>
+        <field name="model">fashion.form.accessory.pricelist</field>
+        <field name="arch" type="xml">
+            <tree string="Accessory">
+                    <field name="accessory_id" />
+                    <field name="supplier_id" />
+                    <field name="name" />
+                    <field name="um" />
+                    <field name="extra_info" />
+                    <field name="cost" />
+                    <field name="note" />
+                    <field name="create_date" />                
+            </tree>
+        </field>
+    </record>    
+       
+    <!--fashion.form.accessory-->
+    <record id="fashion_form_accessory_form" model="ir.ui.view">
+        <field name="name">fashion.form.accessory.form</field>
+        <field name="model">fashion.form.accessory</field>
+        <field name="arch" type="xml">
+            <form string="Accessory" version="7.0">
+            <sheet>
+                <group colspan='4' col='4'>
+                    <field name="sequence"/>
+                    <field name="type"/>
+                    <field name="gerber_char"/>
+                    <field name="name"/>
+                    <notebook colspan="4">
+                       <page string="Pricelist">
+                            <field name="pricelist_ids" colspan="4">
+                                <tree string="Pricelist" editable="bottom">
+                                    <field name="supplier_id" context="{'default_is_company':True,'default_supplier':True,'default_customer':False}"/>
+                                    <field name="name" />
+                                    <field name="um" />
+                                    <field name="extra_info" />
+                                    <field name="cost" />
+                                    <field name="note" />
+                                    <field name="create_date" />
+                                </tree>
+                                <form>
+                                    <field name="supplier_id" context="{'default_is_company':True,'default_supplier':True,'default_customer':False}" />
+                                    <field name="name" />
+                                    <field name="um" />
+                                    <field name="extra_info" />
+                                    <field name="cost" />
+                                    <field name="note" />
+                                    <field name="create_date" />
+                                </form>
+                            </field>
+                       </page>
+                       <page string="Note">
+                            <separator string='Note' colspan='4'/>
+                            <field name="note" nolabel='1' colspan='4'/>                           
+                       </page>
+                    </notebook>
+                </group>
+            </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="fashion_form_accessory_tree" model="ir.ui.view">
+        <field name="name">fashion.form.accessory.tree</field>
+        <field name="model">fashion.form.accessory</field>
+        <field name="arch" type="xml">
+            <tree string="Accessory">
+                    <field name="sequence"/>
+                    <field name="type"/>
+                    <field name="gerber_char"/>
+                    <field name="name"/>
+                    <field name="note"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="fashion_form_accessory_search" model="ir.ui.view">
+        <field name="name">fashion.form.accessory.search</field>
+        <field name="model">fashion.form.accessory</field>
+        <field name="arch" type="xml">
+            <search string="Form">
+                <field name="name" filter_domain="[('name','ilike',self)]"/>
+
+                <group expand="1" string="Group By...">
+                    <filter string="Type" domain="[]" context="{'group_by':'type'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_fashion_form_accessory" model="ir.actions.act_window">
+            <field name="name">Fashion accessory</field>
+            <field name="res_model">fashion.form.accessory</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="fashion_form_accessory_tree"/>
+    </record>
+
+    <!--fashion.form.fabric-->
+    <record id="fashion_form_fabric_search" model="ir.ui.view">
+        <field name="name">fashion.form.fabric.search</field>
+        <field name="model">fashion.form.fabric</field>
+        <field name="arch" type="xml">
+            <search string="Form">
+                <field name="code"/>
+                <field name="article_code"/>
+                <field name="season_id"/>
+
+                <filter name="test" domain="[('test','=',True)]"/>
+                <filter name="official" domain="[('test','=',False)]"/>
+
+                <group expand="1" string="Group By...">
+                    <filter string="Season" domain="[]" context="{'group_by':'season_id'}"/>
+                    <filter string="Test fabric" domain="[]" context="{'group_by':'test'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="fashion_form_fabric_form" model="ir.ui.view">
+        <field name="name">fashion.form.fabric.form</field>
+        <field name="model">fashion.form.fabric</field>
+        <field name="arch" type="xml">
+            <form string="Fabric" version="7.0">
+            <sheet>
+                <group colspan='4' col='4'>
+                    
+                    <field name="code"/>
+                    <field name="season_id"/>
+                    
+                    <field name="perc_composition"/>
+                    <field name="symbol"/>
+                    
+                    <field name="um" />
+                    <field name="cost" />
+                    
+                    <field name="supplier_id" domain="[('supplier','=',True)]" context="{'default_supplier':True}"/>
+                    <field name="article_code"/>
+
+                    <field name="test" />
+                    <separator string='Note' colspan='4'/>
+                    <field name="note" nolabel='1' colspan='4'/>                   
+                </group>
+            </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="fashion_form_fabric_tree" model="ir.ui.view">
+        <field name="name">fashion.form.fabric.tree</field>
+        <field name="model">fashion.form.fabric</field>
+        <field name="arch" type="xml">
+            <tree string="Fabric" colors="grey:test==True;black:test==False">
+                <field name="test"/>
+                <field name="code"/>
+                <field name="supplier_id"/>
+                <field name="article_code"/>
+                <field name="season_id"/>
+                <field name="perc_composition"/>
+                <field name="note"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_fashion_form_fabric" model="ir.actions.act_window">
+            <field name="name">Fashion fabric</field>
+            <field name="res_model">fashion.form.fabric</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="fashion_form_fabric_tree"/>
+            <field name="view_id" ref="fashion_form_fabric_search"/>
+    </record>
+    <record id="action_fashion_form_fabric_test" model="ir.actions.act_window">
+            <field name="name">Test fabric</field>
+            <field name="res_model">fashion.form.fabric</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="fashion_form_fabric_tree"/>
+            <field name="view_id" ref="fashion_form_fabric_search"/>
+            <field name="context">{'search_default_test':1}</field>
+    </record>
+
+    <!--fashion.form.stitch-->
+    <record id="fashion_form_stitch_form" model="ir.ui.view">
+        <field name="name">fashion.form.stitch.form</field>
+        <field name="model">fashion.form.stitch</field>
+        <field name="arch" type="xml">
+            <form string="Seam" version="7.0">
+            <sheet>
+                <group colspan='4' col='4'>
+                    <field name="sequence"/>
+                    <field name="name"/>
+                    <separator string='Note' colspan='4'/>
+                    <field name="note" nolabel='1' colspan='4'/>
+                </group>
+            </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="fashion_form_stitch_tree" model="ir.ui.view">
+        <field name="name">fashion.form.stitch.tree</field>
+        <field name="model">fashion.form.stitch</field>
+        <field name="arch" type="xml">
+            <tree string="Seam">
+                    <field name="sequence"/>
+                    <field name="name"/>
+                    <field name="note"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_fashion_form_stitch" model="ir.actions.act_window">
+            <field name="name">Fashion stitch</field>
+            <field name="res_model">fashion.form.stitch</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="fashion_form_stitch_tree"/>
+    </record>
+
+    <!--fashion.form.measure-->
+
+    <record id="fashion_form_measure_form" model="ir.ui.view">
+        <field name="name">fashion.form.measure.form</field>
+        <field name="model">fashion.form.measure</field>
+        <field name="arch" type="xml">
+            <form string="Measure" version="7.0">
+            <sheet>
+                <group colspan='4' col='4'>
+                    <field name="letter"/>
+                    <field name="name"/>
+                    <separator string='Note' colspan='4'/>
+                    <field name="note" nolabel='1' colspan='4'/>
+                </group>
+            </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="fashion_form_measure_tree" model="ir.ui.view">
+        <field name="name">fashion.form.measure.tree</field>
+        <field name="model">fashion.form.measure</field>
+        <field name="arch" type="xml">
+            <tree string="Measure">
+                    <field name="letter"/>
+                    <field name="name"/>
+                    <field name="note"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_fashion_form_measure" model="ir.actions.act_window">
+            <field name="name">Fashion measure</field>
+            <field name="res_model">fashion.form.measure</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="fashion_form_measure_tree"/>
+    </record>
+
+<!--fashion.form.measure-->
+
+    <record id="fashion_article_form" model="ir.ui.view">
+        <field name="name">fashion.article.form</field>
+        <field name="model">fashion.article</field>
+        <field name="arch" type="xml">
+            <form string="Article" version="7.0">
+            <sheet>
+                <group colspan='4' col='4'>
+                    <field name="code"/>
+                    <field name="name"/>
+                    <separator string="Elements:" colspan="4" />
+                    <field name="fashion_measure_ids" colspan="4" nolabel="1">
+                        <tree editable='bottom'>
+                            <field name="article_id" invisible='1'/>
+                            <field name="measure_id"/>
+                        </tree>
+                        <form>
+                            <field name="article_id" invisible='1'/>
+                            <field name="measure_id"/>
+                        </form>
+                    </field>
+                    <separator string='Note' colspan='4'/>
+                    <field name="note" nolabel='1' colspan='4'/>
+                </group>
+            </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="fashion_article_tree" model="ir.ui.view">
+        <field name="name">fashion.article.tree</field>
+        <field name="model">fashion.article</field>
+        <field name="arch" type="xml">
+            <tree string="Article">
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="note"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_fashion_article" model="ir.actions.act_window">
+            <field name="name">Fashion article</field>
+            <field name="res_model">fashion.article</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="fashion_article_tree"/>
+    </record>
+
+    <!--fashion.form-->
+    <record id="view_fashion_form_form" model="ir.ui.view">
+        <field name="name">fashion.form.form</field>
+        <field name="model">fashion.form</field>
+        <field name="arch" type="xml">
+            <form string="Form" version="7.0">
+            <header>
+                <button string='Sample' name='form_draft_sample' type='workflow' states='draft' icon='gtk-go-forward' groups="fashion.group_fashion_production"/>
+                <button string='Discarded' name='form_draft_discarded' type='workflow' states='draft' icon='gtk-stop' groups="fashion.group_fashion_production"/>
+
+                <button string='Ok Production' name='form_sample_ok' type='workflow' states='sample' icon='gtk-apply' groups="fashion.group_fashion_production"/>
+                <button string='Discarded' name='form_sample_discarded' type='workflow' states='sample' icon='gtk-stop' groups="fashion.group_fashion_production"/>
+
+                <button string='Produced' name='form_ok_produced' type='workflow' states='ok' icon='gtk-execute' groups="fashion.group_fashion_production"/>
+                <button string='Discarded' name='form_ok_discarded' type='workflow' states='ok' icon='gtk-stop' groups="fashion.group_fashion_production"/>
+
+                <button string='Discarded' name='form_produced_discarded' type='workflow' states='produced' icon='gtk-stop' groups="fashion.group_fashion_production"/>
+
+                <button string='Draft' name='form_discarded_draft' type='workflow' states='discarded' icon='gtk-refresh' groups="fashion.group_fashion_production"/>
+                <label string=" "/>
+                
+                <button string='Duplication' name="%(fashion.action_fashion_duplication)d" type="action" icon='STOCK_COPY' groups="fashion.group_fashion_production"/>
+                <button string='Print' name='%(fashion.action_report_wizard_duplication)d' type="action" icon='gtk-print-preview'/>
+                <label string=" " />
+                
+                <button string='Obsolete' name='set_obsolete' type="object" attrs="{'invisible': [('obsolete','=',True)]}" context="{'obsolete':True}" icon='STOCK_NO' groups="fashion.group_fashion_production"/>
+                <button string='Not obsolete' name='set_obsolete' type="object" attrs="{'invisible': [('obsolete','=',False)]}" context="{'obsolete':False}" icon='STOCK_YES' groups="fashion.group_fashion_production"/>
+                <label string=" " />
+
+                <button string='Refresh' name='button_refresh' type="object" icon='gtk-refresh'/>
+                <field name='state' widget='statusbar' readonly='1'/>
+            </header>
+            <sheet>
+                <group col='4'>
+                    <div class="oe_title" colspan="4">
+                        <h1>
+                            <field name="model" on_change='on_change_model(model,review)'/>
+                        </h1>
+                    </div>
+                    <newline/>
+                    <field name="write_date" />
+                    <field name="review"/>
+                    <field name="user_id" options="{'create': false, 'create_edit': false}"/>
+                    <field name="base_name" />
+                    <field name="size_base"/>
+                    <!--<field name="base_id" readonly="1"/>-->
+
+                    <field name="original" placeholder="Add a generic model that started..."/>
+                    <field name="season_id" options="{'create': false, 'create_edit': false}"/>
+                    <field name="show_old_model" attrs="{'invisible': [('old_model','=',False)]}"/>
+                    <field name="old_model" invisible='1'/>
+
+                    <field name="date" invisible='1'/>
+                    <field name="obsolete" invisible='1'/>
+                    <field name="model_customer" invisible='1'/>
+                    <field name="model_article" invisible='1'/>
+                    <field name="model_number" invisible='1'/>
+                    <field name="model_revision" invisible='1'/>
+                    <field name="conformed" invisible='1'/>
+                    <field name="name"  required="0" invisible="1" /> <!--product.product-->
+                    <!--<field name="size_measure"/>-->
+                    <!--<field name="area" colspan='4'/>-->
+                    <notebook colspan='4'>
+                            <page string="Image">
+                                <group colspan="4" col="4">
+                                    <group colspan="2" col="3">
+                                        <button name="modify_draw_image" type="object" string="Modify" context="{'side':'A'}" colspan="1" class="oe_highlight"/>
+                                        <button name="reset_image" type="object" string="Reset Image" context="{'side':'A'}" colspan="1" confirm="Vuoi veramente CANCELLARE l'immagine inserita?"/>
+                                        <field name="draw_image_a" widget='image' colspan="3" nolabel="1" class="oe_fashion_image_600"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Photo">
+                                <group colspan="4" col="4">                                   
+                                    <group colspan="2" col='3'>
+                                        <button name="modify_draw_image" type="object" string="Modify" context="{'side':'C'}" colspan="1" class="oe_highlight"/>
+                                        <button name="reset_image" type="object" string="Reset Image" context="{'side':'C'}" colspan="1" confirm="Vuoi veramente CANCELLARE l'immagine inserita?"/>
+                                        <field name="draw_image_c" widget='image' colspan="3" nolabel="1" class="oe_fashion_image_600" />
+                                    </group>
+                                </group>
+                            </page>
+                            <page string='Client'>
+                                <group colspan='4' col='6'>
+                                    <separator string="Fabric cost list" colspan='2' groups="fashion.group_fashion_accounting"/>
+                                    <button string='Cost model' name='set_cost_model' type="object" icon='terp-dolar' groups="fashion.group_fashion_accounting" colspan="1" attrs="{'invisible':[('model_for_cost','=',True)]}"/>
+                                    <button string='Not cost model' name='set_not_cost_model' type="object" icon='terp-stock_format-default' groups="fashion.group_fashion_accounting" colspan="1" attrs="{'invisible':[('model_for_cost','=',False)]}"/>                                    
+                                    <button string='Calculate' name='button_refresh' type="object" icon='stock_graph' groups="fashion.group_fashion_accounting" colspan="1" attrs="{'invisible':[('model_for_cost','=',False)]}"/>
+                                    <field name="model_for_cost" groups="fashion.group_fashion_accounting" invisible="1" />
+
+                                    <field name="partner_rel_ids" nolabel='1' colspan='6'>
+                                        <tree string="Partner" editable="bottom">
+                                            <field name='partner_id' options="{'limit': 10, 'create': false, 'create_edit': false}"/>
+                                            <field name='fabric_id' on_change="on_change_symbol_fabric(fabric_id,symbol_fabric,article_code,supplier_id,perc_fabric)"/>
+                                            <field name='supplier_id' groups="fashion.group_fashion_production" invisible="context.get('view_cost',False)"/>
+                                            <field name='article_code' groups="fashion.group_fashion_production" invisible="context.get('view_cost',False)"/>
+                                            <field name='article_description' groups="fashion.group_fashion_production" invisible="context.get('view_cost',False)"/>
+                                            <field name='perc_fabric' groups="fashion.group_fashion_production" invisible="context.get('view_cost',False)"/>
+                                            <field name='symbol_fabric' groups="fashion.group_fashion_production" invisible="context.get('view_cost',False)"/>
+                                            <field name='h_fabric'/>
+                                            <field name='mt_fabric' on_change="onchange_cost_computation(mt_fabric,cost,retail,wholesale,sale,parent.sum_extra_cost)"/>
+                                            <field name='note_fabric' groups="fashion.group_fashion_production" invisible="context.get('view_cost',False)"/>
+                                           
+                                            <field name='cost' groups="fashion.group_fashion_accounting" on_change="onchange_cost_computation(mt_fabric,cost,retail,wholesale,sale,parent.sum_extra_cost)" />
+                                            
+                                            <field name='total_fabric' groups="fashion.group_fashion_accounting" invisible="context.get('view_production',False)"/>
+                                            <field name='total_cost' groups="fashion.group_fashion_accounting" invisible="context.get('view_production',False)"/>
+
+                                            <field name='wholesale' groups="fashion.group_fashion_accounting" on_change="onchange_cost_computation(mt_fabric,cost,retail,wholesale,sale,parent.sum_extra_cost)" invisible="context.get('view_production',False)"/>
+                                            <field name='retail' groups="fashion.group_fashion_accounting" on_change="onchange_cost_computation(mt_fabric,cost,retail,wholesale,sale,parent.sum_extra_cost)" invisible="context.get('view_production',False)"/>
+                                            <field name='sale' groups="fashion.group_fashion_accounting" />
+                                            <field name='margin_note' groups="fashion.group_fashion_accounting" invisible="context.get('view_production',False)"/>
+                                            <field name='note_cost' groups="fashion.group_fashion_accounting" invisible="context.get('view_production',False)"/>
+                                            <button string='[A]' name='wizard_print_a' type="object" groups="fashion.group_fashion_accounting"/> <!--icon='gtk-print-preview' -->
+                                            <button string='[B]' name='wizard_print_b' type="object" groups="fashion.group_fashion_accounting"/>
+                                            <button string='[C]' name='wizard_print_c' type="object" groups="fashion.group_fashion_accounting"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group colspan='4' col='4' groups="fashion.group_fashion_accounting" attrs="{'invisible':[('model_for_cost','=',False)]}">
+                                    <group colspan="2" col="2">
+                                        <separator string="Cost list" colspan='2' />
+                                        <field name="cost_rel_ids" nolabel='1' colspan='2'>
+                                            <tree string="Cost">
+                                                <field name='cost_id'/>
+                                                <field name='value' sum="total" />
+                                                <field name='note'/>
+                                            </tree>                            
+                                            <form string="Cost">
+                                                <field name='cost_id'/>
+                                                <field name='value' sum="total" />
+                                                <separator string="Pricelist" colspan="4"/>
+                                                <field name='pricelist_ids' colspan="4" nolabel="1">
+                                                    <tree string="Pricelist" editable="bottom" colors="grey:current==False;green:current==True">
+                                                        <field name="current"/>
+                                                        <field name="supplier_id"/>
+                                                        <field name="value"/>
+                                                        <field name="note"/>
+                                                    </tree>
+                                                </field>
+                                                <separator string="Note" colspan="4"/>
+                                                <field name='note' colspan="4" nolabel="1"/>
+                                            </form>                            
+                                        </field>
+                                    </group>
+                                    <group colspan="2" col="2">
+                                        <separator string="Summary cost" colspan='2' />
+                                        <field name="sum_cost" />
+                                        <field name="sum_accessory"/>
+                                        <field name="sum_extra_cost" string="Totale costi"/>
+                                    </group>    
+                                </group>
+                                <group colspan='4' col='4' groups="fashion.group_fashion_production">
+                                    <separator string="Production info" colspan='4' />
+                                    <field name="customer_code" />
+                                    <field name="cut" placeholder="Add number of cut-out models..."/>
+                                    <field name="size" placeholder="Add sizes achieve..."/>
+                                    <field name="colors" placeholder="Add colors to be cut..."/>                                    
+                                </group>
+                            </page>
+                            <page string='Old seamns' attrs="{'invisible':[('show_old_model','=',False)]}">
+                                <group colspan='4'>
+                                    <field name="stitch_rel_ids" nolabel='1' colspan='4'>
+                                        <tree string="Seams" editable='bottom'>
+                                            <field name='stitch_id'/>
+                                            <field name='name'/>
+                                            <field name='topstitch'/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string='Seams'>
+                                <group col='10'>
+                                    <button name="reset_duplicate_characteristic" type="object" string="Reset" icon="STOCK_DELETE" />
+                                    <button name="paste_duplicate_characteristic" type="object" string="Paste" icon="STOCK_SAVE" />
+                                </group>    
+                                <group colspan='4' col='4'>
+                                    <field name="characteristic_rel_ids" nolabel='1' colspan='4'>
+                                        <tree string="Characteristic" editable='bottom'>
+                                            <field name="sequence" widget="handle" />
+                                            <field name="sequence" />
+                                            <field name='characteristic_id' string="Type"/>
+                                            <field name='old_name' invisible="1" /><!--<field name="show_old_model" -->
+                                            <field name='lenght' on_change="on_change_upper_lenght(lenght)" string="Stitch"/>
+                                            <field name='stitch_type_id' context="{'default_type':'1'}" string="Type of stitch"/>
+                                            <!--<field name='stitch_verse_id' context="{'default_type':'2'}"/>-->
+                                            <field name='stitch_cut_id' context="{'default_type':'3'}" string="Stich cut"/>
+                                            <field name='stitch_top_id' context="{'default_type':'4'}" string="Top stich"/>
+                                            <!--<field name='stitch_top_type_id' context="{'default_type':'5'}" />-->
+                                            <field name='bindello'/>
+                                            <field name='name' on_change="on_change_upper_characteristic(name)" string="Description"/>
+                                            <button name="duplicate_characteristic" type="object" string="Copy (use reset and paste after)" icon="STOCK_COPY" />
+                                        </tree>
+                                    </field>
+                                    <separator string='Ironing' colspan='4'/>
+                                    <field name="ironing" placeholder="Add description of parts for ironing..." colspan='4' nolabel='1'/>
+                                    <separator string='Washing' colspan='4'/>
+                                    <field name="washing" placeholder="Add description of parts for washing..." colspan='4' nolabel='1'/>
+                                </group>
+                            </page>
+                            <page string='Accessories'>
+                                <group col='10'>
+                                    <button name="reset_duplicate_accessory" type="object" string="Reset" icon="STOCK_DELETE" />
+                                    <button name="paste_duplicate_accessory" type="object" string="Paste" icon="STOCK_SAVE" />
+                                </group>    
+                                <group col='4'>
+                                    <field name="accessory_rel_ids" nolabel='1' colspan='4'>
+                                        <tree string="Accessory" editable='bottom'>
+                                            <field name='accessory_id' string="Article" on_change="onchange_accessory(accessory_id)"/>
+                                            <field name='code' on_change="on_change_upper_code(code)"/>
+                                            <field name='sequence' invisible="1"/>
+                                            <field name='fabric_id' string="Fabric" on_change="onchange_fabric(fabric_id)" attrs="{'readonly':[('code','=',False)]}"/> <!--TODO put correct list value-->
+                                            <field name='pricelist_id' domain="[('accessory_id','=',accessory_id)]" context="{'default_accessory_id':accessory_id}" on_change="onchange_pricelist(pricelist_id)" attrs="{'readonly':[('code','!=',False)]}"/>
+                                            <field name='supplier_id' domain="[('supplier','=',True)]" context="{'default_supplier':True}"/><!--TODO hide? -->
+                                            <field name='name' on_change="on_change_upper_accessory(name)"/>
+                                            <field name='h'/>
+                                            <field name='um' on_change="on_change_upper_um(um)"/>
+                                            <field name='quantity' on_change="on_change_calcolate_cost(quantity,currency)"/>
+                                            <field name='currency' on_change="on_change_calcolate_cost(quantity,currency)"/>
+                                            <field name='tot_cost' sum="total"/>
+                                            <!--<field name='color'/>-->
+                                            <field name='note' on_change="on_change_upper_color(note)" string="Colore"/>
+                                            <field name='gerber_name' groups="fashion.group_fashion_gerber"/>
+                                            <field name='gerber_desc' groups="fashion.group_fashion_gerber"/>
+                                            <field name='gerber_h' groups="fashion.group_fashion_gerber"/>
+                                            <field name='gerber_l' groups="fashion.group_fashion_gerber"/>
+                                            <button name="duplicate_accessory" type="object" string="Copy (use reset and paste after)" icon="STOCK_COPY" />
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string='Measures'>
+                                <group col='4'>
+                                    <field name="measure_rel_ids" nolabel='1' colspan='4'>
+                                        <tree string="Measure" editable='bottom' colors="green:header==True;grey:visible==False;black:visible==True">
+                                            <field name="header" invisible="1"/>
+                                            <field name="sequence" invisible="1" />
+                                            <field name='measure_id'/>
+                                            <field name='size_1' string=""/>
+                                            <field name='size_2' string=""/>
+                                            <field name='size_3' string=""/>
+                                            <field name='size_4' string=""/>
+                                            <field name='size_5' string=""/>
+                                            <field name='size_6' string=""/>
+                                            <field name='size_7' string=""/>
+                                            <field name='size_8' string=""/>
+                                            <field name='size_9' string=""/>
+                                            <field name='size_10' string=""/>
+                                            <field name='size_11' string=""/>
+                                            <field name='size_12' string=""/>
+                                            <!--<field name='size_13' string=""/>-->
+                                            <field name='visible'/>
+                                            <field name='real'/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group col='5'>
+                                    <field name="article_id"/>
+                                    <button string="Insert" name="insert_article" type="object" icon="gtk-refresh" colspan="1"/>
+                                    <button string="Empty" name="empty_article" type="object" icon="STOCK_NEW" colspan="1"/>
+                                    <button string="Header row" name="create_update_header" type="object" icon="gtk-ok" colspan="1"/>
+                                                                        
+                                    <field name="start" attrs="{'invisible':[('show_old_model','=',False)]}"/>
+                                    <field name="col_ref" attrs="{'invisible':[('show_old_model','=',False)]}"/>
+                                </group>
+                            </page>
+                            <page string='Changes'>
+                                <group colspan='4'>
+                                    <field name="comment_rel_ids" nolabel='1' colspan='4'>
+                                        <tree string="Change" editable='bottom'>
+                                            <field name='reference' on_change="on_change_upper_reference(reference)"/>
+                                            <field name='name' on_change="on_change_upper_comment(name)" /><!--default_focus="1"-->
+                                            <field name='user_id'/>
+                                            <field name='date'/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                    </notebook>
+                </group>
+            </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="fashion_form_tree" model="ir.ui.view">
+        <field name="name">fashion.form.tree</field>
+        <field name="model">fashion.form</field>
+        <field name="arch" type="xml">
+            <tree string="Form" colors="grey:state == 'draft';blue:state == 'sample';green:state == 'produced';red:state == 'discarded'">
+                <field name="name"/>
+                <field name="detail_info_fabric"/>                
+                <field name="detail_info_partner"/>                
+                <field name="season_id"/>
+                <field name="customer_code"/>
+                <field name="write_date"/>
+                <field name="date" invisible='1'/>
+                <field name="old_model" invisible='1'/>
+                <field name="show_old_model" invisible='1'/>
+                <field name="obsolete" invisible='1'/>
+                <field name="reactivate" invisible='1'/>
+                <field name="conformed" invisible='1'/>
+
+                <button string='Obsolete' name='set_obsolete' type="object" attrs="{'invisible': [('obsolete','=',True)]}" icon='STOCK_NO' groups="fashion.group_fashion_production"/>
+                <button string='Not obsolete' name='set_not_obsolete' type="object" attrs="{'invisible': [('obsolete','=',False)]}" icon='STOCK_YES' groups="fashion.group_fashion_production"/>
+                <field name='state' readonly='1'/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="fashion_form_kanban" model="ir.ui.view">
+        <field name="name">fashion.form.kanban</field>
+        <field name="model">fashion.form</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_vignette oe_semantic_html_override">
+                            <a type="open"><img t-att-src="kanban_image('fashion.form', 'draw_image_a', record.id.value)" class="oe_kanban_image_200"/></a>
+                            <div class="oe_kanban_details">
+                                <h4>
+                                    <a type="open">
+                                         <t t-if="record.code.raw_value">[<field name="code"/>]</t><field name="name"/>
+                                    </a>
+                                </h4>
+                                <div name="tags"/>
+                                <ul>
+                                    <li>Date: <field name="date"></field></li>
+                                    <li>Season: <field name="season_id"></field></li>
+                                    <li>Base: <field name="base_name"></field></li>
+                                    <li>Original: <field name="original"></field></li>
+                                    <br />
+                                    <li>Fabrics: <field name="detail_info_fabric"></field></li>
+                                    <li>Partners: <field name="detail_info_partner"></field></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="fashion_form_search" model="ir.ui.view">
+        <field name="name">fashion.form.search</field>
+        <field name="model">fashion.form</field>
+        <field name="arch" type="xml">
+            <search string="Form">
+                <field name="name"/>
+                <!--<field name="model"/>-->
+                <field name="model_customer"/>
+                <field name="customer_code" />
+                <field name="model_article" string="Type"/>
+                <field name="model_number"/>
+                <field name="season_id"/>
+                <!--<field name="article_id"/>-->
+
+                <field name="detail_partner" />
+                <field name="detail_fabric" />
+                <separator/>
+                
+                <filter string="Draft" domain="[('state','=','draft')]"/>
+                <filter string="Sample" domain="[('state','=','sample')]"/>
+                <filter string="Ok for Production" domain="[('state','=','ok')]"/>
+                <filter string="Produced" domain="[('state','=','produced')]"/>
+                <filter string="Discarded" domain="[('state','=','discarded')]"/>                
+                <separator/>
+                
+                <!--<filter name="active" string="Active" domain="[('state','!=','discarded'),('obsolete','=',False)]"/>
+                <filter name="inactive" string="Not Active" domain="['|',('state','=','discarded'),('obsolete','=',True)]"/>-->
+                <separator/>
+                
+                <!--<filter string="Obsolete" domain="[('obsolete','=',True)]"/>-->
+                <!--<filter string="My last modified" domain="[('write_uid','=',active_id),('write_date','&gt;=',(context_today() - datetime.timedelta(1)).strftime('%%Y-%%m-%%d 00:00:00')]"/>-->
+                <filter string="Company form" domain="[('model_customer','=',False)]"/>
+                <filter name="only_model_for_cost" string="Model for cost" domain="[('model_for_cost','=',True)]" groups="fashion.group_fashion_accounting"/>
+                <separator/>
+                
+                <filter string="Normal" domain="[('conformed','=',False)]"/>
+                <filter string="Conformed" domain="[('conformed','=',True)]"/>
+                <separator/>
+                
+                <group expand="1" string="Group By...">
+                    <!--<filter string="Model" domain="[]" context="{'group_by':'model'}"/>-->
+                    <filter string="Season" domain="[]" context="{'group_by':'season_id'}"/>
+                    <!--<filter string="Date" domain="[]" context="{'group_by':'date'}"/>-->
+                    <filter string="State" domain="[]" context="{'group_by':'state'}"/>
+                    <!--<filter string="Article" domain="[]" context="{'group_by':'article_id'}"/>-->
+                    <filter string="Customer code" domain="[]" context="{'group_by':'model_customer'}"/>
+                    <filter string="Type" domain="[]" context="{'group_by':'model_article'}"/>
+                </group>
+                
+            </search>
+        </field>
+    </record>
+
+    <record id="fashion_form_calendar" model="ir.ui.view" >
+        <field name="name">fashion.form.calendar</field>
+        <field name="model">fashion.form</field>
+        <field name="arch" type="xml">
+            <calendar color="state" date_start="create_date" string="Form" mode="month">
+                <field name="name"/>
+            </calendar>
+        </field>
+    </record>
+
+    <record id="action_fashion_form" model="ir.actions.act_window">
+            <field name="name">Fashion form</field>
+            <field name="res_model">fashion.form</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,kanban,calendar</field>
+            <field name="view_id" ref="fashion_form_tree" />
+            <field name="context">{'view_production':1,'default_user_id':uid}</field>
+            <field name="domain">[('obsolete','=',False),('state','!=','discarded')]</field>
+    </record>
+    <record id="action_fashion_form_cost" model="ir.actions.act_window">
+            <field name="name">Fashion form cost</field>
+            <field name="res_model">fashion.form</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,kanban,calendar</field>
+            <field name="view_id" ref="fashion_form_tree" />
+            <field name="context">{'default_user_id':uid}</field>
+            <field name="domain">[('obsolete','=',False),('state','!=','discarded')]</field>
+            <field name="context">{'view_cost':1,'search_default_only_model_for_cost':1}</field>
+    </record>
+    <record id="action_fashion_form_obsolete" model="ir.actions.act_window">
+            <field name="name">Fashion form</field>
+            <field name="res_model">fashion.form</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,kanban,calendar</field>
+            <field name="view_id" ref="fashion_form_tree" />
+            <field name="context">{'view_production':1,'default_user_id':uid}</field><!--'search_default_inactive':True-->
+            <field name="domain">[('obsolete', '=', True)]</field>
+    </record>
+
+    <!--fashion.form.characteristic.rel.specific-->
+    <record id="fashion_form_characteristic_rel_specific_search" model="ir.ui.view">
+        <field name="name">fashion.form.characteristic.rel.specific.search</field>
+        <field name="model">fashion.form.characteristic.rel.specific</field>
+        <field name="arch" type="xml">
+            <search string="Terms">
+                <field name="name" filter_domain="[('name','ilike',self)]"/>
+                <field name="type" filter_domain="[('type,'ilike',self)]"/>
+
+                <group expand="1" string="Group By...">
+                    <filter name='group_type' string="Type" domain="[]" context="{'group_by':'type'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="fashion_form_characteristic_rel_specific_form" model="ir.ui.view">
+        <field name="name">fashion.form.characteristic.rel.specific.form</field>
+        <field name="model">fashion.form.characteristic.rel.specific</field>
+        <field name="arch" type="xml">
+            <form string="Characteristic specific" version="7.0">
+            <sheet>
+                <group colspan='4' col='4'>
+                   <field name="name"/>
+                   <field name="type"/>
+                </group>
+            </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="fashion_form_characteristic_rel_specific_tree" model="ir.ui.view">
+        <field name="name">fashion.form.characteristic.rel.specific.tree</field>
+        <field name="model">fashion.form.characteristic.rel.specific</field>
+        <field name="arch" type="xml">
+            <tree string="Characteristic specific">
+                <field name="name"/>
+                <field name="type"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_fashion_form_characteristic_rel_specific" model="ir.actions.act_window">
+            <field name="name">Caracteristic terms</field>
+            <field name="res_model">fashion.form.characteristic.rel.specific</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="fashion_form_characteristic_rel_specific_tree"/>
+    </record>
+    
+    <!--res.partner-->
+    <!--    <record id='res_partner_fashion_form' model='ir.ui.view'>
+        <field name='name'>res.partner.fashion.form</field>
+        <field name='model'>res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name='arch' type='xml'>
+            <group>
+
+            </group>
+        </field>
+    </record>-->
+
+    <!--fashion.form.partner.rel-->
+    <record id="fashion_form_partner_rel_form" model="ir.ui.view">
+        <field name="name">fashion.form.partner.rel.form</field>
+        <field name="model">fashion.form.partner.rel</field>
+        <field name="arch" type="xml">
+            <form string="Partner relation" version="7.0">
+            <sheet>
+                <group colspan='4' col='4'>
+                    <div class="oe_title" colspan="4">
+                        <h1>
+                            <field name="form_id" readonly="1"/>
+                        </h1>
+                    </div>
+                    <newline/>
+                    <field name="partner_id" readonly="1"/>
+                    <field name="fabric_id" readonly="1"/>
+                    <field name="retail" groups='fashion.group_fashion_accounting' readonly="1"/>
+                    <field name="wholesale" groups='fashion.group_fashion_accounting' readonly="1"/>
+                    <!--<field name="department_store" groups='fashion.group_fashion_accounting' readonly="1"/>-->
+                    <separator string="Image:"/>
+                    <field name="draw_image_a" widget="image" class="oe_avatar oe_left" nolabel='1' colspan="4" readonly="1"/>
+                </group>
+            </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="fashion_form_partner_rel_tree" model="ir.ui.view">
+        <field name="name">fashion.form.partner.rel.tree</field>
+        <field name="model">fashion.form.partner.rel</field>
+        <field name="arch" type="xml">
+            <tree string="Partner relation">
+                <field name="form_id"/>
+                <field name="season_id"/>
+                <field name="article_id"/>
+                <field name="partner_id"/>
+                <field name="fabric_id"/>
+                <field name="retail" groups='fashion.group_fashion_accounting'/>
+                <field name="wholesale" groups='fashion.group_fashion_accounting'/>
+                <!--<field name="department_store" groups='fashion.group_fashion_accounting'/>-->
+                <field name="model" invisible="1" />
+                <field name="model_article" invisible="1" />
+                <field name="model_customer" invisible="1" />
+                <field name="model_number" invisible="1" />
+                <field name="model_revision" invisible="1" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="fashion_form_partner_rel_kanban" model="ir.ui.view">
+        <field name="name">fashion.form.partner.rel.kanban</field>
+        <field name="model">fashion.form.partner.rel</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_vignette oe_semantic_html_override">
+                            <a type="open"><img t-att-src="kanban_image('fashion.form.partner.rel', 'draw_image_a', record.id.value)"  width="200" class="oe_kanban_image_200"/></a>
+                            <div class="oe_kanban_details">
+                                <h4>
+                                    <a type="open">
+                                         <t t-if="record.code.raw_value">[<field name="code"/>]</t> <field name="form_id"/>
+                                    </a>
+                                </h4>
+                                <div name="tags"/>
+                                <ul>
+                                    <field name="partner_id"></field>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="fashion_form_partner_rel_search" model="ir.ui.view">
+        <field name="name">fashion.form.partner.rel.search</field>
+        <field name="model">fashion.form.partner.rel</field>
+        <field name="arch" type="xml">
+            <search string="Form">
+                <field name="model"/>
+                <field name="model_customer"/>
+                <field name="model_article"/>
+                <field name="model_number"/>
+                <field name="form_id"/>
+                <field name="partner_id"/>
+                <field name="fabric_id"/>
+                <field name="season_id"/>
+                <field name="article_id"/>
+                <separator/>
+                
+                <filter string="Company form" domain="[('model_customer','=',False)]"/>
+
+                <group expand="1" string="Group By...">
+                    <filter string="Form" domain="[]" context="{'group_by':'form_id'}"/>
+                    <filter string="Partner" domain="[]" context="{'group_by':'partner_id'}"/>
+                    <filter string="Fabric" domain="[]" context="{'group_by':'fabric_id'}"/>
+                    <filter string="Season" domain="[]" context="{'group_by':'season_id'}"/>
+                    <filter string="Article" domain="[]" context="{'group_by':'article_id'}"/>
+
+                    <filter string="Customer code" domain="[]" context="{'group_by':'model_customer'}"/>
+                    <filter string="Article code" domain="[]" context="{'group_by':'model_article'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_fashion_form_partner_rel" model="ir.actions.act_window">
+            <field name="name">Fashion partner</field>
+            <field name="res_model">fashion.form.partner.rel</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="view_id" ref="fashion_form_partner_rel_tree"/>
+            <field name="search_view_id" ref="fashion_form_partner_rel_search"/>
+            <field name="domain">[('form_id', '!=', False)]</field>
+    </record>
+
+    <!--Menuitem-->
+    <menuitem name="Fashion" id="menu_fashion_root" sequence="5" />        
+        <menuitem name="Form" parent="menu_fashion_root" id="menu_fashion_form" sequence="10"/>
+            <menuitem name="Form for cost" parent="menu_fashion_form" id="menu_fashion_form_form_cost" sequence="5" action="action_fashion_form_cost" groups="fashion.group_fashion_accounting"/>
+            <menuitem name="Form" parent="menu_fashion_form" id="menu_fashion_form_form" sequence="10" action="action_fashion_form"/>
+                <menuitem name="Inactive form" parent="menu_fashion_form_form" id="menu_fashion_form_inactive_form" sequence="10" action="action_fashion_form_obsolete"/>            
+                <menuitem name="Form with client" parent="menu_fashion_form_form" id="menu_fashion_form_form_client" sequence="20" action="action_fashion_form_partner_rel"/>
+        <menuitem name="Configuration" parent="menu_fashion_root" id="menu_fashion_configuration" sequence="90" groups="fashion.group_fashion_admin,fashion.group_fashion_accounting"/>
+            <menuitem name="Season" parent="menu_fashion_configuration" id="menu_fashion_configuration_season" sequence="10" action='action_fashion_season' />
+            <menuitem name="Seams" parent="menu_fashion_configuration" id="menu_fashion_configuration_characteristic" sequence="20" action='action_fashion_form_characteristic' />
+            <!--<menuitem name="Cost (var.)" parent="menu_fashion_configuration" id="menu_fashion_configuration_cost" sequence="30" action='action_fashion_form_cost_variable' />-->
+            <menuitem name="Cost (fixed)" parent="menu_fashion_configuration" id="menu_fashion_configuration_cost_fixed" sequence="35" action='action_fashion_form_cost_fixed' groups="fashion.group_fashion_admin,fashion.group_fashion_accounting"/>
+            <menuitem name="Accessory" parent="menu_fashion_configuration" id="menu_fashion_configuration_accessory" sequence="40" action='action_fashion_form_accessory' />
+            <menuitem name="Fabric" parent="menu_fashion_configuration" id="menu_fashion_configuration_fabric" sequence="50" action='action_fashion_form_fabric' />
+                <menuitem name="Test fabric" parent="menu_fashion_configuration_fabric" id="menu_fashion_configuration_fabric_test" sequence="10" action='action_fashion_form_fabric_test' />
+            <!--<menuitem name="Seam" parent="menu_fashion_configuration" id="menu_fashion_configuration_stitch" sequence="60" action='action_fashion_form_stitch' />-->
+            <menuitem name="Measure" parent="menu_fashion_configuration" id="menu_fashion_configuration_measure" sequence="70" action='action_fashion_form_measure' />
+            <menuitem name="Article" parent="menu_fashion_configuration" id="menu_fashion_configuration_article" sequence="80" action='action_fashion_article' />
+            <menuitem name="Car. terms" parent="menu_fashion_configuration" id="menu_fashion_terminology" sequence="90" action='action_fashion_form_characteristic_rel_specific' />
+    </data>
+</openerp>

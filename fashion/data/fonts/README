@@ -1,0 +1,7 @@
+For report printing new symbol font you need to install on your system:
+
+cd /usr/share/fonts/truetype
+sudo mkdir your_folder
+cp MICRONAET\ NewSymbolFontBig2014.TTF /usr/share/fonts/truetype/desco/
+sudo fc-cache -f -v
+

@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<openerp>
+  <data>
+
+    <!--fashion.report.wizard-->
+    <record id="fashion_report_wizard_form" model="ir.ui.view">
+        <field name="name">fashion.report.wizard.form</field>
+        <field name="model">fashion.report.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Report" version="7.0">
+                <sheet>
+                   <group col='4'>
+                      <field name="type" on_change="onchange_type(type)"/>
+                      <field name="partner_fabric_id" attrs="{'required':['|',('type','in',['d','e']),'&amp;',('type','in',('a','b')),('summary','=',False)]}" domain="[('form_id','=',form_id)]"/> <!--'required':[('type','in',['b','d','e'])]-->
+                      <!--<field name="prototipe" attrs="{'invisible':[('duplication','=','version')], 'required':[('duplication','=','form')]}"/>-->
+                      <field name="form_id" invisible='1'/>
+                      <newline/>
+                      <field name="summary" attrs="{'invisible':[('type','in',['c','d','e'])]}"/>
+                      <newline/>
+                      <field name="total" attrs="{'invisible':[('type','in',['a','c','d','e'])]}"/>
+                      <newline/>
+                      <field name="image" attrs="{'invisible':[('type','in',['e'])]}"/>
+                      <newline/>
+                      <button string='Print' name='print_report' type='object' icon='STOCK_APPLY'/>
+                      <button string="Cancel" special="cancel" icon='STOCK_CANCEL'/>
+                   </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_report_wizard_duplication" model="ir.actions.act_window">
+            <field name="name">Print report</field>
+            <field name="res_model">fashion.report.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="fashion_report_wizard_form"/>
+            <field name="target">new</field>
+    </record>
+
+    <act_window
+        id="act_window_wizard_report_form"
+        name="Form Report"
+        res_model="fashion.report.wizard"
+        src_model="fashion.form"
+        view_mode="form"
+        view_type="form"
+        target="new"
+        />
+    
+  </data>
+</openerp>
