@@ -10,7 +10,7 @@
             <form string="Season" version="7.0">
             <head>
                 <button string='Obsolete' name='set_obsolete' type="object" attrs="{'invisible': [('obsolete','=',True)]}" context="{'obsolete':True}" icon='STOCK_NO' groups="fashion.group_fashion_production"/>
-                <button string='Not obsolete' name='set_obsolete' type="object" attrs="{'invisible': [('obsolete','=',False)]}" context="{'obsolete':False}" icon='STOCK_YES' groups="fashion.group_fashion_production"/>
+                <button string='Not obsolete' name='set_not_obsolete' type="object" attrs="{'invisible': [('obsolete','=',False)]}" context="{'obsolete':False}" icon='STOCK_YES' groups="fashion.group_fashion_production"/>
             </head>
             <sheet>
                 <group colspan='4' col='6'>
@@ -37,7 +37,7 @@
                 <field name="name"/>
                 <field name="note"/>
                 <button string='Obsolete' name='set_obsolete' type="object" attrs="{'invisible': [('obsolete','=',True)]}" context="{'obsolete':True}" icon='STOCK_NO' groups="fashion.group_fashion_production"/>
-                <button string='Not obsolete' name='set_obsolete' type="object" attrs="{'invisible': [('obsolete','=',False)]}" context="{'obsolete':False}" icon='STOCK_YES' groups="fashion.group_fashion_production"/>
+                <button string='Not obsolete' name='set_not_obsolete' type="object" attrs="{'invisible': [('obsolete','=',False)]}" context="{'obsolete':False}" icon='STOCK_YES' groups="fashion.group_fashion_production"/>
             </tree>
         </field>
     </record>
@@ -535,7 +535,7 @@
                     <!--<field name="base_id" readonly="1"/>-->
 
                     <field name="original" placeholder="Add a generic model that started..."/>
-                    <field name="season_id" options="{'create': false, 'create_edit': false}"/>
+                    <field name="season_id" options="{'create': false, 'create_edit': false}" domain="[('obsolete','=',False)]"/>
                     <field name="show_old_model" attrs="{'invisible': [('old_model','=',False)]}"/>
                     <field name="old_model" invisible='1'/>
 
