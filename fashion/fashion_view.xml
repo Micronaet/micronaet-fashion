@@ -856,7 +856,7 @@
                 <filter string="Sample" domain="[('state','=','sample')]"/>
                 <filter string="Ok for Production" domain="[('state','=','ok')]"/>
                 <filter string="Produced" domain="[('state','=','produced')]"/>
-                <filter string="Discarded" domain="[('state','=','discarded')]"/>                
+                <!--<filter string="Discarded" domain="[('state','=','discarded')]"/>-->
                 <separator/>
                 
                 <!--<filter name="active" string="Active" domain="[('state','!=','discarded'),('obsolete','=',False)]"/>
