@@ -804,6 +804,11 @@
                                     <li>Fabrics: <field name="detail_info_fabric"></field></li>
                                     <li>Partners: <field name="detail_info_partner"></field></li>
                                 </ul>
+                                <a type="button">
+                                    <button name="open_form_item" type="object" class="oe_highlight">
+                                        <span>Open</span>
+                                    </button>
+                                </a>
                             </div>
                         </div>
                     </t>

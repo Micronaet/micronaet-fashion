@@ -427,6 +427,23 @@ class fashion_form(osv.osv):
     # ------------
     # Button event
     # ------------
+    def open_form_item(self, cr, uid, ids, context=None):
+        ''' Button for open detail in kanban view
+        '''
+        return {
+            'name': _('Form detail'),
+            'view_type': 'form',
+            'view_mode': 'form',
+            'res_model': 'fashion.form',
+            'res_id': ids[0],
+            'view_id': False,
+            'views': [(False, 'form')],
+            'target': 'new',
+            'domain': [('id','=',ids[0])],
+            'context': {},
+            'type': 'ir.actions.act_window',
+            }                
+
     def reset_duplicate_characteristic(self, cr, uid, ids, context=None):
         ''' Remove file used for copy paste operations
         '''
