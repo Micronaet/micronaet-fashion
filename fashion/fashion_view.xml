@@ -8,8 +8,13 @@
         <field name="model">fashion.season</field>
         <field name="arch" type="xml">
             <form string="Season" version="7.0">
+            <head>
+                <button string='Obsolete' name='set_obsolete' type="object" attrs="{'invisible': [('obsolete','=',True)]}" context="{'obsolete':True}" icon='STOCK_NO' groups="fashion.group_fashion_production"/>
+                <button string='Not obsolete' name='set_obsolete' type="object" attrs="{'invisible': [('obsolete','=',False)]}" context="{'obsolete':False}" icon='STOCK_YES' groups="fashion.group_fashion_production"/>
+            </head>
             <sheet>
                 <group colspan='4' col='6'>
+                    <field name="obsolete" invisible="1"/>
                     <field name="sequence"/>
                     <field name="code"/>
                     <field name="name"/>
@@ -26,10 +31,13 @@
         <field name="model">fashion.season</field>
         <field name="arch" type="xml">
             <tree string="Season">
+                <field name="obsolete" invisible="1"/>
                 <field name="sequence"/>
                 <field name="code"/>
                 <field name="name"/>
                 <field name="note"/>
+                <button string='Obsolete' name='set_obsolete' type="object" attrs="{'invisible': [('obsolete','=',True)]}" context="{'obsolete':True}" icon='STOCK_NO' groups="fashion.group_fashion_production"/>
+                <button string='Not obsolete' name='set_obsolete' type="object" attrs="{'invisible': [('obsolete','=',False)]}" context="{'obsolete':False}" icon='STOCK_YES' groups="fashion.group_fashion_production"/>
             </tree>
         </field>
     </record>
@@ -40,6 +48,15 @@
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref="fashion_season_tree"/>
+            <field name="domain">[('obsolete','=',False)]</field>
+    </record>
+    <record id="action_fashion_season_obsolete" model="ir.actions.act_window">
+            <field name="name">Fashion season obsolete</field>
+            <field name="res_model">fashion.season</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="fashion_season_tree"/>
+            <field name="domain">[('obsolete','=',True)]</field>
     </record>
 
     <!--fashion.form.characteristic-->
@@ -1098,6 +1115,7 @@
                 <menuitem name="Form with client" parent="menu_fashion_form_form" id="menu_fashion_form_form_client" sequence="20" action="action_fashion_form_partner_rel"/>
         <menuitem name="Configuration" parent="menu_fashion_root" id="menu_fashion_configuration" sequence="90" groups="fashion.group_fashion_admin,fashion.group_fashion_accounting"/>
             <menuitem name="Season" parent="menu_fashion_configuration" id="menu_fashion_configuration_season" sequence="10" action='action_fashion_season' />
+                <menuitem name="Season obsolete" parent="menu_fashion_configuration_season" id="menu_fashion_configuration_season_obsolete" sequence="10" action='action_fashion_season_obsolete' />
             <menuitem name="Seams" parent="menu_fashion_configuration" id="menu_fashion_configuration_characteristic" sequence="20" action='action_fashion_form_characteristic' />
             <!--<menuitem name="Cost (var.)" parent="menu_fashion_configuration" id="menu_fashion_configuration_cost" sequence="30" action='action_fashion_form_cost_variable' />-->
             <menuitem name="Cost (fixed)" parent="menu_fashion_configuration" id="menu_fashion_configuration_cost_fixed" sequence="35" action='action_fashion_form_cost_fixed' groups="fashion.group_fashion_admin,fashion.group_fashion_accounting"/>

@@ -61,11 +61,20 @@ class fashion_season(osv.osv):
     _description = 'Season'
     _order = 'sequence,name'
 
+    def set_obsolete(self, cr, uid, ids, context=None):
+        self.write(cr, uid, ids, {'obsolete': context.get('obsolete',True)})
+        return True
+        
+    def set_not_obsolete(self, cr, uid, ids, context=None):
+        self.set_obsolete(cr, uid, ids, {'obsolete':False})
+        return True
+        
     _columns = {
          'sequence': fields.integer('Sequence'),
          'code': fields.char('Cod', size = 10, required = True, help = 'Code used in fabric for join in the name'),
          'name': fields.char('Name', size = 40, required = True),
          'note': fields.text('Note'),
+         'obsolete':fields.boolean('Obsolete'),
          
          # Link di importazione:
          'access_id': fields.integer('Access ID', help="ID Importazione che tiene il link"),
