@@ -1042,6 +1042,26 @@ class fashion_form_measure_rel(osv.osv):
     _description = 'Measure relation'
     _order = 'header desc,sequence,id'
         
+    def clean_measure(self, cr, uid, ids, context=None):
+        ''' Clean only measure in this line passed
+        '''        
+        return self.write(cr, uid, ids, {
+            'size_1': False,
+            'size_2': False,
+            'size_3': False,
+            'size_4': False,
+            'size_5': False,
+            'size_6': False,
+            'size_7': False,
+            'size_8': False,
+            'size_9': False,
+            'size_10': False,
+            'size_11': False,
+            'size_12': False,
+            'size_13': False,
+            'real': False,
+            }, context=context)
+            
     _columns = {
         'header': fields.boolean('Header'),
         'sequence': fields.integer('Seq.'),

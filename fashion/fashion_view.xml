@@ -739,6 +739,7 @@
                                             <!--<field name='size_13' string=""/>-->
                                             <field name='visible'/>
                                             <field name='real'/>
+                                            <button name="clean_measure" type="object" string="reset" icon="gtk-file" attrs="{'invisible':[('header','=',True)]}"/>
                                         </tree>
                                     </field>
                                 </group>
