@@ -303,23 +303,29 @@
         <field name="arch" type="xml">
             <form string="Fabric" version="7.0">
             <sheet>
-                <group colspan='4' col='4'>
+                <group colspan='4' col='5'>
                     
                     <field name="code"/>
                     <field name="season_id"/>
-                    
-                    <field name="perc_composition"/>
-                    <field name="symbol"/>
+                    <newline />
                     
                     <field name="um" />
                     <field name="cost" />
+                    <newline />
                     
                     <field name="supplier_id" domain="[('supplier','=',True)]" context="{'default_supplier':True}"/>
                     <field name="article_code"/>
+                    <newline />
+
+                    <field name="perc_composition"/>
+                    <field name="symbol"/>
+                    <button name="load_from_composition" string="Load composition" type="object" />
 
                     <field name="test" />
-                    <separator string='Note' colspan='4'/>
-                    <field name="note" nolabel='1' colspan='4'/>                   
+                    <newline />
+
+                    <separator string='Note' colspan='5'/>
+                    <field name="note" nolabel='1' colspan='5'/>                   
                 </group>
             </sheet>
             </form>

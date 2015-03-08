@@ -217,7 +217,8 @@ class fashion_form_fabric_composition(osv.osv):
          'perc_composition': fields.char('Percentage composition', size=60),
          'note': fields.text('Note'),
          'symbol': fields.char('Wash symbol', size=10),
-         'season_id': fields.many2one('fashion.season', 'Season'),
+         'season_id': fields.many2one('fashion.season', 'Season', 
+             required=True),
     }
 
 class fashion_form_fabric(osv.osv):
@@ -228,6 +229,30 @@ class fashion_form_fabric(osv.osv):
     _rec_name = 'code'
     _order = 'code'
 
+    # Button:
+    def load_from_composition(self, cr, uid, ids, context=None):
+        ''' Search last part of code in composition and override 
+            elements on fabric
+            Code >> XXX-CCC  (CCC = composition)
+        '''
+        # TODO maybe better as onchange?
+        fabric_proxy = self.browse(cr, uid, ids, context=context)[0]
+        composition_pool = self.pool.get('fashion.form.fabric.composition')
+        composition_ids = composition_pool.search(cr, uid, [
+            ('season_id', '=', fabric_proxy.season_id.id),
+            ('code', '=', fabric_proxy.code.split('-')[-1]),
+            ], context=context)
+            
+        if composition_ids:
+            composition_proxy = composition_pool.browse(
+                cr, uid, composition_ids, context=context)[0]
+            self.write(cr, uid, ids, {
+                'perc_composition': composition_proxy.perc_composition,
+                'symbol': composition_proxy.symbol,
+                }, context=context)
+        return True        
+    
+    #Override:
     def name_get(self, cr, uid, ids, context = None):
         ''' Add season ID to name
         '''
