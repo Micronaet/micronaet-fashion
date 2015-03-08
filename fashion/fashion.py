@@ -250,6 +250,8 @@ class fashion_form_fabric(osv.osv):
                 'perc_composition': composition_proxy.perc_composition,
                 'symbol': composition_proxy.symbol,
                 }, context=context)
+        else:
+            raise osv.except_osv(_('Error'), _("Season and code not found!"))        
         return True        
     
     #Override:

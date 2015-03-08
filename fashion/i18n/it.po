@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-08 08:26+0000\n"
-"PO-Revision-Date: 2015-03-08 08:26+0000\n"
+"POT-Creation-Date: 2015-03-08 18:08+0000\n"
+"PO-Revision-Date: 2015-03-08 18:08+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -155,7 +155,7 @@ msgid "fashion.form"
 msgstr "Schede modelli"
 
 #. module: fashion
-#: code:addons/fashion/fashion.py:356
+#: code:addons/fashion/fashion.py:358
 #, python-format
 msgid "warning"
 msgstr "attenzione"
@@ -547,12 +547,18 @@ msgid "Type"
 msgstr "Tipo"
 
 #. module: fashion
+#: code:addons/fashion/fashion.py:254
+#, python-format
+msgid "Season and code not found!"
+msgstr "Abbinamento codice-stagione non trovato!"
+
+#. module: fashion
 #: model:ir.actions.act_window,name:fashion.action_res_partner
 msgid "Customer and Supplier"
 msgstr "Clienti e fornitori"
 
 #. module: fashion
-#: code:addons/fashion/fashion.py:357
+#: code:addons/fashion/fashion.py:359
 #, python-format
 msgid "Error: Model must start with letter"
 msgstr "Errore: il modello deve iniziare con una lettera"
@@ -589,7 +595,7 @@ msgstr "Scheda"
 #. module: fashion
 #: field:fashion.report.wizard,summary:0
 msgid "Summary"
-msgstr "Ripilogo"
+msgstr "Riepilogo"
 
 #. module: fashion
 #: view:fashion.duplication:0
@@ -1222,8 +1228,10 @@ msgid "Add colors to be cut..."
 msgstr "Aggiungi colori da tagliare..."
 
 #. module: fashion
+#: code:addons/fashion/fashion.py:254
 #: view:fashion.duplication:0
 #: field:fashion.duplication,error:0
+#, python-format
 msgid "Error"
 msgstr "Errore"
 
@@ -1287,7 +1295,7 @@ msgid "Type of stitch"
 msgstr "Tipo cucitura"
 
 #. module: fashion
-#: code:addons/fashion/fashion.py:485
+#: code:addons/fashion/fashion.py:487
 #, python-format
 msgid "Form detail"
 msgstr "Form detail"
@@ -1319,7 +1327,7 @@ msgid "User that insert comment"
 msgstr "Utente che ha aggiunto il commento"
 
 #. module: fashion
-#: code:addons/fashion/fashion.py:635
+#: code:addons/fashion/fashion.py:637
 #: field:fashion.form.measure.rel,header:0
 #, python-format
 msgid "Header"
@@ -1419,7 +1427,7 @@ msgid "Size 5"
 msgstr "Tg.5"
 
 #. module: fashion
-#: code:addons/fashion/fashion.py:1708
+#: code:addons/fashion/fashion.py:1710
 #, python-format
 msgid "%5.2f%s(Mar.)\n"
 "%5.2f%s(Ric.)\n"
