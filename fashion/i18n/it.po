@@ -350,7 +350,7 @@ msgstr "Listino accessori"
 #. module: fashion
 #: model:ir.ui.menu,name:fashion.menu_fashion_configuration_season_obsolete
 msgid "Season obsolete"
-msgstr "Season obsolete"
+msgstr "Stagione obsoleta"
 
 #. module: fashion
 #: field:fashion.form,model_revision:0
@@ -584,7 +584,7 @@ msgstr "Scheda"
 #. module: fashion
 #: field:fashion.report.wizard,summary:0
 msgid "Summary"
-msgstr "Ripilogo"
+msgstr "Riepilogo"
 
 #. module: fashion
 #: view:fashion.duplication:0
@@ -989,7 +989,7 @@ msgstr "totale"
 #. module: fashion
 #: view:fashion.form:0
 msgid "Fabrics:"
-msgstr "Fabrics:"
+msgstr "Tessuti:"
 
 #. module: fashion
 #: field:fashion.form.partner.rel,retail:0
@@ -1285,7 +1285,7 @@ msgstr "Tipo cucitura"
 #: code:addons/fashion/fashion.py:460
 #, python-format
 msgid "Form detail"
-msgstr "Form detail"
+msgstr "Dettaglio"
 
 #. module: fashion
 #: field:fashion.form,detail_fabric:0
@@ -1391,7 +1391,7 @@ msgstr "ID Importazione che tiene il link con partner costi"
 #. module: fashion
 #: view:fashion.form:0
 msgid "Open"
-msgstr "Open"
+msgstr "Apri"
 
 #. module: fashion
 #: model:ir.actions.act_window,name:fashion.action_fashion_form_characteristic
@@ -1632,7 +1632,7 @@ msgstr "Modello"
 #. module: fashion
 #: view:fashion.form:0
 msgid "Paste"
-msgstr "Paste"
+msgstr "Incolla"
 
 #. module: fashion
 #: view:fashion.form.partner.rel:0
