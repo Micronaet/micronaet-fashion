@@ -360,6 +360,68 @@
             <field name="context">{'search_default_test':1}</field>
     </record>
 
+    <!--fashion.form.fabric.composition-->
+    <record id="fashion_form_fabric_composition_search" model="ir.ui.view">
+        <field name="name">fashion.form.fabric.composition.search</field>
+        <field name="model">fashion.form.fabric.composition</field>
+        <field name="arch" type="xml">
+            <search string="Form">
+                <field name="code"/>
+                <field name="season_id"/>
+                <field name="perc_composition"/>
+                <field name="symbol"/>
+                <field name="note"/>
+                <group expand="1" string="Group By...">
+                    <filter string="Season" domain="[]" context="{'group_by':'season_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="fashion_form_fabric_composition_form" model="ir.ui.view">
+        <field name="name">fashion.form.fabric.composition.form</field>
+        <field name="model">fashion.form.fabric.composition</field>
+        <field name="arch" type="xml">
+            <form string="Composition" version="7.0">
+            <sheet>
+                <group colspan='4' col='4'>
+                    
+                    <field name="code"/>
+                    <field name="season_id"/>
+                    
+                    <field name="perc_composition"/>
+                    <field name="symbol"/>
+                    
+                    <field name="note" nolabel='1' colspan='4'/>                   
+                </group>
+            </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="fashion_form_fabric_composition_tree" model="ir.ui.view">
+        <field name="name">fashion.form.fabric.tree</field>
+        <field name="model">fashion.form.fabric.composition</field>
+        <field name="arch" type="xml">
+            <tree string="Composition" colors="grey:test==True;black:test==False">
+                <field name="code"/>
+                <field name="season_id"/>
+                <field name="perc_composition"/>
+                <field name="symbol"/>
+                <field name="note"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_fashion_form_fabric_composition" model="ir.actions.act_window">
+            <field name="name">Fashion composition</field>
+            <field name="res_model">fashion.form.fabric.composition</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="fashion_form_fabric_composition_tree"/>
+            <field name="view_id" ref="fashion_form_fabric_composition_search"/>
+    </record>
+
     <!--fashion.form.stitch-->
     <record id="fashion_form_stitch_form" model="ir.ui.view">
         <field name="name">fashion.form.stitch.form</field>
@@ -1134,6 +1196,7 @@
             <menuitem name="Accessory" parent="menu_fashion_configuration" id="menu_fashion_configuration_accessory" sequence="40" action='action_fashion_form_accessory' />
             <menuitem name="Fabric" parent="menu_fashion_configuration" id="menu_fashion_configuration_fabric" sequence="50" action='action_fashion_form_fabric' />
                 <menuitem name="Test fabric" parent="menu_fashion_configuration_fabric" id="menu_fashion_configuration_fabric_test" sequence="10" action='action_fashion_form_fabric_test' />
+            <menuitem name="Composition" parent="menu_fashion_configuration" id="menu_fashion_configuration_fabric_composition" sequence="55" action='action_fashion_form_fabric_composition' />
             <!--<menuitem name="Seam" parent="menu_fashion_configuration" id="menu_fashion_configuration_stitch" sequence="60" action='action_fashion_form_stitch' />-->
             <menuitem name="Measure" parent="menu_fashion_configuration" id="menu_fashion_configuration_measure" sequence="70" action='action_fashion_form_measure' />
             <menuitem name="Article" parent="menu_fashion_configuration" id="menu_fashion_configuration_article" sequence="80" action='action_fashion_article' />

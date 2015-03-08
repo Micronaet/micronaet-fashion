@@ -203,6 +203,23 @@ class fashion_form_accessory(osv.osv):
         'pricelist_ids':fields.one2many('fashion.form.accessory.pricelist', 'accessory_id', 'Pricelist', required=False),
     }
 
+class fashion_form_fabric_composition(osv.osv):
+    '''Table that manages the fabric composition
+    '''
+
+    _name = 'fashion.form.fabric.composition'
+    _description = 'Fabric'
+    _rec_name = 'code'
+    _order = 'code'
+
+    _columns = {
+         'code': fields.char('Code', size = 15, required=True),
+         'perc_composition': fields.char('Percentage composition', size=60),
+         'note': fields.text('Note'),
+         'symbol': fields.char('Wash symbol', size=10),
+         'season_id': fields.many2one('fashion.season', 'Season'),
+    }
+
 class fashion_form_fabric(osv.osv):
     '''Table that manages the fabric
     '''

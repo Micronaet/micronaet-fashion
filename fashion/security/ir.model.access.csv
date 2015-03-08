@@ -10,6 +10,7 @@
 "access_fashion_form_comment_rel_user","fashion.form.comment.rel","model_fashion_form_comment_rel","base.group_user",1,1,1,1
 "access_fashion_form_cost_user","fashion.form.cost","model_fashion_form_cost","base.group_user",1,1,1,1
 "access_fashion_form_fabric_user","fashion.form.fabric","model_fashion_form_fabric","base.group_user",1,1,1,1
+"access_fashion_form_fabric_composition_user","fashion.form.fabric.composition","model_fashion_form_fabric_composition","base.group_user",1,1,1,1
 "access_fashion_form_measure_user","fashion.form.measure","model_fashion_form_measure","base.group_user",1,1,1,1
 "access_fashion_form_measure_rel_user","fashion.form.measure.rel","model_fashion_form_measure_rel","base.group_user",1,1,1,1
 "access_fashion_form_partner_rel_user","fashion.form.partner.rel","model_fashion_form_partner_rel","base.group_user",1,1,1,1
