@@ -249,15 +249,16 @@ class fashion_form_fabric(osv.osv):
         '''
         # TODO maybe better as onchange?
         fabric_proxy = self.browse(cr, uid, ids, context=context)[0]
+        code = fabric_proxy.code.split('-')[-1] # 3 final char after "-"
         composition_pool = self.pool.get('fashion.form.fabric.composition')
         composition_ids = composition_pool.search(cr, uid, [
             ('season_id', '=', fabric_proxy.season_id.id),
-            ('code', '=', fabric_proxy.code.split('-')[-1]),
+            ('code', '=', code),
             ], context=context)
         
         if not composition_ids: # search without season (last from accounting)
             composition_ids = composition_pool.search(cr, uid, [
-                ('code', '=', fabric_proxy.code.split('-')[-1]),
+                ('code', '=', code,
                 ], context=context)
             
         if composition_ids:
@@ -276,7 +277,7 @@ class fashion_form_fabric(osv.osv):
         ''' Add season ID to name
         '''
         res = []
-        for fabric in self.browse(cr, uid, ids, context = context):
+        for fabric in self.browse(cr, uid, ids, context=context):
             res.append((fabric.id, "%s-[%s] %s" % (
                 fabric.code, 
                 fabric.season_id.code if fabric.season_id else "", 
@@ -284,25 +285,32 @@ class fashion_form_fabric(osv.osv):
         return res
 
     _columns = {
-         'supplier_id': fields.many2one('res.partner', 'Fabric Supplier'),
-         'article_code': fields.char('Fabric Article code', size = 50),
-         'code': fields.char('Code', size = 15, required=True),
-         #'name': fields.char('Name', size = 20),
-         #'cost':
-         #'composition': fields.char('Composition', size = 60),
-         'perc_composition': fields.char('Percentage composition', size=60),
-         'note': fields.text('Note'),
-         #'desc_cx': fields.char('Description CX', size = 80),
-         'symbol': fields.char('Wash symbol', size=10),
-         'season_id': fields.many2one('fashion.season', 'Season'),
-         'test': fields.boolean('Test fabric', 
-             help='This fabric is used for a model testing, maybe it won\'t be produced!'),
+        'supplier_id': fields.many2one('res.partner', 'Fabric Supplier'),
+        'article_code': fields.char('Fabric Article code', size=50),
+        'code': fields.char('Code', size=15, required=True),
+        #'name': fields.char('Name', size = 20),
+        #'composition': fields.char('Composition', size = 60),
+        'perc_composition': fields.char('Percentage composition', size=60),
+        'note': fields.text('Note'),
+        'symbol': fields.char('Wash symbol', size=10),
+        'season_id': fields.many2one('fashion.season', 'Season'),
+        'test': fields.boolean('Test fabric', 
+            help='This fabric is used for a model testing, maybe it won\'t be produced!'),
+        'um': fields.char('U.M.', size=5),
+        'cost': fields.float('Cost', digits=(10, 4)),
+         
+        # Manage from accounting employe:
+        'weight': fields.float('Weight', digits=(10, 2)),
+        'h_fabric': fields.float('H.', digits=(10, 2)),
+        'range_supplier_cost': fields.char('Range cost', size=50),
+        'range_final_cost': fields.char('Range cost', size=50),
+        'preferred_fabric': fields.char('Preferred fabric', size=50),
+        'tag': fields.char('Tag', size=50),
+         
 
-         'um': fields.char('U.M.', size=5),
-         'cost': fields.float('Cost', digits=(10, 4)),
-
-         # Link di importazione:
-         'access_id': fields.integer('Access ID', help="ID Importazione che tiene il link"),
+        # Link di importazione:
+        'access_id': fields.integer(
+            'Access ID', help="ID Importazione che tiene il link"),
     }
     _defaults = {
         'um': lambda *x: 'MT'
