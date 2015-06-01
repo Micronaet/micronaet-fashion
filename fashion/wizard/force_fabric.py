@@ -65,7 +65,6 @@ class fashion_force_fabric(osv.osv_memory):
         rel_ids = rel_pool.search(cr, uid, [
             ('fabric_id', '=', active_id)], context=context)
 
-        import pdb; pdb.set_trace()
         rel_pool.write(cr, uid, rel_ids, {
             'h_fabric': fabric_proxy.h_fabric,
             'supplier_id': fabric_proxy.supplier_id.id, 
