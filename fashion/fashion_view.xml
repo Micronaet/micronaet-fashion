@@ -320,8 +320,8 @@
                     <field name="perc_composition"/>
                     <field name="symbol"/>
                     <button name="load_from_composition" string="Load composition" type="object" />
-
                     <field name="test" />
+                    <button name="%(action_fashion_force_fabric)d" string="Force update" type="action" />
                     <newline />
 
                     <separator string='Note' colspan='5'/>

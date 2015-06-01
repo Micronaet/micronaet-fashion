@@ -21,5 +21,6 @@
 ##############################################################################
 import duplication_fashion
 import report_wizard
+import force_fabric
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

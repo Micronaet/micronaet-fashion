@@ -258,8 +258,7 @@ class fashion_form_fabric(osv.osv):
         
         if not composition_ids: # search without season (last from accounting)
             composition_ids = composition_pool.search(cr, uid, [
-                ('code', '=', code,
-                ], context=context)
+                ('code', '=', code)], context=context)
             
         if composition_ids:
             composition_proxy = composition_pool.browse(

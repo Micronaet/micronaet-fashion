@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+    <!--fashion.force.fabric-->
+    <record id="fashion_force_fabric_form" model="ir.ui.view">
+        <field name="name">fashion.force.fabric.form</field>
+        <field name="model">fashion.force.fabric</field>
+        <field name="arch" type="xml">
+            <form string="Season" version="7.0">
+            <sheet>
+                <group colspan="4" col="4">
+                    <separator string="Force fabric wizard" colspan="4"/>
+                    <field name="name" nolabel="1" colspan="4" widget="html" readonly="1"/>
+                    <button string='Force' name='force_fabric' type='object' icon='STOCK_APPLY'/>
+                    <button string="Cancel" special="cancel" icon='STOCK_CANCEL'/>
+                </group>
+            </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_fashion_force_fabric" model="ir.actions.act_window">
+            <field name="name">Force fabric</field>
+            <field name="res_model">fashion.force.fabric</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="fashion_force_fabric_form"/>
+            <field name="target">new</field>
+    </record>
+    </data>
+</openerp>
