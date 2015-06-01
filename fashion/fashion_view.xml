@@ -319,9 +319,10 @@
 
                     <field name="perc_composition"/>
                     <field name="symbol"/>
-                    <button name="load_from_composition" string="Load composition" type="object" />
+                    <button name="load_from_composition" string="Load composition" type="object" icon="gtk-leave-fullscreen"/>
                     <field name="test" />
-                    <button name="%(action_fashion_force_fabric)d" string="Force update" type="action" />
+                    <button name="%(action_fashion_force_fabric)d" string="Force update" type="action" icon="terp-stock_effects-object-colorize"/>
+                    <button name="search_form_fabric" string="Show form used" type="object" icon="gtk-find"/>
                     <newline />
 
                     <separator string='Note' colspan='5'/>

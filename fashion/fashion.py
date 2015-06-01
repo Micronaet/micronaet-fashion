@@ -242,6 +242,29 @@ class fashion_form_fabric(osv.osv):
     _order = 'code'
 
     # Button:
+    def search_form_fabric(self, cr, uid, ids, context=None):
+        ''' Search in rel customer-form the forms that use this fabric
+            and return a tree view with it
+        '''
+        fabric_id = ids[0]
+        rel_pool = self.pool.get('fashion.form.partner.rel')
+        cr.execute("""
+            SELECT distinct form_id 
+            FROM fashion_form_partner_rel
+            WHERE fabric_id = %s
+            """ % fabric_id)
+        form_ids = [i[0] for i in cr.fetchall()]    
+        
+        return {
+            'view_type': 'form',
+            'view_mode': 'tree,form',
+            'res_model': 'fashion.form', # object linked to the view
+            'domain': [('id', '=', form_ids)],
+            'type': 'ir.actions.act_window',
+            #'res_id': form_id,
+            }             
+        
+        
     def load_from_composition(self, cr, uid, ids, context=None):
         ''' Search last part of code in composition and override 
             elements on fabric
