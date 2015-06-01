@@ -70,9 +70,9 @@ class fashion_force_fabric(osv.osv_memory):
             'supplier_id': fabric_proxy.supplier_id.id, 
             'article_code': fabric_proxy.article_code,
             # TODO 'article_description': fabric_proxy.article_description,
-            'perc_fabric': fabric_proxy.perc_fabric,
+            #'perc_fabric': fabric_proxy.perc_fabric,
             'symbol_fabric': fabric_proxy.symbol,
-            'note_fabric': fabric_proxy.note_fabric,            
+            #'note_fabric': fabric_proxy.note_fabric,            
             }, context=context)    
 
         return True
