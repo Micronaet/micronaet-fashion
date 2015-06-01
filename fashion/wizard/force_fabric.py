@@ -55,21 +55,26 @@ class fashion_force_fabric(osv.osv_memory):
     def force_fabric(self, cr, uid, ids, context=None):
         ''' Button event for force reload of characteristics
         '''
-        wiz_proxy = self.browse(cr, uid, ids, context=context)[0]
+        active_id = context.get('active_id', False)
+        if not active_id:
+            return False # TODO raise error
+        fabric_proxy = self.pool.get('fashion.form.fabric').browse(
+            cr, uid, active_id, context=context)
+        
         rel_pool = self.pool.get('fashion.form.partner.rel')
-        rel_ids = res_pool.search(cr, uid, [
-            ('fabric_id', '=', wiz_proxy.id)], context=context)
+        rel_ids = rel_pool.search(cr, uid, [
+            ('fabric_id', '=', active_id)], context=context)
 
-        data = {
-            'h_fabric': wiz_proxy.h_fabric,
-            'supplier_id': wiz_proxy.supplier_id.id, 
-            'article_code': wiz_proxy.article_code,
-            'article_description': wiz_proxy.arcicle_description,
-            'perc_fabric': wiz_proxy.perc_fabric,
-            'symbol_fabric': wiz_proxy.symbol,
-            'note_fabric': wiz_proxy.note_fabric,            
-            }
-        res_pool.write(cr, uid, rel_ids, data, context=context)    
+        import pdb; pdb.set_trace()
+        rel_pool.write(cr, uid, rel_ids, {
+            'h_fabric': fabric_proxy.h_fabric,
+            'supplier_id': fabric_proxy.supplier_id.id, 
+            'article_code': fabric_proxy.article_code,
+            # TODO 'article_description': fabric_proxy.article_description,
+            'perc_fabric': fabric_proxy.perc_fabric,
+            'symbol_fabric': fabric_proxy.symbol,
+            'note_fabric': fabric_proxy.note_fabric,            
+            }, context=context)    
 
         return True
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
