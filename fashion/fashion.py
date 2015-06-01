@@ -25,7 +25,8 @@ import sys
 import base64
 from openerp.osv import osv, fields
 from datetime import datetime
-from openerp.tools import DEFAULT_SERVER_DATETIME_FORMAT, DEFAULT_SERVER_DATE_FORMAT
+from openerp.tools import (DEFAULT_SERVER_DATETIME_FORMAT, 
+    DEFAULT_SERVER_DATE_FORMAT)
 from openerp import tools
 from openerp.tools.translate import _
 
@@ -39,7 +40,8 @@ def _get_image(self, cr, uid, ids, name, args, context=None):
     '''
     result = dict.fromkeys(ids, False)
     for obj in self.browse(cr, uid, ids, context=context):
-        result[obj.id] = tools.image_get_resized_images(obj.image, avoid_resize_medium=True)
+        result[obj.id] = tools.image_get_resized_images(
+            obj.image, avoid_resize_medium=True)
     return result
 
 def _set_image(self, cr, uid, item_id, name, value, args, context=None):
@@ -52,7 +54,8 @@ def get_temp_filename(filename):
     ''' Get temp path for copy and paste functions
     '''
     import openerp 
-    return os.path.join(openerp.__path__[0], 'addons', 'fashion', 'temp', filename)
+    return os.path.join(
+        openerp.__path__[0], 'addons', 'fashion', 'temp', filename)
 
 class fashion_season(osv.osv):
     '''Table that manages the seasons
@@ -71,13 +74,15 @@ class fashion_season(osv.osv):
         
     _columns = {
          'sequence': fields.integer('Sequence'),
-         'code': fields.char('Cod', size = 10, required = True, help = 'Code used in fabric for join in the name'),
-         'name': fields.char('Name', size = 40, required = True),
+         'code': fields.char('Cod', size=10, required=True, 
+             help='Code used in fabric for join in the name'),
+         'name': fields.char('Name', size=40, required=True),
          'note': fields.text('Note'),
          'obsolete':fields.boolean('Obsolete'),
          
          # Link di importazione:
-         'access_id': fields.integer('Access ID', help="ID Importazione che tiene il link"),
+         'access_id': fields.integer(
+             'Access ID', help="ID Importazione che tiene il link"),
     }
 
 class fashion_article(osv.osv):
@@ -96,7 +101,8 @@ class fashion_article(osv.osv):
          #    'article_id', 'measure_id', 'Measures', readonly = False),
          
          # Link di importazione:
-         'access_id': fields.integer('Access ID', help="ID Importazione che tiene il link"),
+         'access_id': fields.integer(
+             'Access ID', help="ID Importazione che tiene il link"),
     }
 
 class fashion_form_characteristic(osv.osv):
@@ -112,7 +118,8 @@ class fashion_form_characteristic(osv.osv):
          'sequence': fields.integer('Sequence'),
 
          # Link di importazione:
-         'access_id': fields.integer('Access ID', help="ID Importazione che tiene il link"),
+         'access_id': fields.integer(
+             'Access ID', help="ID Importazione che tiene il link"),
     }
 
 class fashion_form_cost(osv.osv):
@@ -130,7 +137,8 @@ class fashion_form_cost(osv.osv):
         'default': fields.boolean('Default'),
     
          # Link di importazione:
-         'access_id': fields.integer('Access ID', help="ID Importazione che tiene il link"),
+         'access_id': fields.integer(
+             'Access ID', help="ID Importazione che tiene il link"),
      }
 
     _defaults = {
@@ -181,8 +189,10 @@ class fashion_form_accessory_pricelist(osv.osv):
 
     _columns = {
          'name': fields.char('Article', size=70, required=False),
-         'accessory_id':fields.many2one('fashion.form.accessory', 'Accessory', required=False, ondelete='cascade'),
-         'supplier_id':fields.many2one('res.partner', 'Supplier', required=True, domain=[('supplier','=',True)]),
+         'accessory_id':fields.many2one('fashion.form.accessory', 'Accessory', 
+             required=False, ondelete='cascade'),
+         'supplier_id':fields.many2one('res.partner', 'Supplier', 
+             required=True, domain=[('supplier','=',True)]),
          'create_date': fields.datetime('Date', readonly=True),
          'um': fields.char('U.M.', size=5, required=False),
          'extra_info': fields.char('Extra info', size=40, required=False),
@@ -190,7 +200,8 @@ class fashion_form_accessory_pricelist(osv.osv):
          'cost': fields.float('Cost', digits=(12, 4)),
 
          # Link di importazione:
-         'access_id': fields.integer('Access ID', help="ID Importazione che tiene il link"),
+         'access_id': fields.integer(
+             'Access ID', help="ID Importazione che tiene il link"),
     }
 
 class fashion_form_accessory(osv.osv):
@@ -200,7 +211,8 @@ class fashion_form_accessory(osv.osv):
     _inherit = 'fashion.form.accessory'
 
     _columns = {
-        'pricelist_ids':fields.one2many('fashion.form.accessory.pricelist', 'accessory_id', 'Pricelist', required=False),
+        'pricelist_ids':fields.one2many('fashion.form.accessory.pricelist', 
+            'accessory_id', 'Pricelist', required=False),
     }
 
 class fashion_form_fabric_composition(osv.osv):
@@ -242,6 +254,11 @@ class fashion_form_fabric(osv.osv):
             ('season_id', '=', fabric_proxy.season_id.id),
             ('code', '=', fabric_proxy.code.split('-')[-1]),
             ], context=context)
+        
+        if not composition_ids: # search without season (last from accounting)
+            composition_ids = composition_pool.search(cr, uid, [
+                ('code', '=', fabric_proxy.code.split('-')[-1]),
+                ], context=context)
             
         if composition_ids:
             composition_proxy = composition_pool.browse(
@@ -260,7 +277,10 @@ class fashion_form_fabric(osv.osv):
         '''
         res = []
         for fabric in self.browse(cr, uid, ids, context = context):
-            res.append((fabric.id, "%s-[%s] %s" % (fabric.code, fabric.season_id.code if fabric.season_id else "", fabric.note or '')))
+            res.append((fabric.id, "%s-[%s] %s" % (
+                fabric.code, 
+                fabric.season_id.code if fabric.season_id else "", 
+                fabric.note or '')))
         return res
 
     _columns = {
@@ -275,7 +295,8 @@ class fashion_form_fabric(osv.osv):
          #'desc_cx': fields.char('Description CX', size = 80),
          'symbol': fields.char('Wash symbol', size=10),
          'season_id': fields.many2one('fashion.season', 'Season'),
-         'test': fields.boolean('Test fabric', help='This fabric is used for a model testing, maybe it won\'t be produced!'),
+         'test': fields.boolean('Test fabric', 
+             help='This fabric is used for a model testing, maybe it won\'t be produced!'),
 
          'um': fields.char('U.M.', size=5),
          'cost': fields.float('Cost', digits=(10, 4)),
