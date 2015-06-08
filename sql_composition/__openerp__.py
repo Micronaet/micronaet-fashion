@@ -21,16 +21,25 @@
 ###############################################################################
 
 {
-    'name': 'Washing symbol',
-    'version': '0.1',
-    'category': 'Tools',
-    'description': """Washing symbol class for field in XML""",
-    'author': 'Apruzzese Francesco, Nicola Riolini',
-    'website': 'http://www.andreacometa.it, http://www.micronaet.it',
-    'license': 'AGPL-3',
-    "active": False,
-    "installable": True,
-    "depends" : [],
-    "css": ['static/src/css/esempio.css'],
-    "update_xml" : [],
+    'name': 'SQL Composition',
+    'version': '0.0.1',
+    'category': 'Generic Modules/ETL',
+    'description': """
+        Particular importation of composition (from product)
+        """,
+    'author': 'Micronaet s.r.l.',
+    'website': 'http://www.micronaet.it',
+    'depends': [
+        'base',
+        'product',
+        'base_mssql_accounting',
+        ],
+    'init_xml': [], 
+    'data': [
+        'scheduler.xml',
+        'composition_views.xml',
+        ],
+    'demo_xml': [],
+    'active': False, 
+    'installable': True, 
 }
