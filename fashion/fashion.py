@@ -207,7 +207,6 @@ class fashion_form_accessory_pricelist(orm.Model):
 class fashion_form_accessory(orm.Model):
     '''Table that manages the accessory relation *2many
     '''
-    _name = 'fashion.form.accessory'
     _inherit = 'fashion.form.accessory'
 
     _columns = {
