@@ -13,7 +13,7 @@
 			<field eval="1" name="active"/>
 			<field name="args">()</field>
 			<field eval="1" name="interval_number"/>
-			<field eval="&quot;&quot;&quot;product.product&quot;&quot;&quot;" name="model"/>
+			<field eval="&quot;&quot;&quot;fashion.form.fabric.composition&quot;&quot;&quot;" name="model"/>
 		</record>
 	</data>
 </openerp>

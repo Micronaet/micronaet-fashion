@@ -25,18 +25,15 @@ import os
 import sys
 import netsvc
 import logging
-from openerp.osv import osv, orm, fields
+from openerp.osv import osv, fields
 from datetime import datetime, timedelta
 from openerp.tools import (
     DEFAULT_SERVER_DATE_FORMAT, DEFAULT_SERVER_DATETIME_FORMAT, 
-    DATETIME_FORMATS_MAP, float_compare
-import openerp.addons.decimal_precision as dp
-from openerp.tools.translate import _
-
+    DATETIME_FORMATS_MAP, float_compare)
 
 _logger = logging.getLogger(__name__)
 
-class FashionFormFabricComposition(orm.Model):
+class FashionFormFabricComposition(osv.osv):
     ''' Extend composition obj
     '''    
     _inherit = 'fashion.form.fabric.composition'
@@ -54,7 +51,7 @@ class FashionFormFabricComposition(orm.Model):
     # -------------------------------------------------------------------------
     def schedule_sql_composition_import(self, cr, uid, verbose_log_count=100, 
             context=None):
-        ''' Import product from external DB
+        ''' Import composition from external DB
         '''
         accounting_pool = self.pool.get('micronaet.accounting')
         try:
@@ -65,8 +62,7 @@ class FashionFormFabricComposition(orm.Model):
                     "Unable to connect no importation of composition!")
                 return False
 
-            i = 0
-            
+            i = 0            
             for record in cursor:
                 try:
                     i += 1
@@ -74,22 +70,23 @@ class FashionFormFabricComposition(orm.Model):
                         _logger.info('Import %s: record import/update!' % i)                             
 
                     data = {
-                        'code': record['CDS_ART'],
-                        'perc_composition': record['CKY_ART'],
-                        'symbol': record['CKY_ART'],
+                        'code': record['CKY_ART'],
+                        'perc_composition': record['CDS_ART'],
+                        'symbol': record['CSG_ART_ALT'],
+                        #record['CDS_AGGIUN_ART'],
                         'season_id': False,
                         'sql_import': True,
-                    }
+                        }
                         
-                    product_ids = product_proxy.search(cr, uid, [
-                        ('default_code', '=', record['CKY_ART'])])
-                    if product_ids:
-                        product_id = product_ids[0]
-                        product_proxy.write(cr, uid, product_id, data, 
+                    composition_ids = self.search(cr, uid, [
+                        ('code', '=', record['CKY_ART'])])
+                    if composition_ids:
+                        composition_id = composition_ids[0]
+                        self.write(cr, uid, composition_id, data, 
                             context=context)
                     else:
-                        product_id = product_proxy.create(cr, uid, data, 
-                            context=context)
+                        composition_id = self.create(
+                            cr, uid, data, context=context)
 
                 except:
                     _logger.error('Error import composition [%s], jump: %s' % (
@@ -97,7 +94,7 @@ class FashionFormFabricComposition(orm.Model):
                         
             _logger.info('All composition is updated!')
         except:
-            _logger.error('Error generic import product: %s' % (
+            _logger.error('Error generic import composition: %s' % (
                 sys.exc_info(), ))
             return False
         return True

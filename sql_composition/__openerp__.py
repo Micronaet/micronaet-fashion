@@ -33,13 +33,14 @@
         'base',
         'product',
         'base_mssql_accounting',
+        'fashion',
         ],
     'init_xml': [], 
     'data': [
         'scheduler.xml',
-        'composition_views.xml',
+        #'composition_views.xml',
         ],
     'demo_xml': [],
     'active': False, 
     'installable': True, 
-}
+    }

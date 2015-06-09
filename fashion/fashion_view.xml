@@ -410,7 +410,7 @@
         <field name="name">fashion.form.fabric.tree</field>
         <field name="model">fashion.form.fabric.composition</field>
         <field name="arch" type="xml">
-            <tree string="Composition" colors="grey:test==True;black:test==False">
+            <tree string="Composition"> <!--colors="grey:test==True;black:test==False"-->
                 <field name="code"/>
                 <field name="season_id"/>
                 <field name="perc_composition"/>

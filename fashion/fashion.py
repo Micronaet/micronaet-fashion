@@ -57,7 +57,7 @@ def get_temp_filename(filename):
     return os.path.join(
         openerp.__path__[0], 'addons', 'fashion', 'temp', filename)
 
-class fashion_season(orm.Model):
+class fashion_season(osv.osv):
     '''Table that manages the seasons
     '''
     _name = 'fashion.season'
@@ -85,7 +85,7 @@ class fashion_season(orm.Model):
              'Access ID', help="ID Importazione che tiene il link"),
     }
 
-class fashion_article(orm.Model):
+class fashion_article(osv.osv):
     '''Table that manages the articles
     '''
     _name = 'fashion.article'
@@ -105,7 +105,7 @@ class fashion_article(orm.Model):
              'Access ID', help="ID Importazione che tiene il link"),
     }
 
-class fashion_form_characteristic(orm.Model):
+class fashion_form_characteristic(osv.osv):
     '''Table that manages the characteristic
     '''
     _name = 'fashion.form.characteristic'
@@ -122,7 +122,7 @@ class fashion_form_characteristic(orm.Model):
              'Access ID', help="ID Importazione che tiene il link"),
     }
 
-class fashion_form_cost(orm.Model):
+class fashion_form_cost(osv.osv):
     '''Table that manages the cost
     '''
     _name = 'fashion.form.cost'
@@ -145,7 +145,7 @@ class fashion_form_cost(orm.Model):
         'default': False,
     }
 
-class fashion_form_accessory(orm.Model):
+class fashion_form_accessory(osv.osv):
     '''Table that manages the accessory
     '''
     _name = 'fashion.form.accessory'
@@ -169,7 +169,7 @@ class fashion_form_accessory(orm.Model):
         'sequence': lambda *x: 1000, # normal accessory have high number
     }
 
-class fashion_form_accessory_pricelist(orm.Model):
+class fashion_form_accessory_pricelist(osv.osv):
     '''Table that manages the accessory pricelist
     '''
     _name = 'fashion.form.accessory.pricelist'
@@ -204,7 +204,7 @@ class fashion_form_accessory_pricelist(orm.Model):
              'Access ID', help="ID Importazione che tiene il link"),
     }
 
-class fashion_form_accessory(orm.Model):
+class fashion_form_accessory(osv.osv):
     '''Table that manages the accessory relation *2many
     '''
     _inherit = 'fashion.form.accessory'
@@ -214,7 +214,7 @@ class fashion_form_accessory(orm.Model):
             'accessory_id', 'Pricelist', required=False),
     }
 
-class fashion_form_fabric_composition(orm.Model):
+class fashion_form_fabric_composition(osv.osv):
     '''Table that manages the fabric composition
     '''
 
@@ -231,7 +231,7 @@ class fashion_form_fabric_composition(orm.Model):
          'season_id': fields.many2one('fashion.season', 'Season'),
     }
 
-class fashion_form_fabric(orm.Model):
+class fashion_form_fabric(osv.osv):
     '''Table that manages the fabric
     '''
     _name = 'fashion.form.fabric'
@@ -336,7 +336,7 @@ class fashion_form_fabric(orm.Model):
         'um': lambda *x: 'MT'
     }
 
-class fashion_form_stitch(orm.Model):
+class fashion_form_stitch(osv.osv):
     '''Table that manages the stitch
     '''
     _name = 'fashion.form.stitch'
@@ -352,7 +352,7 @@ class fashion_form_stitch(orm.Model):
          'access_id': fields.integer('Access ID', help="ID Importazione che tiene il link"),
     }
 
-class fashion_form_measure(orm.Model):
+class fashion_form_measure(osv.osv):
     '''Table that manages the measure
     '''
     _name = 'fashion.form.measure'
@@ -368,7 +368,7 @@ class fashion_form_measure(orm.Model):
          'access_id': fields.integer('Access ID', help="ID Importazione che tiene il link"),
     }
 
-class fashion_form(orm.Model):
+class fashion_form(osv.osv):
     ''' Table that manages the form
     '''
     _name = 'fashion.form'
@@ -1128,7 +1128,7 @@ class fashion_form(orm.Model):
 # -----------------------------------------------------------------------------
 #                               Object relations  
 # -----------------------------------------------------------------------------
-class fashion_form_measure_rel(orm.Model):
+class fashion_form_measure_rel(osv.osv):
     '''Table that manage the relation measure/form
     '''
     _name = 'fashion.form.measure.rel'
@@ -1188,7 +1188,7 @@ class fashion_form_measure_rel(orm.Model):
         'sequence': lambda *x: 0,
         }
 
-class fashion_form_characteristic_rel(orm.Model):
+class fashion_form_characteristic_rel(osv.osv):
     '''Table that manage the relation characteristic/form
     '''
     _name = 'fashion.form.characteristic.rel'
@@ -1259,7 +1259,7 @@ class fashion_form_characteristic_rel(orm.Model):
         'sequence': lambda *x: 1,
         }
 
-class fashion_form_characteristic_rel_specific(orm.Model):
+class fashion_form_characteristic_rel_specific(osv.osv):
     '''Table that manage the specific of characteristic
     '''
     _name = 'fashion.form.characteristic.rel.specific'
@@ -1278,7 +1278,7 @@ class fashion_form_characteristic_rel_specific(orm.Model):
         """
         if 'name' in vals:
             vals['name'] = vals['name'].upper()
-        #return orm.Model.create(self, cr, uid, ids, context=context)
+        #return osv.osv.create(self, cr, uid, ids, context=context)
         return super(fashion_form_characteristic_rel_specific, self).create(
             cr, uid, vals, context=context)
 
@@ -1298,7 +1298,7 @@ class fashion_form_characteristic_rel_specific(orm.Model):
     
         if 'name' in vals:
             vals['name'] = vals['name'].upper()
-        #return orm.Model.create(self, cr, uid, ids, context=context)
+        #return osv.osv.create(self, cr, uid, ids, context=context)
         return super(fashion_form_characteristic_rel_specific, self).create(
             cr, uid, ids, vals, context=context)
     
@@ -1316,7 +1316,7 @@ class fashion_form_characteristic_rel_specific(orm.Model):
             help="ID Importazione che tiene il link"),
         }
 
-class fashion_form_cost_rel(orm.Model):
+class fashion_form_cost_rel(osv.osv):
     '''Table that manage the relation cost/form
     '''
     _name = 'fashion.form.cost.rel'
@@ -1334,7 +1334,7 @@ class fashion_form_cost_rel(orm.Model):
             help="ID Importazione che tiene il link"),
         }
 
-class fashion_form_cost_rel_pricelist(orm.Model):
+class fashion_form_cost_rel_pricelist(osv.osv):
     '''Table that manage the pricelist elements for signle cost
     '''
     _name = 'fashion.form.cost.rel.pricelist'
@@ -1358,7 +1358,7 @@ class fashion_form_cost_rel_pricelist(orm.Model):
         'current': False,
         }
 
-class fashion_form_cost_rel(orm.Model):
+class fashion_form_cost_rel(osv.osv):
     '''Table that manage the relation cost/form
     '''
     _name = 'fashion.form.cost.rel'
@@ -1369,7 +1369,7 @@ class fashion_form_cost_rel(orm.Model):
             'cost_rel_id', 'Pricelist', required=False),
         }
     
-class fashion_form_accessory_rel(orm.Model):
+class fashion_form_accessory_rel(osv.osv):
     '''Table that manage the relation accessory/form
     '''
     _name = 'fashion.form.accessory.rel'
@@ -1526,7 +1526,7 @@ class fashion_form_accessory_rel(orm.Model):
         'sequence': lambda *x: 1000, # high number so letter are lower
         }
 
-class fashion_form_stitch_rel(orm.Model):
+class fashion_form_stitch_rel(osv.osv):
     '''Table that manage the relation stitch/form
     '''
     _name = 'fashion.form.stitch.rel'
@@ -1544,7 +1544,7 @@ class fashion_form_stitch_rel(orm.Model):
             help="ID Importazione che tiene il link"),
         }
 
-class fashion_form_comment_rel(orm.Model):
+class fashion_form_comment_rel(osv.osv):
     '''Table that manages the comment/form
     '''
     _name = 'fashion.form.comment.rel'
@@ -1590,7 +1590,7 @@ class fashion_form_comment_rel(orm.Model):
         'user_id': lambda s, cr, uid, ctx: uid
         }
 
-class fashion_measure_rel(orm.Model):
+class fashion_measure_rel(osv.osv):
     '''Table that manages the measure/article
     '''
     _name = 'fashion.measure.rel'
@@ -1606,7 +1606,7 @@ class fashion_measure_rel(orm.Model):
              help="ID Importazione che tiene il link"),
          }
 
-class fashion_article(orm.Model):
+class fashion_article(osv.osv):
     '''
     '''
     _name = 'fashion.article'
@@ -1617,7 +1617,7 @@ class fashion_article(orm.Model):
             'fashion.measure.rel', 'article_id', 'Measure'),
         }
             
-class fashion_form_partner_rel(orm.Model):
+class fashion_form_partner_rel(osv.osv):
     ''' Form relation with partner, this object contain much elements useful
         for cost determination and caracteristic of model (ex. fabric)
     '''
@@ -1886,7 +1886,7 @@ class fashion_form_partner_rel(orm.Model):
             help="ID Importazione che tiene il link con partner costi"),
         }
 
-class res_partner(orm.Model):
+class res_partner(osv.osv):
     ''' Extra fields for partner
     '''
     _name = 'res.partner'
@@ -1901,7 +1901,7 @@ class res_partner(orm.Model):
             help="ID Importazione che tiene il link"),
         }
     
-class fashion_form_extra_relations(orm.Model):
+class fashion_form_extra_relations(osv.osv):
     '''Table that manage the relation forms
     '''
     _name = 'fashion.form'
@@ -1926,7 +1926,7 @@ class fashion_form_extra_relations(orm.Model):
             'form_id', 'Comment Relation'),
         }
 
-class product_template(orm.Model):
+class product_template(osv.osv):
     ''' Remove translation from product name
     '''
     _name = "product.template"
