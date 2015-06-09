@@ -36,73 +36,37 @@ from openerp.tools.translate import _
 
 _logger = logging.getLogger(__name__)
 
-class product_product(osv.osv):
-    ''' Extend product.product
+class FashionFormFabricComposition(orm.Model):
+    ''' Extend composition obj
     '''    
-    _inherit = 'product.product'
+    _inherit = 'fashion.form.fabric.composition'
     
     _columns = {
         'sql_import': fields.boolean('SQL import', required=False),
-        'statistic_category': fields.char(
-            'Statistic category', size=10, required=False, readonly=False),
-    }
+        }
     
     _defaults = {
         'sql_import': lambda *a: False,
-        'statistic_category': lambda *x: False,
-    }
-
-    def fast_product_create(self, cr, uid, code, context=None):
-        ''' Create a minimal product only from code
-        '''
-        return self.create(cr, uid, {
-            'name': _("Prod. %s*") % code,
-            'default_code': code,
-            'sql_import': True,
-            'active': True,
-            }, context=context)
-
-    def get_product_from_sql_code(self, cr, uid, code, context = None):
-        ''' Return product_id read from the import code passed
-            (all product also pre-deleted
-        '''
-        product_ids = self.search(cr, uid, [('default_code', '=', code),])
-
-        if product_ids:
-            return product_ids[0]
-        return False
-
-    def get_is_to_import_product(self, cr, uid, item_id, context = None):
-        ''' Return if the product is to import (MM) from ID
-        '''
-        product_id = self.search(cr, uid, [('id', '=', item_id),])
-        if product_id:
-            product_browse = self.search(cr, uid, product_id, context = context)
-            return not product_browse[0].not_analysis
-
-        return True #False # Jump line with product not found
+        }
 
     # -------------------------------------------------------------------------
     #                                  Scheduled action
     # -------------------------------------------------------------------------
-    def schedule_sql_product_import(self, cr, uid, verbose_log_count=100, 
-            write_date_from=False, write_date_to=False, create_date_from=False, 
-            create_date_to=False, context=None):
+    def schedule_sql_composition_import(self, cr, uid, verbose_log_count=100, 
+            context=None):
         ''' Import product from external DB
         '''
-        product_proxy = self.pool.get('product.product')
         accounting_pool = self.pool.get('micronaet.accounting')
         try:
-            cursor = accounting_pool.get_product( 
-                cr, uid, active = False, write_date_from=write_date_from,
-                write_date_to=write_date_to, create_date_from=create_date_from,
-                create_date_to=create_date_to, context=context) 
+            cursor = accounting_pool.get_composition( 
+                cr, uid, context=context) 
             if not cursor:
                 _logger.error(
-                    "Unable to connect no importation of package list for product!")
+                    "Unable to connect no importation of composition!")
                 return False
 
             i = 0
+            
             for record in cursor:
                 try:
                     i += 1
@@ -110,22 +74,12 @@ class product_product(osv.osv):
                         _logger.info('Import %s: record import/update!' % i)                             
 
                     data = {
-                        # TODO IFL_ART_DBP o DBV for supply_method='produce'
-                        'name': record['CDS_ART'],
-                        'default_code': record['CKY_ART'],
+                        'code': record['CDS_ART'],
+                        'perc_composition': record['CKY_ART'],
+                        'symbol': record['CKY_ART'],
+                        'season_id': False,
                         'sql_import': True,
-                        'active': True,
-                        'statistic_category': "%s%s" % (
-                            record['CKY_CAT_STAT_ART'] or '', 
-                            "%02d" % int(
-                                record['NKY_CAT_STAT_ART'] or '0') if record[
-                                    'CKY_CAT_STAT_ART'] else '',
-                        ),
                     }
-                    if accounting_pool.is_active(record):
-                        data['state'] = 'sellable'
-                    else:
-                        data['state'] = 'obsolete'
                         
                     product_ids = product_proxy.search(cr, uid, [
                         ('default_code', '=', record['CKY_ART'])])
@@ -138,10 +92,10 @@ class product_product(osv.osv):
                             context=context)
 
                 except:
-                    _logger.error('Error import product [%s], jumped: %s' % (
+                    _logger.error('Error import composition [%s], jump: %s' % (
                         record['CDS_ART'], sys.exc_info(), ))
                         
-            _logger.info('All product is updated!')
+            _logger.info('All composition is updated!')
         except:
             _logger.error('Error generic import product: %s' % (
                 sys.exc_info(), ))
