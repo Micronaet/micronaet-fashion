@@ -46,7 +46,17 @@ class Parser(report_sxw.rml_parse):
             'browse_in_cols': self.browse_in_cols,
             'set_counter': self.set_counter,
             'get_counter': self.get_counter,
+            'how_much_zero': self.how_much_zero,
         })
+
+    def how_much_zero(self, accessory):
+        ''' Test if there's accessory without price 
+        '''
+        zero = 0
+        for item in accessory:
+            if not item.currency:
+                zero += 1                
+        return zero
 
     def get_counter(self, name):
         ''' Return value of passed counter, if empty create with 0 value

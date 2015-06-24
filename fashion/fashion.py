@@ -1397,7 +1397,10 @@ class fashion_form_accessory_rel(osv.osv):
         res = {'value': {}}
         if quantity and currency:
             res['value']['tot_cost'] = quantity * currency
+        else:
+            res['value']['tot_cost'] = 0.0
         return res
+
 
     def onchange_accessory(self, cr, uid, ids, accessory_id, context=None):
         ''' Read gerber letter and write in code
