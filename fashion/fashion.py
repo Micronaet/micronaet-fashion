@@ -307,7 +307,7 @@ class fashion_form_fabric(osv.osv):
     _columns = {
         'supplier_id': fields.many2one('res.partner', 'Fabric Supplier'),
         'article_code': fields.char('Fabric Article code', size=50),
-        'code': fields.char('Code', size=15, required=True),
+        'code': fields.char('Code', size=30, required=True),
         #'name': fields.char('Name', size = 20),
         #'composition': fields.char('Composition', size = 60),
         'perc_composition': fields.char('Percentage composition', size=60),
@@ -326,7 +326,6 @@ class fashion_form_fabric(osv.osv):
         'range_final_cost': fields.char('Range cost', size=50),
         'preferred_fabric': fields.char('Preferred fabric', size=50),
         'tag': fields.char('Tag', size=50),
-         
 
         # Link di importazione:
         'access_id': fields.integer(
