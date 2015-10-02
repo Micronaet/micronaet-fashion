@@ -36,8 +36,8 @@
                 <field name="code"/>
                 <field name="name"/>
                 <field name="note"/>
-                <button string='Obsolete' name='set_obsolete' type="object" attrs="{'invisible': [('obsolete','=',True)]}" context="{'obsolete':True}" icon='STOCK_NO' groups="fashion.group_fashion_production"/>
-                <button string='Not obsolete' name='set_not_obsolete' type="object" attrs="{'invisible': [('obsolete','=',False)]}" context="{'obsolete':False}" icon='STOCK_YES' groups="fashion.group_fashion_production"/>
+                <!--<button string='Obsolete' name='set_obsolete' type="object" attrs="{'invisible': [('obsolete','=',True)]}" context="{'obsolete':True}" icon='STOCK_NO' groups="fashion.group_fashion_production"/>
+                <button string='Not obsolete' name='set_not_obsolete' type="object" attrs="{'invisible': [('obsolete','=',False)]}" context="{'obsolete':False}" icon='STOCK_YES' groups="fashion.group_fashion_production"/>-->
             </tree>
         </field>
     </record>
@@ -360,14 +360,15 @@
                 <field name="supplier_id"/>
                 <field name="season_id"/>
                 <field name="perc_composition"/>
-                <field name="h_fabric"/>
-                <field name="weight"/>                    
+                <field name="cost"/>
+
+                <!--<field name="h_fabric"/>
+                <field name="weight"/>-->
                 <field name="tag" groups="fashion.group_fashion_accounting" />                    
                 <field name="preferred_fabric" groups="fashion.group_fashion_accounting" />
                 <field name="range_supplier_cost" groups="fashion.group_fashion_accounting" />
-                <field name="range_final_cost" groups="fashion.group_fashion_accounting" /> 
-
-                <field name="note"/>
+                <field name="range_final_cost" groups="fashion.group_fashion_accounting" />
+                <!--<field name="note"/>-->
             </tree>
         </field>
     </record>
@@ -868,7 +869,7 @@
         <field name="name">fashion.form.tree</field>
         <field name="model">fashion.form</field>
         <field name="arch" type="xml">
-            <tree string="Form" colors="grey:state == 'draft';blue:state == 'sample';green:state == 'produced';red:state == 'discarded'">
+            <tree string="Form" colors="red:state=='draft';blue:state=='sample';black:state=='produced';green:state=='ok';brown:state=='discarded'">
                 <field name="name"/>
                 <field name="detail_info_fabric"/>                
                 <field name="detail_info_partner"/>                
@@ -881,9 +882,8 @@
                 <field name="obsolete" invisible='1'/>
                 <field name="reactivate" invisible='1'/>
                 <field name="conformed" invisible='1'/>
-
-                <button string='Obsolete' name='set_obsolete' type="object" attrs="{'invisible': [('obsolete','=',True)]}" icon='STOCK_NO' groups="fashion.group_fashion_production"/>
-                <button string='Not obsolete' name='set_not_obsolete' type="object" attrs="{'invisible': [('obsolete','=',False)]}" icon='STOCK_YES' groups="fashion.group_fashion_production"/>
+                <!--<button string='Obsolete' name='set_obsolete' type="object" attrs="{'invisible': [('obsolete','=',True)]}" icon='STOCK_NO' groups="fashion.group_fashion_production"/>
+                <button string='Not obsolete' name='set_not_obsolete' type="object" attrs="{'invisible': [('obsolete','=',False)]}" icon='STOCK_YES' groups="fashion.group_fashion_production"/>-->
                 <field name='state' readonly='1'/>
             </tree>
         </field>
@@ -906,10 +906,10 @@
                                 </h4>
                                 <div name="tags"/>
                                 <ul>
-                                    <li>Date: <field name="date"></field></li>
+                                    <!--<li>Date: <field name="date"></field></li>-->
                                     <li>Season: <field name="season_id"></field></li>
-                                    <li>Base: <field name="base_name"></field></li>
-                                    <li>Original: <field name="original"></field></li>
+                                    <!--<li>Base: <field name="base_name"></field></li>-->
+                                    <!--<li>Original: <field name="original"></field></li>-->
                                     <br />
                                     <li>Fabrics: <field name="detail_info_fabric"></field></li>
                                     <li>Partners: <field name="detail_info_partner"></field></li>
@@ -1232,4 +1232,4 @@
             <menuitem name="Article" parent="menu_fashion_configuration" id="menu_fashion_configuration_article" sequence="80" action='action_fashion_article' />
             <menuitem name="Car. terms" parent="menu_fashion_configuration" id="menu_fashion_terminology" sequence="90" action='action_fashion_form_characteristic_rel_specific' />
     </data>
-</openerp>fashion_form_workflow
+</openerp>
