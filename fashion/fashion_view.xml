@@ -907,12 +907,14 @@
                                 <div name="tags"/>
                                 <ul>
                                     <!--<li>Date: <field name="date"></field></li>-->
-                                    <li>Season: <field name="season_id"></field></li>
+                                    <li>Codice cliente: <field name="customer_code"></field></li>                                    
+                                    <li>Articolo: <field name="detail_info_fabric"></field></li>
+                                    <li>Cliente: <field name="detail_info_partner"></field></li>                                    
+                                    <li>Stagione: <field name="season_id"></field></li>
+                                    <li>Stato: <field name="state"></field></li>
                                     <!--<li>Base: <field name="base_name"></field></li>-->
-                                    <!--<li>Original: <field name="original"></field></li>-->
-                                    <br />
-                                    <li>Fabrics: <field name="detail_info_fabric"></field></li>
-                                    <li>Partners: <field name="detail_info_partner"></field></li>
+                                    <!--<li>Original: <field name="original"></field></li>
+                                    <br />-->
                                 </ul>
                                 <a type="button">
                                     <button name="open_form_item" type="object" class="oe_highlight">
