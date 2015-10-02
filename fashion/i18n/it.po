@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-08 18:08+0000\n"
-"PO-Revision-Date: 2015-03-08 18:08+0000\n"
+"POT-Creation-Date: 2015-10-02 14:30+0000\n"
+"PO-Revision-Date: 2015-10-02 14:30+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -26,6 +26,11 @@ msgstr "col 8"
 #: model:ir.model,name:fashion.model_fashion_form_stitch
 msgid "Stitch"
 msgstr "Cuciture"
+
+#. module: fashion
+#: field:fashion.form.partner.rel,mt_fabric:0
+msgid "Mt."
+msgstr "Mt."
 
 #. module: fashion
 #: selection:fashion.form,col_ref:0
@@ -155,12 +160,6 @@ msgid "fashion.form"
 msgstr "Schede modelli"
 
 #. module: fashion
-#: code:addons/fashion/fashion.py:358
-#, python-format
-msgid "warning"
-msgstr "attenzione"
-
-#. module: fashion
 #: view:fashion.form:0
 msgid "Measures"
 msgstr "Misure"
@@ -238,8 +237,8 @@ msgstr "Utente"
 
 #. module: fashion
 #: view:fashion.form:0
-msgid "Original:"
-msgstr "Original:"
+msgid "Stagione:"
+msgstr "Stagione:"
 
 #. module: fashion
 #: help:fashion.form,model_for_cost:0
@@ -289,8 +288,13 @@ msgstr "Totale costi"
 
 #. module: fashion
 #: view:fashion.form:0
-msgid "Base:"
-msgstr "Base:"
+msgid "Articolo:"
+msgstr "Articolo:"
+
+#. module: fashion
+#: view:fashion.force.fabric:0
+msgid "Force"
+msgstr "Force"
 
 #. module: fashion
 #: selection:fashion.form,col_ref:0
@@ -358,11 +362,9 @@ msgid "Season obsolete"
 msgstr "Season obsolete"
 
 #. module: fashion
-#: field:fashion.form,model_revision:0
-#: field:fashion.form.partner.rel,model_revision:0
-#: field:fashion.form.partner.rel,review:0
-msgid "Revisione"
-msgstr "Revisione"
+#: field:fashion.form,measure_rel_ids:0
+msgid "Measure Relation"
+msgstr "Misure"
 
 #. module: fashion
 #: help:fashion.form,product_id:0
@@ -405,14 +407,22 @@ msgid "Fashion partner"
 msgstr "Cliente"
 
 #. module: fashion
+#: field:fashion.form,model_revision:0
+#: field:fashion.form.partner.rel,model_revision:0
+#: field:fashion.form.partner.rel,review:0
+msgid "Revisione"
+msgstr "Revisione"
+
+#. module: fashion
 #: field:fashion.report.wizard,type:0
 msgid "Type of report"
 msgstr "Tipo di report"
 
 #. module: fashion
-#: field:fashion.form.partner.rel,mt_fabric:0
-msgid "Mt."
-msgstr "Mt."
+#: model:ir.actions.act_window,name:fashion.action_fashion_force_fabric
+#: model:ir.model,name:fashion.model_fashion_force_fabric
+msgid "Force fabric"
+msgstr "Forza cambio"
 
 #. module: fashion
 #: field:fashion.form,model_number:0
@@ -431,9 +441,9 @@ msgid "Form Report"
 msgstr "Report scheda"
 
 #. module: fashion
-#: field:fashion.form.characteristic.rel,lenght:0
-msgid "Lenght"
-msgstr "Lunghezza"
+#: selection:fashion.form,state:0
+msgid "Ok production"
+msgstr "OK produrre"
 
 #. module: fashion
 #: field:fashion.form.fabric,symbol:0
@@ -464,6 +474,12 @@ msgid "Area"
 msgstr "Area"
 
 #. module: fashion
+#: field:fashion.form.fabric,range_final_cost:0
+#: field:fashion.form.fabric,range_supplier_cost:0
+msgid "Range cost"
+msgstr "Range costi"
+
+#. module: fashion
 #: field:fashion.form.measure.rel,size_11:0
 msgid "Size 11"
 msgstr "Tg.11"
@@ -475,13 +491,8 @@ msgstr "Crea"
 
 #. module: fashion
 #: view:fashion.form:0
-msgid "Date:"
-msgstr "Date:"
-
-#. module: fashion
-#: selection:fashion.form,state:0
-msgid "Ok production"
-msgstr "OK produrre"
+msgid "Reset Image"
+msgstr "Elimina immagine"
 
 #. module: fashion
 #: model:ir.actions.act_window,name:fashion.action_fashion_form_characteristic_rel_specific
@@ -528,12 +539,6 @@ msgstr "Stampa"
 
 #. module: fashion
 #: view:fashion.form:0
-#: selection:fashion.form,state:0
-msgid "Produced"
-msgstr "Prodotto"
-
-#. module: fashion
-#: view:fashion.form:0
 msgid "Totale costi"
 msgstr "Totale costi"
 
@@ -547,21 +552,15 @@ msgid "Type"
 msgstr "Tipo"
 
 #. module: fashion
-#: code:addons/fashion/fashion.py:254
-#, python-format
-msgid "Season and code not found!"
-msgstr "Abbinamento codice-stagione non trovato!"
-
-#. module: fashion
 #: model:ir.actions.act_window,name:fashion.action_res_partner
 msgid "Customer and Supplier"
 msgstr "Clienti e fornitori"
 
 #. module: fashion
-#: code:addons/fashion/fashion.py:359
-#, python-format
-msgid "Error: Model must start with letter"
-msgstr "Errore: il modello deve iniziare con una lettera"
+#: view:fashion.form:0
+#: selection:fashion.form,state:0
+msgid "Produced"
+msgstr "Prodotto"
 
 #. module: fashion
 #: field:fashion.form,partner_rel_ids:0
@@ -593,12 +592,8 @@ msgid "Form"
 msgstr "Scheda"
 
 #. module: fashion
-#: field:fashion.report.wizard,summary:0
-msgid "Summary"
-msgstr "Riepilogo"
-
-#. module: fashion
 #: view:fashion.duplication:0
+#: view:fashion.force.fabric:0
 #: view:fashion.form:0
 #: field:fashion.form,season_id:0
 #: view:fashion.form.fabric:0
@@ -688,9 +683,9 @@ msgid "Configuration"
 msgstr "Configurazione"
 
 #. module: fashion
-#: field:fashion.form,measure_rel_ids:0
-msgid "Measure Relation"
-msgstr "Misure"
+#: view:fashion.form:0
+msgid "Cliente:"
+msgstr "Cliente:"
 
 #. module: fashion
 #: model:res.groups,name:fashion.group_fashion_accounting
@@ -708,6 +703,11 @@ msgid "Gerber height"
 msgstr "Altezza (Gerber)"
 
 #. module: fashion
+#: field:fashion.force.fabric,name:0
+msgid "Info"
+msgstr "Info"
+
+#. module: fashion
 #: help:fashion.form,draw_image_b:0
 #: help:fashion.form,draw_image_c:0
 #: help:fashion.form,draw_image_d:0
@@ -723,6 +723,11 @@ msgstr "Somma dei costi nella lista qui a sinistra"
 #: field:fashion.form.measure.rel,size_13:0
 msgid "Size 13"
 msgstr "Tg.13"
+
+#. module: fashion
+#: view:fashion.force.fabric:0
+msgid "Force fabric wizard"
+msgstr "Forza cambio tessuto"
 
 #. module: fashion
 #: view:fashion.form:0
@@ -748,6 +753,11 @@ msgstr "Costi non gestiti"
 #: field:fashion.form.partner.rel,value:0
 msgid "Value"
 msgstr "Valore"
+
+#. module: fashion
+#: view:fashion.form:0
+msgid "Codice cliente:"
+msgstr "Codice cliente:"
 
 #. module: fashion
 #: view:fashion.form:0
@@ -818,19 +828,25 @@ msgid "Margin percentage"
 msgstr "% Margine"
 
 #. module: fashion
+#: view:fashion.form.fabric:0
+msgid "Show form used"
+msgstr "Schede dove utilizzato"
+
+#. module: fashion
 #: model:res.groups,comment:fashion.group_fashion_production
 msgid "User that can see production."
 msgstr "Utente che può vedere la produzione"
 
 #. module: fashion
+#: field:fashion.form.fabric,weight:0
 #: field:fashion.form.partner.rel,weight:0
 msgid "Weight"
 msgstr "Peso"
 
 #. module: fashion
-#: help:fashion.form.fabric,test:0
-msgid "This fabric is used for a model testing, maybe it won't be produced!"
-msgstr "Questo tessuto è utilizzato per un modello in prova, può anche non essere poi prodotto!"
+#: field:fashion.form.fabric,tag:0
+msgid "Tag"
+msgstr "Tag"
 
 #. module: fashion
 #: view:fashion.form:0
@@ -868,6 +884,7 @@ msgid "Medium-sized image"
 msgstr "Immagine taglio medio"
 
 #. module: fashion
+#: field:fashion.form.fabric,h_fabric:0
 #: field:fashion.form.partner.rel,h_fabric:0
 msgid "H."
 msgstr "H."
@@ -999,16 +1016,6 @@ msgstr "total"
 
 #. module: fashion
 #: view:fashion.form:0
-msgid "Fabrics:"
-msgstr "Fabrics:"
-
-#. module: fashion
-#: field:fashion.form.partner.rel,retail:0
-msgid "Retail"
-msgstr "Dettaglio"
-
-#. module: fashion
-#: view:fashion.form:0
 msgid "Empty"
 msgstr "Svuota"
 
@@ -1016,6 +1023,11 @@ msgstr "Svuota"
 #: field:fashion.form.partner.rel,corr_fabric:0
 msgid "Additional description"
 msgstr "Descrizione aggiuntiva"
+
+#. module: fashion
+#: field:fashion.form.fabric,preferred_fabric:0
+msgid "Preferred fabric"
+msgstr "Tessuto preferito"
 
 #. module: fashion
 #: model:ir.ui.menu,name:fashion.menu_fashion_form_inactive_form
@@ -1163,9 +1175,9 @@ msgid "Meters lining"
 msgstr "Metri fodera"
 
 #. module: fashion
-#: view:fashion.form:0
-msgid "Partners:"
-msgstr "Clienti / Fornitori:"
+#: field:fashion.form.partner.rel,retail:0
+msgid "Retail"
+msgstr "Dettaglio"
 
 #. module: fashion
 #: model:res.groups,name:fashion.group_fashion_admin
@@ -1188,6 +1200,11 @@ msgid "Production info"
 msgstr "Info produzione"
 
 #. module: fashion
+#: help:fashion.form.fabric,test:0
+msgid "This fabric is used for a model testing, maybe it won't be produced!"
+msgstr "Questo tessuto è utilizzato per un modello in prova, può anche non essere poi prodotto!"
+
+#. module: fashion
 #: model:ir.actions.act_window,name:fashion.action_fashion_form_measure
 msgid "Fashion measure"
 msgstr "Misura"
@@ -1203,9 +1220,9 @@ msgid "Size 8"
 msgstr "Tg.8"
 
 #. module: fashion
-#: view:fashion.form:0
-msgid "Reset Image"
-msgstr "Elimina immagine"
+#: field:fashion.report.wizard,summary:0
+msgid "Summary"
+msgstr "Ripilogo"
 
 #. module: fashion
 #: model:res.groups,name:fashion.group_fashion_user
@@ -1228,10 +1245,8 @@ msgid "Add colors to be cut..."
 msgstr "Aggiungi colori da tagliare..."
 
 #. module: fashion
-#: code:addons/fashion/fashion.py:254
 #: view:fashion.duplication:0
 #: field:fashion.duplication,error:0
-#, python-format
 msgid "Error"
 msgstr "Errore"
 
@@ -1295,10 +1310,14 @@ msgid "Type of stitch"
 msgstr "Tipo cucitura"
 
 #. module: fashion
-#: code:addons/fashion/fashion.py:487
-#, python-format
-msgid "Form detail"
-msgstr "Form detail"
+#: view:fashion.form:0
+msgid "Stato:"
+msgstr "Stato:"
+
+#. module: fashion
+#: field:fashion.form.characteristic.rel,lenght:0
+msgid "Lenght"
+msgstr "Lunghezza"
 
 #. module: fashion
 #: field:fashion.form,detail_fabric:0
@@ -1327,9 +1346,7 @@ msgid "User that insert comment"
 msgstr "Utente che ha aggiunto il commento"
 
 #. module: fashion
-#: code:addons/fashion/fashion.py:637
 #: field:fashion.form.measure.rel,header:0
-#, python-format
 msgid "Header"
 msgstr "Intestazione"
 
@@ -1382,6 +1399,7 @@ msgstr "Misura"
 
 #. module: fashion
 #: view:fashion.duplication:0
+#: view:fashion.force.fabric:0
 #: view:fashion.report.wizard:0
 msgid "Cancel"
 msgstr "Annulla"
@@ -1427,24 +1445,9 @@ msgid "Size 5"
 msgstr "Tg.5"
 
 #. module: fashion
-#: code:addons/fashion/fashion.py:1710
-#, python-format
-msgid "%5.2f%s(Mar.)\n"
-"%5.2f%s(Ric.)\n"
-"%10.2f€(Ut.)"
-msgstr "%5.2f%s(Mar.)\n"
-"%5.2f%s(Ric.)\n"
-"%10.2f€(Ut.)"
-
-#. module: fashion
 #: model:ir.actions.act_window,name:fashion.action_fashion_article
 msgid "Fashion article"
 msgstr "Articolo"
-
-#. module: fashion
-#: view:fashion.form:0
-msgid "Season:"
-msgstr "Stagione:"
 
 #. module: fashion
 #: view:fashion.form:0
@@ -1486,6 +1489,11 @@ msgstr "Sigla articolo"
 #: field:fashion.form,create_date:0
 msgid "Create date"
 msgstr "Data creazione"
+
+#. module: fashion
+#: view:fashion.form.fabric:0
+msgid "Force update"
+msgstr "Force update"
 
 #. module: fashion
 #: model:res.groups,comment:fashion.group_fashion_gerber
@@ -1562,9 +1570,9 @@ msgid "Visible"
 msgstr "Visibile"
 
 #. module: fashion
-#: help:fashion.form.partner.rel,cost:0
-msgid "Unit price for fabric"
-msgstr "Prezzo unitario per tessuto"
+#: field:res.partner,parent_name:0
+msgid "Parent name"
+msgstr "Parent name"
 
 #. module: fashion
 #: field:fashion.form,size:0
@@ -1593,6 +1601,11 @@ msgstr "Accessorio"
 #: view:fashion.form:0
 msgid "Add sizes achieve..."
 msgstr "Aggiunge taglia..."
+
+#. module: fashion
+#: field:fashion.duplication,code:0
+msgid "New code"
+msgstr "Nuovo codice"
 
 #. module: fashion
 #: selection:fashion.form,col_ref:0
@@ -1688,6 +1701,11 @@ msgid "Fashion fabric"
 msgstr "Tessuto"
 
 #. module: fashion
+#: view:fashion.form.fabric:0
+msgid "Fabric (orange = test)"
+msgstr "Tessuto (arancio = test)"
+
+#. module: fashion
 #: field:fashion.form.partner.rel,note_fabric:0
 msgid "Fabric note"
 msgstr "Note tessuto"
@@ -1763,9 +1781,9 @@ msgid "New Revision"
 msgstr "Nuova revisione"
 
 #. module: fashion
-#: field:fashion.duplication,code:0
-msgid "New code"
-msgstr "Nuovo codice"
+#: field:fashion.form.comment.rel,hide_in_report:0
+msgid "Hide in report"
+msgstr "Nascosto in report"
 
 #. module: fashion
 #: field:fashion.form,detail_info_partner:0
@@ -1885,6 +1903,11 @@ msgstr "Totale"
 #: field:fashion.form.characteristic.rel,stitch_top_id:0
 msgid "Stitch top"
 msgstr "Impuntura"
+
+#. module: fashion
+#: help:fashion.form.partner.rel,cost:0
+msgid "Unit price for fabric"
+msgstr "Prezzo unitario per tessuto"
 
 #. module: fashion
 #: help:fashion.form,review:0

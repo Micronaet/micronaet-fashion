@@ -477,7 +477,22 @@ class fashion_form(osv.osv):
         except:
             return False
         return True
-
+    
+    def log_activity(self, cr, uid, ids, name, context=None): 
+        ''' Add in activity list the change of state         
+        '''
+        if type(ids) not in (list, tuple):
+            ids = [ids] # integer 
+        log_pool = self.pool.get('fashion.form.comment.rel')
+        log_pool.create(cr, uid, {
+            'reference': False,
+            'name': name,
+            'user_id': uid,
+            'date': datetime.now().strftime(DEFAULT_SERVER_DATETIME_FORMAT),
+            'hide_in_report': True,
+            'form_id': ids[0],
+            }, context=context)
+        return True
     # ------------------
     # Override function:
     # ------------------
@@ -816,9 +831,15 @@ class fashion_form(osv.osv):
         return self.write(cr, uid, ids, {'state': 'sample'}, context=context)
 
     def form_ok(self, cr, uid, ids, context=None):
+        # Log activity:
+        self.log_activity(cr, uid, ids, _('CAMBIO STATO: OK PRODURRE'), 
+            context=context)  
         return self.write(cr, uid, ids, {'state': 'ok'}, context=context)
 
     def form_produced(self, cr, uid, ids, context=None):
+        # Log activity:
+        self.log_activity(cr, uid, ids, _('CAMBIO STATO: PRODOTTO'), 
+            context=context)          
         return self.write(cr, uid, ids, {'state': 'produced'}, context=context)
 
     def form_discarded(self, cr, uid, ids, context=None):
@@ -1582,6 +1603,7 @@ class fashion_form_comment_rel(osv.osv):
          'reference': fields.char('Reference', size=50, 
              help="If it is not the user or is an external reference write "
                  "here the name."),
+         'hide_in_report':fields.boolean('Hide in report'),        
 
          # Link di importazione:
          'access_id': fields.integer('Access ID', 
