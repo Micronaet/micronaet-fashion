@@ -20,8 +20,28 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-from openerp.osv import osv, fields
-from datetime import datetime
+import os
+import sys
+import logging
+import openerp
+import openerp.netsvc as netsvc
+import openerp.addons.decimal_precision as dp
+from openerp.osv import fields, osv, expression, orm
+from datetime import datetime, timedelta
+from dateutil.relativedelta import relativedelta
+from openerp import SUPERUSER_ID
+from openerp import tools
+from openerp.tools.translate import _
+from openerp.tools.float_utils import float_round as round
+from openerp.tools import (DEFAULT_SERVER_DATE_FORMAT, 
+    DEFAULT_SERVER_DATETIME_FORMAT, 
+    DATETIME_FORMATS_MAP, 
+    float_compare)
+
+
+_logger = logging.getLogger(__name__)
+
+
 
 
 class fashion_force_fabric(osv.osv_memory):
@@ -34,8 +54,9 @@ class fashion_force_fabric(osv.osv_memory):
     _columns = {
         'name': fields.text('Info')
         }
+        
     _defaults = {
-        'name': lambda *x: """
+        'name': lambda *x: _('''
             <p><b>Wizard force fabric</b><br/>
                This wizard force fabric property on all forms that use 
                this particular article. 
@@ -49,7 +70,7 @@ class fashion_force_fabric(osv.osv_memory):
                    <li>Supplier</li>
                </ul>     
             </p>
-            """,# cost product
+            '''),# cost product
         }    
 
     def force_fabric(self, cr, uid, ids, context=None):
@@ -69,9 +90,10 @@ class fashion_force_fabric(osv.osv_memory):
             'h_fabric': fabric_proxy.h_fabric,
             'supplier_id': fabric_proxy.supplier_id.id, 
             'article_code': fabric_proxy.article_code,
-            # TODO 'article_description': fabric_proxy.article_description,
-            #'perc_fabric': fabric_proxy.perc_fabric,
             'symbol_fabric': fabric_proxy.symbol,
+            # TODO 
+            #'article_description': fabric_proxy.article_description,
+            #'perc_fabric': fabric_proxy.perc_composition,
             #'note_fabric': fabric_proxy.note_fabric,            
             }, context=context)    
 

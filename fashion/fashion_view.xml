@@ -1232,4 +1232,4 @@
             <menuitem name="Article" parent="menu_fashion_configuration" id="menu_fashion_configuration_article" sequence="80" action='action_fashion_article' />
             <menuitem name="Car. terms" parent="menu_fashion_configuration" id="menu_fashion_terminology" sequence="90" action='action_fashion_form_characteristic_rel_specific' />
     </data>
-</openerp>
+</openerp>fashion_form_workflow
