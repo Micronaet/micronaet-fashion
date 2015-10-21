@@ -125,6 +125,8 @@ class fashion_force_fabric(osv.osv_memory):
             cr, uid, active_id, context=context)
         
         rel_pool = self.pool.get('fashion.form.partner.rel')
+        log_pool = self.pool.get('fashion.form.comment.rel')
+        
         rel_ids = rel_pool.search(cr, uid, [
             ('fabric_id', '=', active_id)], context=context)
 
@@ -138,11 +140,26 @@ class fashion_force_fabric(osv.osv_memory):
             #'article_description': fabric_proxy.article_description,
             #'note_fabric': fabric_proxy.note_fabric,                        
             }
-            
-        # Add context value for log the event on overrider function:    
-        context['force_log_write'] = True
-        
-        if wiz_proxy.replace_washing == 'only':
+        replace_washing = wiz_proxy.replace_washing
+        if replace_washing == 'only':
+            # ----------------------------
+            # Log washing change (before):
+            # ----------------------------
+            for customer in rel_pool.browse(cr, uid, empty_ids, context=context):
+                log_pool.create(cr, uid, {
+                    'print_invisible': True,
+                    'form_id': customer.form_id.id,
+                    'reference': False,
+                    'user_id': uid,
+                    'name': _('Update empty symbol to: %s') % (
+                        fabric_proxy.symbol),
+                    'date': datetime.now().strftime(
+                        DEFAULT_SERVER_DATE_FORMAT),
+                    }, context=context) 
+
+            # -------
+            # Update:
+            # -------
             # Search this fabric and no washing symbol
             empty_ids = rel_pool.search(cr, uid, [
                 ('fabric_id', '=', active_id), 
@@ -153,13 +170,47 @@ class fashion_force_fabric(osv.osv_memory):
                 'symbol_fabric': fabric_proxy.symbol,
                 }, context=context)
             _logger.warning('Update empty items: %s with symbol %s' % (
-                empty_ids, fabric_proxy.symbol))
+                empty_ids, fabric_proxy.symbol))                
+                
+                
         else: # replace all            
             data['symbol_fabric'] = fabric_proxy.symbol
 
+        # ----------------    
+        # Log all updated:
+        # ----------------    
+        for customer in rel_pool.browse(cr, uid, rel_ids, context=context):
+            name = '''H: %s > %s - Suppl. %s > %s - Code %s > %s
+                Fabric: %s > %s - Cost: %s > %s - Symbol: %s > %s
+                ''' % (
+                customer.h_fabric, fabric_proxy.h_fabric,
+                customer.supplier_id.name, fabric_proxy.supplier_id.name,
+                customer.article_code, fabric_proxy.article_code,
+                customer.perc_fabric, fabric_proxy.perc_composition,
+                customer.cost, fabric_proxy.cost,
+                
+                # Extra element depend on wizard:
+                customer.symbol_fabric if replace_washing == 'only' else '-', 
+                fabric_proxy.symbol if replace_washing == 'only' else '-',
+                )
+            # Create all log elements:
+            log_pool.create(cr, uid, {
+                'print_invisible': True,
+                'form_id': customer.form_id.id,
+                'reference': False,
+                'user_id': uid,
+                'name': name,
+                'date': datetime.now().strftime(
+                    DEFAULT_SERVER_DATE_FORMAT),
+                }, context=context) 
+         
+        # -------
+        # Update:
+        # -------
         # Replace all elements (symbol are parametic)
         rel_pool.write(cr, uid, rel_ids, data, context=context)
         _logger.info('Update all record: %s with: %s' % (
             rel_ids, data))
+            
         return True
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

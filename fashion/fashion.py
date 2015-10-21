@@ -1626,6 +1626,7 @@ class fashion_form_comment_rel(osv.osv):
         return res
 
     _columns = {
+         'print_invisible': fields.boolean('Print invisible'),
          'name': fields.text('Changes'),
          'form_id': fields.many2one('fashion.form', 'Form'),
          'date': fields.date('Date'),
@@ -1695,8 +1696,6 @@ class fashion_form_partner_rel(osv.osv):
                 item.fabric_id.code if item.fabric_id else "???")))
         return res
         
-    # TODO: name_search
-
     #--------------
     # Button event:
     #--------------
