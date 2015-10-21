@@ -51,26 +51,35 @@ class fashion_force_fabric(osv.osv_memory):
     _name = 'fashion.force.fabric'
     _description = 'Force fabric'
     
+    # default function:
+    def get_washing_test(self, cr, uid, context=None):
+        ''' Test if there's some symbol replaced
+        '''
+        res = 'Washing check'
+        # TODO
+        return res
+        
     _columns = {
-        'name': fields.text('Info')
+        'replace_washing': fields.selection([
+            ('replace', 'Replace'),
+            ('only', 'Only empty'),
+            ], 'Replace wash symbol'),
+        'name': fields.text('Info'),
+        'washing': fields.text('Washing symbol check'),
         }
         
     _defaults = {
+        'replace_washing': lambda *x: 'replace',
         'name': lambda *x: _('''
             <p><b>Wizard force fabric</b><br/>
                This wizard force fabric property on all forms that use 
-               this particular article. 
-               In all form will be replaced:
-               <ul>
-                   <li>Code</li>
-                   <li>Composition</li>
-                   <li>Wash symbol</li>
-                   <li>Height</li>
-                   <li>Weight</li>
-                   <li>Supplier</li>
-               </ul>     
+               this particular article. The event will be logged in form.
+               In all form will be replaced:<br/>
+               Code (also supplier code), Cost (and total), Composition
+               Wash symbol (depend on wizard), Height, Weight and Supplier
             </p>
-            '''),# cost product
+            '''),
+        'washing': lambda s, cr, uid, ctx: s.get_washing_test(cr, uid, ctx),
         }    
 
     def force_fabric(self, cr, uid, ids, context=None):
@@ -90,12 +99,13 @@ class fashion_force_fabric(osv.osv_memory):
             'h_fabric': fabric_proxy.h_fabric,
             'supplier_id': fabric_proxy.supplier_id.id, 
             'article_code': fabric_proxy.article_code,
-            'symbol_fabric': fabric_proxy.symbol,
+            'symbol_fabric': fabric_proxy.symbol, # TODO parametrized
+            'perc_fabric': fabric_proxy.perc_composition,
+            'cost': fabric_proxy.cost,
             # TODO 
             #'article_description': fabric_proxy.article_description,
-            #'perc_fabric': fabric_proxy.perc_composition,
-            #'note_fabric': fabric_proxy.note_fabric,            
-            }, context=context)    
+            #'note_fabric': fabric_proxy.note_fabric,                        
+            }, context=context)
 
         return True
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

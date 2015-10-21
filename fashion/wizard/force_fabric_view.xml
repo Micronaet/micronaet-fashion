@@ -12,6 +12,12 @@
                 <group colspan="4" col="4">
                     <separator string="Force fabric wizard" colspan="4"/>
                     <field name="name" nolabel="1" colspan="4" widget="html" readonly="1"/>
+                    
+                    <separator string="Washing replaced" colspan="4"/>
+                    <field name="washing" nolabel="1" colspan="4" widget="html" readonly="1"/>
+                    
+                    <field name="replace_washing" />
+                    <newline />
                     <button string='Force' name='force_fabric' type='object' icon='STOCK_APPLY'/>
                     <button string="Cancel" special="cancel" icon='STOCK_CANCEL'/>
                 </group>
