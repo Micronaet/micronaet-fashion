@@ -117,10 +117,14 @@ class fashion_force_fabric(osv.osv_memory):
             rel_pool.write(cr, uid, empty_ids, {
                 'symbol_fabric': fabric_proxy.symbol,
                 }, context=context)
+            _logger.warning('Update empty items: %s with symbol %s' % (
+                empty_ids, fabric_proxy.symbol))
         else: # replace all            
             data['symbol_fabric'] = fabric_proxy.symbol
 
         # Replace all elements (symbol are parametic)
         rel_pool.write(cr, uid, rel_ids, data, context=context)
+        _logger.info('Update all record: %s with: %s' % (
+            rel_ids, data))
         return True
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
