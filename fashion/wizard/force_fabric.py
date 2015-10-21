@@ -183,9 +183,9 @@ class fashion_force_fabric(osv.osv_memory):
         # ----------------    
         for customer in rel_pool.browse(cr, uid, rel_ids, context=context):
             name = ''
-            if customer.fabric_id.name != fabric_proxy.code:
+            if customer.fabric_id.code != fabric_proxy.code:
                 name += _('[Fabric: %s > %s] ') % (
-                customer.fabric_id.name, fabric_proxy.code)
+                customer.fabric_id.code, fabric_proxy.code)
             if customer.h_fabric != fabric_proxy.h_fabric:
                 name += _('[H: %s > %s] ') % (
                 customer.h_fabric, fabric_proxy.h_fabric)

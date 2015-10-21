@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-02 14:30+0000\n"
-"PO-Revision-Date: 2015-10-02 14:30+0000\n"
+"POT-Creation-Date: 2015-10-21 20:56+0000\n"
+"PO-Revision-Date: 2015-10-21 20:56+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -116,6 +116,11 @@ msgstr "Fornitore"
 #: selection:fashion.report.wizard,type:0
 msgid "Riscontro"
 msgstr "Riscontro"
+
+#. module: fashion
+#: field:fashion.form.comment.rel,print_invisible:0
+msgid "Print invisible"
+msgstr "Print invisible"
 
 #. module: fashion
 #: view:fashion.form:0
@@ -231,6 +236,12 @@ msgid "Washing"
 msgstr "Lavaggio"
 
 #. module: fashion
+#: field:fashion.form,model_customer:0
+#: field:fashion.form.partner.rel,model_customer:0
+msgid "Sigla cliente"
+msgstr "Sigla cliente"
+
+#. module: fashion
 #: field:fashion.form,write_uid:0
 msgid "by User"
 msgstr "Utente"
@@ -297,9 +308,9 @@ msgid "Force"
 msgstr "Force"
 
 #. module: fashion
-#: selection:fashion.form,col_ref:0
-msgid "col 7"
-msgstr "col 7"
+#: field:fashion.force.fabric,washing:0
+msgid "Washing symbol check"
+msgstr "Washing symbol check"
 
 #. module: fashion
 #: field:fashion.form.accessory.pricelist,um:0
@@ -312,6 +323,11 @@ msgstr "U.M."
 #: model:ir.actions.act_window,name:fashion.action_fashion_season
 msgid "Fashion season"
 msgstr "Stagione"
+
+#. module: fashion
+#: field:fashion.report.wizard,total:0
+msgid "Total"
+msgstr "Totale"
 
 #. module: fashion
 #: view:fashion.article:0
@@ -515,6 +531,11 @@ msgstr "C - Scheda Tecnica"
 #: field:fashion.form,state:0
 msgid "State"
 msgstr "Stato"
+
+#. module: fashion
+#: selection:fashion.form,col_ref:0
+msgid "col 7"
+msgstr "col 7"
 
 #. module: fashion
 #: view:fashion.form:0
@@ -890,6 +911,11 @@ msgid "H."
 msgstr "H."
 
 #. module: fashion
+#: view:fashion.force.fabric:0
+msgid "Washing replaced"
+msgstr "Washing replaced"
+
+#. module: fashion
 #: field:fashion.form,start:0
 #: field:res.partner,start:0
 msgid "Start size"
@@ -910,6 +936,11 @@ msgstr "Accessorio"
 #: selection:fashion.report.wizard,type:0
 msgid "Lanciato"
 msgstr "Lanciato"
+
+#. module: fashion
+#: selection:fashion.force.fabric,replace_washing:0
+msgid "Replace"
+msgstr "Replace"
 
 #. module: fashion
 #: help:fashion.form,sum_extra_cost:0
@@ -1299,10 +1330,10 @@ msgid "Colore"
 msgstr "Colore"
 
 #. module: fashion
-#: field:fashion.form,model_customer:0
-#: field:fashion.form.partner.rel,model_customer:0
-msgid "Sigla cliente"
-msgstr "Sigla cliente"
+#: field:fashion.form,model_article:0
+#: field:fashion.form.partner.rel,model_article:0
+msgid "Sigla articolo"
+msgstr "Sigla articolo"
 
 #. module: fashion
 #: view:fashion.form:0
@@ -1480,10 +1511,9 @@ msgid "Current"
 msgstr "Attuale"
 
 #. module: fashion
-#: field:fashion.form,model_article:0
-#: field:fashion.form.partner.rel,model_article:0
-msgid "Sigla articolo"
-msgstr "Sigla articolo"
+#: field:fashion.force.fabric,replace_washing:0
+msgid "Replace wash symbol"
+msgstr "Replace wash symbol"
 
 #. module: fashion
 #: field:fashion.form,create_date:0
@@ -1568,6 +1598,11 @@ msgstr "Vuoi veramente eliminare l'immagine inserita?"
 #: field:fashion.form.measure.rel,visible:0
 msgid "Visible"
 msgstr "Visibile"
+
+#. module: fashion
+#: selection:fashion.force.fabric,replace_washing:0
+msgid "Only empty"
+msgstr "Only empty"
 
 #. module: fashion
 #: field:res.partner,parent_name:0
@@ -1895,9 +1930,9 @@ msgid "Indicates that the form is not old"
 msgstr "Indica che la scheda non è obsoleta"
 
 #. module: fashion
-#: field:fashion.report.wizard,total:0
-msgid "Total"
-msgstr "Totale"
+#: view:fashion.form.fabric:0
+msgid "Show form wash changed "
+msgstr "Show form wash changed "
 
 #. module: fashion
 #: field:fashion.form.characteristic.rel,stitch_top_id:0
