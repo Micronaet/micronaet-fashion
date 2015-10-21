@@ -203,15 +203,16 @@ class fashion_force_fabric(osv.osv_memory):
                     customer.symbol_fabric,  fabric_proxy.symbol)
 
             # Create all log elements:
-            log_pool.create(cr, uid, {
-                'print_invisible': True,
-                'form_id': customer.form_id.id,
-                'reference': False,
-                'user_id': uid,
-                'name': name or _('Nothing to change!'),
-                'date': datetime.now().strftime(
-                    DEFAULT_SERVER_DATE_FORMAT),
-                }, context=context) 
+            if name: # something to change:
+                log_pool.create(cr, uid, {
+                    'print_invisible': True,
+                    'form_id': customer.form_id.id,
+                    'reference': False,
+                    'user_id': uid,
+                    'name': name,
+                    'date': datetime.now().strftime(
+                        DEFAULT_SERVER_DATE_FORMAT),
+                    }, context=context) 
          
         # -------
         # Update:
