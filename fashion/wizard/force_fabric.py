@@ -41,9 +41,6 @@ from openerp.tools import (DEFAULT_SERVER_DATE_FORMAT,
 
 _logger = logging.getLogger(__name__)
 
-
-
-
 class fashion_force_fabric(osv.osv_memory):
     '''Force reload of information in all forms that use this particular 
        fabric
@@ -51,11 +48,13 @@ class fashion_force_fabric(osv.osv_memory):
     _name = 'fashion.force.fabric'
     _description = 'Force fabric'
     
+    # -----------------
     # default function:
+    # -----------------
     def get_washing_test(self, cr, uid, context=None):
         ''' Test if there's some symbol replaced
         '''
-        res = 'Washing check'
+        res = False
         # TODO
         return res
         
@@ -85,9 +84,12 @@ class fashion_force_fabric(osv.osv_memory):
     def force_fabric(self, cr, uid, ids, context=None):
         ''' Button event for force reload of characteristics
         '''
+        wiz_proxy = self.browse(cr, uid, ids, context=context)[0]
+        
         active_id = context.get('active_id', False)
         if not active_id:
             return False # TODO raise error
+
         fabric_proxy = self.pool.get('fashion.form.fabric').browse(
             cr, uid, active_id, context=context)
         
@@ -95,17 +97,30 @@ class fashion_force_fabric(osv.osv_memory):
         rel_ids = rel_pool.search(cr, uid, [
             ('fabric_id', '=', active_id)], context=context)
 
-        rel_pool.write(cr, uid, rel_ids, {
+        data = {
             'h_fabric': fabric_proxy.h_fabric,
             'supplier_id': fabric_proxy.supplier_id.id, 
-            'article_code': fabric_proxy.article_code,
-            'symbol_fabric': fabric_proxy.symbol, # TODO parametrized
+            'article_code': fabric_proxy.article_code,            
             'perc_fabric': fabric_proxy.perc_composition,
             'cost': fabric_proxy.cost,
             # TODO 
             #'article_description': fabric_proxy.article_description,
             #'note_fabric': fabric_proxy.note_fabric,                        
-            }, context=context)
+            }
+        if wiz_proxy.replace_washing == 'only':
+            # Search this fabric and no washing symbol
+            empty_ids = rel_pool.search(cr, uid, [
+                ('fabric_id', '=', active_id), 
+                ('symbol_fabric', '=', False), 
+                ], context=context)
+            # Update only this records:    
+            rel_pool.write(cr, uid, empty_ids, {
+                'symbol_fabric': fabric_proxy.symbol,
+                }, context=context)
+        else: # replace all            
+            data['symbol_fabric'] = fabric_proxy.symbol
 
+        # Replace all elements (symbol are parametic)
+        rel_pool.write(cr, uid, rel_ids, data, context=context)
         return True
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
