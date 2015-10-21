@@ -112,6 +112,9 @@ class fashion_force_fabric(osv.osv_memory):
     def force_fabric(self, cr, uid, ids, context=None):
         ''' Button event for force reload of characteristics
         '''
+        if context is None:
+            context = {}
+            
         wiz_proxy = self.browse(cr, uid, ids, context=context)[0]
         
         active_id = context.get('active_id', False)
@@ -135,6 +138,10 @@ class fashion_force_fabric(osv.osv_memory):
             #'article_description': fabric_proxy.article_description,
             #'note_fabric': fabric_proxy.note_fabric,                        
             }
+            
+        # Add context value for log the event on overrider function:    
+        context['force_log_write'] = True
+        
         if wiz_proxy.replace_washing == 'only':
             # Search this fabric and no washing symbol
             empty_ids = rel_pool.search(cr, uid, [
