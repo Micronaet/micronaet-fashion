@@ -151,13 +151,14 @@ class fashion_force_fabric(osv.osv_memory):
             # ----------------------------
             # Log washing change (before):
             # ----------------------------
-            for customer in rel_pool.browse(cr, uid, empty_ids, context=context):
+            for customer in rel_pool.browse(cr, uid, empty_ids, 
+                    context=context):
                 log_pool.create(cr, uid, {
                     'print_invisible': True,
                     'form_id': customer.form_id.id,
                     'reference': False,
                     'user_id': uid,
-                    'name': _('Update empty symbol to: %s') % (
+                    'name': _('Update empty symbol (only empty) to: %s') % (
                         fabric_proxy.symbol),
                     'date': datetime.now().strftime(
                         DEFAULT_SERVER_DATE_FORMAT),
@@ -182,6 +183,9 @@ class fashion_force_fabric(osv.osv_memory):
         # ----------------    
         for customer in rel_pool.browse(cr, uid, rel_ids, context=context):
             name = ''
+            if customer.fabric_id.name != fabric_proxy.code:
+                name += _('[Fabric: %s > %s] ') % (
+                customer.fabric_id.name, fabric_proxy.code)
             if customer.h_fabric != fabric_proxy.h_fabric:
                 name += _('[H: %s > %s] ') % (
                 customer.h_fabric, fabric_proxy.h_fabric)
@@ -197,10 +201,10 @@ class fashion_force_fabric(osv.osv_memory):
             if customer.cost != fabric_proxy.cost:
                 name += _('[Cost.: %s > %s] ') % (
                 customer.cost, fabric_proxy.cost)
-            if replace_washing == 'only' and \
+            if replace_washing == 'replace' and \
                     customer.symbol_fabric != fabric_proxy.symbol:
                 name += _('[Symbol (forced): %s > %s] ') % (
-                    customer.symbol_fabric,  fabric_proxy.symbol)
+                    customer.symbol_fabric, fabric_proxy.symbol)
 
             # Create all log elements:
             if name: # something to change:
