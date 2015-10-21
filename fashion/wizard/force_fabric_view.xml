@@ -9,18 +9,22 @@
         <field name="arch" type="xml">
             <form string="Season" version="7.0">
             <sheet>
+                <head>
+                    <button string="Cancel" special="cancel" icon='STOCK_CANCEL'/>
+                    <button string='Force' name='force_fabric' type='object' icon='STOCK_APPLY'/>
+                </head>
+                <body>
                 <group colspan="4" col="4">
+
                     <separator string="Force fabric wizard" colspan="4"/>
                     <field name="name" nolabel="1" colspan="4" widget="html" readonly="1"/>
                     
-                    <separator string="Washing replaced" colspan="4" attrs="{'invisible': [('washing','=',False)]}"/>
-                    <field name="washing" nolabel="1" colspan="4" widget="html" readonly="1" attrs="{'invisible': [('washing','=',False)]}"/>
-                    
-                    <field name="replace_washing" />
-                    <newline />
-                    <button string="Cancel" special="cancel" icon='STOCK_CANCEL'/>
-                    <button string='Force' name='force_fabric' type='object' icon='STOCK_APPLY'/>
+                    <separator string="Washing replaced" colspan="2" attrs="{'invisible': [('washing','=',False)]}"/>
+                    <field name="replace_washing" attrs="{'invisible': [('washing','=',False)]}" />
+                    <field name="washing" nolabel="1" colspan="4" widget="html" readonly="1" attrs="{'invisible': [('washing','=',False)]}"/>                    
                 </group>
+                </body>
+
             </sheet>
             </form>
         </field>

@@ -54,21 +54,49 @@ class fashion_force_fabric(osv.osv_memory):
     def get_washing_test(self, cr, uid, context=None):
         ''' Test if there's some symbol replaced
         '''
-        res = False
-        # TODO
+        if context is None:
+            context = {}
+
+        res = ''
+        fabric_pool = self.pool.get('fashion.form.fabric')
+        rel_pool = self.pool.get('fashion.form.partner.rel')
+        
+        # Read current fabric:
+        active_id = context.get('active_id', 0)
+        fabric_proxy = fabric_pool.browse(cr, uid, active_id, 
+            context=context)
+        
+        # Search washing symbol changed:
+        rel_ids = rel_pool.search(cr, uid, [
+            ('fabric_id', '=', active_id),
+            ('symbol_fabric', '!=', fabric_proxy.symbol),
+            ], context=context)
+        for item in rel_pool.browse(cr, uid, rel_ids, context=context):
+            res += _('<br />Form: %s different symbol: %s') % (
+                item.form_id.name,
+                item.symbol_fabric,
+                )
+        if res:
+            res = _('''<p>
+                Found replaced symbols:<br />
+                - Choose "Replace" for force update all elements<br />
+                - Choose "Only empty" for change only element not setted<br />
+                List:<br />
+                %s</p>''') % res,
+        
         return res
         
     _columns = {
         'replace_washing': fields.selection([
             ('replace', 'Replace'),
             ('only', 'Only empty'),
-            ], 'Replace wash symbol'),
+            ], 'Replace wash symbol', required=True),
         'name': fields.text('Info'),
         'washing': fields.text('Washing symbol check'),
         }
         
     _defaults = {
-        'replace_washing': lambda *x: 'replace',
+        'replace_washing': lambda *x: 'replace', # defautl also if invisible
         'name': lambda *x: _('''
             <p><b>Wizard force fabric</b><br/>
                This wizard force fabric property on all forms that use 
