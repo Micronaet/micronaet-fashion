@@ -142,6 +142,12 @@ class fashion_force_fabric(osv.osv_memory):
             }
         replace_washing = wiz_proxy.replace_washing
         if replace_washing == 'only':
+            # Search this fabric and no washing symbol
+            empty_ids = rel_pool.search(cr, uid, [
+                ('fabric_id', '=', active_id), 
+                ('symbol_fabric', '=', False), 
+                ], context=context)
+
             # ----------------------------
             # Log washing change (before):
             # ----------------------------
@@ -160,11 +166,6 @@ class fashion_force_fabric(osv.osv_memory):
             # -------
             # Update:
             # -------
-            # Search this fabric and no washing symbol
-            empty_ids = rel_pool.search(cr, uid, [
-                ('fabric_id', '=', active_id), 
-                ('symbol_fabric', '=', False), 
-                ], context=context)
             # Update only this records:    
             rel_pool.write(cr, uid, empty_ids, {
                 'symbol_fabric': fabric_proxy.symbol,
@@ -180,26 +181,34 @@ class fashion_force_fabric(osv.osv_memory):
         # Log all updated:
         # ----------------    
         for customer in rel_pool.browse(cr, uid, rel_ids, context=context):
-            name = '''H: %s > %s - Suppl. %s > %s - Code %s > %s
-                Fabric: %s > %s - Cost: %s > %s - Symbol: %s > %s
-                ''' % (
-                customer.h_fabric, fabric_proxy.h_fabric,
-                customer.supplier_id.name, fabric_proxy.supplier_id.name,
-                customer.article_code, fabric_proxy.article_code,
-                customer.perc_fabric, fabric_proxy.perc_composition,
-                customer.cost, fabric_proxy.cost,
-                
-                # Extra element depend on wizard:
-                customer.symbol_fabric if replace_washing == 'only' else '-', 
-                fabric_proxy.symbol if replace_washing == 'only' else '-',
-                )
+            name = ''
+            if customer.h_fabric != fabric_proxy.h_fabric:
+                name += _('[H: %s > %s] ') % (
+                customer.h_fabric, fabric_proxy.h_fabric)
+            if customer.article_code != fabric_proxy.article_code:
+                name += _('[Code: %s > %s] ') % (
+                    customer.article_code, fabric_proxy.article_code)
+            if customer.supplier_id.id != fabric_proxy.supplier_id.id:
+                name += _('[Suppl.: %s > %s] ') % (
+                    customer.supplier_id.name, fabric_proxy.supplier_id.name)
+            if customer.perc_fabric != fabric_proxy.perc_composition:
+                name += _('[Compos.: %s > %s] ') % (
+                    customer.perc_fabric, fabric_proxy.perc_composition)
+            if customer.cost != fabric_proxy.cost:
+                name += _('[Cost.: %s > %s] ') % (
+                customer.cost, fabric_proxy.cost)
+            if replace_washing == 'only' and \
+                    customer.symbol_fabric != fabric_proxy.symbol:
+                name += _('[Symbol (forced): %s > %s] ') % (
+                    customer.symbol_fabric,  fabric_proxy.symbol)
+
             # Create all log elements:
             log_pool.create(cr, uid, {
                 'print_invisible': True,
                 'form_id': customer.form_id.id,
                 'reference': False,
                 'user_id': uid,
-                'name': name,
+                'name': name or _('Nothing to change!'),
                 'date': datetime.now().strftime(
                     DEFAULT_SERVER_DATE_FORMAT),
                 }, context=context) 
