@@ -328,7 +328,6 @@
                     <field name="symbol"/>                    
                     <button name="load_from_composition" string="Load composition" type="object" icon="gtk-leave-fullscreen"/>
                     
-
                     <field name="h_fabric"/>
                     <field name="weight"/>                    
                     <newline />
@@ -341,9 +340,7 @@
                     <field name="range_final_cost" groups="fashion.group_fashion_accounting"/> 
                     <newline />
 
-                    <separator string='Note' colspan='4'/>
-                    <newline />
-                    <field name="note" nolabel='1' colspan='4'/>                   
+                    <field name="note" colspan='4'/>
                 </group>
             </sheet>
             </form>
