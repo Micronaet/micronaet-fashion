@@ -357,7 +357,7 @@ class fashion_form_fabric(osv.osv):
         'range_supplier_cost': fields.char('Costo', size=50),
         'range_final_cost': fields.char('Prezzo base', size=50),
         'preferred_fabric': fields.char('Preferred fabric', size=50),
-        'tag': fields.char('Tag', size=50),
+        'tag': fields.char('Cartellino', size=50),
 
         # Link di importazione:
         'access_id': fields.integer(

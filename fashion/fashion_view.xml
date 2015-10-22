@@ -850,7 +850,8 @@
                             <page string='Changes'>
                                 <group colspan='4'>
                                     <field name="comment_rel_ids" nolabel='1' colspan='4'>
-                                        <tree string="Change" editable='bottom'>
+                                        <tree string="Change" editable='bottom' colors="grey:print_invisible==True">
+                                            <field name='print_invisible' invisible="1"/>
                                             <field name='reference' on_change="on_change_upper_reference(reference)"/>
                                             <field name='name' on_change="on_change_upper_comment(name)" /><!--default_focus="1"-->
                                             <field name='user_id'/>

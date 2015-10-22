@@ -476,12 +476,6 @@ msgid "Area"
 msgstr "Area"
 
 #. module: fashion
-#: field:fashion.form.fabric,range_final_cost:0
-#: field:fashion.form.fabric,range_supplier_cost:0
-msgid "Range cost"
-msgstr "Range costi"
-
-#. module: fashion
 #: field:fashion.form.measure.rel,size_11:0
 msgid "Size 11"
 msgstr "Tg.11"
@@ -831,11 +825,6 @@ msgstr "Utente che può vedere la produzione"
 #: field:fashion.form.fabric,weight:0 field:fashion.form.partner.rel,weight:0
 msgid "Weight"
 msgstr "Peso"
-
-#. module: fashion
-#: field:fashion.form.fabric,tag:0
-msgid "Tag"
-msgstr "Tag"
 
 #. module: fashion
 #: view:fashion.form:0 field:fashion.form,draw_image_c:0
