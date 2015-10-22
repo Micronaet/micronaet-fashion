@@ -245,7 +245,7 @@ class fashion_duplication(osv.osv_memory):
                 'measure_id': item.measure_id.id or False,
                 'size_3': item.__getattr__('size_%s' % (3 - col_split)),
                 'visible': item.visible,
-                'real': item.real,
+                #'real': item.real,
                 'form_id': form_id,
             }
             if wiz_proxy.duplication == 'version':
