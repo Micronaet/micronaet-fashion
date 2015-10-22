@@ -343,7 +343,8 @@ class fashion_form_fabric(osv.osv):
         #'name': fields.char('Name', size = 20),
         #'composition': fields.char('Composition', size = 60),
         'perc_composition': fields.char('Percentage composition', size=60),
-        'note': fields.text('Note'),
+        #'note': fields.text('Note'),
+        'note': fields.char('Note', size=100),
         'symbol': fields.char('Wash symbol', size=10),
         'season_id': fields.many2one('fashion.season', 'Season'),
         'test': fields.boolean('Test fabric', 
@@ -1890,7 +1891,10 @@ class fashion_form_partner_rel(osv.osv):
         'gerber_l': fields.char('Length', size=10),
                         
         'article_code': fields.char('Article', size=60),
-        'article_description': fields.char('Description', size=60),
+        #'article_description': fields.char('Description', size=60),
+        'article_description': fields.related(
+            'fabric_id', 'note', type='char', size=100, string='Description', 
+            readonly=True), 
         'supplier_id': fields.many2one('res.partner', 'Supplier', 
             domain=[('supplier','=',True)]),
 
