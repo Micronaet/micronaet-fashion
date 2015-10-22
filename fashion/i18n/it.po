@@ -304,7 +304,7 @@ msgstr "Articolo:"
 #. module: fashion
 #: view:fashion.force.fabric:0
 msgid "Force"
-msgstr "Force"
+msgstr "Forza"
 
 #. module: fashion
 #: field:fashion.force.fabric,washing:0
@@ -363,7 +363,7 @@ msgstr "Listino accessori"
 #. module: fashion
 #: model:ir.ui.menu,name:fashion.menu_fashion_configuration_season_obsolete
 msgid "Season obsolete"
-msgstr "Season obsolete"
+msgstr "Stagione obsoleta"
 
 #. module: fashion
 #: field:fashion.form,measure_rel_ids:0
@@ -573,7 +573,7 @@ msgstr "Clienti"
 #. module: fashion
 #: field:fashion.form.accessory.rel,gerber_name:0
 msgid "Gerber name"
-msgstr "Nome (Gerger)"
+msgstr "Nome (Gerber)"
 
 #. module: fashion
 #: view:fashion.form:0 view:fashion.form.accessory:0
@@ -878,7 +878,7 @@ msgstr "H."
 #. module: fashion
 #: view:fashion.force.fabric:0
 msgid "Washing replaced"
-msgstr "Washing replaced"
+msgstr "Simboli di lavaggio rimpiazzati:"
 
 #. module: fashion
 #: field:fashion.form,start:0 field:res.partner,start:0
@@ -1218,7 +1218,7 @@ msgstr "Tg.8"
 #. module: fashion
 #: field:fashion.report.wizard,summary:0
 msgid "Summary"
-msgstr "Ripilogo"
+msgstr "Riepilogo"
 
 #. module: fashion
 #: model:res.groups,name:fashion.group_fashion_user
@@ -1351,7 +1351,7 @@ msgstr "Colori"
 #. module: fashion
 #: model:res.groups,name:fashion.group_fashion_gerber
 msgid "Fashion Gerber"
-msgstr "Greber"
+msgstr "Gerber"
 
 #. module: fashion
 #: model:ir.model,name:fashion.model_fashion_form_accessory_rel
@@ -1411,7 +1411,7 @@ msgstr "ID Importazione che tiene il link con partner costi"
 #. module: fashion
 #: view:fashion.form:0
 msgid "Open"
-msgstr "Open"
+msgstr "Apri"
 
 #. module: fashion
 #: model:ir.actions.act_window,name:fashion.action_fashion_form_characteristic
@@ -1481,7 +1481,7 @@ msgstr "Data creazione"
 #. module: fashion
 #: view:fashion.form.fabric:0
 msgid "Force update"
-msgstr "Force update"
+msgstr "Forza aggiornamento"
 
 #. module: fashion
 #: model:res.groups,comment:fashion.group_fashion_gerber

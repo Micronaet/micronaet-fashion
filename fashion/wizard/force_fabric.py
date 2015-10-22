@@ -72,18 +72,18 @@ class fashion_force_fabric(osv.osv_memory):
             ('symbol_fabric', '!=', fabric_proxy.symbol),
             ], context=context)
         for item in rel_pool.browse(cr, uid, rel_ids, context=context):
-            res += _('<br />Scheda: <b>%s</b> simbolo differente: %s') % (
+            res += '<br />Scheda: <b>%s</b> simbolo differente: <b>%s</b>' % (
                 item.form_id.name,
                 item.symbol_fabric,
                 )
         if res:
-            res = _('''<p>
+            res = '''<p>
                 Trovati simboli cambiati:<br />
                 - Scegli 'Forza tutti' per aggiornare tutti gli elementi<br />
                 - Scegli 'Solo i vuoti' per preservare dove sono presenti
-                  già i simboli<br />
-                Lista:<br />
-                %s</p>''') % res,
+                  gia' i simboli<br /><br />
+                Lista:
+                %s</p>''' % res,
         
         return res
         
