@@ -72,40 +72,42 @@ class fashion_force_fabric(osv.osv_memory):
             ('symbol_fabric', '!=', fabric_proxy.symbol),
             ], context=context)
         for item in rel_pool.browse(cr, uid, rel_ids, context=context):
-            res += _('<br />Form: %s different symbol: %s') % (
+            res += _('<br />Scheda: <b>%s</b> simbolo differente: %s') % (
                 item.form_id.name,
                 item.symbol_fabric,
                 )
         if res:
             res = _('''<p>
-                Found replaced symbols:<br />
-                - Choose "Replace" for force update all elements<br />
-                - Choose "Only empty" for change only element not setted<br />
-                List:<br />
+                Trovati simboli cambiati:<br />
+                - Scegli 'Forza tutti' per aggiornare tutti gli elementi<br />
+                - Scegli 'Solo i vuoti' per preservare dove sono presenti
+                  già i simboli<br />
+                Lista:<br />
                 %s</p>''') % res,
         
         return res
         
     _columns = {
         'replace_washing': fields.selection([
-            ('replace', 'Replace'),
-            ('only', 'Only empty'),
-            ], 'Replace wash symbol', required=True),
+            ('replace', 'Forza tutti'),
+            ('only', 'Solo i vuoti'),
+            ], 'Modalità forzatura', required=True),
         'name': fields.text('Info'),
-        'washing': fields.text('Washing symbol check'),
+        'washing': fields.text('Controllo sui simboli'),
         }
         
     _defaults = {
         'replace_washing': lambda *x: 'replace', # defautl also if invisible
-        'name': lambda *x: _('''
-            <p><b>Wizard force fabric</b><br/>
-               This wizard force fabric property on all forms that use 
-               this particular article. The event will be logged in form.
-               In all form will be replaced:<br/>
-               Code (also supplier code), Cost (and total), Composition
-               Wash symbol (depend on wizard), Height, Weight and Supplier
+        'name': lambda *x: '''
+            <p><b>Wizard forza tessuti</b><br/>
+               Questa procedura forza le proprietà del tessuto sulle schede
+               che lo utilizzano. L'attività verrà inserita nelle modifiche
+               in tutte le schede dove sono stati rimpiazzati:<br/>
+               Codice (anche quello fornitore), Costo (con totale), Composiz.
+               Simboli lavaggio (in funzione del wizard), Altezza, (Peso) e
+               Fornitore
             </p>
-            '''),
+            ''',
         'washing': lambda s, cr, uid, ctx: s.get_washing_test(cr, uid, ctx),
         }    
 
@@ -158,7 +160,7 @@ class fashion_force_fabric(osv.osv_memory):
                     'form_id': customer.form_id.id,
                     'reference': False,
                     'user_id': uid,
-                    'name': _('Update empty symbol (only empty) to: %s') % (
+                    'name': 'Agg. simboli non presenti a: %s' % (
                         fabric_proxy.symbol),
                     'date': datetime.now().strftime(
                         DEFAULT_SERVER_DATE_FORMAT),
@@ -184,26 +186,26 @@ class fashion_force_fabric(osv.osv_memory):
         for customer in rel_pool.browse(cr, uid, rel_ids, context=context):
             name = ''
             if customer.fabric_id.code != fabric_proxy.code:
-                name += _('[Fabric: %s > %s] ') % (
+                name += '[Tess.: %s > %s] ' % (
                 customer.fabric_id.code, fabric_proxy.code)
             if customer.h_fabric != fabric_proxy.h_fabric:
-                name += _('[H: %s > %s] ') % (
+                name += '[H: %s > %s] ' % (
                 customer.h_fabric, fabric_proxy.h_fabric)
             if customer.article_code != fabric_proxy.article_code:
-                name += _('[Code: %s > %s] ') % (
+                name += '[Cod.: %s > %s] ' % (
                     customer.article_code, fabric_proxy.article_code)
             if customer.supplier_id.id != fabric_proxy.supplier_id.id:
-                name += _('[Suppl.: %s > %s] ') % (
+                name += '[Forn.: %s > %s] ' % (
                     customer.supplier_id.name, fabric_proxy.supplier_id.name)
             if customer.perc_fabric != fabric_proxy.perc_composition:
-                name += _('[Compos.: %s > %s] ') % (
+                name += '[Compos.: %s > %s] ' % (
                     customer.perc_fabric, fabric_proxy.perc_composition)
             if customer.cost != fabric_proxy.cost:
-                name += _('[Cost.: %s > %s] ') % (
+                name += '[Costo: %s > %s] ' % (
                 customer.cost, fabric_proxy.cost)
             if replace_washing == 'replace' and \
                     customer.symbol_fabric != fabric_proxy.symbol:
-                name += _('[Symbol (forced): %s > %s] ') % (
+                name += '[Simboli (forzato): %s > %s] ' % (
                     customer.symbol_fabric, fabric_proxy.symbol)
 
             # Create all log elements:
@@ -224,7 +226,6 @@ class fashion_force_fabric(osv.osv_memory):
         # Replace all elements (symbol are parametic)
         rel_pool.write(cr, uid, rel_ids, data, context=context)
         _logger.info('Update all record: %s with: %s' % (
-            rel_ids, data))
-            
+            rel_ids, data))            
         return True
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

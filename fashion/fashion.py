@@ -188,21 +188,21 @@ class fashion_form_accessory_pricelist(osv.osv):
         return res        
 
     _columns = {
-         'name': fields.char('Article', size=70, required=False),
-         'accessory_id':fields.many2one('fashion.form.accessory', 'Accessory', 
-             required=False, ondelete='cascade'),
-         'supplier_id':fields.many2one('res.partner', 'Supplier', 
-             required=True, domain=[('supplier','=',True)]),
-         'create_date': fields.datetime('Date', readonly=True),
-         'um': fields.char('U.M.', size=5, required=False),
-         'extra_info': fields.char('Extra info', size=40, required=False),
-         'note': fields.text('Note'),
-         'cost': fields.float('Cost', digits=(12, 4)),
+        'name': fields.char('Article', size=70, required=False),
+        'accessory_id':fields.many2one('fashion.form.accessory', 'Accessory', 
+            required=False, ondelete='cascade'),
+        'supplier_id':fields.many2one('res.partner', 'Supplier', 
+            required=True, domain=[('supplier','=',True)]),
+        'create_date': fields.datetime('Date', readonly=True),
+        'um': fields.char('U.M.', size=5, required=False),
+        'extra_info': fields.char('Extra info', size=40, required=False),
+        'note': fields.text('Note'),
+        'cost': fields.float('Cost', digits=(12, 4)),
 
-         # Link di importazione:
-         'access_id': fields.integer(
-             'Access ID', help="ID Importazione che tiene il link"),
-    }
+        # Link di importazione:
+        'access_id': fields.integer(
+            'Access ID', help="ID Importazione che tiene il link"),
+        }
 
 class fashion_form_accessory(osv.osv):
     '''Table that manages the accessory relation *2many
@@ -212,7 +212,7 @@ class fashion_form_accessory(osv.osv):
     _columns = {
         'pricelist_ids':fields.one2many('fashion.form.accessory.pricelist', 
             'accessory_id', 'Pricelist', required=False),
-    }
+        }
 
 class fashion_form_fabric_composition(osv.osv):
     '''Table that manages the fabric composition
@@ -224,12 +224,12 @@ class fashion_form_fabric_composition(osv.osv):
     _order = 'code'
 
     _columns = {
-         'code': fields.char('Code', size = 15, required=True),
-         'perc_composition': fields.char('Percentage composition', size=60),
-         'note': fields.text('Note'),
-         'symbol': fields.char('Wash symbol', size=10),
-         'season_id': fields.many2one('fashion.season', 'Season'),
-    }
+        'code': fields.char('Code', size = 15, required=True),
+        'perc_composition': fields.char('Percentage composition', size=60),
+        'note': fields.text('Note'),
+        'symbol': fields.char('Wash symbol', size=10),
+        'season_id': fields.many2one('fashion.season', 'Season'),
+        }
 
 class fashion_form_fabric(osv.osv):
     '''Table that manages the fabric
@@ -347,7 +347,7 @@ class fashion_form_fabric(osv.osv):
         'symbol': fields.char('Wash symbol', size=10),
         'season_id': fields.many2one('fashion.season', 'Season'),
         'test': fields.boolean('Test fabric', 
-            help='This fabric is used for a model testing, maybe it won\'t be produced!'),
+            help="This fabric is used for a model testing, maybe it won't be produced!"),
         'um': fields.char('U.M.', size=5),
         'cost': fields.float('Cost', digits=(10, 4)),
          
@@ -380,7 +380,8 @@ class fashion_form_stitch(osv.osv):
          'sequence': fields.integer('Sequence'),
     
          # Link di importazione:
-         'access_id': fields.integer('Access ID', help="ID Importazione che tiene il link"),
+         'access_id': fields.integer('Access ID', 
+             help="ID Importazione che tiene il link"),
     }
 
 class fashion_form_measure(osv.osv):
@@ -391,12 +392,13 @@ class fashion_form_measure(osv.osv):
     _order = 'name'
 
     _columns = {
-         'letter': fields.char('Letter', size = 1),
-         'name': fields.char('Description', size = 40, required = True),
+         'letter': fields.char('Letter', size=1),
+         'name': fields.char('Description', size=40, required=True),
          'note': fields.text('Note'),
 
          # Link di importazione:
-         'access_id': fields.integer('Access ID', help="ID Importazione che tiene il link"),
+         'access_id': fields.integer('Access ID', 
+             help="ID Importazione che tiene il link"),
     }
 
 class fashion_form(osv.osv):
@@ -449,7 +451,8 @@ class fashion_form(osv.osv):
             else:
                 break
                 
-        res['value']['model_number'] = int(model_number) if model_number.isdigit() else 0
+        res['value']['model_number'] = int(
+            model_number) if model_number.isdigit() else 0
         if res['value']['model_number'] and len(model)>i and model[i] == 'C':
             res['value']['conformed'] = True
             i += 1
@@ -470,7 +473,8 @@ class fashion_form(osv.osv):
     def _get_draw_image_name(self, obj):
         ''' Return name of image from browese obj passed
         '''
-        return ("%s.%s" % (self._get_form_name(obj.model, obj.review), self._default_extension)).lower()
+        return ("%s.%s" % (self._get_form_name(
+            obj.model, obj.review), self._default_extension)).lower()
         
     # Image function:
     def _get_draw_image_type(self, field_name):
@@ -481,7 +485,8 @@ class fashion_form(osv.osv):
     def _load_image(self, name, type_image):
         ''' Load image from file:
         '''
-        path = os.path.expanduser(os.path.join("~/etl/fashion/image", type_image)) # TODO parametrize
+        path = os.path.expanduser(os.path.join(
+            "~/etl/fashion/image", type_image)) # TODO parametrize
         filename = os.path.join(path, name)
         try:
             f = open(filename, 'rb')
@@ -494,7 +499,8 @@ class fashion_form(osv.osv):
     def _unload_image(self, name, value, type_image):
         ''' Unload image to file:
         '''
-        path = os.path.expanduser(os.path.join("~/etl/fashion/image", type_image)) # TODO parametrize
+        path = os.path.expanduser(os.path.join(
+            "~/etl/fashion/image", type_image)) # TODO parametrize
         filename = os.path.join(path, name)
         try:
             f = open(filename, 'wb')
@@ -615,7 +621,8 @@ class fashion_form(osv.osv):
         f.close()
         
         characteristic_pool = self.pool.get('fashion.form.characteristic.rel')
-        for item in characteristic_pool.browse(cr, uid, item_ids, context=context):
+        for item in characteristic_pool.browse(
+                cr, uid, item_ids, context=context):
             characteristic_pool.create(cr, uid, {
                 'name': item.name,
                 'sequence': item.sequence,
@@ -684,7 +691,8 @@ class fashion_form(osv.osv):
     def set_not_cost_model(self, cr, uid, ids, context=None):
         ''' Set form for no manage costs
         '''
-        return self.write(cr, uid, ids, {'model_for_cost': False}, context=context)
+        return self.write(cr, uid, ids, {
+            'model_for_cost': False}, context=context)
 
     def set_cost_model(self, cr, uid, ids, context=None):
         ''' Set form for no manage costs
@@ -694,7 +702,8 @@ class fashion_form(osv.osv):
         cost_list_ids = [item.cost_id.id for item in form_proxy.cost_rel_ids]
         
         cost_pool = self.pool.get('fashion.form.cost')
-        default_ids = cost_pool.search(cr, uid, [('default','=',True)], context=context)
+        default_ids = cost_pool.search(cr, uid, [
+            ('default','=',True)], context=context)
         for cost in cost_pool.browse(cr, uid, default_ids, context=context):
             if cost.id not in cost_list_ids:
                 # Create cost and pricelist:
@@ -703,7 +712,8 @@ class fashion_form(osv.osv):
                     'cost_id': cost.id,
                     'value': cost.cost or 0.0
                 }, context=context)
-        return self.write(cr, uid, ids, {'model_for_cost': True}, context=context)
+        return self.write(cr, uid, ids, {
+            'model_for_cost': True}, context=context)
         
     def button_refresh(self, cr, uid, ids, context=None):
         ''' Dummy action for refresh form
@@ -723,7 +733,8 @@ class fashion_form(osv.osv):
                     found_id = measure.id
                     break
                 
-            start = int(form_proxy.size_base or '42') - 2 * ((form_proxy.col_ref or 3) - 1)
+            start = int(form_proxy.size_base or '42') - 2 * (
+                (form_proxy.col_ref or 3) - 1)
             data = {
                 'header': True,
                 'sequence': 0,
@@ -774,7 +785,8 @@ class fashion_form(osv.osv):
         self.create_update_header(cr, uid, ids, context=context)
         
         # after load article item list:
-        for item_id in [l.measure_id.id for l in form_proxy.article_id.fashion_measure_ids]:
+        for item_id in [
+                l.measure_id.id for l in form_proxy.article_id.fashion_measure_ids]:
             res_pool.create(cr, uid, {
                 'measure_id': item_id, 
                 'form_id': ids[0],
@@ -811,7 +823,8 @@ class fashion_form(osv.osv):
         
         # delete all elements:
         measure_pool = self.pool.get('fashion.form.measure.rel')
-        measure_ids = measure_pool.search(cr, uid, [('form_id','=',ids[0])], context = context)
+        measure_ids = measure_pool.search(cr, uid, [
+            ('form_id','=',ids[0])], context = context)
         measure_pool.unlink(cr, uid, measure_ids, context = context)
         
         # Loop in all measure of the article selected:
@@ -847,7 +860,8 @@ class fashion_form(osv.osv):
         ''' Reset form image
         '''        
         try:
-            self.write(cr, uid, ids, {'draw_image_%s' % (context.get('side').lower()):False},context=context)
+            self.write(cr, uid, ids, {'draw_image_%s' % (context.get(
+                'side').lower()):False},context=context)
         except:
             pass    
         return True
@@ -874,7 +888,8 @@ class fashion_form(osv.osv):
         return self.write(cr, uid, ids, {'state': 'produced'}, context=context)
 
     def form_discarded(self, cr, uid, ids, context=None):
-        return self.write(cr, uid, ids, {'state': 'discarded'}, context=context)
+        return self.write(cr, uid, ids, {
+            'state': 'discarded'}, context=context)
     
     # ----------------
     # Fields functions
@@ -892,7 +907,8 @@ class fashion_form(osv.osv):
                     res[obj.id]['sum_accessory'] += accessory.tot_cost
                 for cost in obj.cost_rel_ids:
                     res[obj.id]['sum_cost'] += cost.value          
-                res[obj.id]['sum_extra_cost'] = res[obj.id]['sum_cost'] + res[obj.id]['sum_accessory']
+                res[obj.id]['sum_extra_cost'] = res[obj.id][
+                    'sum_cost'] + res[obj.id]['sum_accessory']
                              
             else:
                 res[obj.id]['sum_extra_cost'] = 0.0
