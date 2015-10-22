@@ -681,8 +681,7 @@
                                             <field name='symbol_fabric' groups="fashion.group_fashion_production" invisible="context.get('view_cost',False)"/>
                                             <field name='h_fabric'/>
                                             <field name='mt_fabric' on_change="onchange_cost_computation(mt_fabric,cost,retail,wholesale,sale,parent.sum_extra_cost)"/>
-                                            <field name='note_fabric' groups="fashion.group_fashion_production" invisible="context.get('view_cost',False)"/>
-                                           
+                                            <!--<field name='note_fabric' groups="fashion.group_fashion_production" invisible="context.get('view_cost',False)"/>-->
                                             <field name='cost' groups="fashion.group_fashion_accounting" on_change="onchange_cost_computation(mt_fabric,cost,retail,wholesale,sale,parent.sum_extra_cost)" />
                                             
                                             <field name='total_fabric' groups="fashion.group_fashion_accounting" invisible="context.get('view_production',False)"/>
