@@ -69,7 +69,7 @@ class fashion_force_fabric(osv.osv_memory):
         # Search washing symbol changed:
         rel_ids = rel_pool.search(cr, uid, [
             ('fabric_id', '=', active_id),
-            ('symbol_fabric', '!=', fabric_proxy.symbol),
+            #('symbol_fabric', '!=', fabric_proxy.symbol),
             ], context=context)
         for item in rel_pool.browse(cr, uid, rel_ids, context=context):
             res += '<br />Scheda: <b>%s</b> simbolo differente: <b>%s</b>' % (
