@@ -325,15 +325,16 @@ class fashion_form_fabric(osv.osv):
         return True        
     
     #Override:
-    def name_get(self, cr, uid, ids, context = None):
+    def name_get(self, cr, uid, ids, context=None):
         ''' Add season ID to name
         '''
         res = []
         for fabric in self.browse(cr, uid, ids, context=context):
-            res.append((fabric.id, "%s-[%s] %s" % (
+            res.append((fabric.id, "%s-[%s]" % (
                 fabric.code, 
                 fabric.season_id.code if fabric.season_id else "", 
-                fabric.note or '')))
+                #fabric.note or ''
+                )))
         return res
 
     _columns = {
