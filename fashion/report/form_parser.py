@@ -33,7 +33,6 @@
 from openerp.report import report_sxw
 from openerp.report.report_sxw import rml_parse
 
-
 counters = {} # total counters
 
 class Parser(report_sxw.rml_parse):
@@ -47,8 +46,15 @@ class Parser(report_sxw.rml_parse):
             'set_counter': self.set_counter,
             'get_counter': self.get_counter,
             'how_much_zero': self.how_much_zero,
+            'context': context,
+            'is_last': self.is_last,
         })
 
+    def is_last(self, item_id):
+        ''' Check if ID passed is last        
+        '''
+        return item_id == self.last
+        
     def how_much_zero(self, accessory):
         ''' Test if there's accessory without price 
         '''
@@ -89,10 +95,19 @@ class Parser(report_sxw.rml_parse):
         # TODO verificare se è il caso di testare il cliente oppure è già indicata nell'accessorio
         return ""
         
-    def get_objects(self, data=None):
+    def get_objects(self, data=None, context=None):
         if data is None:
             data = {}
-        return self.pool.get('fashion.form').browse(self.cr, self.uid, data.get('active_ids',[]))
+        if context is None:
+            context = {}
+            
+        form_ids = data.get('active_ids', [])
+        if not form_ids:            
+            form_ids = context.get('active_ids', [])
+
+        self.last = form_ids[-1] # for new page
+        return self.pool.get('fashion.form').browse(
+            self.cr, self.uid, form_ids)
 
     def browse_in_cols(self, obj_proxy, cols=2):
         ''' Browse in N cols passed browse obj

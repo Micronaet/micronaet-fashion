@@ -81,6 +81,7 @@ class fashion_report_wizard(osv.osv_memory):
         '''
         wiz_proxy = self.browse(cr, uid, ids, context=context)[0]
         datas = {}
+        datas['from_wizard'] = True
         datas['active_ids'] = context.get('active_ids', [])
         datas['active_id'] = context.get('active_id', False)
         datas['partner_fabric_id'] = wiz_proxy.partner_fabric_id.id if wiz_proxy.partner_fabric_id else False
