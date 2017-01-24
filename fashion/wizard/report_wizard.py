@@ -103,8 +103,7 @@ class fashion_report_wizard(osv.osv_memory):
         elif wiz_proxy.type == 'e':
             report = "fashion_form_E"
         else: # default
-            report = "fashion_form_A"
-        
+            report = "fashion_form_A"        
             
         return {
             'model': 'fashion.form',
@@ -114,6 +113,4 @@ class fashion_report_wizard(osv.osv_memory):
             #'res_id': context.get('active_id', False),
             #'context': context, #{'active_id':context.get('active_id', False), 'active_ids': context.get('active_ids', [])},#context,
         }
-
-
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
