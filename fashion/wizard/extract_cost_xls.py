@@ -20,9 +20,14 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
+import os
+import sys
+import logging
+import xlsxwriter # XLSX export
 from openerp.osv import osv, fields
 from datetime import datetime
-import xlsxwriter # XLSX export
+
+_logger = logging.getLogger(__name__)
 
 
 class fashion_extract_cost_xls(osv.osv_memory):
@@ -47,24 +52,29 @@ class fashion_extract_cost_xls(osv.osv_memory):
         current_proxy = self.browse(cr, uid, ids, context=context)[0]
         
         res = []
-        form_pool = self.get('fashion.form')
+        form_pool = self.pool.get('fashion.form')
         form_ids = form_pool.search(cr, uid, [
-            ('season_id', '=', currenct_proxy.season_id.id)], context=context)
+            ('season_id', '=', current_proxy.season_id.id)], context=context)
         
-        for form in form_pool.browse(cr, uid, form_ids, context=context)[0]
-            for cost in form.pricelist_ids:
+        for form in form_pool.browse(cr, uid, form_ids, context=context):
+            for cost in form.cost_rel_ids:
                 for pricelist in cost.pricelist_ids:
+                    if not pricelist.supplier_id:
+                        _logger.error('No supplier name!')
+                        continue
+                        
+                    supplier = pricelist.supplier_id.name.upper()
                     res.append((
-                        pricelist.supplier_id.name
-                        form.type_id.name, # or first (second) char
+                        supplier,
+                        form.article_id.name, # or first (second) char
                         form.model,
-                        cost.cost_id.name,
+                        cost.cost_id.name.upper(),
                         #cost.value,
                         pricelist.value,
-                        pricelist.order,
-                        pricelist.reference,                        
+                        pricelist.order or '',
+                        pricelist.reference or '',                        
                         ))    
-        res = sorted(res, key=lambda x: (0, 1, 2, 4))
+        res = sorted(res, key=lambda x: (x[0], x[1], x[2], x[3]))
 
         # ---------------------------------------------------------------------
         #                        XLS log export:        
@@ -75,23 +85,38 @@ class fashion_extract_cost_xls(osv.osv_memory):
         
         WB = xlsxwriter.Workbook(filename)
         
-        # Create element for empty category:        
-        old_supplier = False
-        for supplier, category, cost, value, order, reference in res:
-            if not old_supplier or supplier != old_supplier:
-                ols_supplier = supplier
+        # Create element for empty article:        
+        old_supplier = '?' # for empty value management
+        old_article = '?' # for empty value management
+        
+        for supplier, article, form, cost, value, order, reference in res:
+            if old_supplier == '?' or supplier != old_supplier:
+                old_supplier = supplier
                 
                 # Create new XLS tab:
                 WS = WB.add_worksheet(supplier)
-                write_header(WS, header)
-                counter = 1
+                counter = 0
+                old_article = '?'
+                
+            if old_article == '?' or old_article != article:
+                old_article = article
+                 
+                if counter: # not 0
+                    counter +=1 # keep distance from previous block
+                
+                # Write block name:
+                WS.write(counter, 0, article) 
+                counter += 1
+                
+                # Write header for data:
                 write_xls_line(WS, (
-                    'Tipo', 'Costo', 'Importo', 'Ordine', 'Lanciato'), 0)
+                    'Scheda', 'Costo', 'Importo', 'Ordine', 'Lanciato'), 
+                    counter)
+                counter += 1
             
             write_xls_line(WS, (
-                category, cost, value, order, reference), counter)
-            counter += 1
-            
+                form, cost, value, order, reference), counter)
+            counter += 1            
         return True
         
     _columns = {
