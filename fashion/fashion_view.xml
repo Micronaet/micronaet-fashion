@@ -713,6 +713,8 @@
                                                         <field name="current"/>
                                                         <field name="supplier_id"/>
                                                         <field name="value"/>
+                                                        <field name="order" />
+                                                        <field name="reference" />
                                                         <field name="note"/>
                                                     </tree>
                                                 </field>

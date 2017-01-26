@@ -1417,6 +1417,8 @@ class fashion_form_cost_rel_pricelist(osv.osv):
         'supplier_id': fields.many2one('res.partner', 'Supplier', 
             domain=[('supplier','=',True)]),
         'value': fields.float('Value', required=True),
+        'order': fields.char('Order ref.', size=64),
+        'reference': fields.char('Reference', size=64),
         'note': fields.text('Note'),
 
         # Link di importazione:
