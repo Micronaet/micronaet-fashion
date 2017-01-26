@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <!--fashion.extract.cost.xls-->
+        <record id="fashion_extract_cost_xls_form" model="ir.ui.view">
+            <field name="name">fashion.extract.cost.xls.form</field>
+            <field name="model">fashion.extract.cost.xls</field>
+            <field name="arch" type="xml">
+                <form string="Season" version="7.0">
+                <sheet>
+                    <group colspan="4" col='4'>
+                        <field name="season_id"/>
+                        <button string='Extract' name='extract_cost_xls' type='object' icon='gtk-print'/>
+                        <button string="Cancel" special="cancel" icon='STOCK_CANCEL'/>
+                    </group>
+                </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_fashion_extract_cost_xls" model="ir.actions.act_window">
+                <field name="name">Extract supplier cost XLS</field>
+                <field name="res_model">fashion.extract.cost.xls</field>
+                <field name="view_type">form</field>
+                <field name="view_mode">form</field>
+                <field name="view_id" ref="fashion_extract_cost_xls_form"/>
+                <field name="target">new</field>
+        </record>
+        
+        <menuitem 
+            parent="menu_fashion_form_form_cost" 
+            id="menu_fashion_form_form_cost_extract_xls" 
+            action="action_fashion_extract_cost_xls"
+            />
+        
+    </data>
+</openerp>

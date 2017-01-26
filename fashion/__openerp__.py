@@ -52,26 +52,28 @@
     'init_xml': [],
     'demo_xml': [],
     'data': [
-             # Security:
-             'security/fashion_group.xml',
-             'security/ir.model.access.csv',
+            # Security:
+            'security/fashion_group.xml',
+            'security/ir.model.access.csv',
 
-             # Report:
-             'report/form_report.xml',
+            # Report:
+            'report/form_report.xml',
 
-             # Wizard:
-             'wizard/duplication_fashion_view.xml',
-             'wizard/report_wizard.xml',
-             'wizard/force_fabric_view.xml',
+            # Wizard:
+            'wizard/duplication_fashion_view.xml',
+            'wizard/report_wizard.xml',
+            'wizard/force_fabric_view.xml',
 
-             # View:
-             'fashion_view.xml',
+            # View:
+            'fashion_view.xml',
+            
+            'wizard/extract_xls_view.xml',
+             
+            # Workflow:
+            'fashion_form_workflow.xml',
 
-             # Workflow:
-             'fashion_form_workflow.xml',
-
-             #'scheduler.xml', 
-             #'data/list.xml',
+            #'scheduler.xml', 
+            #'data/list.xml',
             ],
     'active': False,
     'installable': True,
