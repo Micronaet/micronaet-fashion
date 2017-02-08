@@ -1758,6 +1758,13 @@ class fashion_form_partner_rel(osv.osv):
             'datas': datas,
             }
 
+    def wizard_print_b_minus(self, cr, uid, ids, context=None):
+        ''' Print directyl report C without totals (instead of wizard)        
+        '''
+        res = self.wizard_print_b(cr, uid, ids, context=context)
+        res[datas]['total'] = False
+        return res
+        
     def wizard_print_c(self, cr, uid, ids, context=None):
         ''' Print directyl report C with totals (instead of wizard)        
         '''

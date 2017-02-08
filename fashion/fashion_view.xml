@@ -703,6 +703,7 @@
                                             <field name='note_cost' groups="fashion.group_fashion_accounting" invisible="context.get('view_production',False)"/>
                                             <button string='[A]' name='wizard_print_a' type="object" /> <!--icon='gtk-print-preview' -->
                                             <button string='[B]' name='wizard_print_b' type="object" /><!--groups="fashion.group_fashion_accounting"-->
+                                            <button string='[B-]' name='wizard_print_b_minus' type="object" /><!--groups="fashion.group_fashion_accounting"-->
                                             <button string='[C]' name='wizard_print_c' type="object" />
                                         </tree>
                                     </field>
