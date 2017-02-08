@@ -410,7 +410,7 @@
         <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="view_id" ref="fashion_form_fabric_tree"/>
-        <field name="view_id" ref="fashion_form_fabric_search"/>
+        <field name="search_view_id" ref="fashion_form_fabric_search"/>
     </record>
     <record id="action_fashion_form_fabric_cost_tree" model="ir.actions.act_window">
         <field name="name">Fashion fabric cost</field>
@@ -418,7 +418,7 @@
         <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="view_id" ref="fashion_form_fabric_update_cost_tree"/>
-        <field name="view_id" ref="fashion_form_fabric_search"/>
+        <field name="search_view_id" ref="fashion_form_fabric_search"/>
     </record>
     <record id="action_fashion_form_fabric_test" model="ir.actions.act_window">
         <field name="name">Test fabric</field>
@@ -426,7 +426,7 @@
         <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="view_id" ref="fashion_form_fabric_tree"/>
-        <field name="view_id" ref="fashion_form_fabric_search"/>
+        <field name="search_view_id" ref="fashion_form_fabric_search"/>
         <field name="context">{'search_default_test':1}</field>
     </record>
 
@@ -489,7 +489,7 @@
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref="fashion_form_fabric_composition_tree"/>
-            <field name="view_id" ref="fashion_form_fabric_composition_search"/>
+            <field name="search_view_id" ref="fashion_form_fabric_composition_search"/>
     </record>
 
     <!--fashion.form.stitch-->
