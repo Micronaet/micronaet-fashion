@@ -1967,12 +1967,12 @@ class fashion_form_partner_rel(osv.osv):
 class res_partner(osv.osv):
     ''' Extra fields for partner
     '''
-    _name = 'res.partner'
     _inherit = 'res.partner'
 
     _columns = {
         'start': fields.integer('Start size', 
             help='Departure for the standardized sizes'),
+        'group_id': fields.many2one('res.partner', 'Partner group'),    
 
         # Link di importazione:
         'access_id': fields.integer('Access ID', 
