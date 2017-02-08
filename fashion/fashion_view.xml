@@ -939,8 +939,8 @@
                 <field name="model_customer"/>
                 <field name="customer_code" />
                 <field name="model_article" string="Type"/>
-                <field name="model_number"/>
-                <field name="season_id"/>
+                <field name="model_number" />
+                <field name="season_id" />
                 <!--<field name="article_id"/>-->
 
                 <field name="detail_partner" />
@@ -1119,6 +1119,7 @@
                 <field name="season_id"/>
                 <field name="article_id"/>
                 <field name="partner_id"/>
+                <field name="group_id" />
                 <field name="fabric_id"/>
                 <field name="retail" groups='fashion.group_fashion_accounting'/>
                 <field name="wholesale" groups='fashion.group_fashion_accounting'/>
@@ -1170,16 +1171,19 @@
                 <field name="model_number"/>
                 <field name="form_id"/>
                 <field name="partner_id"/>
+                <field name="group_id" />
                 <field name="fabric_id"/>
                 <field name="season_id"/>
                 <field name="article_id"/>
                 <separator/>
                 
                 <filter string="Company form" domain="[('model_customer','=',False)]"/>
+                <filter string="Partner group form" domain="[('group_id','!=',False)]"/>
 
                 <group expand="1" string="Group By...">
                     <filter string="Form" domain="[]" context="{'group_by':'form_id'}"/>
                     <filter string="Partner" domain="[]" context="{'group_by':'partner_id'}"/>
+                    <filter string="Partner group" domain="[]" context="{'group_by':'group_id'}"/>
                     <filter string="Fabric" domain="[]" context="{'group_by':'fabric_id'}"/>
                     <filter string="Season" domain="[]" context="{'group_by':'season_id'}"/>
                     <filter string="Article" domain="[]" context="{'group_by':'article_id'}"/>

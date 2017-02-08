@@ -1703,6 +1703,20 @@ class fashion_form_partner_rel(osv.osv):
     _rec_name = 'partner_id'
     _order = 'model_article,model_number desc,model_customer,model,review desc'
     
+    # -------------------
+    # Field store method:
+    # -------------------
+    def _change_group_in_partner(self, cr, uid, ids, context=None):
+        ''' When change group in partner change in all forms for that partner
+        '''
+        return self.pool.get('fashion.form').search(cr, uid, [
+            ('partner_id', 'in', ids)], context=context)
+
+    def _change_partner_in_fashion(self, cr, uid, ids, context=None):
+        ''' When change partner in form change also group
+        '''
+        return ids
+
     # --------------------
     # Override ORM method:
     # --------------------
@@ -1857,6 +1871,15 @@ class fashion_form_partner_rel(osv.osv):
         'form_id': fields.many2one('fashion.form', 'Form'),
         'partner_id': fields.many2one('res.partner', 'Partner', 
             domain=[('customer','=',True)], required=True),
+        'group_id': fields.related(
+            'partner_id', 'group_id', 
+            type='many2one', relation='res.partner', 
+            string='Partner group',
+            store = {
+                'group_id': (_change_group_in_partner, 'res.partner', 50),
+                'partner_id': (_change_partner_in_fashion, 'fashion.form.partner.rel', 40),
+                }
+            ),
         'fabric_id': fields.many2one('fashion.form.fabric', 'Fabric', 
             #required=True  # TODO reimportare quando elimimato righe vuote
             ),
@@ -1982,7 +2005,6 @@ class res_partner(osv.osv):
 class fashion_form_extra_relations(osv.osv):
     '''Table that manage the relation forms
     '''
-    _name = 'fashion.form'
     _inherit = 'fashion.form'
 
     _columns = {
