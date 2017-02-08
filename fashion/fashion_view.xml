@@ -1239,12 +1239,12 @@
             <menuitem name="Seams" parent="menu_fashion_configuration" id="menu_fashion_configuration_characteristic" sequence="20" action='action_fashion_form_characteristic' />
             <!--<menuitem name="Cost (var.)" parent="menu_fashion_configuration" id="menu_fashion_configuration_cost" sequence="30" action='action_fashion_form_cost_variable' />-->
             <menuitem name="Partner" parent="menu_fashion_configuration" id="menu_res_partner" sequence="30" action='action_res_partner' />
-            <menuitem name="Cost (fixed)" parent="menu_fashion_configuration" id="menu_fashion_configuration_cost_fixed" sequence="35" action='action_fashion_form_cost_fixed' groups="fashion.group_fashion_admin,fashion.group_fashion_accounting"/>
+            <menuitem name="Cost (fixed)" parent="menu_fashion_configuration" id="menu_fashion_configuration_cost_fixed" sequence="35" action='action_fashion_form_cost_fixed' groups="fashion.group_fashion_accounting"/>
             <menuitem name="Accessory" parent="menu_fashion_configuration" id="menu_fashion_configuration_accessory" sequence="40" action='action_fashion_form_accessory' />
                 <menuitem name="Accessory pricelist" parent="menu_fashion_configuration_accessory" id="menu_fashion_configuration_accessory_pricelist" sequence="10" action='action_fashion_form_accessory_pricelist' />
             <menuitem name="Fabric" parent="menu_fashion_configuration" id="menu_fashion_configuration_fabric" sequence="50" action='action_fashion_form_fabric' />
                 <menuitem name="Test fabric" parent="menu_fashion_configuration_fabric" id="menu_fashion_configuration_fabric_test" sequence="10" action='action_fashion_form_fabric_test' />
-            <menuitem name="Composition" parent="menu_fashion_configuration" id="menu_fashion_configuration_fabric_composition" sequence="55" action='action_fashion_form_fabric_composition' />
+            <menuitem name="Composition" parent="menu_fashion_configuration" id="menu_fashion_configuration_fabric_composition" sequence="55" action='action_fashion_form_fabric_composition' groups="fashion.group_fashion_accounting"/>
             <!--<menuitem name="Seam" parent="menu_fashion_configuration" id="menu_fashion_configuration_stitch" sequence="60" action='action_fashion_form_stitch' />-->
             <menuitem name="Measure" parent="menu_fashion_configuration" id="menu_fashion_configuration_measure" sequence="70" action='action_fashion_form_measure' />
             <menuitem name="Article" parent="menu_fashion_configuration" id="menu_fashion_configuration_article" sequence="80" action='action_fashion_article' />
