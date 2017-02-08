@@ -395,8 +395,8 @@
                 <field name="perc_composition" readonly="1"/>
                 <field name="cost"/>
 
-                <field name="tag" groups="fashion.group_fashion_accounting" readonly="1" />
-                <field name="preferred_fabric" groups="fashion.group_fashion_accounting" readonly="1" />
+                <field name="tag" groups="fashion.group_fashion_accounting" />
+                <field name="preferred_fabric" groups="fashion.group_fashion_accounting" />
                 <field name="range_supplier_cost" groups="fashion.group_fashion_accounting" readonly="1" />
                 <field name="range_final_cost" groups="fashion.group_fashion_accounting" readonly="1" />
             </tree>
