@@ -150,6 +150,7 @@
                 <field name="supplier_id" filter_domain="[('supplier_id','ilike',self)]"/>
                 <field name="name" filter_domain="[('name','ilike',self)]"/>
                 <field name="extra_info" filter_domain="[('extra_info','ilike',self)]"/>
+                <field name="note" filter_domain="[('note','ilike',self)]"/>
 
                 <group expand="1" string="Group By...">
                     <filter string="Accessory" domain="[]" context="{'group_by':'accessory_id'}"/>
