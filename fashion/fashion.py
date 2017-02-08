@@ -22,6 +22,8 @@
 ##############################################################################
 import os
 import sys
+import openerp 
+import logging
 import base64
 from openerp.osv import osv, fields
 from datetime import datetime
@@ -30,6 +32,8 @@ from openerp.tools import (DEFAULT_SERVER_DATETIME_FORMAT,
 from openerp import tools
 from openerp.tools.translate import _
 
+
+_logger = logging.getLogger(__name__)
 
 # --------
 # Utility:
@@ -53,7 +57,6 @@ def _set_image(self, cr, uid, item_id, name, value, args, context=None):
 def get_temp_filename(filename):
     ''' Get temp path for copy and paste functions
     '''
-    import openerp 
     return os.path.join(
         openerp.__path__[0], 'addons', 'fashion', 'temp', filename)
 
@@ -1703,20 +1706,6 @@ class fashion_form_partner_rel(osv.osv):
     _rec_name = 'partner_id'
     _order = 'model_article,model_number desc,model_customer,model,review desc'
     
-    # -------------------
-    # Field store method:
-    # -------------------
-    def _change_group_in_partner(self, cr, uid, ids, context=None):
-        ''' When change group in partner change in all forms for that partner
-        '''
-        return self.pool.get('fashion.form').search(cr, uid, [
-            ('partner_id', 'in', ids)], context=context)
-
-    def _change_partner_in_fashion(self, cr, uid, ids, context=None):
-        ''' When change partner in form change also group
-        '''
-        return ids
-
     # --------------------
     # Override ORM method:
     # --------------------
@@ -1867,19 +1856,34 @@ class fashion_form_partner_rel(osv.osv):
                 ('form_id', '=', item_id)], context=context))
         return res
 
+    # -------------------
+    # Field store method:
+    # -------------------
+    def _change_group_in_partner(self, cr, uid, ids, context=None):
+        ''' When change group in partner change in all forms for that partner
+        '''
+        _logger.warning('Update form for partner group change!')
+        return self.pool.get('fashion.form.partner.rel').search(cr, uid, [
+            ('partner_id', 'in', ids)], context=context)
+
+    def _change_partner_in_fashion(self, cr, uid, ids, context=None):
+        ''' When change partner in form change also group
+        '''
+        _logger.warning('Update group partner from fashion form!')
+        return ids
+
     _columns = {
         'form_id': fields.many2one('fashion.form', 'Form'),
         'partner_id': fields.many2one('res.partner', 'Partner', 
             domain=[('customer','=',True)], required=True),
         'group_id': fields.related(
-            'partner_id', 'group_id', 
-            type='many2one', relation='res.partner', 
-            string='Partner group',
-            store = {
-                'group_id': (_change_group_in_partner, 'res.partner', 50),
-                'partner_id': (_change_partner_in_fashion, 'fashion.form.partner.rel', 40),
-                }
-            ),
+            'partner_id', 'group_id', type='many2one', relation='res.partner', 
+            string='Partner group', store = {
+                'res.partner': (
+                    _change_group_in_partner, ['group_id'], 50),
+                'fashion.form.partner.rel': (
+                    _change_partner_in_fashion, ['partner_id'], 50),
+                }),
         'fabric_id': fields.many2one('fashion.form.fabric', 'Fabric', 
             #required=True  # TODO reimportare quando elimimato righe vuote
             ),
