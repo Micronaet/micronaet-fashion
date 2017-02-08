@@ -110,7 +110,5 @@ class fashion_report_wizard(osv.osv_memory):
             'type': 'ir.actions.report.xml',
             'report_name': report,
             'datas': datas,
-            #'res_id': context.get('active_id', False),
-            #'context': context, #{'active_id':context.get('active_id', False), 'active_ids': context.get('active_ids', [])},#context,
-        }
+            }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

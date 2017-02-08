@@ -1763,6 +1763,7 @@ class fashion_form_partner_rel(osv.osv):
         '''
         res = self.wizard_print_b(cr, uid, ids, context=context)
         res['datas']['total'] = False
+        res['datas']['from_wizard'] = True
         return res
         
     def wizard_print_c(self, cr, uid, ids, context=None):
