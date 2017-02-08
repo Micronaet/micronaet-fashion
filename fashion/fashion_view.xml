@@ -382,23 +382,52 @@
             </tree>
         </field>
     </record>
+    <record id="fashion_form_fabric_update_cost_tree" model="ir.ui.view">
+        <field name="name">fashion.form.fabric.cost.tree</field>
+        <field name="model">fashion.form.fabric</field>
+        <field name="priority" eval="40" />
+        <field name="arch" type="xml">
+            <tree string="Fabric" editable="bottom">
+                <field name="code" readonly="1"/>
+                <field name="article_code" readonly="1"/>
+                <field name="supplier_id" readonly="1"/>
+                <field name="season_id" readonly="1"/>
+                <field name="perc_composition" readonly="1"/>
+                <field name="cost"/>
+
+                <field name="tag" groups="fashion.group_fashion_accounting" readonly="1" />
+                <field name="preferred_fabric" groups="fashion.group_fashion_accounting" readonly="1" />
+                <field name="range_supplier_cost" groups="fashion.group_fashion_accounting" readonly="1" />
+                <field name="range_final_cost" groups="fashion.group_fashion_accounting" readonly="1" />
+            </tree>
+        </field>
+    </record>
+
 
     <record id="action_fashion_form_fabric" model="ir.actions.act_window">
-            <field name="name">Fashion fabric</field>
-            <field name="res_model">fashion.form.fabric</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-            <field name="view_id" ref="fashion_form_fabric_tree"/>
-            <field name="view_id" ref="fashion_form_fabric_search"/>
+        <field name="name">Fashion fabric</field>
+        <field name="res_model">fashion.form.fabric</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="fashion_form_fabric_tree"/>
+        <field name="view_id" ref="fashion_form_fabric_search"/>
+    </record>
+    <record id="action_fashion_form_fabric_cost_tree" model="ir.actions.act_window">
+        <field name="name">Fashion fabric cost</field>
+        <field name="res_model">fashion.form.fabric</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="fashion_form_fabric_update_cost_tree"/>
+        <field name="view_id" ref="fashion_form_fabric_search"/>
     </record>
     <record id="action_fashion_form_fabric_test" model="ir.actions.act_window">
-            <field name="name">Test fabric</field>
-            <field name="res_model">fashion.form.fabric</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-            <field name="view_id" ref="fashion_form_fabric_tree"/>
-            <field name="view_id" ref="fashion_form_fabric_search"/>
-            <field name="context">{'search_default_test':1}</field>
+        <field name="name">Test fabric</field>
+        <field name="res_model">fashion.form.fabric</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="fashion_form_fabric_tree"/>
+        <field name="view_id" ref="fashion_form_fabric_search"/>
+        <field name="context">{'search_default_test':1}</field>
     </record>
 
     <!--fashion.form.fabric.composition-->
@@ -1245,6 +1274,7 @@
             <menuitem name="Accessory" parent="menu_fashion_configuration" id="menu_fashion_configuration_accessory" sequence="40" action='action_fashion_form_accessory' />
                 <menuitem name="Accessory pricelist" parent="menu_fashion_configuration_accessory" id="menu_fashion_configuration_accessory_pricelist" sequence="10" action='action_fashion_form_accessory_pricelist' />
             <menuitem name="Fabric" parent="menu_fashion_configuration" id="menu_fashion_configuration_fabric" sequence="50" action='action_fashion_form_fabric' />
+                <menuitem name="Fabric cost" parent="menu_fashion_configuration_fabric" id="menu_fashion_configuration_fabric_cost_tree" sequence="10" action='action_fashion_form_fabric_cost_tree' />
                 <!--<menuitem name="Test fabric" parent="menu_fashion_configuration_fabric" id="menu_fashion_configuration_fabric_test" sequence="10" action='action_fashion_form_fabric_test' />-->
             <menuitem name="Composition" parent="menu_fashion_configuration" id="menu_fashion_configuration_fabric_composition" sequence="55" action='action_fashion_form_fabric_composition' groups="fashion.group_fashion_accounting"/>
             <!--<menuitem name="Seam" parent="menu_fashion_configuration" id="menu_fashion_configuration_stitch" sequence="60" action='action_fashion_form_stitch' />-->

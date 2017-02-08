@@ -359,7 +359,7 @@ class fashion_form_fabric(osv.osv):
         # Manage from accounting employe:
         'weight': fields.float('Weight', digits=(10, 2)),
         'h_fabric': fields.float('H.', digits=(10, 2)),
-        'range_supplier_cost': fields.char('Costo', size=50),
+        'range_supplier_cost': fields.char('Range Costo', size=50),
         'range_final_cost': fields.char('Prezzo base', size=50),
         'preferred_fabric': fields.char('Preferred fabric', size=50),
         'tag': fields.char('Cartellino', size=50),
