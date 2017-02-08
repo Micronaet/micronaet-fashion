@@ -1732,7 +1732,7 @@ class fashion_form_partner_rel(osv.osv):
         datas['partner_fabric_id'] = ids[0]
         datas['summary'] = True
         datas['image'] = True
-        
+
         return {
             'model': 'fashion.form',
             'type': 'ir.actions.report.xml',
@@ -1754,7 +1754,7 @@ class fashion_form_partner_rel(osv.osv):
         return {
             'model': 'fashion.form',
             'type': 'ir.actions.report.xml',
-            'report_name': "fashion_form_B",
+            'report_name': 'fashion_form_B',
             'datas': datas,
             }
 
@@ -1762,7 +1762,7 @@ class fashion_form_partner_rel(osv.osv):
         ''' Print directyl report C without totals (instead of wizard)        
         '''
         res = self.wizard_print_b(cr, uid, ids, context=context)
-        res[datas]['total'] = False
+        res['datas']['total'] = False
         return res
         
     def wizard_print_c(self, cr, uid, ids, context=None):
