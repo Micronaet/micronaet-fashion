@@ -63,6 +63,7 @@
             'wizard/duplication_fashion_view.xml',
             'wizard/report_wizard.xml',
             'wizard/force_fabric_view.xml',
+            'wizard/partner_unique_view.xml',
 
             # View:
             'fashion_view.xml',
