@@ -586,6 +586,35 @@ class fashion_form(osv.osv):
     # ------------
     # Button event
     # ------------
+    def import_dropbox_photo(self, cr, uid, ids, context=None):
+        ''' Search image in input folder and create image elements
+        '''
+        photo_pool = self.pool.get('fashion.form.photo')
+                
+        # Get path:
+        path = os.path.expanduser(photo_pool._path)
+        pathin = os.path.expanduser(photo_pool._pathin)
+        extension = photo_pool._extension
+        for f in os.listdir(pathin):
+            if extension != f[-len(estension):]:
+                _logger.warning('No correct extension: %s' % f)
+                continue
+                
+            # Read image file:
+            filein = os.path.join(pathin, f)
+            
+            # Create record image:
+            item_id = photo_pool.create(cr, uid, {
+                'name': f,
+                'note':  _('Importato da cartella Dropbox'),
+                'form_id': ids[0],
+                }, context=context)
+                
+            # Move image in the system:    
+            fileout = os.path.join(path, '%s.%s' % (item_id, extension))
+            os.rename(filein, fileout)
+        return True
+        
     def open_form_item(self, cr, uid, ids, context=None):
         ''' Button for open detail in kanban view
         '''
@@ -2007,6 +2036,7 @@ class fashion_form_photo(osv.osv):
     _order = 'create_date,name'
     
     _path = '~/etl/fashion/photo'
+    _pathin = '~/etl/fashion/photoin'
     _extension = 'png'
 
     # -------------------------------------------------------------------------
