@@ -1999,6 +1999,98 @@ class fashion_form_partner_rel(osv.osv):
             help="ID Importazione che tiene il link con partner costi"),
         }
 
+class fashion_form_photo(osv.osv):
+    ''' Table that manages the form photo
+    '''
+    _name = 'fashion.form.photo'
+    _description = 'Fashion photo'
+    _order = 'create_date,name'
+    
+    _path = '~/etl/fashion/photo'
+    _extension = 'png'
+
+    # -------------------------------------------------------------------------
+    # Button event:
+    # -------------------------------------------------------------------------
+    def open_form_item(self, cr, uid, ids, context=None):
+        ''' Button for open detail in kanban view
+        '''
+        return {
+            'name': _('Photo detail'),
+            'view_type': 'form',
+            'view_mode': 'form',
+            'res_model': 'fashion.form.photo',
+            'res_id': ids[0],
+            'view_id': False,
+            'views': [(False, 'form')],
+            'target': 'new',
+            'domain': [('id', '=', ids[0])],
+            'context': {},
+            'type': 'ir.actions.act_window',
+            }                
+
+    # -------------------------------------------------------------------------
+    # Function field:
+    # -------------------------------------------------------------------------
+    def _get_photo_image(self, cr, uid, ids, name, args, context=None):
+        ''' Read photo with ID.extension
+        '''
+        res = {}
+        if name.split('_')[-1] == 'medium':
+            width = 400
+        else:
+            width = False # no resize    
+              
+        path = os.path.expanduser(self._path)        
+        for photo in self.browse(cr, uid, ids, context=context):
+            # Read original image
+            filename = os.path.join(path, '%s.%s' % (
+                photo.id, self._extension))
+            try:
+                f = open(filename, 'rb')
+                img = base64.encodestring(f.read())
+                f.close()
+            except:
+                img = False
+            if width and img:
+                res[photo.id] = tools.image_resize_image(
+                    img, size=(width, None), encoding='base64', 
+                    filetype=self._extension.upper(), avoid_if_small=True)
+            else:                        
+                res[photo.id] = img
+        return res       
+
+    def _set_photo_image(self, cr, uid, item_id, name, value, args, 
+            context=None):
+        ''' Write image passed to file
+        '''
+        path = os.path.expanduser(self._path)        
+        filename = os.path.join(path, '%s.%s' % (item_id, self._extension))
+        try: # save as a file:
+            f = open(filename, 'wb')
+            f.write(base64.decodestring(value))
+            f.close()
+            #try: # Set parameter for update
+            #    os.chmod(filename, 0777)
+            #    os.chown(filename, -1, 1000)
+            #except:
+            #    pass # nothing
+        except:
+            return False
+        return True
+
+    _columns = {
+        'name': fields.char('Name', size=64, required=True),
+        'create_date': fields.date('Create date'),        
+        'create_uid': fields.many2one('res.users', 'Create user'),
+        'note': fields.text('Note'),
+        'form_id': fields.many2one('fashion.form', 'Form'),
+        'photo': fields.function(_get_photo_image, 
+            fnct_inv=_set_photo_image, string='Photo', type='binary'),            
+        'photo_medium': fields.function(_get_photo_image, 
+            fnct_inv=_set_photo_image, string='Photo', type='binary'),
+        }
+
 class res_partner(osv.osv):
     ''' Extra fields for partner
     '''
@@ -2036,15 +2128,16 @@ class fashion_form_extra_relations(osv.osv):
             'form_id', 'Measure Relation'),
         'comment_rel_ids': fields.one2many('fashion.form.comment.rel', 
             'form_id', 'Comment Relation'),
+        'photo_ids': fields.one2many('fashion.form.photo', 'form_id', 'Photo'),
         }
 
 class product_template(osv.osv):
     ''' Remove translation from product name
     '''
-    _name = "product.template"
-    _inherit = "product.template"
+    _inherit = 'product.template'
     
     _columns = {
         'name': fields.char('Name', size=128, required=True, select=True),
         }    
+        
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

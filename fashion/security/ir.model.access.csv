@@ -17,6 +17,7 @@
 "access_fashion_form_stitch_user","fashion.form.stitch","model_fashion_form_stitch","base.group_user",1,1,1,1
 "access_fashion_form_stitch_rel_user","fashion.form.stitch.rel","model_fashion_form_stitch_rel","base.group_user",1,1,1,1
 "access_fashion_form_user","fashion.form","model_fashion_form","base.group_user",1,1,1,1
+"access_fashion_form_photo_user","fashion.form.photo","model_fashion_form_photo","base.group_user",1,1,1,1
 "access_fashion_measure_rel_user","fashion.measure.rel","model_fashion_measure_rel","base.group_user",1,1,1,1
 "access_fashion_form_cost_rel_user","fashion.form.cost.rel","model_fashion_form_cost_rel","base.group_user",1,1,1,1
 "access_fashion_form_cost_rel_pricelist_user","fashion.form.cost.rel.pricelist","model_fashion_form_cost_rel_pricelist","base.group_user",1,1,1,1
