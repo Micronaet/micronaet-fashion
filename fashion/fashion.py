@@ -586,6 +586,23 @@ class fashion_form(osv.osv):
     # ------------
     # Button event
     # ------------
+    def kanban_photo_tree(self, cr, uid, ids, context=None):
+        ''' Open kanban view
+        '''    
+        return {
+            'type': 'ir.actions.act_window',
+            'name': _('Kanban Photo'),
+            'view_type': 'form',
+            'view_mode': 'kanban,tree,form',
+            #'res_id': 1,
+            'res_model': 'fashion.form.photo',
+            'view_id': view_id, # False
+            'views': [(False, 'kanban'), (False, 'tree'), (False, 'form')],
+            'domain': [('form_id', '=', ids[0])],
+            'context': context,
+            'target': 'current', # 'new'
+            'nodestroy': False,
+            }
     def import_dropbox_photo(self, cr, uid, ids, context=None):
         ''' Search image in input folder and create image elements
         '''
@@ -596,7 +613,7 @@ class fashion_form(osv.osv):
         pathin = os.path.expanduser(photo_pool._pathin)
         extension = photo_pool._extension
         for f in os.listdir(pathin):
-            if extension != f[-len(estension):]:
+            if extension != f[-len(extension):]:
                 _logger.warning('No correct extension: %s' % f)
                 continue
                 
@@ -2036,7 +2053,7 @@ class fashion_form_photo(osv.osv):
     _order = 'create_date,name'
     
     _path = '~/etl/fashion/photo'
-    _pathin = '~/etl/fashion/photoin'
+    _pathin = '/home/administrator/Dropbox/OpenERP'
     _extension = 'png'
 
     # -------------------------------------------------------------------------

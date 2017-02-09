@@ -703,6 +703,7 @@
                             <page string="Foto">
                                 <group colspan="4" col="4">   
                                     <button name="import_dropbox_photo" string="Import images" type="object" />
+                                    <button name="kanban_photo_tree" string="Photo list" type="object" />
                                     <field name="photo_ids" colspan="4" nolabel="1" context="{'embedded_view': True}" mode="kanban">
                                         <kanban>
                                             <templates>
