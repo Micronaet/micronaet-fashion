@@ -691,7 +691,7 @@
                                     </group>
                                 </group>
                             </page>
-                            <page string="Immagini">
+                            <!--<page string="Immagini">
                                 <group colspan="4" col="4">                                   
                                     <group colspan="2" col='3'>
                                         <button name="modify_draw_image" type="object" string="Modify" context="{'side':'C'}" colspan="1" class="oe_highlight"/>
@@ -699,7 +699,7 @@
                                         <field name="draw_image_c" widget='image' colspan="3" nolabel="1" class="oe_fashion_image_600" />
                                     </group>
                                 </group>
-                            </page>
+                            </page>-->
                             <page string="Foto">
                                 <group colspan="4" col="4">                                   
                                     <field name="photo_ids" colspan="4" nolabel="1" mode="kanban" />
