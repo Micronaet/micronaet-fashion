@@ -2081,8 +2081,9 @@ class fashion_form_photo(osv.osv):
 
     _columns = {
         'name': fields.char('Name', size=64, required=True),
-        'create_date': fields.date('Create date'),        
-        'create_uid': fields.many2one('res.users', 'Create user'),
+        'datetime': fields.date('Create date', readonly=True),        
+        'user_id': fields.many2one('res.users', 'Create user', 
+            readonly=True),
         'note': fields.text('Note'),
         'form_id': fields.many2one('fashion.form', 'Form'),
         'photo': fields.function(_get_photo_image, 
@@ -2091,6 +2092,11 @@ class fashion_form_photo(osv.osv):
             fnct_inv=_set_photo_image, string='Photo', type='binary'),
         }
 
+    _defaults = {
+        'datetime': lambda *a: datetime.now().strftime(
+            DEFAULT_SERVER_DATE_FORMAT),
+        'user_id': lambda s, cr, uid, ctx: uid,
+        }
 class res_partner(osv.osv):
     ''' Extra fields for partner
     '''

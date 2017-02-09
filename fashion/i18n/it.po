@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-26 19:20+0000\n"
-"PO-Revision-Date: 2017-01-26 20:22+0100\n"
+"POT-Creation-Date: 2017-02-09 11:21+0000\n"
+"PO-Revision-Date: 2017-02-09 12:23+0100\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -18,30 +18,14 @@ msgstr ""
 "X-Generator: Poedit 1.6.10\n"
 
 #. module: fashion
-#: selection:fashion.form,col_ref:0
-msgid "col 8"
-msgstr "col 8"
+#: model:ir.actions.act_window,name:fashion.action_fashion_form_fabric_cost_tree
+msgid "Fashion fabric cost"
+msgstr "Costi tessuti"
 
 #. module: fashion
-#: view:fashion.form:0 field:fashion.form.stitch.rel,stitch_id:0
-#: model:ir.model,name:fashion.model_fashion_form_stitch
-msgid "Stitch"
-msgstr "Cuciture"
-
-#. module: fashion
-#: field:fashion.form.partner.rel,mt_fabric:0
-msgid "Mt."
-msgstr "Mt."
-
-#. module: fashion
-#: selection:fashion.form,col_ref:0
-msgid "col 11"
-msgstr "col 11"
-
-#. module: fashion
-#: field:fashion.form.characteristic.rel,stitch_cut_id:0
-msgid "Stitch cut"
-msgstr "Taglio/Cuci"
+#: view:fashion.form:0 view:fashion.form.photo:0
+msgid "Creazione:"
+msgstr "Creazione:"
 
 #. module: fashion
 #: view:fashion.form.fabric:0
@@ -49,58 +33,490 @@ msgid "Load composition"
 msgstr "Carica composizione"
 
 #. module: fashion
-#: model:ir.actions.act_window,name:fashion.action_fashion_form_fabric_composition
-msgid "Fashion composition"
-msgstr "Composizioni"
-
-#. module: fashion
-#: field:fashion.form.fabric,range_final_cost:0
-msgid "Prezzo base"
-msgstr "Prezzo base"
-
-#. module: fashion
 #: field:fashion.form,base_id:0
 msgid "Base form"
 msgstr "Scheda base"
 
 #. module: fashion
-#: view:fashion.form:0 view:fashion.form.accessory:0
-#: view:fashion.form.accessory.pricelist:0
-#: view:fashion.form.characteristic.rel.specific:0 view:fashion.form.fabric:0
-#: view:fashion.form.fabric.composition:0 view:fashion.form.partner.rel:0
-msgid "Group By..."
-msgstr "Raggruppa per..."
+#: view:fashion.form.characteristic.rel.specific:0
+msgid "Characteristic specific"
+msgstr "Caratteristica specifica"
 
 #. module: fashion
-#: help:fashion.article,access_id:0 help:fashion.form,access_id:0
-#: help:fashion.form.accessory,access_id:0
-#: help:fashion.form.accessory.pricelist,access_id:0
-#: help:fashion.form.accessory.rel,access_id:0
-#: help:fashion.form.characteristic,access_id:0
-#: help:fashion.form.characteristic.rel,access_id:0
-#: help:fashion.form.characteristic.rel.specific,access_id:0
-#: help:fashion.form.comment.rel,access_id:0
-#: help:fashion.form.cost,access_id:0 help:fashion.form.cost.rel,access_id:0
-#: help:fashion.form.cost.rel.pricelist,access_id:0
-#: help:fashion.form.fabric,access_id:0 help:fashion.form.measure,access_id:0
-#: help:fashion.form.measure.rel,access_id:0
-#: help:fashion.form.partner.rel,access_id:0
-#: help:fashion.form.stitch,access_id:0
-#: help:fashion.form.stitch.rel,access_id:0
-#: help:fashion.measure.rel,access_id:0 help:fashion.season,access_id:0
-#: help:res.partner,access_id:0
-msgid "ID Importazione che tiene il link"
-msgstr "ID Importazione che tiene il link"
+#: view:res.partner.unique.name.wizard:0
+msgid "Doppioni"
+msgstr "Doppioni"
+
+#. module: fashion
+#: field:fashion.form,sum_accessory:0
+msgid "Total accessory"
+msgstr "Totale accessori"
+
+#. module: fashion
+#: view:fashion.form:0
+msgid "Fabric cost list"
+msgstr "Lista costi tessuto"
+
+#. module: fashion
+#: field:fashion.form.accessory.rel,quantity:0
+msgid "Quantity"
+msgstr "Quantità"
+
+#. module: fashion
+#: help:fashion.form,model_for_cost:0
+msgid "Indicates that this form is use for create a pricelist elements"
+msgstr ""
+"Indica che questa scheda è utilizzata per creare il prezzo di listino di "
+"riferimento"
+
+#. module: fashion
+#: view:fashion.form:0
+msgid "Refresh"
+msgstr "Ricarica"
+
+#. module: fashion
+#: view:fashion.form:0
+msgid "Colore"
+msgstr "Colore"
+
+#. module: fashion
+#: model:ir.actions.act_window,name:fashion.action_fashion_season
+msgid "Fashion season"
+msgstr "Stagione"
+
+#. module: fashion
+#: field:fashion.form.comment.rel,reference:0
+#: field:fashion.form.cost.rel.pricelist,reference:0
+msgid "Reference"
+msgstr "Riferimento"
+
+#. module: fashion
+#: view:fashion.form:0
+msgid "Cliente:"
+msgstr "Cliente:"
+
+#. module: fashion
+#: help:fashion.form,product_id:0
+msgid "Inherits value for link form to a product"
+msgstr "Eredita il valore dalla scheda al prodotto"
+
+#. module: fashion
+#: view:fashion.form:0 view:fashion.form.partner.rel:0
+#: field:fashion.form.partner.rel,partner_id:0
+#: model:ir.model,name:fashion.model_res_partner
+#: model:ir.ui.menu,name:fashion.menu_res_partner
+msgid "Partner"
+msgstr "Cliente"
+
+#. module: fashion
+#: model:ir.ui.menu,name:fashion.menu_fashion_terminology
+msgid "Car. terms"
+msgstr "Termini caratt."
+
+#. module: fashion
+#: model:ir.ui.menu,name:fashion.menu_fashion_form_form_client
+msgid "Form with client"
+msgstr "Scheda con clienti"
+
+#. module: fashion
+#: model:ir.actions.act_window,name:fashion.action_fashion_form_characteristic_rel_specific
+msgid "Caracteristic terms"
+msgstr "Termini caratteristiche"
+
+#. module: fashion
+#: field:fashion.form.accessory.pricelist,um:0
+#: field:fashion.form.accessory.rel,um:0 field:fashion.form.fabric,um:0
+msgid "U.M."
+msgstr "U.M."
+
+#. module: fashion
+#: view:fashion.form:0 field:fashion.form,state:0
+msgid "State"
+msgstr "Stato"
+
+#. module: fashion
+#: view:fashion.form:0
+msgid "Old seamns"
+msgstr "Cuciture (vecchio)"
+
+#. module: fashion
+#: model:ir.actions.act_window,name:fashion.action_res_partner
+msgid "Customer and Supplier"
+msgstr "Clienti e fornitori"
+
+#. module: fashion
+#: view:fashion.form:0 view:fashion.form.accessory:0
+#: field:fashion.form.accessory.rel,form_id:0
+#: field:fashion.form.characteristic.rel,form_id:0
+#: field:fashion.form.comment.rel,form_id:0
+#: field:fashion.form.cost.rel,form_id:0 view:fashion.form.fabric:0
+#: view:fashion.form.fabric.composition:0
+#: field:fashion.form.measure.rel,form_id:0 view:fashion.form.partner.rel:0
+#: field:fashion.form.partner.rel,form_id:0 field:fashion.form.photo,form_id:0
+#: field:fashion.form.stitch.rel,form_id:0
+#: field:fashion.report.wizard,form_id:0
+#: model:ir.ui.menu,name:fashion.menu_fashion_form
+#: model:ir.ui.menu,name:fashion.menu_fashion_form_form
+msgid "Form"
+msgstr "Scheda"
+
+#. module: fashion
+#: field:fashion.form.measure.rel,size_3:0
+msgid "[Size 3]"
+msgstr "[Tg.3]"
+
+#. module: fashion
+#: field:fashion.form.fabric,code:0
+msgid "Articolo"
+msgstr "Articolo"
+
+#. module: fashion
+#: view:fashion.form:0
+msgid "Stich cut"
+msgstr "Taglio/Cuci"
+
+#. module: fashion
+#: field:fashion.form,cut:0
+msgid "Size n."
+msgstr "Misura n."
+
+#. module: fashion
+#: field:fashion.form.accessory.rel,gerber_h:0
+msgid "Gerber height"
+msgstr "Altezza (Gerber)"
+
+#. module: fashion
+#: field:fashion.article,fashion_measure_ids:0 view:fashion.form:0
+#: view:fashion.form.measure:0 field:fashion.form.measure.rel,measure_id:0
+#: field:fashion.measure.rel,measure_id:0
+#: model:ir.model,name:fashion.model_fashion_form_measure
+#: model:ir.ui.menu,name:fashion.menu_fashion_configuration_measure
+msgid "Measure"
+msgstr "Misura"
+
+#. module: fashion
+#: view:fashion.form:0
+msgid "Codice cliente:"
+msgstr "Codice cliente:"
+
+#. module: fashion
+#: help:fashion.form.fabric,test:0
+msgid "This fabric is used for a model testing, maybe it won't be produced!"
+msgstr ""
+"Questo tessuto è utilizzato per un modello in prova, può anche non essere "
+"poi prodotto!"
+
+#. module: fashion
+#: field:fashion.form,comment_rel_ids:0
+msgid "Comment Relation"
+msgstr "Relazione commenti"
+
+#. module: fashion
+#: field:fashion.form,col_ref:0
+msgid "Column reference"
+msgstr "Colonna di riferimento"
+
+#. module: fashion
+#: view:fashion.form:0 field:fashion.form.comment.rel,name:0
+msgid "Changes"
+msgstr "Cambiamenti"
+
+#. module: fashion
+#: field:fashion.form.characteristic.rel,stitch_top_type_id:0
+msgid "Stitch top type"
+msgstr "Tipo impuntura"
+
+#. module: fashion
+#: field:fashion.form.accessory.rel,tot_cost:0
+#: field:fashion.form.partner.rel,total_cost:0
+msgid "Total cost"
+msgstr "Costo totale"
+
+#. module: fashion
+#: help:res.partner.unique.name.wizard,partner_id:0
+msgid "Keep this partner"
+msgstr "Conserva questo partner"
+
+#. module: fashion
+#: view:fashion.force.fabric:0
+msgid "Washing replaced"
+msgstr "Simboli di lavaggio rimpiazzati:"
+
+#. module: fashion
+#: help:fashion.form,size_base:0
+msgid "Basic size reference, ex:42"
+msgstr "Taglia base di riferimento, es:42"
+
+#. module: fashion
+#: view:fashion.form:0 field:fashion.form,customer_code:0
+#: view:fashion.form.partner.rel:0
+msgid "Customer code"
+msgstr "Codice cliente"
+
+#. module: fashion
+#: field:fashion.form.partner.rel,perc_reload:0
+msgid "Reloading percentage"
+msgstr "% Ricarico"
+
+#. module: fashion
+#: model:res.groups,comment:fashion.group_fashion_admin
+msgid "User that can see the configuration form."
+msgstr "Utente che può vedere la parte di configurazione."
+
+#. module: fashion
+#: view:fashion.form:0
+msgid "total"
+msgstr "total"
+
+#. module: fashion
+#: field:fashion.form.fabric,preferred_fabric:0
+msgid "Preferred fabric"
+msgstr "Tessuto preferito"
+
+#. module: fashion
+#: model:ir.ui.menu,name:fashion.menu_fashion_form_inactive_form
+msgid "Inactive form"
+msgstr "Schede non attive"
+
+#. module: fashion
+#: model:ir.ui.menu,name:fashion.menu_fashion_configuration_fabric_cost_tree
+msgid "Fabric cost"
+msgstr "Costo tessuto"
+
+#. module: fashion
+#: model:ir.model,name:fashion.model_fashion_form_photo
+msgid "Fashion photo"
+msgstr "Foto schede"
+
+#. module: fashion
+#: field:fashion.form.cost,default:0
+msgid "Default"
+msgstr "Predefinito"
+
+#. module: fashion
+#: field:fashion.report.wizard,summary:0
+msgid "Summary"
+msgstr "Riepilogo"
+
+#. module: fashion
+#: model:res.groups,name:fashion.group_fashion_user
+msgid "Fashion user"
+msgstr "Utente"
+
+#. module: fashion
+#: view:fashion.form:0
+msgid "Add colors to be cut..."
+msgstr "Aggiungi colori da tagliare..."
+
+#. module: fashion
+#: field:fashion.form.partner.rel,retail:0
+msgid "Retail"
+msgstr "Dettaglio"
+
+#. module: fashion
+#: help:fashion.form,draw_image_a_small:0
+msgid ""
+"Small-sized image of the product. It is automaticallyresized as a 128px "
+"large image, with aspect ratio preserved.Use this field anywhere a small "
+"image is required."
+msgstr ""
+"Small-sized image of the product. It is automaticallyresized as a 128px "
+"large image, with aspect ratio preserved.Use this field anywhere a small "
+"image is required."
+
+#. module: fashion
+#: view:fashion.form:0
+msgid "[A]"
+msgstr "[A]"
+
+#. module: fashion
+#: field:fashion.form.partner.rel,gerber_h:0
+msgid "Height"
+msgstr "Altezza"
+
+#. module: fashion
+#: field:fashion.form.measure.rel,header:0
+msgid "Header"
+msgstr "Intestazione"
+
+#. module: fashion
+#: view:fashion.extract.cost.xls:0
+msgid "Extract"
+msgstr "Estrai"
+
+#. module: fashion
+#: help:fashion.form,sum_extra_cost:0
+msgid "Sum of accessory cost and cost list (no fabric in this total)"
+msgstr "Somma costi accessori e costi lista (il tessuto è escluso dal totale)"
+
+#. module: fashion
+#: view:fashion.form.partner.rel:0 field:fashion.form.partner.rel,group_id:0
+#: field:res.partner,group_id:0
+msgid "Partner group"
+msgstr "Partner group"
+
+#. module: fashion
+#: view:res.partner.unique.name.wizard:0
+msgid "Wizard"
+msgstr "Wizard"
+
+#. module: fashion
+#: view:fashion.form:0
+msgid "Production info"
+msgstr "Info produzione"
+
+#. module: fashion
+#: field:fashion.form,model_customer:0
+#: field:fashion.form.partner.rel,model_customer:0
+msgid "Sigla cliente"
+msgstr "Sigla cliente"
+
+#. module: fashion
+#: view:fashion.form.fabric.composition:0
+#: field:fashion.form.partner.rel,perc_fabric:0
+#: model:ir.ui.menu,name:fashion.menu_fashion_configuration_fabric_composition
+msgid "Composition"
+msgstr "Composizione"
+
+#. module: fashion
+#: field:fashion.form.partner.rel,note_fabric:0
+msgid "Fabric note"
+msgstr "Note tessuto"
+
+#. module: fashion
+#: view:fashion.form.characteristic.rel.specific:0
+msgid "Terms"
+msgstr "Termini"
+
+#. module: fashion
+#: view:fashion.form:0
+msgid "Vuoi veramente CANCELLARE l'immagine inserita?"
+msgstr "Vuoi veramente eliminare l'immagine inserita?"
+
+#. module: fashion
+#: help:fashion.form.partner.rel,cost:0
+msgid "Unit price for fabric"
+msgstr "Prezzo unitario per tessuto"
+
+#. module: fashion
+#: selection:fashion.form,col_ref:0
+msgid "col 9"
+msgstr "col 9"
+
+#. module: fashion
+#: selection:fashion.form,col_ref:0
+msgid "col 8"
+msgstr "col 8"
+
+#. module: fashion
+#: selection:fashion.form,col_ref:0
+msgid "col 3"
+msgstr "col 3"
+
+#. module: fashion
+#: selection:fashion.form,col_ref:0
+msgid "col 2"
+msgstr "col 2"
+
+#. module: fashion
+#: selection:fashion.form,col_ref:0
+msgid "col 1"
+msgstr "col 1"
+
+#. module: fashion
+#: selection:fashion.form,col_ref:0
+msgid "col 7"
+msgstr "col 7"
+
+#. module: fashion
+#: selection:fashion.form,col_ref:0
+msgid "col 6"
+msgstr "col 6"
+
+#. module: fashion
+#: selection:fashion.form,col_ref:0
+msgid "col 5"
+msgstr "col 5"
+
+#. module: fashion
+#: selection:fashion.form,col_ref:0
+msgid "col 4"
+msgstr "col 4"
+
+#. module: fashion
+#: model:ir.ui.menu,name:fashion.menu_fashion_form_form_cost
+msgid "Form for cost"
+msgstr "Scheda costi"
+
+#. module: fashion
+#: model:ir.actions.act_window,name:fashion.action_fashion_form_fabric
+msgid "Fashion fabric"
+msgstr "Tessuto"
+
+#. module: fashion
+#: model:ir.module.category,description:fashion.module_fashion
+msgid "Manage fashion groups."
+msgstr "Gestisci gruppi amministrazione."
+
+#. module: fashion
+#: model:ir.model,name:fashion.model_fashion_form_characteristic_rel_specific
+msgid "Specific"
+msgstr "Specifica"
+
+#. module: fashion
+#: help:fashion.season,code:0
+msgid "Code used in fabric for join in the name"
+msgstr "Codice utilizzato nel tessuto per collegarlo nel nome"
+
+#. module: fashion
+#: model:res.groups,comment:fashion.group_fashion_production
+msgid "User that can see production."
+msgstr "Utente che può vedere la produzione"
+
+#. module: fashion
+#: view:fashion.form:0
+msgid "Ok for Production"
+msgstr "OK produrre"
+
+#. module: fashion
+#: field:fashion.form,model:0
+msgid "Model"
+msgstr "Modello"
+
+#. module: fashion
+#: field:fashion.form.accessory.rel,gerber_l:0
+msgid "Gerber length"
+msgstr "Lunghezza (Gerber)"
+
+#. module: fashion
+#: help:fashion.form,base_id:0
+msgid "Duplicated from"
+msgstr "Scheda duplicata"
+
+#. module: fashion
+#: model:ir.actions.act_window,name:fashion.action_report_wizard_duplication
+msgid "Print report"
+msgstr "Stampa report"
+
+#. module: fashion
+#: view:fashion.form.stitch:0
+msgid "Seam"
+msgstr "Cucitura"
+
+#. module: fashion
+#: field:fashion.report.wizard,type:0
+msgid "Type of report"
+msgstr "Tipo di report"
+
+#. module: fashion
+#: view:fashion.form.fabric:0
+msgid "Show form wash changed "
+msgstr "Schede con lavaggi cambiati:"
 
 #. module: fashion
 #: field:fashion.form.accessory.pricelist,extra_info:0
 msgid "Extra info"
 msgstr "Info extra"
-
-#. module: fashion
-#: view:fashion.form.characteristic.rel.specific:0
-msgid "Characteristic specific"
-msgstr "Caratteristica specifica"
 
 #. module: fashion
 #: model:ir.actions.act_window,name:fashion.action_fashion_duplication
@@ -117,20 +533,9 @@ msgid "Supplier"
 msgstr "Fornitore"
 
 #. module: fashion
-#: selection:fashion.report.wizard,type:0
-msgid "Riscontro"
-msgstr "Riscontro"
-
-#. module: fashion
 #: field:fashion.form.comment.rel,print_invisible:0
 msgid "Print invisible"
 msgstr "Print invisible"
-
-#. module: fashion
-#: view:fashion.form:0
-#: model:ir.ui.menu,name:fashion.menu_fashion_configuration_characteristic
-msgid "Seams"
-msgstr "Cuciture"
 
 #. module: fashion
 #: field:fashion.form.fabric,supplier_id:0
@@ -138,49 +543,9 @@ msgid "Fabric Supplier"
 msgstr "Tessuto fornitore"
 
 #. module: fashion
-#: model:ir.actions.act_window,name:fashion.action_fashion_season_obsolete
-msgid "Fashion season obsolete"
-msgstr "Stagione obsoleta"
-
-#. module: fashion
-#: view:fashion.form:0
-msgid "Cost list"
-msgstr "Lista costi"
-
-#. module: fashion
-#: view:fashion.form:0
-msgid "[C]"
-msgstr "[C]"
-
-#. module: fashion
-#: selection:fashion.form,col_ref:0
-msgid "col 10"
-msgstr "col 10"
-
-#. module: fashion
-#: help:fashion.form,start:0 help:res.partner,start:0
-msgid "Departure for the standardized sizes"
-msgstr "Partenza per le taglie conformate"
-
-#. module: fashion
-#: field:fashion.force.fabric,washing:0
-msgid "Controllo sui simboli"
-msgstr "Controllo sui simboli"
-
-#. module: fashion
-#: view:fashion.form:0
-msgid "Measures"
-msgstr "Misure"
-
-#. module: fashion
-#: view:fashion.form:0
-msgid "Modify"
-msgstr "Modifica"
-
-#. module: fashion
-#: view:fashion.form:0
-msgid "Stato:"
-msgstr "Stato:"
+#: field:fashion.form.characteristic.rel,stitch_verse_id:0
+msgid "Stitch verse"
+msgstr "Cucitura inversa"
 
 #. module: fashion
 #: selection:fashion.force.fabric,replace_washing:0
@@ -188,75 +553,9 @@ msgid "Forza tutti"
 msgstr "Forza tutti"
 
 #. module: fashion
-#: help:fashion.form,obsolete:0
-msgid "Indicates that the form is old"
-msgstr "Indica che la scheda è nel formato vecchio"
-
-#. module: fashion
-#: view:fashion.form:0
-msgid "Fabric cost list"
-msgstr "Lista costi tessuto"
-
-#. module: fashion
-#: field:fashion.form.fabric,tag:0
-msgid "Cartellino"
-msgstr "Cartellino"
-
-#. module: fashion
-#: model:ir.model,name:fashion.model_fashion_form
-msgid "fashion.form"
-msgstr "Schede modelli"
-
-#. module: fashion
-#: selection:fashion.form,col_ref:0
-msgid "col 3"
-msgstr "col 3"
-
-#. module: fashion
-#: help:fashion.form,draw_image_a_small:0
-msgid ""
-"Small-sized image of the product. It is automaticallyresized as a 128px "
-"large image, with aspect ratio preserved.Use this field anywhere a small "
-"image is required."
-msgstr ""
-"Small-sized image of the product. It is automaticallyresized as a 128px "
-"large image, with aspect ratio preserved.Use this field anywhere a small "
-"image is required."
-
-#. module: fashion
-#: field:fashion.form,review:0
-msgid "Review"
-msgstr "Revisione"
-
-#. module: fashion
-#: view:fashion.form:0
-msgid "Change"
-msgstr "Cambia"
-
-#. module: fashion
-#: model:res.groups,comment:fashion.group_fashion_accounting
-msgid "User that can see cost of the form."
-msgstr "Utente che può vedere i costi scheda."
-
-#. module: fashion
-#: view:fashion.form:0
-msgid "Reset"
-msgstr "Reset"
-
-#. module: fashion
 #: view:fashion.form:0
 msgid "Copy (use reset and paste after)"
 msgstr "Copia (usa reset e dopo incolla)"
-
-#. module: fashion
-#: view:fashion.form:0 field:fashion.form,washing:0
-msgid "Washing"
-msgstr "Lavaggio"
-
-#. module: fashion
-#: field:fashion.form,write_uid:0
-msgid "by User"
-msgstr "Utente"
 
 #. module: fashion
 #: view:fashion.form:0
@@ -264,46 +563,9 @@ msgid "Stagione:"
 msgstr "Stagione:"
 
 #. module: fashion
-#: help:fashion.form,model_for_cost:0
-msgid "Indicates that this form is use for create a pricelist elements"
-msgstr ""
-"Indica che questa scheda è utilizzata per creare il prezzo di listino di "
-"riferimento"
-
-#. module: fashion
-#: view:fashion.form:0
-msgid "Refresh"
-msgstr "Ricarica"
-
-#. module: fashion
-#: field:fashion.form.characteristic.rel,stitch_verse_id:0
-msgid "Stitch verse"
-msgstr "Cucitura inversa"
-
-#. module: fashion
-#: view:fashion.form:0 selection:fashion.form,state:0
-msgid "Discarded"
-msgstr "Scartato"
-
-#. module: fashion
-#: field:fashion.form.characteristic.rel,bindello:0
-msgid "Bindello"
-msgstr "Bindello"
-
-#. module: fashion
-#: field:fashion.form.partner.rel,gerber_l:0
-msgid "Length"
-msgstr "Lunghezza"
-
-#. module: fashion
 #: field:fashion.form,detail_partner:0
 msgid "Detail partner"
 msgstr "Dettaglio partner"
-
-#. module: fashion
-#: model:ir.model,name:fashion.model_fashion_report_wizard
-msgid "Report wizard"
-msgstr "Wizard report"
 
 #. module: fashion
 #: model:ir.actions.act_window,name:fashion.action_fashion_extract_cost_xls
@@ -312,74 +574,9 @@ msgid "Extract supplier cost XLS"
 msgstr "Esporta costi fornitore XLS"
 
 #. module: fashion
-#: field:fashion.form,sum_extra_cost:0
-msgid "Total extra cost"
-msgstr "Totale costi"
-
-#. module: fashion
 #: view:fashion.form:0
 msgid "Articolo:"
 msgstr "Articolo:"
-
-#. module: fashion
-#: view:fashion.force.fabric:0
-msgid "Force"
-msgstr "Forza"
-
-#. module: fashion
-#: selection:fashion.form,col_ref:0
-msgid "col 7"
-msgstr "col 7"
-
-#. module: fashion
-#: field:fashion.form.accessory.pricelist,um:0
-#: field:fashion.form.accessory.rel,um:0 field:fashion.form.fabric,um:0
-msgid "U.M."
-msgstr "U.M."
-
-#. module: fashion
-#: model:ir.actions.act_window,name:fashion.action_fashion_season
-msgid "Fashion season"
-msgstr "Stagione"
-
-#. module: fashion
-#: field:fashion.report.wizard,total:0
-msgid "Total"
-msgstr "Totale"
-
-#. module: fashion
-#: view:fashion.article:0 field:fashion.article,note:0 view:fashion.form:0
-#: view:fashion.form.accessory:0 field:fashion.form.accessory,note:0
-#: field:fashion.form.accessory.pricelist,note:0
-#: view:fashion.form.characteristic:0 field:fashion.form.characteristic,note:0
-#: view:fashion.form.cost:0 field:fashion.form.cost,note:0
-#: field:fashion.form.cost.rel,note:0
-#: field:fashion.form.cost.rel.pricelist,note:0
-#: field:fashion.form.fabric,note:0
-#: field:fashion.form.fabric.composition,note:0 view:fashion.form.measure:0
-#: field:fashion.form.measure,note:0 field:fashion.form.partner.rel,note:0
-#: view:fashion.form.stitch:0 field:fashion.form.stitch,note:0
-#: view:fashion.season:0 field:fashion.season,note:0
-msgid "Note"
-msgstr "Note"
-
-#. module: fashion
-#: model:ir.module.category,name:fashion.module_fashion
-#: model:ir.ui.menu,name:fashion.menu_fashion_root
-msgid "Fashion"
-msgstr "Moda"
-
-#. module: fashion
-#: field:fashion.form.comment.rel,reference:0
-#: field:fashion.form.cost.rel.pricelist,reference:0
-msgid "Reference"
-msgstr "Lanciato"
-
-#. module: fashion
-#: view:fashion.form.accessory.pricelist:0
-#: model:ir.model,name:fashion.model_fashion_form_accessory_pricelist
-msgid "Accessory pricelist"
-msgstr "Listino accessori"
 
 #. module: fashion
 #: model:ir.ui.menu,name:fashion.menu_fashion_configuration_season_obsolete
@@ -387,73 +584,9 @@ msgid "Season obsolete"
 msgstr "Stagione obsoleta"
 
 #. module: fashion
-#: field:fashion.form,measure_rel_ids:0
-msgid "Measure Relation"
-msgstr "Misure"
-
-#. module: fashion
-#: help:fashion.form,product_id:0
-msgid "Inherits value for link form to a product"
-msgstr "Eredita il valore dalla scheda al prodotto"
-
-#. module: fashion
-#: view:fashion.form:0 field:fashion.form,draw_image_c:0
-#: field:fashion.form,draw_image_d:0
-msgid "Photo"
-msgstr "Foto"
-
-#. module: fashion
 #: view:fashion.form:0
 msgid "Accessories"
 msgstr "Accessori"
-
-#. module: fashion
-#: selection:fashion.form,col_ref:0
-msgid "col 6"
-msgstr "col 6"
-
-#. module: fashion
-#: field:fashion.form,reactivate:0
-msgid "Not Obsolete"
-msgstr "Non obsoleto"
-
-#. module: fashion
-#: field:fashion.form.measure.rel,size_10:0
-msgid "Size 10"
-msgstr "Tg.10"
-
-#. module: fashion
-#: field:fashion.form,characteristic_rel_ids:0
-msgid "Characteristic Relation"
-msgstr "Caratteristiche"
-
-#. module: fashion
-#: field:fashion.form.measure.rel,size_12:0
-msgid "Size 12"
-msgstr "Tg.12"
-
-#. module: fashion
-#: model:ir.actions.act_window,name:fashion.action_fashion_form_partner_rel
-msgid "Fashion partner"
-msgstr "Cliente"
-
-#. module: fashion
-#: field:fashion.form,model_revision:0
-#: field:fashion.form.partner.rel,model_revision:0
-#: field:fashion.form.partner.rel,review:0
-msgid "Revisione"
-msgstr "Revisione"
-
-#. module: fashion
-#: field:fashion.report.wizard,type:0
-msgid "Type of report"
-msgstr "Tipo di report"
-
-#. module: fashion
-#: model:ir.actions.act_window,name:fashion.action_fashion_force_fabric
-#: model:ir.model,name:fashion.model_fashion_force_fabric
-msgid "Force fabric"
-msgstr "Forza cambio"
 
 #. module: fashion
 #: field:fashion.form,model_number:0
@@ -462,35 +595,9 @@ msgid "Numero modello"
 msgstr "Numero modello"
 
 #. module: fashion
-#: model:ir.ui.menu,name:fashion.menu_fashion_terminology
-msgid "Car. terms"
-msgstr "Termini caratt."
-
-#. module: fashion
-#: model:ir.actions.act_window,name:fashion.act_window_wizard_report_form
-msgid "Form Report"
-msgstr "Report scheda"
-
-#. module: fashion
-#: selection:fashion.form,state:0
-msgid "Ok production"
-msgstr "OK produrre"
-
-#. module: fashion
-#: field:fashion.form.fabric,symbol:0
-#: field:fashion.form.fabric.composition,symbol:0
-msgid "Wash symbol"
-msgstr "Simboli di lavaggio"
-
-#. module: fashion
-#: model:res.groups,comment:fashion.group_fashion_production
-msgid "User that can see production."
-msgstr "Utente che può vedere la produzione"
-
-#. module: fashion
-#: view:fashion.form:0
-msgid "Add description of parts for washing..."
-msgstr "Aggiunte descrizione parte per il lavaggio..."
+#: field:fashion.form,old_model:0
+msgid "Old Model"
+msgstr "Modalità vecchia"
 
 #. module: fashion
 #: view:fashion.form:0 field:fashion.form.accessory.rel,fabric_id:0
@@ -503,60 +610,9 @@ msgid "Fabric"
 msgstr "Tessuto"
 
 #. module: fashion
-#: field:fashion.form,area:0
-msgid "Area"
-msgstr "Area"
-
-#. module: fashion
-#: field:fashion.form.measure.rel,size_11:0
-msgid "Size 11"
-msgstr "Tg.11"
-
-#. module: fashion
-#: view:fashion.duplication:0
-msgid "Create"
-msgstr "Crea"
-
-#. module: fashion
 #: view:fashion.form:0
 msgid "Reset Image"
 msgstr "Elimina immagine"
-
-#. module: fashion
-#: model:ir.actions.act_window,name:fashion.action_fashion_form_characteristic_rel_specific
-msgid "Caracteristic terms"
-msgstr "Termini caratteristiche"
-
-#. module: fashion
-#: field:fashion.form.fabric,perc_composition:0
-#: field:fashion.form.fabric.composition,perc_composition:0
-msgid "Percentage composition"
-msgstr "% composizione"
-
-#. module: fashion
-#: selection:fashion.report.wizard,type:0
-msgid "C - Scheda Tecnica"
-msgstr "C - Scheda Tecnica"
-
-#. module: fashion
-#: view:fashion.form:0 field:fashion.form,state:0
-msgid "State"
-msgstr "Stato"
-
-#. module: fashion
-#: view:fashion.form:0
-msgid "Old seamns"
-msgstr "Cuciture (vecchio)"
-
-#. module: fashion
-#: field:fashion.form,show_old_model:0
-msgid "Show old model"
-msgstr "Mostra modalità vecchia"
-
-#. module: fashion
-#: field:fashion.form.partner.rel,sale:0
-msgid "Selling price"
-msgstr "Prezzo di vendita"
 
 #. module: fashion
 #: selection:fashion.force.fabric,replace_washing:0
@@ -582,40 +638,9 @@ msgid "Type"
 msgstr "Tipo"
 
 #. module: fashion
-#: model:ir.actions.act_window,name:fashion.action_res_partner
-msgid "Customer and Supplier"
-msgstr "Clienti e fornitori"
-
-#. module: fashion
-#: view:fashion.form:0 selection:fashion.form,state:0
-msgid "Produced"
-msgstr "Prodotto"
-
-#. module: fashion
-#: field:fashion.form,partner_rel_ids:0
-msgid "Partner Relation"
-msgstr "Clienti"
-
-#. module: fashion
-#: field:fashion.form.accessory.rel,gerber_name:0
-msgid "Gerber name"
-msgstr "Nome (Gerber)"
-
-#. module: fashion
-#: view:fashion.form:0 view:fashion.form.accessory:0
-#: field:fashion.form.accessory.rel,form_id:0
-#: field:fashion.form.characteristic.rel,form_id:0
-#: field:fashion.form.comment.rel,form_id:0
-#: field:fashion.form.cost.rel,form_id:0 view:fashion.form.fabric:0
-#: view:fashion.form.fabric.composition:0
-#: field:fashion.form.measure.rel,form_id:0 view:fashion.form.partner.rel:0
-#: field:fashion.form.partner.rel,form_id:0
-#: field:fashion.form.stitch.rel,form_id:0
-#: field:fashion.report.wizard,form_id:0
-#: model:ir.ui.menu,name:fashion.menu_fashion_form
-#: model:ir.ui.menu,name:fashion.menu_fashion_form_form
-msgid "Form"
-msgstr "Scheda"
+#: field:fashion.duplication,code:0
+msgid "New code"
+msgstr "Nuovo codice"
 
 #. module: fashion
 #: view:fashion.duplication:0 view:fashion.extract.cost.xls:0
@@ -631,44 +656,9 @@ msgid "Season"
 msgstr "Stagione"
 
 #. module: fashion
-#: selection:fashion.report.wizard,type:0
-msgid "A - Scheda Storica"
-msgstr "A - Scheda Storica"
-
-#. module: fashion
-#: field:fashion.form.measure.rel,size_7:0
-msgid "Size 7"
-msgstr "Tg.7"
-
-#. module: fashion
-#: view:fashion.article:0
-msgid "Elements:"
-msgstr "Elementi:"
-
-#. module: fashion
-#: field:fashion.form,size_measure:0
-msgid "Column for feedback"
-msgstr "Colonna per riscontro"
-
-#. module: fashion
-#: view:fashion.form.partner.rel:0
-msgid "Image:"
-msgstr "Immagine:"
-
-#. module: fashion
-#: view:fashion.form:0
-msgid "Summary cost"
-msgstr "Riepilogo costi"
-
-#. module: fashion
-#: model:res.groups,comment:fashion.group_fashion_user
-msgid "User that can only see or consult."
-msgstr "Utente che può solo vedere o consultare"
-
-#. module: fashion
-#: selection:fashion.form,col_ref:0
-msgid "col 12"
-msgstr "col 12"
+#: field:fashion.form.measure.rel,size_13:0
+msgid "Size 13"
+msgstr "Tg.13"
 
 #. module: fashion
 #: view:fashion.report.wizard:0
@@ -697,36 +687,6 @@ msgid "Pricelist"
 msgstr "Listino"
 
 #. module: fashion
-#: model:ir.ui.menu,name:fashion.menu_fashion_configuration
-msgid "Configuration"
-msgstr "Configurazione"
-
-#. module: fashion
-#: view:fashion.form:0
-msgid "Cliente:"
-msgstr "Cliente:"
-
-#. module: fashion
-#: model:res.groups,name:fashion.group_fashion_accounting
-msgid "Fashion accounting"
-msgstr "Contabile"
-
-#. module: fashion
-#: field:fashion.form,cut:0
-msgid "Size n."
-msgstr "Misura n."
-
-#. module: fashion
-#: field:fashion.form.accessory.rel,gerber_h:0
-msgid "Gerber height"
-msgstr "Altezza (Gerber)"
-
-#. module: fashion
-#: field:fashion.force.fabric,name:0
-msgid "Info"
-msgstr "Info"
-
-#. module: fashion
 #: help:fashion.form,draw_image_b:0 help:fashion.form,draw_image_c:0
 #: help:fashion.form,draw_image_d:0
 msgid ""
@@ -737,81 +697,34 @@ msgstr ""
 "form and, in small sizein kanban report views"
 
 #. module: fashion
-#: help:fashion.form,sum_cost:0
-msgid "Sum of costs in the list on the left"
-msgstr "Somma dei costi nella lista qui a sinistra"
-
-#. module: fashion
-#: field:fashion.form.measure.rel,size_13:0
-msgid "Size 13"
-msgstr "Tg.13"
-
-#. module: fashion
 #: view:fashion.force.fabric:0
 msgid "Force fabric wizard"
 msgstr "Forza cambio tessuto"
 
 #. module: fashion
-#: view:fashion.form:0 view:fashion.form.characteristic:0
-#: field:fashion.form.characteristic.rel,characteristic_id:0
-#: model:ir.model,name:fashion.model_fashion_form_characteristic
-msgid "Characteristic"
-msgstr "Caratteristica"
+#: view:res.partner:0
+msgid "Group of partner..."
+msgstr "Gruppo di partner..."
 
 #. module: fashion
-#: view:fashion.form:0
-msgid "Ok Production"
-msgstr "Ok produrre"
+#: selection:fashion.form,col_ref:0
+msgid "col 12"
+msgstr "col 12"
 
 #. module: fashion
-#: view:fashion.form:0
-msgid "Not cost model"
-msgstr "Costi non gestiti"
+#: selection:fashion.form,col_ref:0
+msgid "col 11"
+msgstr "col 11"
 
 #. module: fashion
-#: field:fashion.form.cost.rel,value:0
-#: field:fashion.form.cost.rel.pricelist,value:0
-#: field:fashion.form.partner.rel,value:0
-msgid "Value"
-msgstr "Valore"
+#: selection:fashion.form,col_ref:0
+msgid "col 10"
+msgstr "col 10"
 
 #. module: fashion
-#: view:fashion.form:0
-msgid "Codice cliente:"
-msgstr "Codice cliente:"
-
-#. module: fashion
-#: view:fashion.form:0 view:fashion.season:0
-msgid "Not obsolete"
-msgstr "Non obsoleto"
-
-#. module: fashion
-#: help:fashion.form,sum_accessory:0
-msgid "Sum of the accessory list (see page Accessory for details)"
-msgstr "Somma lista accessori (vedere la pagina accessori per il dettaglio)"
-
-#. module: fashion
-#: field:fashion.form.partner.rel,total_fabric:0
-msgid "Total fabric"
-msgstr "Totale tessuto"
-
-#. module: fashion
-#: field:fashion.form,comment_rel_ids:0
-msgid "Comment Relation"
-msgstr "Relazione commenti"
-
-#. module: fashion
-#: view:fashion.form:0 view:fashion.form.partner.rel:0
-#: field:fashion.form.partner.rel,partner_id:0
-#: model:ir.model,name:fashion.model_res_partner
-#: model:ir.ui.menu,name:fashion.menu_res_partner
-msgid "Partner"
-msgstr "Cliente"
-
-#. module: fashion
-#: field:fashion.form,col_ref:0
-msgid "Column reference"
-msgstr "Colonna di riferimento"
+#: field:fashion.form,draw_image_a_small:0
+msgid "Small-sized image"
+msgstr "Immagine taglio piccolo"
 
 #. module: fashion
 #: help:fashion.form.measure.rel,visible:0
@@ -825,62 +738,428 @@ msgid "Duplication"
 msgstr "Duplicazione"
 
 #. module: fashion
-#: view:fashion.form:0 field:fashion.form.comment.rel,name:0
-msgid "Changes"
-msgstr "Cambiamenti"
-
-#. module: fashion
-#: field:fashion.form.characteristic.rel,stitch_top_type_id:0
-msgid "Stitch top type"
-msgstr "Tipo impuntura"
-
-#. module: fashion
-#: field:fashion.form,product_id:0
-msgid "Product"
-msgstr "Prodotto"
-
-#. module: fashion
-#: field:fashion.form.partner.rel,perc_margin:0
-msgid "Margin percentage"
-msgstr "% Margine"
-
-#. module: fashion
 #: view:fashion.form.fabric:0
 msgid "Show form used"
 msgstr "Schede dove utilizzato"
 
 #. module: fashion
-#: field:fashion.form.cost.rel.pricelist,order:0
-msgid "Order ref."
-msgstr "Rif. ordine"
+#: field:fashion.form,draw_image_c:0 field:fashion.form,draw_image_d:0
+#: field:fashion.form,photo_ids:0 view:fashion.form.photo:0
+#: field:fashion.form.photo,photo:0 field:fashion.form.photo,photo_medium:0
+#: model:ir.actions.act_window,name:fashion.action_fashion_form_photo_form
+msgid "Photo"
+msgstr "Foto"
 
 #. module: fashion
-#: field:fashion.form.fabric,weight:0 field:fashion.form.partner.rel,weight:0
-msgid "Weight"
-msgstr "Peso"
+#: field:fashion.form.measure.rel,visible:0
+msgid "Visible"
+msgstr "Visibile"
 
 #. module: fashion
-#: help:fashion.form.fabric,test:0
-msgid "This fabric is used for a model testing, maybe it won't be produced!"
-msgstr ""
-"Questo tessuto è utilizzato per un modello in prova, può anche non essere "
-"poi prodotto!"
+#: field:fashion.form,write_uid:0
+msgid "by User"
+msgstr "Utente"
+
+#. module: fashion
+#: field:fashion.form.fabric,range_final_cost:0
+msgid "Prezzo base"
+msgstr "Prezzo base"
+
+#. module: fashion
+#: view:fashion.form:0 view:fashion.form.photo:0
+msgid "Utente:"
+msgstr "Utente:"
+
+#. module: fashion
+#: field:fashion.form,review:0
+msgid "Review"
+msgstr "Revisione"
+
+#. module: fashion
+#: model:ir.model,name:fashion.model_fashion_report_wizard
+msgid "Report wizard"
+msgstr "Wizard report"
+
+#. module: fashion
+#: field:fashion.form.partner.rel,corr_fabric:0
+msgid "Additional description"
+msgstr "Descrizione aggiuntiva"
 
 #. module: fashion
 #: view:fashion.form:0
-msgid "Open"
-msgstr "Apri"
+msgid "Stato:"
+msgstr "Stato:"
 
 #. module: fashion
-#: view:fashion.form:0 field:fashion.form.partner.rel,draw_image_a:0
-#: field:fashion.report.wizard,image:0
-msgid "Image"
-msgstr "Immagine"
+#: field:fashion.form,date:0
+#: field:fashion.form.accessory.pricelist,create_date:0
+#: field:fashion.form.comment.rel,date:0
+msgid "Date"
+msgstr "Data"
 
 #. module: fashion
-#: field:fashion.form,old_model:0
-msgid "Old Model"
-msgstr "Modalità vecchia"
+#: model:ir.actions.act_window,name:fashion.action_fashion_form_cost
+msgid "Fashion form cost"
+msgstr "Scheda costi"
+
+#. module: fashion
+#: field:fashion.article,access_id:0 field:fashion.form,access_id:0
+#: field:fashion.form.accessory,access_id:0
+#: field:fashion.form.accessory.pricelist,access_id:0
+#: field:fashion.form.accessory.rel,access_id:0
+#: field:fashion.form.characteristic,access_id:0
+#: field:fashion.form.characteristic.rel,access_id:0
+#: field:fashion.form.characteristic.rel.specific,access_id:0
+#: field:fashion.form.comment.rel,access_id:0
+#: field:fashion.form.cost,access_id:0 field:fashion.form.cost.rel,access_id:0
+#: field:fashion.form.cost.rel.pricelist,access_id:0
+#: field:fashion.form.fabric,access_id:0
+#: field:fashion.form.measure,access_id:0
+#: field:fashion.form.measure.rel,access_id:0
+#: field:fashion.form.partner.rel,access_id:0
+#: field:fashion.form.stitch,access_id:0
+#: field:fashion.form.stitch.rel,access_id:0
+#: field:fashion.measure.rel,access_id:0 field:fashion.season,access_id:0
+#: field:res.partner,access_id:0
+msgid "Access ID"
+msgstr "ID Access"
+
+#. module: fashion
+#: field:fashion.form,mt_lining:0
+msgid "Meters lining"
+msgstr "Metri fodera"
+
+#. module: fashion
+#: model:res.groups,name:fashion.group_fashion_admin
+msgid "Fashion administrator"
+msgstr "Amministratore"
+
+#. module: fashion
+#: view:fashion.form:0
+msgid "Client"
+msgstr "Cliente"
+
+#. module: fashion
+#: model:ir.ui.menu,name:fashion.menu_fashion_configuration_cost_fixed
+msgid "Cost (fixed)"
+msgstr "Costi"
+
+#. module: fashion
+#: field:fashion.form.fabric,perc_composition:0
+#: field:fashion.form.fabric.composition,perc_composition:0
+msgid "Percentage composition"
+msgstr "% composizione"
+
+#. module: fashion
+#: field:fashion.article,code:0 field:fashion.form.accessory.rel,code:0
+#: field:fashion.form.fabric.composition,code:0
+msgid "Code"
+msgstr "Codice"
+
+#. module: fashion
+#: selection:fashion.form,state:0
+msgid "Ok production"
+msgstr "OK produrre"
+
+#. module: fashion
+#: field:fashion.form,detail_fabric:0 field:fashion.form,detail_info_fabric:0
+msgid "Detail fabric"
+msgstr "Dettaglio tessuto"
+
+#. module: fashion
+#: field:fashion.form,sum_cost:0
+msgid "Total cost list"
+msgstr "Totale lista costi"
+
+#. module: fashion
+#: model:res.groups,name:fashion.group_fashion_gerber
+msgid "Fashion Gerber"
+msgstr "Gerber"
+
+#. module: fashion
+#: model:ir.model,name:fashion.model_fashion_form_accessory_rel
+#: model:ir.model,name:fashion.model_fashion_form_characteristic_rel
+#: model:ir.model,name:fashion.model_fashion_form_comment_rel
+#: model:ir.model,name:fashion.model_fashion_form_cost_rel
+#: model:ir.model,name:fashion.model_fashion_form_measure_rel
+#: model:ir.model,name:fashion.model_fashion_form_partner_rel
+#: model:ir.model,name:fashion.model_fashion_form_stitch_rel
+#: model:ir.model,name:fashion.model_fashion_measure_rel
+msgid "Relation"
+msgstr "Relazione"
+
+#. module: fashion
+#: field:fashion.form,stitch_rel_ids:0
+msgid "Stitch Relation"
+msgstr "Cuciture"
+
+#. module: fashion
+#: view:fashion.duplication:0 view:fashion.extract.cost.xls:0
+#: view:fashion.force.fabric:0 view:fashion.report.wizard:0
+#: view:res.partner.unique.name.wizard:0
+msgid "Cancel"
+msgstr "Annulla"
+
+#. module: fashion
+#: field:fashion.form,h_lining:0
+msgid "Height lining"
+msgstr "Altezza fodera"
+
+#. module: fashion
+#: model:ir.actions.act_window,name:fashion.action_fashion_article
+msgid "Fashion article"
+msgstr "Articolo"
+
+#. module: fashion
+#: field:fashion.form.cost.rel.pricelist,current:0
+msgid "Current"
+msgstr "Attuale"
+
+#. module: fashion
+#: field:fashion.form,start:0 field:res.partner,start:0
+msgid "Start size"
+msgstr "Taglia di partenza"
+
+#. module: fashion
+#: view:fashion.form.partner.rel:0
+msgid "Partner group form"
+msgstr "Scheda gruppo partner"
+
+#. module: fashion
+#: field:fashion.form,cost_rel_ids:0
+msgid "Cost Relation"
+msgstr "Costi"
+
+#. module: fashion
+#: field:fashion.article,name:0 field:fashion.form.accessory,name:0
+#: field:fashion.form.characteristic,name:0 field:fashion.form.cost,name:0
+#: field:fashion.form.partner.rel,gerber_name:0
+#: field:fashion.form.photo,name:0 field:fashion.form.stitch,name:0
+#: field:fashion.form.stitch.rel,name:0 field:fashion.season,name:0
+msgid "Name"
+msgstr "Nome"
+
+#. module: fashion
+#: help:fashion.form.comment.rel,reference:0
+msgid "If it is not the user or is an external reference write here the name."
+msgstr ""
+"Se non è un utente oppure si tratta di un riferimento esterno scrivere qui "
+"il nome"
+
+#. module: fashion
+#: field:fashion.form.partner.rel,access_2_id:0
+msgid "Access 2 ID"
+msgstr "Access 2 ID"
+
+#. module: fashion
+#: field:fashion.form.fabric,article_code:0
+msgid "Fabric Article code"
+msgstr "Codice articolo tessuto"
+
+#. module: fashion
+#: field:fashion.form,detail_info_partner:0
+msgid "Detail customer"
+msgstr "Dettaglio cliente"
+
+#. module: fashion
+#: view:fashion.form:0 field:fashion.form,obsolete:0 view:fashion.season:0
+#: field:fashion.season,obsolete:0
+msgid "Obsolete"
+msgstr "Obsoleta"
+
+#. module: fashion
+#: view:fashion.form:0 selection:fashion.form,state:0
+msgid "Sample"
+msgstr "Campione"
+
+#. module: fashion
+#: view:fashion.form:0 field:fashion.form.accessory.pricelist,cost:0
+#: field:fashion.form.accessory.rel,currency:0 view:fashion.form.cost:0
+#: field:fashion.form.cost,cost:0 field:fashion.form.cost.rel,cost_id:0
+#: field:fashion.form.cost.rel.pricelist,cost_rel_id:0
+#: field:fashion.form.fabric,cost:0 field:fashion.form.partner.rel,cost:0
+#: field:fashion.form.partner.rel,cost_id:0
+#: model:ir.model,name:fashion.model_fashion_form_cost
+msgid "Cost"
+msgstr "Costo"
+
+#. module: fashion
+#: field:fashion.form,accessory_rel_ids:0
+msgid "Accessory Relation"
+msgstr "Accessori"
+
+#. module: fashion
+#: view:fashion.form:0 field:fashion.form,ironing:0
+msgid "Ironing"
+msgstr "Stireria"
+
+#. module: fashion
+#: help:fashion.form,review:0
+msgid "Revision of the main model"
+msgstr "Revisione del modello principale"
+
+#. module: fashion
+#: field:fashion.form.characteristic.rel,stitch_top_id:0
+msgid "Stitch top"
+msgstr "Impuntura"
+
+#. module: fashion
+#: view:fashion.form.photo:0
+msgid "Note:"
+msgstr "Note:"
+
+#. module: fashion
+#: view:fashion.form:0 view:fashion.form.accessory:0
+#: view:fashion.form.accessory.pricelist:0
+#: view:fashion.form.characteristic.rel.specific:0 view:fashion.form.fabric:0
+#: view:fashion.form.fabric.composition:0 view:fashion.form.partner.rel:0
+msgid "Group By..."
+msgstr "Raggruppa per..."
+
+#. module: fashion
+#: view:fashion.form:0
+msgid "Foto"
+msgstr "Foto"
+
+#. module: fashion
+#: view:fashion.form:0
+msgid "Cost list"
+msgstr "Lista costi"
+
+#. module: fashion
+#: view:fashion.form:0
+msgid "[B-]"
+msgstr "[B-]"
+
+#. module: fashion
+#: help:fashion.form,start:0 help:res.partner,start:0
+msgid "Departure for the standardized sizes"
+msgstr "Partenza per le taglie conformate"
+
+#. module: fashion
+#: field:fashion.force.fabric,washing:0
+msgid "Controllo sui simboli"
+msgstr "Controllo sui simboli"
+
+#. module: fashion
+#: view:fashion.form:0
+msgid "Measures"
+msgstr "Misure"
+
+#. module: fashion
+#: view:fashion.form:0
+msgid "Modify"
+msgstr "Modifica"
+
+#. module: fashion
+#: field:fashion.form.fabric,tag:0
+msgid "Cartellino"
+msgstr "Cartellino"
+
+#. module: fashion
+#: field:fashion.form.cost.rel,value:0
+#: field:fashion.form.cost.rel.pricelist,value:0
+#: field:fashion.form.partner.rel,value:0
+msgid "Value"
+msgstr "Valore"
+
+#. module: fashion
+#: view:fashion.form:0 selection:fashion.form,state:0
+msgid "Discarded"
+msgstr "Scartato"
+
+#. module: fashion
+#: view:fashion.form.accessory.pricelist:0
+#: model:ir.actions.act_window,name:fashion.action_fashion_form_accessory_pricelist
+#: model:ir.model,name:fashion.model_fashion_form_accessory_pricelist
+#: model:ir.ui.menu,name:fashion.menu_fashion_configuration_accessory_pricelist
+msgid "Accessory pricelist"
+msgstr "Listino accessori"
+
+#. module: fashion
+#: field:fashion.form,model_revision:0
+#: field:fashion.form.partner.rel,model_revision:0
+#: field:fashion.form.partner.rel,review:0
+msgid "Revisione"
+msgstr "Revisione"
+
+#. module: fashion
+#: field:fashion.form.measure.rel,size_11:0
+msgid "Size 11"
+msgstr "Tg.11"
+
+#. module: fashion
+#: field:fashion.form.measure.rel,size_10:0
+msgid "Size 10"
+msgstr "Tg.10"
+
+#. module: fashion
+#: view:fashion.article:0
+msgid "Elements:"
+msgstr "Elementi:"
+
+#. module: fashion
+#: field:fashion.form.measure.rel,size_12:0
+msgid "Size 12"
+msgstr "Tg.12"
+
+#. module: fashion
+#: field:fashion.form.characteristic.rel,lenght:0
+msgid "Lenght"
+msgstr "Lunghezza"
+
+#. module: fashion
+#: view:fashion.form:0
+msgid "Add description of parts for washing..."
+msgstr "Aggiunte descrizione parte per il lavaggio..."
+
+#. module: fashion
+#: field:fashion.form,area:0
+msgid "Area"
+msgstr "Area"
+
+#. module: fashion
+#: view:fashion.duplication:0
+msgid "Create"
+msgstr "Crea"
+
+#. module: fashion
+#: view:fashion.form.fabric:0 field:fashion.form.fabric,test:0
+#: model:ir.actions.act_window,name:fashion.action_fashion_form_fabric_test
+msgid "Test fabric"
+msgstr "Tessuto di prova"
+
+#. module: fashion
+#: field:fashion.force.fabric,name:0
+msgid "Info"
+msgstr "Info"
+
+#. module: fashion
+#: view:fashion.form:0 view:fashion.form.characteristic:0
+#: field:fashion.form.characteristic.rel,characteristic_id:0
+#: model:ir.model,name:fashion.model_fashion_form_characteristic
+msgid "Characteristic"
+msgstr "Caratteristica"
+
+#. module: fashion
+#: view:fashion.form:0 view:fashion.season:0
+msgid "Not obsolete"
+msgstr "Non obsoleto"
+
+#. module: fashion
+#: help:fashion.form,sum_accessory:0
+msgid "Sum of the accessory list (see page Accessory for details)"
+msgstr "Somma lista accessori (vedere la pagina accessori per il dettaglio)"
+
+#. module: fashion
+#: model:res.groups,comment:fashion.group_fashion_user
+msgid "User that can only see or consult."
+msgstr "Utente che può solo vedere o consultare"
+
+#. module: fashion
+#: field:fashion.form.partner.rel,perc_margin:0
+msgid "Margin percentage"
+msgstr "% Margine"
 
 #. module: fashion
 #: field:fashion.form.partner.rel,symbol_fabric:0
@@ -898,67 +1177,20 @@ msgid "Medium-sized image"
 msgstr "Immagine taglio medio"
 
 #. module: fashion
-#: field:fashion.form.fabric,h_fabric:0
-#: field:fashion.form.partner.rel,h_fabric:0
-msgid "H."
-msgstr "H."
-
-#. module: fashion
-#: field:fashion.form,sum_accessory:0
-msgid "Total accessory"
-msgstr "Totale accessori"
-
-#. module: fashion
-#: view:fashion.force.fabric:0
-msgid "Washing replaced"
-msgstr "Simboli di lavaggio rimpiazzati:"
-
-#. module: fashion
-#: field:fashion.form,start:0 field:res.partner,start:0
-msgid "Start size"
-msgstr "Taglia di partenza"
-
-#. module: fashion
 #: model:ir.actions.act_window,name:fashion.action_fashion_form
 #: model:ir.actions.act_window,name:fashion.action_fashion_form_obsolete
 msgid "Fashion form"
 msgstr "Scheda"
 
 #. module: fashion
-#: model:ir.actions.act_window,name:fashion.action_fashion_form_accessory
-msgid "Fashion accessory"
-msgstr "Accessorio"
+#: field:fashion.form,sum_extra_cost:0
+msgid "Total extra cost"
+msgstr "Totale costi"
 
 #. module: fashion
-#: selection:fashion.report.wizard,type:0
-msgid "Lanciato"
-msgstr "Lanciato"
-
-#. module: fashion
-#: help:fashion.form,sum_extra_cost:0
-msgid "Sum of accessory cost and cost list (no fabric in this total)"
-msgstr "Somma costi accessori e costi lista (il tessuto è escluso dal totale)"
-
-#. module: fashion
-#: view:fashion.form:0 field:fashion.form,customer_code:0
-#: view:fashion.form.partner.rel:0
-msgid "Customer code"
-msgstr "Codice cliente"
-
-#. module: fashion
-#: selection:fashion.form.accessory,type:0
-msgid "Cut"
-msgstr "Taglio"
-
-#. module: fashion
-#: view:fashion.form:0
-msgid "Calculate"
-msgstr "Ricalcola"
-
-#. module: fashion
-#: model:ir.module.category,description:fashion.module_fashion
-msgid "Manage fashion groups."
-msgstr "Gestisci gruppi amministrazione."
+#: field:fashion.form.photo,create_uid:0
+msgid "Create user"
+msgstr "Create user"
 
 #. module: fashion
 #: field:fashion.form.accessory,gerber_char:0
@@ -966,9 +1198,9 @@ msgid "Gerber char"
 msgstr "Carattere (Gerber)"
 
 #. module: fashion
-#: model:ir.model,name:fashion.model_fashion_extract_cost_xls
-msgid "Extract Cost XLS"
-msgstr "Extract Cost XLS"
+#: selection:fashion.report.wizard,type:0
+msgid "Lanciato"
+msgstr "Lanciato"
 
 #. module: fashion
 #: model:ir.actions.report.xml,name:fashion.aeroo_fashion_form_B
@@ -996,34 +1228,27 @@ msgid "Indicates that the model uses standardized sizes"
 msgstr "Indica che il modulo usa taglie conformate"
 
 #. module: fashion
-#: field:fashion.form.partner.rel,perc_reload:0
-msgid "Reloading percentage"
-msgstr "% Ricarico"
+#: view:fashion.article:0 field:fashion.article,note:0 view:fashion.form:0
+#: view:fashion.form.accessory:0 field:fashion.form.accessory,note:0
+#: field:fashion.form.accessory.pricelist,note:0
+#: view:fashion.form.characteristic:0 field:fashion.form.characteristic,note:0
+#: view:fashion.form.cost:0 field:fashion.form.cost,note:0
+#: field:fashion.form.cost.rel,note:0
+#: field:fashion.form.cost.rel.pricelist,note:0
+#: field:fashion.form.fabric,note:0
+#: field:fashion.form.fabric.composition,note:0 view:fashion.form.measure:0
+#: field:fashion.form.measure,note:0 field:fashion.form.partner.rel,note:0
+#: view:fashion.form.photo:0 field:fashion.form.photo,note:0
+#: view:fashion.form.stitch:0 field:fashion.form.stitch,note:0
+#: view:fashion.season:0 field:fashion.season,note:0
+#: field:res.partner.unique.name.wizard,partner_note:0
+msgid "Note"
+msgstr "Note"
 
 #. module: fashion
-#: view:fashion.form:0
-msgid "Add description of parts for ironing..."
-msgstr "Descrizione aggiuntiva per stireria..."
-
-#. module: fashion
-#: model:res.groups,comment:fashion.group_fashion_admin
-msgid "User that can see the configuration form."
-msgstr "Utente che può vedere la parte di configurazione."
-
-#. module: fashion
-#: field:fashion.form.measure.rel,size_3:0
-msgid "[Size 3]"
-msgstr "[Tg.3]"
-
-#. module: fashion
-#: model:ir.ui.menu,name:fashion.menu_fashion_form_form_client
-msgid "Form with client"
-msgstr "Scheda con clienti"
-
-#. module: fashion
-#: view:fashion.form:0 selection:fashion.form,state:0
-msgid "Draft"
-msgstr "Bozza"
+#: field:fashion.form.partner.rel,mt_fabric:0
+msgid "Mt."
+msgstr "Mt."
 
 #. module: fashion
 #: field:fashion.form.stitch.rel,topstitch:0
@@ -1031,54 +1256,9 @@ msgid "Topstitching"
 msgstr "Impunture"
 
 #. module: fashion
-#: view:fashion.form:0
-msgid "Stich cut"
-msgstr "Taglio/Cuci"
-
-#. module: fashion
-#: field:fashion.force.fabric,replace_washing:0
-msgid "Modalità forzatura"
-msgstr "Modalità forzatura"
-
-#. module: fashion
-#: view:fashion.form:0
-msgid "total"
-msgstr "total"
-
-#. module: fashion
-#: view:fashion.form:0
-msgid "Empty"
-msgstr "Svuota"
-
-#. module: fashion
-#: field:fashion.form.partner.rel,corr_fabric:0
-msgid "Additional description"
-msgstr "Descrizione aggiuntiva"
-
-#. module: fashion
-#: field:fashion.form.fabric,preferred_fabric:0
-msgid "Preferred fabric"
-msgstr "Tessuto preferito"
-
-#. module: fashion
-#: model:ir.ui.menu,name:fashion.menu_fashion_form_inactive_form
-msgid "Inactive form"
-msgstr "Schede non attive"
-
-#. module: fashion
-#: view:fashion.form:0
-msgid "Normal"
-msgstr "Normale"
-
-#. module: fashion
 #: view:fashion.form:0 field:fashion.form,conformed:0
 msgid "Conformed"
 msgstr "Conformato"
-
-#. module: fashion
-#: selection:fashion.duplication,duplication:0
-msgid "New Form"
-msgstr "Nuova scheda"
 
 #. module: fashion
 #: selection:fashion.form.characteristic.rel.specific,type:0
@@ -1101,11 +1281,6 @@ msgid "Col3"
 msgstr "Col3"
 
 #. module: fashion
-#: view:fashion.form:0
-msgid "Cost model"
-msgstr "Costi gestiti"
-
-#. module: fashion
 #: selection:fashion.form.characteristic.rel.specific,type:0
 msgid "Col1"
 msgstr "Col1"
@@ -1122,69 +1297,9 @@ msgstr ""
 "those sizes. Use this field in form views or some kanban views."
 
 #. module: fashion
-#: field:fashion.form.measure,letter:0
-msgid "Letter"
-msgstr "Sigla"
-
-#. module: fashion
-#: help:fashion.form,area:0
-msgid "Link the table Gerber"
-msgstr "Link con la tabella Gerber"
-
-#. module: fashion
-#: field:fashion.form,date:0
-#: field:fashion.form.accessory.pricelist,create_date:0
-#: field:fashion.form.comment.rel,date:0
-msgid "Date"
-msgstr "Data"
-
-#. module: fashion
-#: field:fashion.form,cost_lining:0
-msgid "Cost lining"
-msgstr "Costo fodera"
-
-#. module: fashion
-#: field:fashion.form.accessory.rel,tot_cost:0
-#: field:fashion.form.partner.rel,total_cost:0
-msgid "Total cost"
-msgstr "Costo totale"
-
-#. module: fashion
-#: model:ir.actions.report.xml,name:fashion.aeroo_fashion_form_A
-msgid "Fashion form A"
-msgstr "Scheda A"
-
-#. module: fashion
-#: selection:fashion.report.wizard,type:0
-msgid "B - Scheda Commerciale"
-msgstr "B - Scheda Commerciale"
-
-#. module: fashion
-#: field:fashion.form,user_id:0 field:fashion.form.comment.rel,user_id:0
-msgid "User"
-msgstr "Utente"
-
-#. module: fashion
-#: field:fashion.article,access_id:0 field:fashion.form,access_id:0
-#: field:fashion.form.accessory,access_id:0
-#: field:fashion.form.accessory.pricelist,access_id:0
-#: field:fashion.form.accessory.rel,access_id:0
-#: field:fashion.form.characteristic,access_id:0
-#: field:fashion.form.characteristic.rel,access_id:0
-#: field:fashion.form.characteristic.rel.specific,access_id:0
-#: field:fashion.form.comment.rel,access_id:0
-#: field:fashion.form.cost,access_id:0 field:fashion.form.cost.rel,access_id:0
-#: field:fashion.form.cost.rel.pricelist,access_id:0
-#: field:fashion.form.fabric,access_id:0
-#: field:fashion.form.measure,access_id:0
-#: field:fashion.form.measure.rel,access_id:0
-#: field:fashion.form.partner.rel,access_id:0
-#: field:fashion.form.stitch,access_id:0
-#: field:fashion.form.stitch.rel,access_id:0
-#: field:fashion.measure.rel,access_id:0 field:fashion.season,access_id:0
-#: field:res.partner,access_id:0
-msgid "Access ID"
-msgstr "ID Access"
+#: field:fashion.form.measure.rel,size_5:0
+msgid "Size 5"
+msgstr "Tg.5"
 
 #. module: fashion
 #: field:fashion.form.measure.rel,size_4:0
@@ -1192,9 +1307,9 @@ msgid "Size 4"
 msgstr "Tg.4"
 
 #. module: fashion
-#: view:fashion.form.partner.rel:0
-msgid "Partner relation"
-msgstr "Clienti"
+#: field:fashion.form.measure.rel,size_7:0
+msgid "Size 7"
+msgstr "Tg.7"
 
 #. module: fashion
 #: field:fashion.form.measure.rel,size_6:0
@@ -1202,39 +1317,22 @@ msgid "Size 6"
 msgstr "Tg.6"
 
 #. module: fashion
-#: field:fashion.form,mt_lining:0
-msgid "Meters lining"
-msgstr "Metri fodera"
+#: field:fashion.form.measure.rel,size_1:0
+msgid "Size 1"
+msgstr "Tg.1"
 
 #. module: fashion
-#: field:fashion.form.partner.rel,retail:0
-msgid "Retail"
-msgstr "Dettaglio"
-
-#. module: fashion
-#: model:res.groups,name:fashion.group_fashion_admin
-msgid "Fashion administrator"
-msgstr "Amministratore"
+#: field:fashion.form.accessory.rel,sequence:0
+#: field:fashion.form.characteristic.rel,sequence:0
+#: field:fashion.form.measure.rel,sequence:0
+#: field:fashion.form.stitch.rel,sequence:0
+msgid "Seq."
+msgstr "Seq."
 
 #. module: fashion
 #: field:fashion.form.measure.rel,size_2:0
 msgid "Size 2"
 msgstr "Tg.2"
-
-#. module: fashion
-#: field:fashion.form.cost,default:0
-msgid "Default"
-msgstr "Predefinito"
-
-#. module: fashion
-#: view:fashion.form:0
-msgid "Production info"
-msgstr "Info produzione"
-
-#. module: fashion
-#: model:ir.actions.act_window,name:fashion.action_fashion_form_measure
-msgid "Fashion measure"
-msgstr "Misura"
 
 #. module: fashion
 #: field:fashion.form.measure.rel,size_9:0
@@ -1247,59 +1345,9 @@ msgid "Size 8"
 msgstr "Tg.8"
 
 #. module: fashion
-#: field:fashion.report.wizard,summary:0
-msgid "Summary"
-msgstr "Riepilogo"
-
-#. module: fashion
-#: model:res.groups,name:fashion.group_fashion_user
-msgid "Fashion user"
-msgstr "Utente"
-
-#. module: fashion
-#: help:fashion.form,size_measure:0
-msgid "Size basis for the measurement"
-msgstr "Taglia base di riferimento per la misurazione"
-
-#. module: fashion
-#: view:fashion.form:0
-msgid "Client"
-msgstr "Cliente"
-
-#. module: fashion
-#: view:fashion.form:0
-msgid "Add colors to be cut..."
-msgstr "Aggiungi colori da tagliare..."
-
-#. module: fashion
-#: view:fashion.duplication:0 field:fashion.duplication,error:0
-msgid "Error"
-msgstr "Errore"
-
-#. module: fashion
-#: field:fashion.form.partner.rel,margin_note:0
-msgid "Balance"
-msgstr "Bilancio"
-
-#. module: fashion
-#: model:ir.ui.menu,name:fashion.menu_fashion_configuration_cost_fixed
-msgid "Cost (fixed)"
-msgstr "Costi"
-
-#. module: fashion
-#: field:fashion.form,original:0
-msgid "Original"
-msgstr "Originale"
-
-#. module: fashion
-#: field:fashion.form.accessory.rel,quantity:0
-msgid "Quantity"
-msgstr "Quantità"
-
-#. module: fashion
-#: view:fashion.form:0
-msgid "reset"
-msgstr "reset"
+#: model:ir.model,name:fashion.model_fashion_form
+msgid "fashion.form"
+msgstr "Schede modelli"
 
 #. module: fashion
 #: model:ir.actions.act_window,name:fashion.action_fashion_form_stitch
@@ -1312,57 +1360,9 @@ msgid "Date of revision"
 msgstr "Data di revisione"
 
 #. module: fashion
-#: field:fashion.article,code:0 field:fashion.form.accessory.rel,code:0
-#: field:fashion.form.fabric,code:0
-#: field:fashion.form.fabric.composition,code:0
-msgid "Code"
-msgstr "Codice"
-
-#. module: fashion
-#: view:fashion.form:0
-msgid "Colore"
-msgstr "Colore"
-
-#. module: fashion
-#: field:fashion.form,model_customer:0
-#: field:fashion.form.partner.rel,model_customer:0
-msgid "Sigla cliente"
-msgstr "Sigla cliente"
-
-#. module: fashion
-#: view:fashion.form:0
-msgid "Type of stitch"
-msgstr "Tipo cucitura"
-
-#. module: fashion
-#: model:ir.actions.act_window,name:fashion.action_fashion_form_cost
-msgid "Fashion form cost"
-msgstr "Scheda costi"
-
-#. module: fashion
-#: field:fashion.form.characteristic.rel,lenght:0
-msgid "Lenght"
-msgstr "Lunghezza"
-
-#. module: fashion
-#: field:fashion.form,detail_fabric:0 field:fashion.form,detail_info_fabric:0
-msgid "Detail fabric"
-msgstr "Dettaglio tessuto"
-
-#. module: fashion
-#: field:fashion.form,sum_cost:0
-msgid "Total cost list"
-msgstr "Totale lista costi"
-
-#. module: fashion
-#: view:fashion.form:0
-msgid "[A]"
-msgstr "[A]"
-
-#. module: fashion
-#: field:fashion.form.partner.rel,gerber_h:0
-msgid "Height"
-msgstr "Altezza"
+#: view:fashion.force.fabric:0
+msgid "Force"
+msgstr "Forza"
 
 #. module: fashion
 #: help:fashion.form.comment.rel,user_id:0
@@ -1370,63 +1370,24 @@ msgid "User that insert comment"
 msgstr "Utente che ha aggiunto il commento"
 
 #. module: fashion
-#: field:fashion.form.measure.rel,header:0
-msgid "Header"
-msgstr "Intestazione"
-
-#. module: fashion
 #: field:fashion.form,colors:0
 msgid "Colors"
 msgstr "Colori"
 
 #. module: fashion
-#: model:res.groups,name:fashion.group_fashion_gerber
-msgid "Fashion Gerber"
-msgstr "Gerber"
+#: field:fashion.form,create_date:0 field:fashion.form.photo,create_date:0
+msgid "Create date"
+msgstr "Data creazione"
 
 #. module: fashion
-#: model:ir.model,name:fashion.model_fashion_form_accessory_rel
-#: model:ir.model,name:fashion.model_fashion_form_characteristic_rel
-#: model:ir.model,name:fashion.model_fashion_form_comment_rel
-#: model:ir.model,name:fashion.model_fashion_form_cost_rel
-#: model:ir.model,name:fashion.model_fashion_form_measure_rel
-#: model:ir.model,name:fashion.model_fashion_form_partner_rel
-#: model:ir.model,name:fashion.model_fashion_form_stitch_rel
-#: model:ir.model,name:fashion.model_fashion_measure_rel
-msgid "Relation"
-msgstr "Relazione"
+#: view:res.partner.unique.name.wizard:0
+msgid "Done"
+msgstr "Done"
 
 #. module: fashion
-#: field:fashion.form,stitch_rel_ids:0
-msgid "Stitch Relation"
-msgstr "Cuciture"
-
-#. module: fashion
-#: view:fashion.form.fabric:0 field:fashion.form.fabric,test:0
-#: model:ir.actions.act_window,name:fashion.action_fashion_form_fabric_test
-#: model:ir.ui.menu,name:fashion.menu_fashion_configuration_fabric_test
-msgid "Test fabric"
-msgstr "Tessuto di prova"
-
-#. module: fashion
-#: field:fashion.article,fashion_measure_ids:0 view:fashion.form:0
-#: view:fashion.form.measure:0 field:fashion.form.measure.rel,measure_id:0
-#: field:fashion.measure.rel,measure_id:0
-#: model:ir.model,name:fashion.model_fashion_form_measure
-#: model:ir.ui.menu,name:fashion.menu_fashion_configuration_measure
-msgid "Measure"
-msgstr "Misura"
-
-#. module: fashion
-#: view:fashion.duplication:0 view:fashion.extract.cost.xls:0
-#: view:fashion.force.fabric:0 view:fashion.report.wizard:0
-msgid "Cancel"
-msgstr "Annulla"
-
-#. module: fashion
-#: field:fashion.form,h_lining:0
-msgid "Height lining"
-msgstr "Altezza fodera"
+#: view:fashion.form:0
+msgid "Not cost model"
+msgstr "Costi non gestiti"
 
 #. module: fashion
 #: field:fashion.form,base_name:0
@@ -1439,14 +1400,9 @@ msgid "ID Importazione che tiene il link con partner costi"
 msgstr "ID Importazione che tiene il link con partner costi"
 
 #. module: fashion
-#: view:fashion.extract.cost.xls:0
-msgid "Extract"
-msgstr "Extract"
-
-#. module: fashion
-#: model:ir.actions.act_window,name:fashion.action_fashion_form_characteristic
-msgid "Fashion characteristic"
-msgstr "Caratteristica"
+#: view:fashion.form:0 view:fashion.form.photo:0
+msgid "Open"
+msgstr "Apri"
 
 #. module: fashion
 #: field:fashion.form,size_base:0
@@ -1454,29 +1410,9 @@ msgid "Size"
 msgstr "Taglia"
 
 #. module: fashion
-#: help:fashion.form,size_base:0
-msgid "Basic size reference, ex:42"
-msgstr "Taglia base di riferimento, es:42"
-
-#. module: fashion
-#: field:fashion.form.measure.rel,size_5:0
-msgid "Size 5"
-msgstr "Tg.5"
-
-#. module: fashion
-#: model:ir.actions.act_window,name:fashion.action_fashion_article
-msgid "Fashion article"
-msgstr "Articolo"
-
-#. module: fashion
-#: view:fashion.form:0
-msgid "Add number of cut-out models..."
-msgstr "Aggiunge il numero di modelli tagliati..."
-
-#. module: fashion
-#: field:fashion.form.characteristic.rel,stitch_type_id:0
-msgid "Stitch type"
-msgstr "Tipo di cucitura"
+#: field:fashion.form.fabric,range_supplier_cost:0
+msgid "Range Costo"
+msgstr "Range Costo"
 
 #. module: fashion
 #: field:fashion.form,draw_image_a:0
@@ -1494,35 +1430,10 @@ msgid "Draw Image B"
 msgstr "Disegno lato B"
 
 #. module: fashion
-#: field:fashion.form.cost.rel.pricelist,current:0
-msgid "Current"
-msgstr "Attuale"
-
-#. module: fashion
 #: field:fashion.form,model_article:0
 #: field:fashion.form.partner.rel,model_article:0
 msgid "Sigla articolo"
 msgstr "Sigla articolo"
-
-#. module: fashion
-#: field:fashion.form,create_date:0
-msgid "Create date"
-msgstr "Data creazione"
-
-#. module: fashion
-#: view:fashion.form.fabric:0
-msgid "Force update"
-msgstr "Forza aggiornamento"
-
-#. module: fashion
-#: model:res.groups,comment:fashion.group_fashion_gerber
-msgid "User that can only see or consult and gerber input."
-msgstr "Utente che può solo vedere i campi Gerber"
-
-#. module: fashion
-#: field:fashion.form.measure.rel,size_1:0
-msgid "Size 1"
-msgstr "Tg.1"
 
 #. module: fashion
 #: field:fashion.report.wizard,partner_fabric_id:0
@@ -1530,102 +1441,19 @@ msgid "Partner Fabric"
 msgstr "Tessuto partner"
 
 #. module: fashion
-#: view:fashion.form.fabric.composition:0
-#: field:fashion.form.partner.rel,perc_fabric:0
-#: model:ir.ui.menu,name:fashion.menu_fashion_configuration_fabric_composition
-msgid "Composition"
-msgstr "Composizione"
+#: model:ir.model,name:fashion.model_res_partner_unique_name_wizard
+msgid "res.partner.unique.name.wizard"
+msgstr "res.partner.unique.name.wizard"
 
 #. module: fashion
-#: field:fashion.form.accessory.rel,sequence:0
-#: field:fashion.form.characteristic.rel,sequence:0
-#: field:fashion.form.measure.rel,sequence:0
-#: field:fashion.form.stitch.rel,sequence:0
-msgid "Seq."
-msgstr "Seq."
-
-#. module: fashion
-#: field:fashion.form.measure.rel,real:0
-msgid "Real"
-msgstr "Riscontrato"
-
-#. module: fashion
-#: view:fashion.form:0 selection:fashion.form,state:0
-msgid "Sample"
-msgstr "Campione"
-
-#. module: fashion
-#: field:fashion.form.partner.rel,code:0
-msgid "Customer Code"
-msgstr "Codice cliente"
-
-#. module: fashion
-#: view:fashion.form.characteristic.rel.specific:0
-msgid "Terms"
-msgstr "Termini"
-
-#. module: fashion
-#: view:fashion.form:0 field:fashion.form.accessory.rel,name:0
-#: field:fashion.form.characteristic.rel,name:0
-#: field:fashion.form.characteristic.rel.specific,name:0
-#: field:fashion.form.measure,name:0 field:fashion.form.measure.rel,name:0
-#: field:fashion.form.partner.rel,article_description:0
-#: field:fashion.form.partner.rel,desc_fabric:0
-#: field:fashion.form.partner.rel,gerber_desc:0
-msgid "Description"
-msgstr "Descrizione"
-
-#. module: fashion
-#: view:fashion.form:0
-msgid "Vuoi veramente CANCELLARE l'immagine inserita?"
-msgstr "Vuoi veramente eliminare l'immagine inserita?"
-
-#. module: fashion
-#: field:fashion.form.measure.rel,visible:0
-msgid "Visible"
-msgstr "Visibile"
-
-#. module: fashion
-#: help:fashion.form.partner.rel,cost:0
-msgid "Unit price for fabric"
-msgstr "Prezzo unitario per tessuto"
-
-#. module: fashion
-#: field:fashion.form,size:0
-msgid "Sizes"
-msgstr "Taglia"
-
-#. module: fashion
-#: view:fashion.form:0
-msgid "Add a generic model that started..."
-msgstr "Aggiunge un modello generico per partire..."
-
-#. module: fashion
-#: view:fashion.form:0 view:fashion.form.accessory:0
-#: selection:fashion.form.accessory,type:0
-#: view:fashion.form.accessory.pricelist:0
-#: field:fashion.form.accessory.pricelist,accessory_id:0
-#: field:fashion.form.accessory.rel,accessory_id:0
-#: field:fashion.report.wizard,accessory_id:0
-#: model:ir.model,name:fashion.model_fashion_form_accessory
-#: model:ir.ui.menu,name:fashion.menu_fashion_configuration_accessory
-msgid "Accessory"
-msgstr "Accessorio"
+#: field:fashion.form,product_id:0
+msgid "Product"
+msgstr "Prodotto"
 
 #. module: fashion
 #: view:fashion.form:0
 msgid "Add sizes achieve..."
 msgstr "Aggiunge taglia..."
-
-#. module: fashion
-#: field:fashion.duplication,code:0
-msgid "New code"
-msgstr "Nuovo codice"
-
-#. module: fashion
-#: selection:fashion.form,col_ref:0
-msgid "col 9"
-msgstr "col 9"
 
 #. module: fashion
 #: view:fashion.form:0 field:fashion.form,model_for_cost:0
@@ -1652,26 +1480,6 @@ msgid "Wholesale"
 msgstr "Ingrosso"
 
 #. module: fashion
-#: field:fashion.form,cost_rel_ids:0
-msgid "Cost Relation"
-msgstr "Costi"
-
-#. module: fashion
-#: selection:fashion.form,col_ref:0
-msgid "col 2"
-msgstr "col 2"
-
-#. module: fashion
-#: selection:fashion.form,col_ref:0
-msgid "col 1"
-msgstr "col 1"
-
-#. module: fashion
-#: field:fashion.form.partner.rel,model:0
-msgid "Modello"
-msgstr "Modello"
-
-#. module: fashion
 #: view:fashion.form:0
 msgid "Paste"
 msgstr "Paste"
@@ -1682,75 +1490,9 @@ msgid "Article code"
 msgstr "Articolo (sigla)"
 
 #. module: fashion
-#: selection:fashion.form,col_ref:0
-msgid "col 5"
-msgstr "col 5"
-
-#. module: fashion
-#: selection:fashion.form,col_ref:0
-msgid "col 4"
-msgstr "col 4"
-
-#. module: fashion
 #: view:fashion.form:0
 msgid "Insert"
 msgstr "Inserisci"
-
-#. module: fashion
-#: model:ir.ui.menu,name:fashion.menu_fashion_form_form_cost
-msgid "Form for cost"
-msgstr "Scheda costi"
-
-#. module: fashion
-#: field:fashion.article,name:0 field:fashion.form.accessory,name:0
-#: field:fashion.form.characteristic,name:0 field:fashion.form.cost,name:0
-#: field:fashion.form.partner.rel,gerber_name:0
-#: field:fashion.form.stitch,name:0 field:fashion.form.stitch.rel,name:0
-#: field:fashion.season,name:0
-msgid "Name"
-msgstr "Nome"
-
-#. module: fashion
-#: model:ir.actions.act_window,name:fashion.action_fashion_form_fabric
-msgid "Fashion fabric"
-msgstr "Tessuto"
-
-#. module: fashion
-#: view:fashion.form.fabric:0
-msgid "Fabric (orange = test)"
-msgstr "Tessuto (arancio = test)"
-
-#. module: fashion
-#: field:fashion.form.partner.rel,note_fabric:0
-msgid "Fabric note"
-msgstr "Note tessuto"
-
-#. module: fashion
-#: help:fashion.form.comment.rel,reference:0
-msgid "If it is not the user or is an external reference write here the name."
-msgstr ""
-"Se non è un utente oppure si tratta di un riferimento esterno scrivere qui "
-"il nome"
-
-#. module: fashion
-#: field:fashion.form.fabric,range_supplier_cost:0
-msgid "Costo"
-msgstr "Costo"
-
-#. module: fashion
-#: model:ir.model,name:fashion.model_fashion_form_characteristic_rel_specific
-msgid "Specific"
-msgstr "Specifica"
-
-#. module: fashion
-#: model:ir.model,name:fashion.model_product_template
-msgid "Product Template"
-msgstr "Modello Prodotto"
-
-#. module: fashion
-#: help:fashion.season,code:0
-msgid "Code used in fabric for join in the name"
-msgstr "Codice utilizzato nel tessuto per collegarlo nel nome"
 
 #. module: fashion
 #: field:fashion.season,code:0
@@ -1763,34 +1505,500 @@ msgid "Date Last modify"
 msgstr "Data ultima modifica"
 
 #. module: fashion
-#: model:res.groups,name:fashion.group_fashion_production
-msgid "Fashion production"
-msgstr "Produzione"
-
-#. module: fashion
-#: field:fashion.form.partner.rel,access_2_id:0
-msgid "Access 2 ID"
-msgstr "Access 2 ID"
-
-#. module: fashion
-#: view:fashion.form:0
-msgid "Ok for Production"
-msgstr "OK produrre"
-
-#. module: fashion
-#: field:fashion.form,model:0
-msgid "Model"
-msgstr "Modello"
-
-#. module: fashion
-#: field:fashion.form.fabric,article_code:0
-msgid "Fabric Article code"
-msgstr "Codice articolo tessuto"
-
-#. module: fashion
 #: field:fashion.form.partner.rel,note_cost:0
 msgid "Cost note"
 msgstr "Note costo"
+
+#. module: fashion
+#: view:fashion.form:0
+msgid "Top stich"
+msgstr "Impuntura"
+
+#. module: fashion
+#: model:res.groups,comment:fashion.group_fashion_accounting
+msgid "User that can see cost of the form."
+msgstr "Utente che può vedere i costi scheda."
+
+#. module: fashion
+#: view:fashion.form:0
+msgid "[C]"
+msgstr "[C]"
+
+#. module: fashion
+#: model:ir.actions.act_window,name:fashion.action_fashion_form_cost_fixed
+msgid "Fashion cost"
+msgstr "Costo"
+
+#. module: fashion
+#: field:fashion.report.wizard,total:0
+msgid "Total"
+msgstr "Totale"
+
+#. module: fashion
+#: view:fashion.form:0 field:fashion.form.stitch.rel,stitch_id:0
+#: model:ir.model,name:fashion.model_fashion_form_stitch
+msgid "Stitch"
+msgstr "Cuciture"
+
+#. module: fashion
+#: field:fashion.form.characteristic.rel,stitch_cut_id:0
+msgid "Stitch cut"
+msgstr "Taglio/Cuci"
+
+#. module: fashion
+#: help:fashion.article,access_id:0 help:fashion.form,access_id:0
+#: help:fashion.form.accessory,access_id:0
+#: help:fashion.form.accessory.pricelist,access_id:0
+#: help:fashion.form.accessory.rel,access_id:0
+#: help:fashion.form.characteristic,access_id:0
+#: help:fashion.form.characteristic.rel,access_id:0
+#: help:fashion.form.characteristic.rel.specific,access_id:0
+#: help:fashion.form.comment.rel,access_id:0
+#: help:fashion.form.cost,access_id:0 help:fashion.form.cost.rel,access_id:0
+#: help:fashion.form.cost.rel.pricelist,access_id:0
+#: help:fashion.form.fabric,access_id:0 help:fashion.form.measure,access_id:0
+#: help:fashion.form.measure.rel,access_id:0
+#: help:fashion.form.partner.rel,access_id:0
+#: help:fashion.form.stitch,access_id:0
+#: help:fashion.form.stitch.rel,access_id:0
+#: help:fashion.measure.rel,access_id:0 help:fashion.season,access_id:0
+#: help:res.partner,access_id:0
+msgid "ID Importazione che tiene il link"
+msgstr "ID Importazione che tiene il link"
+
+#. module: fashion
+#: model:ir.actions.act_window,name:fashion.action_fashion_force_fabric
+#: model:ir.model,name:fashion.model_fashion_force_fabric
+msgid "Force fabric"
+msgstr "Forza cambio"
+
+#. module: fashion
+#: view:fashion.form:0
+#: model:ir.ui.menu,name:fashion.menu_fashion_configuration_characteristic
+msgid "Seams"
+msgstr "Cuciture"
+
+#. module: fashion
+#: model:ir.actions.act_window,name:fashion.action_fashion_season_obsolete
+msgid "Fashion season obsolete"
+msgstr "Stagione obsoleta"
+
+#. module: fashion
+#: help:fashion.form,obsolete:0
+msgid "Indicates that the form is old"
+msgstr "Indica che la scheda è nel formato vecchio"
+
+#. module: fashion
+#: model:ir.model,name:fashion.model_fashion_extract_cost_xls
+msgid "Extract Cost XLS"
+msgstr "Extract Cost XLS"
+
+#. module: fashion
+#: view:fashion.form:0
+msgid "Change"
+msgstr "Cambia"
+
+#. module: fashion
+#: view:fashion.form:0
+msgid "Reset"
+msgstr "Reset"
+
+#. module: fashion
+#: view:fashion.form:0 field:fashion.form,washing:0
+msgid "Washing"
+msgstr "Lavaggio"
+
+#. module: fashion
+#: field:res.partner.unique.name.wizard,partner_id:0
+msgid "Keep this"
+msgstr "Keep this"
+
+#. module: fashion
+#: field:fashion.form.characteristic.rel,bindello:0
+msgid "Bindello"
+msgstr "Bindello"
+
+#. module: fashion
+#: field:fashion.form.partner.rel,gerber_l:0
+msgid "Length"
+msgstr "Lunghezza"
+
+#. module: fashion
+#: view:fashion.form.photo:0
+msgid "Form:"
+msgstr "Form:"
+
+#. module: fashion
+#: model:ir.module.category,name:fashion.module_fashion
+#: model:ir.ui.menu,name:fashion.menu_fashion_root
+msgid "Fashion"
+msgstr "Moda"
+
+#. module: fashion
+#: field:fashion.form,reactivate:0
+msgid "Not Obsolete"
+msgstr "Non obsoleto"
+
+#. module: fashion
+#: field:fashion.form,characteristic_rel_ids:0
+msgid "Characteristic Relation"
+msgstr "Caratteristiche"
+
+#. module: fashion
+#: model:ir.actions.act_window,name:fashion.action_fashion_form_partner_rel
+msgid "Fashion partner"
+msgstr "Cliente"
+
+#. module: fashion
+#: selection:fashion.report.wizard,type:0
+msgid "C - Scheda Tecnica"
+msgstr "C - Scheda Tecnica"
+
+#. module: fashion
+#: field:fashion.form,show_old_model:0
+msgid "Show old model"
+msgstr "Mostra modalità vecchia"
+
+#. module: fashion
+#: field:fashion.form.partner.rel,sale:0
+msgid "Selling price"
+msgstr "Prezzo di vendita"
+
+#. module: fashion
+#: view:fashion.form:0 selection:fashion.form,state:0
+msgid "Produced"
+msgstr "Prodotto"
+
+#. module: fashion
+#: field:fashion.form,partner_rel_ids:0
+msgid "Partner Relation"
+msgstr "Clienti"
+
+#. module: fashion
+#: field:fashion.form.accessory.rel,gerber_name:0
+msgid "Gerber name"
+msgstr "Nome (Gerber)"
+
+#. module: fashion
+#: selection:fashion.report.wizard,type:0
+msgid "A - Scheda Storica"
+msgstr "A - Scheda Storica"
+
+#. module: fashion
+#: field:fashion.form,size_measure:0
+msgid "Column for feedback"
+msgstr "Colonna per riscontro"
+
+#. module: fashion
+#: view:fashion.form.partner.rel:0
+msgid "Image:"
+msgstr "Immagine:"
+
+#. module: fashion
+#: view:fashion.form:0
+msgid "Summary cost"
+msgstr "Riepilogo costi"
+
+#. module: fashion
+#: field:fashion.form.partner.rel,total_fabric:0
+msgid "Total fabric"
+msgstr "Totale tessuto"
+
+#. module: fashion
+#: model:ir.ui.menu,name:fashion.menu_fashion_configuration
+msgid "Configuration"
+msgstr "Configurazione"
+
+#. module: fashion
+#: field:fashion.form,measure_rel_ids:0
+msgid "Measure Relation"
+msgstr "Misure"
+
+#. module: fashion
+#: model:res.groups,name:fashion.group_fashion_accounting
+msgid "Fashion accounting"
+msgstr "Contabile"
+
+#. module: fashion
+#: view:fashion.form:0
+msgid "Ok Production"
+msgstr "Ok produrre"
+
+#. module: fashion
+#: help:fashion.form,sum_cost:0
+msgid "Sum of costs in the list on the left"
+msgstr "Somma dei costi nella lista qui a sinistra"
+
+#. module: fashion
+#: selection:fashion.duplication,duplication:0
+msgid "New Form"
+msgstr "Nuova scheda"
+
+#. module: fashion
+#: field:fashion.form.cost.rel.pricelist,order:0
+msgid "Order ref."
+msgstr "Rif. ordine"
+
+#. module: fashion
+#: field:fashion.form.fabric,weight:0 field:fashion.form.partner.rel,weight:0
+msgid "Weight"
+msgstr "Peso"
+
+#. module: fashion
+#: view:fashion.form:0 field:fashion.form.partner.rel,draw_image_a:0
+#: field:fashion.report.wizard,image:0
+msgid "Image"
+msgstr "Immagine"
+
+#. module: fashion
+#: field:fashion.form.fabric,h_fabric:0
+#: field:fashion.form.partner.rel,h_fabric:0
+msgid "H."
+msgstr "H."
+
+#. module: fashion
+#: model:ir.actions.act_window,name:fashion.action_fashion_form_accessory
+msgid "Fashion accessory"
+msgstr "Accessorio"
+
+#. module: fashion
+#: field:fashion.form.characteristic.rel,old_name:0
+msgid "Old name"
+msgstr "Vecchio nome"
+
+#. module: fashion
+#: selection:fashion.form.accessory,type:0
+msgid "Cut"
+msgstr "Taglio"
+
+#. module: fashion
+#: view:fashion.form:0
+msgid "Calculate"
+msgstr "Ricalcola"
+
+#. module: fashion
+#: model:ir.actions.act_window,name:fashion.action_fashion_form_fabric_composition
+msgid "Fashion composition"
+msgstr "Composizioni"
+
+#. module: fashion
+#: model:ir.actions.act_window,name:fashion.action_res_partner_unique_name_wizard_view
+msgid "Unique partner"
+msgstr "Unique partner"
+
+#. module: fashion
+#: view:fashion.form:0
+msgid "Add description of parts for ironing..."
+msgstr "Descrizione aggiuntiva per stireria..."
+
+#. module: fashion
+#: view:fashion.form:0 selection:fashion.form,state:0
+msgid "Draft"
+msgstr "Bozza"
+
+#. module: fashion
+#: field:fashion.force.fabric,replace_washing:0
+msgid "Modalità forzatura"
+msgstr "Modalità forzatura"
+
+#. module: fashion
+#: view:fashion.form:0
+msgid "Empty"
+msgstr "Svuota"
+
+#. module: fashion
+#: view:fashion.form:0
+msgid "Normal"
+msgstr "Normale"
+
+#. module: fashion
+#: view:fashion.form:0
+msgid "Add number of cut-out models..."
+msgstr "Aggiunge il numero di modelli tagliati..."
+
+#. module: fashion
+#: view:fashion.form:0
+msgid "Cost model"
+msgstr "Costi gestiti"
+
+#. module: fashion
+#: field:fashion.form,user_id:0 field:fashion.form.comment.rel,user_id:0
+msgid "User"
+msgstr "Utente"
+
+#. module: fashion
+#: field:fashion.form.measure,letter:0
+msgid "Letter"
+msgstr "Sigla"
+
+#. module: fashion
+#: help:fashion.form,area:0
+msgid "Link the table Gerber"
+msgstr "Link con la tabella Gerber"
+
+#. module: fashion
+#: field:fashion.form.fabric,symbol:0
+#: field:fashion.form.fabric.composition,symbol:0
+msgid "Wash symbol"
+msgstr "Simboli di lavaggio"
+
+#. module: fashion
+#: field:fashion.form,cost_lining:0
+msgid "Cost lining"
+msgstr "Costo fodera"
+
+#. module: fashion
+#: model:ir.actions.report.xml,name:fashion.aeroo_fashion_form_A
+msgid "Fashion form A"
+msgstr "Scheda A"
+
+#. module: fashion
+#: selection:fashion.report.wizard,type:0
+msgid "B - Scheda Commerciale"
+msgstr "B - Scheda Commerciale"
+
+#. module: fashion
+#: view:fashion.form.partner.rel:0
+msgid "Partner relation"
+msgstr "Clienti"
+
+#. module: fashion
+#: model:ir.actions.act_window,name:fashion.action_fashion_form_measure
+msgid "Fashion measure"
+msgstr "Misura"
+
+#. module: fashion
+#: model:ir.ui.menu,name:fashion.menu_fashion_form_photo_form
+msgid "Form photo"
+msgstr "Form photo"
+
+#. module: fashion
+#: view:fashion.duplication:0 field:fashion.duplication,error:0
+msgid "Error"
+msgstr "Errore"
+
+#. module: fashion
+#: field:fashion.form.partner.rel,margin_note:0
+msgid "Balance"
+msgstr "Bilancio"
+
+#. module: fashion
+#: field:fashion.form,original:0
+msgid "Original"
+msgstr "Originale"
+
+#. module: fashion
+#: view:fashion.form:0
+msgid "reset"
+msgstr "reset"
+
+#. module: fashion
+#: view:fashion.form:0
+msgid "Type of stitch"
+msgstr "Tipo cucitura"
+
+#. module: fashion
+#: model:ir.actions.act_window,name:fashion.action_fashion_form_characteristic
+msgid "Fashion characteristic"
+msgstr "Caratteristica"
+
+#. module: fashion
+#: help:fashion.form,size_measure:0
+msgid "Size basis for the measurement"
+msgstr "Taglia base di riferimento per la misurazione"
+
+#. module: fashion
+#: field:fashion.form.characteristic.rel,stitch_type_id:0
+msgid "Stitch type"
+msgstr "Tipo di cucitura"
+
+#. module: fashion
+#: help:fashion.form,reactivate:0
+msgid "Indicates that the form is not old"
+msgstr "Indica che la scheda non è obsoleta"
+
+#. module: fashion
+#: model:ir.actions.act_window,name:fashion.act_window_wizard_report_form
+msgid "Form Report"
+msgstr "Report scheda"
+
+#. module: fashion
+#: view:fashion.form.fabric:0
+msgid "Force update"
+msgstr "Forza aggiornamento"
+
+#. module: fashion
+#: model:res.groups,comment:fashion.group_fashion_gerber
+msgid "User that can only see or consult and gerber input."
+msgstr "Utente che può solo vedere i campi Gerber"
+
+#. module: fashion
+#: field:fashion.form.measure.rel,real:0
+msgid "Real"
+msgstr "Riscontrato"
+
+#. module: fashion
+#: field:fashion.form.partner.rel,code:0
+msgid "Customer Code"
+msgstr "Codice cliente"
+
+#. module: fashion
+#: view:fashion.form:0 field:fashion.form.accessory.rel,name:0
+#: field:fashion.form.characteristic.rel,name:0
+#: field:fashion.form.characteristic.rel.specific,name:0
+#: field:fashion.form.measure,name:0 field:fashion.form.measure.rel,name:0
+#: field:fashion.form.partner.rel,article_description:0
+#: field:fashion.form.partner.rel,desc_fabric:0
+#: field:fashion.form.partner.rel,gerber_desc:0
+msgid "Description"
+msgstr "Descrizione"
+
+#. module: fashion
+#: view:fashion.form:0
+msgid "[B]"
+msgstr "[B]"
+
+#. module: fashion
+#: field:fashion.form,size:0
+msgid "Sizes"
+msgstr "Taglia"
+
+#. module: fashion
+#: view:fashion.form:0
+msgid "Add a generic model that started..."
+msgstr "Aggiunge un modello generico per partire..."
+
+#. module: fashion
+#: view:fashion.form:0 view:fashion.form.accessory:0
+#: selection:fashion.form.accessory,type:0
+#: view:fashion.form.accessory.pricelist:0
+#: field:fashion.form.accessory.pricelist,accessory_id:0
+#: field:fashion.form.accessory.rel,accessory_id:0
+#: field:fashion.report.wizard,accessory_id:0
+#: model:ir.model,name:fashion.model_fashion_form_accessory
+#: model:ir.ui.menu,name:fashion.menu_fashion_configuration_accessory
+msgid "Accessory"
+msgstr "Accessorio"
+
+#. module: fashion
+#: field:fashion.form.partner.rel,model:0
+msgid "Modello"
+msgstr "Modello"
+
+#. module: fashion
+#: view:res.partner:0
+msgid "Unifica partner"
+msgstr "Unifica partner"
+
+#. module: fashion
+#: model:ir.model,name:fashion.model_product_template
+msgid "Product Template"
+msgstr "Modello Prodotto"
+
+#. module: fashion
+#: model:res.groups,name:fashion.group_fashion_production
+msgid "Fashion production"
+msgstr "Produzione"
 
 #. module: fashion
 #: selection:fashion.duplication,duplication:0
@@ -1801,16 +2009,6 @@ msgstr "Nuova revisione"
 #: field:fashion.form.comment.rel,hide_in_report:0
 msgid "Hide in report"
 msgstr "Nascosto in report"
-
-#. module: fashion
-#: field:fashion.form,detail_info_partner:0
-msgid "Detail customer"
-msgstr "Dettaglio cliente"
-
-#. module: fashion
-#: view:fashion.form:0
-msgid "Top stich"
-msgstr "Impuntura"
 
 #. module: fashion
 #: field:fashion.form.accessory.rel,gerber_desc:0
@@ -1832,88 +2030,6 @@ msgid "Color"
 msgstr "Colore"
 
 #. module: fashion
-#: field:fashion.form.characteristic.rel,old_name:0
-msgid "Old name"
-msgstr "Vecchio nome"
-
-#. module: fashion
-#: view:fashion.form:0
-msgid "[B]"
-msgstr "[B]"
-
-#. module: fashion
-#: view:fashion.form:0 field:fashion.form,obsolete:0 view:fashion.season:0
-#: field:fashion.season,obsolete:0
-msgid "Obsolete"
-msgstr "Obsoleta"
-
-#. module: fashion
-#: field:fashion.form.accessory.rel,gerber_l:0
-msgid "Gerber length"
-msgstr "Lunghezza (Gerber)"
-
-#. module: fashion
-#: model:ir.actions.act_window,name:fashion.action_fashion_form_cost_fixed
-msgid "Fashion cost"
-msgstr "Costo"
-
-#. module: fashion
-#: help:fashion.form,base_id:0
-msgid "Duplicated from"
-msgstr "Scheda duplicata"
-
-#. module: fashion
-#: view:fashion.form:0 field:fashion.form.accessory.pricelist,cost:0
-#: field:fashion.form.accessory.rel,currency:0 view:fashion.form.cost:0
-#: field:fashion.form.cost,cost:0 field:fashion.form.cost.rel,cost_id:0
-#: field:fashion.form.cost.rel.pricelist,cost_rel_id:0
-#: field:fashion.form.fabric,cost:0 field:fashion.form.partner.rel,cost:0
-#: field:fashion.form.partner.rel,cost_id:0
-#: model:ir.model,name:fashion.model_fashion_form_cost
-msgid "Cost"
-msgstr "Costo"
-
-#. module: fashion
-#: model:ir.actions.act_window,name:fashion.action_report_wizard_duplication
-msgid "Print report"
-msgstr "Stampa report"
-
-#. module: fashion
-#: view:fashion.form.stitch:0
-msgid "Seam"
-msgstr "Cucitura"
-
-#. module: fashion
-#: field:fashion.form,draw_image_a_small:0
-msgid "Small-sized image"
-msgstr "Immagine taglio piccolo"
-
-#. module: fashion
-#: field:fashion.form,accessory_rel_ids:0
-msgid "Accessory Relation"
-msgstr "Accessori"
-
-#. module: fashion
-#: view:fashion.form:0 field:fashion.form,ironing:0
-msgid "Ironing"
-msgstr "Stireria"
-
-#. module: fashion
-#: help:fashion.form,reactivate:0
-msgid "Indicates that the form is not old"
-msgstr "Indica che la scheda non è obsoleta"
-
-#. module: fashion
-#: view:fashion.form.fabric:0
-msgid "Show form wash changed "
-msgstr "Schede con lavaggi cambiati:"
-
-#. module: fashion
-#: field:fashion.form.characteristic.rel,stitch_top_id:0
-msgid "Stitch top"
-msgstr "Impuntura"
-
-#. module: fashion
-#: help:fashion.form,review:0
-msgid "Revision of the main model"
-msgstr "Revisione del modello principale"
+#: selection:fashion.report.wizard,type:0
+msgid "Riscontro"
+msgstr "Riscontro"

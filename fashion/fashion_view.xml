@@ -714,8 +714,8 @@
                                                             </h4>
                                                             <div name="tags" />
                                                             <ul>
-                                                                <li>Creazione: <field name="create_date"></field></li>
-                                                                <li>Utente: <field name="create_uid"></field></li>
+                                                                <li>Creazione: <field name="datetime"></field></li>
+                                                                <li>Utente: <field name="user_id"></field></li>
                                                             </ul>
                                                             <a type="button">
                                                                 <button name="open_form_item" type="object" class="oe_highlight">
@@ -1294,8 +1294,8 @@
         <field name="arch" type="xml">
             <tree string="Photo" >
                 <field name="name"/>
-                <field name="create_date"/>
-                <field name="create_uid" />
+                <field name="datetime"/>
+                <field name="user_id" />
                 <field name="form_id" />
                 <field name="note" />                
             </tree>
@@ -1310,8 +1310,8 @@
                     <group colspan="4" col="4">
                         <group colspan="2" col="2">
                             <field name="name"/>                            
-                            <field name="create_date"/>
-                            <field name="create_uid" />
+                            <field name="datetime"/>
+                            <field name="user_id" />
                             
                             <field name="form_id" />
                             <separator string="Note" colspan="2"/>
@@ -1343,8 +1343,8 @@
                                 </h4>
                                 <div name="tags"/>
                                 <ul>
-                                    <li>Creazione: <field name="create_date"></field></li>
-                                    <li>Utente: <field name="create_uid"></field></li>
+                                    <li>Creazione: <field name="datetime"></field></li>
+                                    <li>Utente: <field name="user_id"></field></li>
                                     <li>Form: <field name="form_id"></field></li>                                    
                                     <li>Note: <field name="note"></field></li>
                                 </ul>
@@ -1360,13 +1360,36 @@
             </kanban>
         </field>
     </record>
+    <record id="fashion_form_partner_photo_search" model="ir.ui.view">
+        <field name="name">fashion.form.photo.search</field>
+        <field name="model">fashion.form.photo</field>
+        <field name="arch" type="xml">
+            <search string="Form">
+                <field name="name"/>
+                <field name="datetime" />
+                <field name="user_id" />
+                <field name="note" />
+                <field name="form_id" />
+                <separator/>
+                
+                <filter name="associated" string="Associate" domain="[('form_id','=',True)]"/>
+                <filter name="not_associated" string="Non associate" domain="[('form_id','=',False)]"/>
+
+                <group expand="1" string="Group By...">
+                    <filter string="Scheda" domain="[]" context="{'group_by':'form_id'}"/>
+                    <filter string="Data" domain="[]" context="{'group_by':'datetime'}"/>
+                    <filter string="Utente" domain="[]" context="{'group_by':'user_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
     <record model="ir.actions.act_window" id="action_fashion_form_photo_form">
         <field name="name">Photo</field>
         <field name="res_model">fashion.form.photo</field>
         <field name="view_type">form</field>
         <field name="view_mode">kanban,tree,form</field>
         <field name="view_id" ref="view_fashion_form_photo_kanban"/>
-        <field name="context">{}</field>
+        <field name="context">{'search_default_not_associated': True}</field>
         <field name="domain">[]</field>
     </record>
 
