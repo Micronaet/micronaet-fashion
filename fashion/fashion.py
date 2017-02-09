@@ -596,7 +596,7 @@ class fashion_form(osv.osv):
             'view_mode': 'kanban,tree,form',
             #'res_id': 1,
             'res_model': 'fashion.form.photo',
-            'view_id': view_id, # False
+            'view_id': False,
             'views': [(False, 'kanban'), (False, 'tree'), (False, 'form')],
             'domain': [('form_id', '=', ids[0])],
             'context': context,
