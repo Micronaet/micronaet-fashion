@@ -1131,6 +1131,8 @@
         <field name="model">fashion.form.characteristic.rel.specific</field>
         <field name="arch" type="xml">
             <tree string="Characteristic specific">
+                <!--<button name="hide_terms" string="Hide" type="object" icon="gtk-no" attrs="{'invisible': [('active','=',False)]}"/>-->
+                <field name="active" invisible="1"/>
                 <field name="name"/>
                 <field name="type"/>
             </tree>

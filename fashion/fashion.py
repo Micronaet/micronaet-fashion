@@ -1385,6 +1385,14 @@ class fashion_form_characteristic_rel_specific(osv.osv):
     _description = 'Specific'
     _order = 'type,name'
 
+    # Button events:
+    def hide_terms(self, cr, uid, ids, context=None):
+        ''' Hide terms
+        '''
+        return self.write(cr, uid, ids, {
+            'active': False,
+            }, context=context)
+        
     def create(self, cr, uid, vals, context=None):
         """
         Create a new record for a model ModelName
@@ -1417,11 +1425,13 @@ class fashion_form_characteristic_rel_specific(osv.osv):
     
         if 'name' in vals:
             vals['name'] = vals['name'].upper()
+            
         #return osv.osv.create(self, cr, uid, ids, context=context)
         return super(fashion_form_characteristic_rel_specific, self).create(
-            cr, uid, ids, vals, context=context)
+            cr, uid, vals, context=context)
     
     _columns = {
+        'active': fields.boolean('Active', help='Rimuove termine dalla lista'),
         'name': fields.text('Description'),
         'type': fields.selection([
             ('1', 'Col1'),
@@ -1435,6 +1445,9 @@ class fashion_form_characteristic_rel_specific(osv.osv):
             help="ID Importazione che tiene il link"),
         }
 
+    _defaults = {
+        'active': lambda *x: True,        
+        }
 class fashion_form_cost_rel(osv.osv):
     '''Table that manage the relation cost/form
     '''
