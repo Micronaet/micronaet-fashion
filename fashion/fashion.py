@@ -2067,7 +2067,7 @@ class fashion_form_photo(osv.osv):
     
     _path = '~/etl/fashion/photo'
     _pathin = '/home/administrator/Dropbox/OpenERP'
-    _extension = 'png'
+    _extension = 'jpg'
 
     # -------------------------------------------------------------------------
     # Button event:
