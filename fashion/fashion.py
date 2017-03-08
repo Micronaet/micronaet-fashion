@@ -179,6 +179,48 @@ class fashion_form_accessory_pricelist(osv.osv):
     _description = 'Accessory pricelist'
     _order = 'supplier_id,create_date desc'
 
+    def write(self, cr, uid, ids, vals, context=None):
+        """ Update redord(s) comes in {ids}, with new value comes as {vals}
+            return True on success, False otherwise
+            @param cr: cursor to database
+            @param uid: id of current user
+            @param ids: list of record ids to be update
+            @param vals: dict of new values to be set
+            @param context: context arguments, like lang, time zone
+            
+            @return: True on success, False otherwise
+        """
+        res = super(fashion_form_accessory_pricelist, self).write(
+            cr, uid, ids, vals, context=context)
+        
+        # Update cost in forms:
+        cost = vals.get('cost', False)
+        if not cost:
+            return res
+            
+        # Update all cost with this pricelist_id:
+        rel_pool = self.pool.get('fashion.form.accessory.rel')   
+        rel_ids = rel_pool.search(cr, uid, [
+            ('pricelist_id', '=', ids[0]),
+            ], context=context)
+        
+        update_db = {}
+
+        for rel in rel_pool.browse(cr, uid, rel_ids, context=context):
+            res_rel = rel_pool.on_change_calcolate_cost(cr, uid, False, 
+                rel.quantity, cost, context=context)
+            update_db[rel.id] = res_rel.get('value', False)
+            try:
+                update_db[rel.id]['currency'] = cost
+            except:
+                _logger.warning('Error update record: %s' % rel.form_id.name)
+                continue
+        
+        for item_id, data in update_db.iteritems():
+            rel_pool.write(cr, uid, item_id, data, context=context)
+        _logger.info('Update %s pricelist elements!' % len(rel_ids))    
+        return res
+    
     # ------------------
     # Override function:
     # ------------------
