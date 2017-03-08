@@ -194,9 +194,9 @@ class fashion_form_accessory_pricelist(osv.osv):
             cr, uid, ids, vals, context=context)
         
         # Update cost in forms:
-        cost = vals.get('cost', False)
-        if not cost:
+        if 'cost' not in vals:
             return res
+        cost = vals.get('cost', False)
             
         # Update all cost with this pricelist_id:
         rel_pool = self.pool.get('fashion.form.accessory.rel')   
