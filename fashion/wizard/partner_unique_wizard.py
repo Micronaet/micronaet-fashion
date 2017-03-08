@@ -167,7 +167,7 @@ class ResPartnerUniqueNameWizard(orm.TransientModel):
             ('res_partner_bank', 'partner_id'),
             ('res_partner', 'group_id'),
             ('res_partner', 'parent_id'),
-            #('res_partner_res_partner_category_rel', 'partner_id'),
+            ('res_partner_res_partner_category_rel', 'partner_id'), # could raise error!!!
             ('res_partner_unique_name_wizard', 'partner_id'),
             ('res_request', 'ref_partner_id'),
             ('res_users', 'partner_id'),
