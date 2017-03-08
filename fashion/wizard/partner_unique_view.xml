@@ -10,7 +10,7 @@
                    <header>
                        <button string="Cancel" special="cancel" />
                        <!--<button name="action_done" string="Done" type="object" icon="gtk-jump-to" class="oe_highlight" />-->
-                       <button name="unify_all_terms" string="Unify terms" type="object" />
+                       <!--<button name="unify_all_terms" string="Unify terms" type="object" />-->
                        <button name="unify_all" string="Unify all" type="object" icon="gtk-jump-to" class="oe_highlight" />
                    </header>                   
                    <!--<group colspan="4" col="4">
