@@ -121,6 +121,7 @@ class ResPartnerUniqueNameWizard(orm.TransientModel):
                 ('sale_order', 'partner_shipping_id'),
                 )
             deactivate_ids = []        
+            import pdb; pdb.set_trace()
             for name in unify_name:
                 keep_id, remove_ids = partner_double[name]
                 
