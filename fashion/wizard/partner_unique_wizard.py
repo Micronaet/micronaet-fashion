@@ -62,20 +62,17 @@ class ResPartnerUniqueNameWizard(orm.TransientModel):
         
         term_double = {}
         unify_name = []
-        exclude = [u'User', u'Accounting', u'Production']
         _logger.info('Create database of double:')
         
         for term in term_pool.browse(
                 cr, uid, term_ids, context=context):
-            if term.name in exclude:
-                continue    
-            if term.name in term_double:
-                # DB (name) = (keep id, remove ids)
-                term_double[term.name][1].append(term.id)
-                if term.name not in unify_name:
-                    unify_name.append(term.name)
+            k = (term.name, term.type)
+            if k in term_double:
+                term_double[k][1].append(term.id)
+                if k not in unify_name:
+                    unify_name.append(k)
             else:    
-                term_double[term.name] = [term.id, []]
+                term_double[k] = [term.id, []]
 
         _logger.info('Correct query data:')
 
@@ -88,8 +85,8 @@ class ResPartnerUniqueNameWizard(orm.TransientModel):
             )
         deactivate_ids = []        
         
-        for name in unify_name:
-            keep_id, remove_ids = term_double[name]
+        for k in unify_name:
+            keep_id, remove_ids = term_double[k]
             
             for table, field in query_db:
                 query = 'UPDATE %s SET %s = %s WHERE %s in %s;' % (
