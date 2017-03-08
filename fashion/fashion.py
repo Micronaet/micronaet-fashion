@@ -284,18 +284,6 @@ class fashion_form_fabric(osv.osv):
     _rec_name = 'code'
     _order = 'code'
 
-    #def name_get(self, cr, uid, ids, context=None):
-    #    ''' Add season ID to name
-    #    '''
-    #    res = []
-    #    for fabric in self.browse(cr, uid, ids, context=context):
-    #        res.append((fabric.id, "%s-[%s]" % (
-    #            fabric.code, 
-    #            fabric.season_id.code if fabric.season_id else "", 
-    #            #fabric.note or ''
-    #            )))
-    #    return res
-
     def name_search(self, cr, uid, name, args=None, operator='ilike', 
             context=None, limit=80):
         """ Return a list of tupples contains id, name, as internally its calls {def name_get}
