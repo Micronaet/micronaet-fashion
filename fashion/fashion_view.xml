@@ -340,11 +340,12 @@
                     <button name="load_from_composition" string="Load composition" type="object" icon="gtk-leave-fullscreen"/>
                     
                     <field name="h_fabric"/>
-                    <field name="weight"/>                    
+                    <field name="preferred_fabric" />
                     <newline />
 
-                    <field name="tag"/>                    
-                    <field name="preferred_fabric" />
+                    <field name="weight"/>                    
+                    <field name="weight_mq"/>                    
+                    <!--<field name="tag"/>-->
                     <newline />
 
                     <field name="range_supplier_cost" groups="fashion.group_fashion_accounting"/>
