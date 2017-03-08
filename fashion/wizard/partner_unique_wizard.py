@@ -134,7 +134,6 @@ class ResPartnerUniqueNameWizard(orm.TransientModel):
                     _logger.error('%s %s' % (table, field))
             deactivate_ids.extend(remove_ids)
         
-        import pdb; pdb.set_trace()
         partner_pool.write(cr, uid, deactivate_ids, {
             'active': False,
             }, context=context)    
