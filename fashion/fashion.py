@@ -284,6 +284,53 @@ class fashion_form_fabric(osv.osv):
     _rec_name = 'code'
     _order = 'code'
 
+    #def name_get(self, cr, uid, ids, context=None):
+    #    ''' Add season ID to name
+    #    '''
+    #    res = []
+    #    for fabric in self.browse(cr, uid, ids, context=context):
+    #        res.append((fabric.id, "%s-[%s]" % (
+    #            fabric.code, 
+    #            fabric.season_id.code if fabric.season_id else "", 
+    #            #fabric.note or ''
+    #            )))
+    #    return res
+
+    def name_search(self, cr, uid, name, args=None, operator='ilike', 
+            context=None, limit=80):
+        """ Return a list of tupples contains id, name, as internally its calls {def name_get}
+            result format : {[(id, name), (id, name), ...]}
+            
+            @param cr: cursor to database
+            @param uid: id of current user
+            @param name: name to be search 
+            @param args: other arguments
+            @param operator: default operator is ilike, it can be change
+            @param context: context arguments, like lang, time zone
+            @param limit: returns first n ids of complete result, default it is 80
+            
+            @return: return a list of tupples contains id, name
+        """
+        if args is None:
+            args = []
+        if context is None:
+            context = {}
+        ids = []
+        
+        if name:
+            ids = self.search(cr, uid, [
+                '|', '|', 
+                ('code', 'ilike', name),
+                ('article_code', 'ilike', name),                
+                ('note', 'ilike', name),
+                ] + args, limit=limit)
+        if not ids:
+            ids = self.search(cr, uid, [
+                ('code', operator, name)
+                ] + args, limit=limit)
+        return self.name_get(cr, uid, ids, context=context)
+    
+
     # -------
     # Button:
     # -------
