@@ -330,7 +330,6 @@ class fashion_form_fabric(osv.osv):
                 ] + args, limit=limit)
         return self.name_get(cr, uid, ids, context=context)
     
-
     # -------
     # Button:
     # -------
