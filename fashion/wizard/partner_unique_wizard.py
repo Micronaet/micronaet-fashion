@@ -54,6 +54,7 @@ class ResPartnerUniqueNameWizard(orm.TransientModel):
             Try to unify other
         '''
         _logger.info('Start unify partner:')
+        import pdb; pdb.set_trace()
         partner_pool = self.pool.get('res.partner')
         partner_ids = partner_pool.search(cr, uid, [], order='id', 
             context=context)
