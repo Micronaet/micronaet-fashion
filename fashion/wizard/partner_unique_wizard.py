@@ -110,98 +110,94 @@ class ResPartnerUniqueNameWizard(orm.TransientModel):
         ''' Search partner not used
             Try to unify other
         '''
-        try:
-            _logger.info('Start unify partner:')
+        _logger.info('Start unify partner:')
 
-            partner_pool = self.pool.get('res.partner')
-            partner_ids = partner_pool.search(cr, uid, [], order='id', 
-                context=context)
+        partner_pool = self.pool.get('res.partner')
+        partner_ids = partner_pool.search(cr, uid, [], order='id', 
+            context=context)
+        
+        partner_double = {}
+        unify_name = []
+        exclude = [u'User', u'Accounting', u'Production']
+        _logger.info('Create database of double:')
+        
+        for partner in partner_pool.browse(
+                cr, uid, partner_ids, context=context):
+            if partner.name in exclude:
+                continue    
+            if partner.name in partner_double:
+                # DB (name) = (keep id, remove ids)
+                partner_double[partner.name][1].append(partner.id)
+                if partner.name not in unify_name:
+                    unify_name.append(partner.name)
+            else:    
+                partner_double[partner.name] = [partner.id, []]
+
+        _logger.info('Correct query data:')
+        query_db = (
+            ('account_analytic_account', 'partner_id'),
+            ('account_bank_statement_line', 'partner_id'),
+            ('account_invoice', 'commercial_partner_id'),
+            ('account_invoice_line', 'partner_id'),
+            ('account_invoice', 'partner_id'),
+            ('account_model_line', 'partner_id'),
+            ('account_move_line', 'partner_id'),
+            ('account_move', 'partner_id'),
+            ('account_partner_reconcile_process', 'next_partner_id'),
+            ('account_voucher', 'partner_id'),
+            ('fashion_form_accessory_pricelist', 'supplier_id'),
+            ('fashion_form_accessory_rel', 'supplier_id'),
+            ('fashion_form_cost_rel_pricelist', 'suplier_id'),
+            ('fashion_form_cost_rel_pricelist', 'supplier_id'),
+            ('fashion_form_fabric', 'supplier_id'),
+            #('fashion_form', 'group_id'),
+            ('fashion_form_partner_rel', 'group_id'),
+            ('fashion_form_partner_rel', 'partner_id'),
+            ('fashion_form_partner_rel', 'supplier_id'),
+            ('mail_compose_message', 'author_id'),
+            ('mail_compose_message_res_partner_rel', 'partner_id'),
+            ('mail_followers', 'partner_id'),
+            ('mail_message', 'author_id'),
+            ('mail_message_res_partner_rel', 'res_partner_id'),
+            ('mail_notification', 'partner_id'),
+            ('mail_wizard_invite_res_partner_rel', 'res_partner_id'),
+            ('portal_wizard_user', 'partner_id'),
+            ('product_supplierinfo', 'name'),
+            ('res_company', 'partner_id'),
+            ('res_partner_bank', 'partner_id'),
+            ('res_partner', 'group_id'),
+            ('res_partner', 'parent_id'),
+            #('res_partner_res_partner_category_rel', 'partner_id'),
+            ('res_partner_unique_name_wizard', 'partner_id'),
+            ('res_request', 'ref_partner_id'),
+            ('res_users', 'partner_id'),
+            ('sale_order_line', 'address_allotment_id'),
+            ('sale_order_line', 'order_partner_id'),
+            ('sale_order', 'partner_id'),
+            ('sale_order', 'partner_invoice_id'),
+            ('sale_order', 'partner_shipping_id'),
+            )
+        deactivate_ids = []        
+
+        for name in unify_name:
+            keep_id, remove_ids = partner_double[name]
             
-            partner_double = {}
-            unify_name = []
-            exclude = [u'User', u'Accounting', u'Production']
-            _logger.info('Create database of double:')
-            
-            for partner in partner_pool.browse(
-                    cr, uid, partner_ids, context=context):
-                if partner.name in exclude:
-                    continue    
-                if partner.name in partner_double:
-                    # DB (name) = (keep id, remove ids)
-                    partner_double[partner.name][1].append(partner.id)
-                    if partner.name not in unify_name:
-                        unify_name.append(partner.name)
-                else:    
-                    partner_double[partner.name] = [partner.id, []]
+            for table, field in query_db:
+                query = 'UPDATE %s SET %s = %s WHERE %s in %s;' % (
+                    table, field, keep_id, field, tuple(remove_ids), 
+                    )
+                query = query.replace(',)', ')')    
+                try:    
+                    _logger.info(query)
+                    cr.execute(query)                
+                except:
+                    _logger.error('%s %s' % (table, field))
 
-            _logger.info('Correct query data:')
-            query_db = (
-                ('account_analytic_account', 'partner_id'),
-                ('account_bank_statement_line', 'partner_id'),
-                ('account_invoice', 'commercial_partner_id'),
-                ('account_invoice_line', 'partner_id'),
-                ('account_invoice', 'partner_id'),
-                ('account_model_line', 'partner_id'),
-                ('account_move_line', 'partner_id'),
-                ('account_move', 'partner_id'),
-                ('account_partner_reconcile_process', 'next_partner_id'),
-                ('account_voucher', 'partner_id'),
-                ('fashion_form_accessory_pricelist', 'supplier_id'),
-                ('fashion_form_accessory_rel', 'supplier_id'),
-                ('fashion_form_cost_rel_pricelist', 'suplier_id'),
-                ('fashion_form_cost_rel_pricelist', 'supplier_id'),
-                ('fashion_form_fabric', 'supplier_id'),
-                #('fashion_form', 'group_id'),
-                ('fashion_form_partner_rel', 'group_id'),
-                ('fashion_form_partner_rel', 'partner_id'),
-                ('fashion_form_partner_rel', 'supplier_id'),
-                ('mail_compose_message', 'author_id'),
-                ('mail_compose_message_res_partner_rel', 'partner_id'),
-                ('mail_followers', 'partner_id'),
-                ('mail_message', 'author_id'),
-                ('mail_message_res_partner_rel', 'res_partner_id'),
-                ('mail_notification', 'partner_id'),
-                ('mail_wizard_invite_res_partner_rel', 'res_partner_id'),
-                ('portal_wizard_user', 'partner_id'),
-                ('product_supplierinfo', 'name'),
-                ('res_company', 'partner_id'),
-                ('res_partner_bank', 'partner_id'),
-                ('res_partner', 'group_id'),
-                ('res_partner', 'parent_id'),
-                ('res_partner_res_partner_category_rel', 'partner_id'),
-                ('res_partner_unique_name_wizard', 'partner_id'),
-                ('res_request', 'ref_partner_id'),
-                ('res_users', 'partner_id'),
-                ('sale_order_line', 'address_allotment_id'),
-                ('sale_order_line', 'order_partner_id'),
-                ('sale_order', 'partner_id'),
-                ('sale_order', 'partner_invoice_id'),
-                ('sale_order', 'partner_shipping_id'),
-                )
-            deactivate_ids = []        
-
-            for name in unify_name:
-                keep_id, remove_ids = partner_double[name]
-                
-                for table, field in query_db:
-                    query = 'UPDATE %s SET %s = %s WHERE %s in %s;' % (
-                        table, field, keep_id, field, tuple(remove_ids), 
-                        )
-                    query = query.replace(',)', ')')    
-                    try:    
-                        _logger.info(query)
-                        cr.execute(query)                
-                    except:
-                        import pdb; pdb.set_trace()
-                        _logger.error('%s %s' % (table, field))
-
-                deactivate_ids.extend(remove_ids)
-            
-            partner_pool.write(cr, uid, deactivate_ids, {
-                'active': False,
-                }, context=context)    
-        except:
-            import pdb; pdb.set_trace()
+            deactivate_ids.extend(remove_ids)
+        
+        partner_pool.write(cr, uid, deactivate_ids, {
+            'active': False,
+            }, context=context)    
         return True
         
     def action_done(self, cr, uid, ids, context=None):
