@@ -11,7 +11,7 @@
                 <sheet>
                    <group col='4'>
                       <field name="type" on_change="onchange_type(type)"/>
-                      <field name="partner_fabric_id" attrs="{'required':['|',('type','in',['d','e']),'&amp;',('type','in',('a','b')),('summary','=',False)]}" domain="[('form_id','=',form_id)]"/> <!--'required':[('type','in',['b','d','e'])]-->
+                      <field name="partner_fabric_id" attrs="{'required':['|',('type','in',['d','e']),'&amp;',('type','in',('a','b')),('summary','=',False)]}" domain="[('form_id','=',form_id)]" context="{'from_wizard': True}"/> <!--'required':[('type','in',['b','d','e'])]-->
                       <!--<field name="prototipe" attrs="{'invisible':[('duplication','=','version')], 'required':[('duplication','=','form')]}"/>-->
                       <field name="form_id" invisible='1'/>
                       <newline/>

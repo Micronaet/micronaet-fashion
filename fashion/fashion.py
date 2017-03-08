@@ -1849,10 +1849,17 @@ class fashion_form_partner_rel(osv.osv):
         ''' Add customer-fabric ID to name
         '''
         res = []
+        if context is None:
+            context = {}
+        from_wizard = context.get('from_wizard')
+        
         for item in self.browse(cr, uid, ids, context = context):
-            res.append((item.id, "%s [%s]" % (
+            res.append((item.id, '%s [%s] %s' % (
                 item.partner_id.name,
-                item.fabric_id.code if item.fabric_id else "???")))
+                item.fabric_id.code if item.fabric_id else "???",
+                (item.fabric_id.article_code or '') if from_wizard else ''
+                )))
+                
         return res
         
     #--------------
