@@ -49,6 +49,66 @@ class ResPartnerUniqueNameWizard(orm.TransientModel):
     # --------------------
     # Wizard button event:
     # --------------------
+    def unify_all_terms(self, cr, uid, ids, context=None):
+        ''' Search terms not used
+            Try to unify other
+        '''
+        _logger.info('Start unify terms:')
+
+        term_pool = self.pool.get(
+            'fashion.form.characteristic.rel.specific')
+        term_ids = term_pool.search(cr, uid, [], order='id', 
+            context=context)
+        
+        term_double = {}
+        unify_name = []
+        exclude = [u'User', u'Accounting', u'Production']
+        _logger.info('Create database of double:')
+        
+        for term in term_pool.browse(
+                cr, uid, term_ids, context=context):
+            if term.name in exclude:
+                continue    
+            if term.name in term_double:
+                # DB (name) = (keep id, remove ids)
+                term_double[term.name][1].append(term.id)
+                if term.name not in unify_name:
+                    unify_name.append(term.name)
+            else:    
+                term_double[term.name] = [term.id, []]
+
+        _logger.info('Correct query data:')
+
+        query_db = (
+            ('fashion_form_characteristic_rel', 'stitch_cut_id'),
+            ('fashion_form_characteristic_rel', 'stitch_top_id'),
+            ('fashion_form_characteristic_rel', 'stitch_top_type_id'),
+            ('fashion_form_characteristic_rel', 'stitch_type_id'),
+            ('fashion_form_characteristic_rel', 'stitch_verse_id'),
+            )
+        deactivate_ids = []        
+        
+        for name in unify_name:
+            keep_id, remove_ids = term_double[name]
+            
+            for table, field in query_db:
+                query = 'UPDATE %s SET %s = %s WHERE %s in %s;' % (
+                    table, field, keep_id, field, tuple(remove_ids), 
+                    )
+                query = query.replace(',)', ')')    
+                try:    
+                    _logger.info(query)
+                    cr.execute(query)                
+                except:
+                    _logger.error('%s %s' % (table, field))
+
+            deactivate_ids.extend(remove_ids)
+
+        term_pool.write(cr, uid, deactivate_ids, {
+            'active': False,
+            }, context=context)    
+        return True
+        
     def unify_all(self, cr, uid, ids, context=None):
         ''' Search partner not used
             Try to unify other
