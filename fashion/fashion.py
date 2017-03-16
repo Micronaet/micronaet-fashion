@@ -1677,11 +1677,14 @@ class fashion_form_accessory_rel(osv.osv):
             try:
                 fabric_proxy = fabric_pool.browse(
                     cr, uid, fabric_id, context=context)
+                name = '%s - %s [%s]' % (
+                    fabric_proxy.code or '',
+                    fabric_proxy.article_code or '', 
+                    fabric_proxy.perc_composition or '',
+                    )
                 res['value']['supplier_id'] = fabric_proxy.supplier_id and fabric_proxy.supplier_id.id or False
                 res['value']['currency'] = fabric_proxy.cost or 0.0
-                res['value']['name'] = "%s - %s" % (
-                    fabric_proxy.code or "", 
-                    fabric_proxy.perc_composition or "")
+                res['value']['name'] = name.upper()
             except:
                 return res    
         return res
