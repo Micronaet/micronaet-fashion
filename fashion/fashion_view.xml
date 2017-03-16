@@ -1304,6 +1304,13 @@
             <field name="search_view_id" ref="fashion_form_partner_rel_search"/>
             <field name="domain">[('form_id', '!=', False)]</field>-->
     </record>
+    <record id="action_res_partner_unused" model="ir.actions.act_window">
+            <field name="name">Inutilizzati</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="domain">[('unused', '=', True)]</field>
+    </record>
 
     <!--fashion.form.photo-->
     <record id="view_fashion_form_photo_tree" model="ir.ui.view">
@@ -1425,6 +1432,8 @@
             <menuitem name="Seams" parent="menu_fashion_configuration" id="menu_fashion_configuration_characteristic" sequence="20" action='action_fashion_form_characteristic' />
             <!--<menuitem name="Cost (var.)" parent="menu_fashion_configuration" id="menu_fashion_configuration_cost" sequence="30" action='action_fashion_form_cost_variable' />-->
             <menuitem name="Partner" parent="menu_fashion_configuration" id="menu_res_partner" sequence="30" action='action_res_partner' />
+                <menuitem name="Inutilizzati" parent="menu_res_partner" id="menu_action_res_partner_unused" sequence="30" action='action_res_partner_unused' />
+            
             <menuitem name="Cost (fixed)" parent="menu_fashion_configuration" id="menu_fashion_configuration_cost_fixed" sequence="35" action='action_fashion_form_cost_fixed' groups="fashion.group_fashion_accounting"/>
             <menuitem name="Accessory" parent="menu_fashion_configuration" id="menu_fashion_configuration_accessory" sequence="40" action='action_fashion_form_accessory' />
                 <menuitem name="Accessory pricelist" parent="menu_fashion_configuration_accessory" id="menu_fashion_configuration_accessory_pricelist" sequence="10" action='action_fashion_form_accessory_pricelist' />
