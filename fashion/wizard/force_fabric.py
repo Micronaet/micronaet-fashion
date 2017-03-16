@@ -125,10 +125,34 @@ class fashion_force_fabric(osv.osv_memory):
 
         fabric_proxy = self.pool.get('fashion.form.fabric').browse(
             cr, uid, active_id, context=context)
-        
+
+        # Pool used:        
         rel_pool = self.pool.get('fashion.form.partner.rel')
         log_pool = self.pool.get('fashion.form.comment.rel')
+        acc_pool = self.pool.get('fashion.form.accessory.rel')
         
+        # ---------------------------------------------------------------------  
+        #                Update accessory information:
+        # ---------------------------------------------------------------------
+        acc_ids = acc_pool.search(cr, uid, [
+            ('fabric_id', '=', active_id)], context=context)
+        acc_data = False
+        for acc in acc_pool.browse(cr, uid, acc_ids, context=context):
+            if not acc_data:                
+                res = acc_pool.onchange_fabric(
+                    cr, uid, acc.id, active_id, context=context)
+                acc_data = res.get('value', {})
+                
+            data = acc_data.copy()
+            # Update with totals:
+            data.update({
+                'tot_cost': acc.quantity * acc_data.get('currency', 0.0) ,
+                })
+            acc_pool.write(cr, uid, acc.id, data, context=context)
+                                
+        # ---------------------------------------------------------------------  
+        #                Update partner info:
+        # ---------------------------------------------------------------------
         rel_ids = rel_pool.search(cr, uid, [
             ('fabric_id', '=', active_id)], context=context)
 
@@ -175,14 +199,13 @@ class fashion_force_fabric(osv.osv_memory):
                 }, context=context)
             _logger.warning('Update empty items: %s with symbol %s' % (
                 empty_ids, fabric_proxy.symbol))                
-                
-                
+                                
         else: # replace all            
             data['symbol_fabric'] = fabric_proxy.symbol
 
-        # ----------------    
-        # Log all updated:
-        # ----------------    
+        # ---------------------------------------------------------------------  
+        #                    Log all updated operations:
+        # ---------------------------------------------------------------------  
         for customer in rel_pool.browse(cr, uid, rel_ids, context=context):
             name = ''
             if customer.fabric_id.code != fabric_proxy.code:

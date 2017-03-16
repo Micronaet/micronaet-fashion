@@ -859,15 +859,15 @@
                                     <button name="paste_duplicate_accessory" type="object" string="Paste" icon="STOCK_SAVE" />
                                 </group>    
                                 <group col='4'>
-                                    <field name="accessory_rel_ids" nolabel='1' colspan='4'>
+                                    <field name="accessory_rel_ids" nolabel='1' colspan='4' context="{'fashion_form_name_get': True}">
                                         <tree string="Accessory" editable='bottom'>
                                             <field name='accessory_id' string="Article" on_change="onchange_accessory(accessory_id)"/>
                                             <field name='code' on_change="on_change_upper_code(code)"/>
                                             <field name='sequence' invisible="1"/>
-                                            <field name='fabric_id' string="Fabric" on_change="onchange_fabric(fabric_id)" attrs="{'readonly':[('code','=',False)]}" context="{'fashion_form_name_get': True,}"/> <!--TODO put correct list value-->
+                                            <field name='fabric_id' string="Fabric" on_change="onchange_fabric(fabric_id, context)" attrs="{'readonly':[('code','=',False)]}" context="{'fashion_form_name_get': True,}"/> <!--TODO put correct list value-->
                                             <field name='pricelist_id' domain="[('accessory_id','=',accessory_id)]" context="{'default_accessory_id':accessory_id}" on_change="onchange_pricelist(pricelist_id)" />
                                             <field name='supplier_id' domain="[('supplier','=',True)]" context="{'default_supplier':True}"/><!--TODO hide? -->
-                                            <field name='name' on_change="on_change_upper_accessory(name)"/><!--hide-->
+                                            <field name='name' on_change="on_change_upper_accessory(name)" invisible="1"/><!--hide-->
                                             <field name="extra" />
                                             <field name='h'/>
                                             <field name='um' on_change="on_change_upper_um(um)"/>
@@ -1075,7 +1075,7 @@
             <field name="view_type">form</field>
             <field name="view_mode">tree,form,kanban,calendar</field>
             <field name="view_id" ref="fashion_form_tree" />
-            <field name="context">{'view_production':1,'default_user_id':uid}</field>
+            <field name="context">{'view_production':1,'default_user_id':uid, 'fashion_form_name_get': True}</field>
             <field name="domain">[('obsolete','=',False),('state','!=','discarded')]</field>
     </record>
     <record id="action_fashion_form_cost" model="ir.actions.act_window">

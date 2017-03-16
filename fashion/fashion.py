@@ -304,7 +304,6 @@ class fashion_form_fabric(osv.osv):
             args = []
         if context is None:
             context = {}
-        extra_info = context.get('fashion_form_name_get', False)
 
         ids = []
         
@@ -418,14 +417,15 @@ class fashion_form_fabric(osv.osv):
         res = []
         for fabric in self.browse(cr, uid, ids, context=context):
             if extra_info:
-                name = "%s di %s (%s) [%s]" % (
+                name = '%s (%s) %s [%s]' % (
                     fabric.code, 
-                    fabric.supplier_id.name if fabric_supplier_id else '',
+                    #fabric.supplier_id.name if fabric.supplier_id else '',
                     fabric.article_code or '',
+                    fabric.perc_composition or '',
                     fabric.season_id.code if fabric.season_id else '', 
                     )
             else:
-                name = "%s [%s]" % (
+                name = '%s [%s]' % (
                     fabric.code, 
                     fabric.season_id.code if fabric.season_id else '', 
                     )            
@@ -1686,6 +1686,9 @@ class fashion_form_accessory_rel(osv.osv):
         ''' On change fabric 
             search supplier and description from PC
         '''
+        if context is None:
+            context = {}
+            
         res = {'value': {'supplier_id': False, 'name': False}}
         if fabric_id:
             fabric_pool = self.pool.get('fashion.form.fabric')
