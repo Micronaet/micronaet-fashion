@@ -1741,7 +1741,7 @@ class fashion_form_accessory_rel(osv.osv):
         'um': fields.char('U.M.', size=5),
         'quantity': fields.float('Quantity', digits=(10, 4)),
         'currency': fields.float('Cost', digits=(10, 4)),
-        'note': fields.text('Color'),
+        'note': fields.text('Tono'),
         'gerber_name': fields.char('Gerber name', size=10),
         'gerber_desc': fields.char('Gerber description', size=10),
         'gerber_h': fields.char('Gerber height', size=10),
