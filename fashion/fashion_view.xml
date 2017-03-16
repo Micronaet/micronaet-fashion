@@ -875,8 +875,8 @@
                                             <field name='currency' on_change="on_change_calcolate_cost(quantity,currency)"/>
                                             <field name='tot_cost' sum="total" string="Totale"/>
                                             <!--<field name='color'/>-->
-                                            <field name="tone" />
-                                            <field name='note' on_change="on_change_upper_color(note)" string="Colore"/>
+                                            <!--<field name="tone" />-->
+                                            <field name='note' on_change="on_change_upper_color(note)" string="Tono"/>
                                             <field name='gerber_name' groups="fashion.group_fashion_gerber"/>
                                             <field name='gerber_desc' groups="fashion.group_fashion_gerber"/>
                                             <field name='gerber_h' groups="fashion.group_fashion_gerber"/>

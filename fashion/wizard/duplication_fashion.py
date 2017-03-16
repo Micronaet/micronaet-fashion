@@ -211,12 +211,21 @@ class fashion_duplication(osv.osv_memory):
 
         # Accessory:
         for item in form_proxy.accessory_rel_ids:
-            # Reload price if pricelist present:
-            if item.pricelist_id:
+            # Reload price if pricelist/fabric present:
+            if item.fabric_id:
+                fabric_id = item.fabric_id.id
+                pricelist_id = False
+                currency = item.fabric_id.cost # unit price
+                tot_cost = currency * item.quantity
+                    
+            elif item.pricelist_id:
+                fabric_id = False
                 pricelist_id = item.pricelist_id.id
                 currency = item.pricelist_id.cost # unit price
                 tot_cost = currency * item.quantity
+                
             else:
+                fabric_id = False
                 pricelist_id = False
                 currency = item.currency
                 tot_cost = item.tot_cost
@@ -228,7 +237,7 @@ class fashion_duplication(osv.osv_memory):
                 'sequence': item.sequence,
                 'code': item.code,
                 'extra': item.extra,
-                'fabric_id': item.fabric_id.id if item.fabric_id else False,
+                'fabric_id': fabric_id,
                 'pricelist_id': pricelist_id,
                 'supplier_id': item.supplier_id.id if item.supplier_id else False,
                 'um': item.um,
