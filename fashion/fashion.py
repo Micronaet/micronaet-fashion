@@ -304,6 +304,8 @@ class fashion_form_fabric(osv.osv):
             args = []
         if context is None:
             context = {}
+        extra_info = context.get('fashion_form_name_get', False)
+
         ids = []
         
         if name:
@@ -408,13 +410,26 @@ class fashion_form_fabric(osv.osv):
     def name_get(self, cr, uid, ids, context=None):
         ''' Add season ID to name
         '''
+        if context is None:
+            context = {}
+        
+        extra_info = context.get('fashion_form_name_get', False)
+
         res = []
         for fabric in self.browse(cr, uid, ids, context=context):
-            res.append((fabric.id, "%s-[%s]" % (
-                fabric.code, 
-                fabric.season_id.code if fabric.season_id else "", 
-                #fabric.note or ''
-                )))
+            if extra_info:
+                name = "%s di %s (%s) [%s]" % (
+                    fabric.code, 
+                    fabric.supplier_id.name if fabric_supplier_id else '',
+                    fabric.article_code or '',
+                    fabric.season_id.code if fabric.season_id else '', 
+                    )
+            else:
+                name = "%s [%s]" % (
+                    fabric.code, 
+                    fabric.season_id.code if fabric.season_id else '', 
+                    )            
+            res.append((fabric.id, name))
         return res
 
     _columns = {
