@@ -211,6 +211,17 @@ class fashion_duplication(osv.osv_memory):
 
         # Accessory:
         for item in form_proxy.accessory_rel_ids:
+            # Reload price if pricelist present:
+            if item.pricelist_id:
+                pricelist_id = item.pricelist_id.id
+                currency = item.pricelist_id.cost # unit price
+                tot_cost = currency * item.quantity
+            else:
+                pricelist_id = False
+                currency = item.currency
+                tot_cost = item.tot_cost
+                    
+            unit_price = item.pricelist_id.cost
             self.pool.get('fashion.form.accessory.rel').create(cr, uid, {
                 'name': item.name,
                 'accessory_id': item.accessory_id.id if item.accessory_id else False,
@@ -218,12 +229,12 @@ class fashion_duplication(osv.osv_memory):
                 'code': item.code,
                 'extra': item.extra,
                 'fabric_id': item.fabric_id.id if item.fabric_id else False,
-                'pricelist_id': item.pricelist_id.id if item.pricelist_id else False,
+                'pricelist_id': pricelist_id,
                 'supplier_id': item.supplier_id.id if item.supplier_id else False,
                 'um': item.um,
                 'quantity': item.quantity,
-                'currency': item.currency,
-                'tot_cost': item.tot_cost,
+                'currency': currency,
+                'tot_cost': tot_cost,
                 'color': item.color,
                 'tone': item.tone,
                 'note': item.note,

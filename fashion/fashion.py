@@ -1715,7 +1715,7 @@ class fashion_form_accessory_rel(osv.osv):
         'accessory_id': fields.many2one('fashion.form.accessory', 'Accessory'),
         'fabric_id': fields.many2one('fashion.form.fabric', 'Fabric'),
         'name': fields.text('Description'),
-        'extra': fields.char('Color', size=50),
+        'extra': fields.char('Extra', size=50),
         'code': fields.char('Code', size=1),   # TODO farlo diventare related (di fatto non viene modificato dalla videata ma prende sempre quello dell'articolo
         'um': fields.char('U.M.', size=5),
         'quantity': fields.float('Quantity', digits=(10, 4)),
@@ -1730,8 +1730,8 @@ class fashion_form_accessory_rel(osv.osv):
         'pricelist_id': fields.many2one('fashion.form.accessory.pricelist', 
             'Pricelist'),
         'tot_cost': fields.float('Total cost', digits=(10, 4)),
-        'color': fields.char('Color', size=20), # TODO eliminare
-        'tone': fields.char('Color', size=20), # TODO eliminare
+        'color': fields.char('Color', size=20), # TODO eliminare (usa note)
+        'tone': fields.char('Tono', size=20),
         #'h': fields.float('H'),
         'h': fields.char('H', size=15),
 
