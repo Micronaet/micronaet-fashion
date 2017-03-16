@@ -865,7 +865,7 @@
                                             <field name='code' on_change="on_change_upper_code(code)"/>
                                             <field name='sequence' invisible="1"/>
                                             <field name='fabric_id' string="Fabric" on_change="onchange_fabric(fabric_id)" attrs="{'readonly':[('code','=',False)]}"/> <!--TODO put correct list value-->
-                                            <field name='pricelist_id' domain="[('accessory_id','=',accessory_id)]" context="{'default_accessory_id':accessory_id}" on_change="onchange_pricelist(pricelist_id)" attrs="{'readonly':[('code','!=',False)]}"/>
+                                            <field name='pricelist_id' domain="[('accessory_id','=',accessory_id)]" context="{'default_accessory_id':accessory_id}" on_change="onchange_pricelist(pricelist_id)" />
                                             <field name='supplier_id' domain="[('supplier','=',True)]" context="{'default_supplier':True}"/><!--TODO hide? -->
                                             <field name='name' on_change="on_change_upper_accessory(name)"/>
                                             <field name='h'/>
