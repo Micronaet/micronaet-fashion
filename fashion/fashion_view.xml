@@ -867,13 +867,15 @@
                                             <field name='fabric_id' string="Fabric" on_change="onchange_fabric(fabric_id)" attrs="{'readonly':[('code','=',False)]}"/> <!--TODO put correct list value-->
                                             <field name='pricelist_id' domain="[('accessory_id','=',accessory_id)]" context="{'default_accessory_id':accessory_id}" on_change="onchange_pricelist(pricelist_id)" />
                                             <field name='supplier_id' domain="[('supplier','=',True)]" context="{'default_supplier':True}"/><!--TODO hide? -->
-                                            <field name='name' on_change="on_change_upper_accessory(name)"/>
+                                            <field name='name' on_change="on_change_upper_accessory(name)"/><!--hide-->
+                                            <field name="extra" />
                                             <field name='h'/>
                                             <field name='um' on_change="on_change_upper_um(um)"/>
                                             <field name='quantity' on_change="on_change_calcolate_cost(quantity,currency)"/>
                                             <field name='currency' on_change="on_change_calcolate_cost(quantity,currency)"/>
                                             <field name='tot_cost' sum="total"/>
                                             <!--<field name='color'/>-->
+                                            <field name="tone" />
                                             <field name='note' on_change="on_change_upper_color(note)" string="Colore"/>
                                             <field name='gerber_name' groups="fashion.group_fashion_gerber"/>
                                             <field name='gerber_desc' groups="fashion.group_fashion_gerber"/>
