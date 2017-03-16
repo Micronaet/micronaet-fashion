@@ -237,7 +237,8 @@ class fashion_form_accessory_pricelist(osv.osv):
         'accessory_id':fields.many2one('fashion.form.accessory', 'Accessory', 
             required=False, ondelete='cascade'),
         'supplier_id':fields.many2one('res.partner', 'Supplier', 
-            required=True, domain=[('supplier','=',True)]),
+            required=True, domain=[('supplier','=',True)], ondelete='restrict',
+            ),
         'create_date': fields.datetime('Date', readonly=True),
         'um': fields.char('U.M.', size=5, required=False),
         'extra_info': fields.char('Extra info', size=40, required=False),
@@ -417,7 +418,8 @@ class fashion_form_fabric(osv.osv):
         return res
 
     _columns = {
-        'supplier_id': fields.many2one('res.partner', 'Fabric Supplier'),
+        'supplier_id': fields.many2one('res.partner', 'Fabric Supplier', 
+            ondelete='restrict'),
         'article_code': fields.char('Fabric Article code', size=50),
         'code': fields.char('Articolo', size=30, required=True),
         #'name': fields.char('Name', size = 20),
@@ -1554,7 +1556,7 @@ class fashion_form_cost_rel_pricelist(osv.osv):
         'current': fields.boolean('Current', required=False),
         'cost_rel_id': fields.many2one('fashion.form.cost.rel', 'Cost'),
         'supplier_id': fields.many2one('res.partner', 'Supplier', 
-            domain=[('supplier','=',True)]),
+            domain=[('supplier','=',True)], ondelete='restrict'),
         'value': fields.float('Value', required=True),
         'order': fields.char('Order ref.', size=64),
         'reference': fields.char('Reference', size=64),
@@ -1723,7 +1725,7 @@ class fashion_form_accessory_rel(osv.osv):
         'gerber_h': fields.char('Gerber height', size=10),
         'gerber_l': fields.char('Gerber length', size=10),
         'supplier_id': fields.many2one('res.partner', 'Supplier', 
-            domain=[('supplier','=',True)]),         
+            domain=[('supplier','=',True)], ondelete='restrict'),         
         'pricelist_id': fields.many2one('fashion.form.accessory.pricelist', 
             'Pricelist'),
         'tot_cost': fields.float('Total cost', digits=(10, 4)),
@@ -2026,7 +2028,8 @@ class fashion_form_partner_rel(osv.osv):
     _columns = {
         'form_id': fields.many2one('fashion.form', 'Form'),
         'partner_id': fields.many2one('res.partner', 'Partner', 
-            domain=[('customer','=',True)], required=True),
+            domain=[('customer','=',True)], required=True, 
+            ondelete='restrict'),
         'group_id': fields.related(
             'partner_id', 'group_id', type='many2one', relation='res.partner', 
             string='Partner group', store = {
@@ -2077,7 +2080,7 @@ class fashion_form_partner_rel(osv.osv):
             'fabric_id', 'note', type='char', size=100, string='Description', 
             readonly=True), 
         'supplier_id': fields.many2one('res.partner', 'Supplier', 
-            domain=[('supplier','=',True)]),
+            domain=[('supplier','=',True)], ondelete='restrict'),
 
         'perc_reload': fields.float('Reloading percentage', digits=(10, 2)),
         'perc_margin': fields.float('Margin percentage', digits=(10, 2)),
@@ -2249,7 +2252,9 @@ class res_partner(osv.osv):
     _columns = {
         'start': fields.integer('Start size', 
             help='Departure for the standardized sizes'),
-        'group_id': fields.many2one('res.partner', 'Partner group'),    
+        'group_id': fields.many2one('res.partner', 'Partner group', 
+            ondelete='restrict'),    
+        'unused': fields.boolean('Unused'),
 
         # Link di importazione:
         'access_id': fields.integer('Access ID', 

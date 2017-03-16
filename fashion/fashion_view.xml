@@ -1159,6 +1159,19 @@
            </field>
         </field>
     </record>
+    <record id='res_partner_fashion_tree' model='ir.ui.view'>
+        <field name='name'>res.partner.fashion.tree</field>
+        <field name='model'>res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name='arch' type='xml'>
+           <xpath expr="//tree" position="attributes">
+               <attribute name="colors">red:unused==True</attribute>
+           </xpath>
+           <field name="name" position="after">
+               <field name="unused" invisible="1"/>
+           </field>
+        </field>
+    </record>
 
     <!--fashion.form.partner.rel-->
     <record id="fashion_form_partner_rel_form" model="ir.ui.view">

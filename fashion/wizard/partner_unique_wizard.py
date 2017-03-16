@@ -40,6 +40,49 @@ from openerp.tools import (DEFAULT_SERVER_DATE_FORMAT,
 
 _logger = logging.getLogger(__name__)
 
+query_db = (
+    ('account_analytic_account', 'partner_id'),
+    ('account_bank_statement_line', 'partner_id'),
+    ('account_invoice', 'commercial_partner_id'),
+    ('account_invoice_line', 'partner_id'),
+    ('account_invoice', 'partner_id'),
+    ('account_model_line', 'partner_id'),
+    ('account_move_line', 'partner_id'),
+    ('account_move', 'partner_id'),
+    ('account_partner_reconcile_process', 'next_partner_id'),
+    ('account_voucher', 'partner_id'),
+    ('fashion_form_accessory_pricelist', 'supplier_id'),
+    ('fashion_form_accessory_rel', 'supplier_id'),
+    ('fashion_form_cost_rel_pricelist', 'suplier_id'),
+    ('fashion_form_cost_rel_pricelist', 'supplier_id'),
+    ('fashion_form_fabric', 'supplier_id'),
+    #('fashion_form', 'group_id'),
+    ('fashion_form_partner_rel', 'group_id'),
+    ('fashion_form_partner_rel', 'partner_id'),
+    ('fashion_form_partner_rel', 'supplier_id'),
+    ('mail_compose_message', 'author_id'),
+    ('mail_compose_message_res_partner_rel', 'partner_id'),
+    ('mail_followers', 'partner_id'),
+    ('mail_message', 'author_id'),
+    ('mail_message_res_partner_rel', 'res_partner_id'),
+    ('mail_notification', 'partner_id'),
+    ('mail_wizard_invite_res_partner_rel', 'res_partner_id'),
+    ('portal_wizard_user', 'partner_id'),
+    ('product_supplierinfo', 'name'),
+    ('res_company', 'partner_id'),
+    ('res_partner_bank', 'partner_id'),
+    ('res_partner', 'group_id'),
+    ('res_partner', 'parent_id'),
+    ('res_partner_res_partner_category_rel', 'partner_id'), # could raise error!!!
+    ('res_partner_unique_name_wizard', 'partner_id'),
+    ('res_request', 'ref_partner_id'),
+    ('res_users', 'partner_id'),
+    ('sale_order_line', 'address_allotment_id'),
+    ('sale_order_line', 'order_partner_id'),
+    ('sale_order', 'partner_id'),
+    ('sale_order', 'partner_invoice_id'),
+    ('sale_order', 'partner_shipping_id'),
+    )
 
 class ResPartnerUniqueNameWizard(orm.TransientModel):
     ''' Wizard for unify partner with name
@@ -134,49 +177,6 @@ class ResPartnerUniqueNameWizard(orm.TransientModel):
                 partner_double[partner.name] = [partner.id, []]
 
         _logger.info('Correct query data:')
-        query_db = (
-            ('account_analytic_account', 'partner_id'),
-            ('account_bank_statement_line', 'partner_id'),
-            ('account_invoice', 'commercial_partner_id'),
-            ('account_invoice_line', 'partner_id'),
-            ('account_invoice', 'partner_id'),
-            ('account_model_line', 'partner_id'),
-            ('account_move_line', 'partner_id'),
-            ('account_move', 'partner_id'),
-            ('account_partner_reconcile_process', 'next_partner_id'),
-            ('account_voucher', 'partner_id'),
-            ('fashion_form_accessory_pricelist', 'supplier_id'),
-            ('fashion_form_accessory_rel', 'supplier_id'),
-            ('fashion_form_cost_rel_pricelist', 'suplier_id'),
-            ('fashion_form_cost_rel_pricelist', 'supplier_id'),
-            ('fashion_form_fabric', 'supplier_id'),
-            #('fashion_form', 'group_id'),
-            ('fashion_form_partner_rel', 'group_id'),
-            ('fashion_form_partner_rel', 'partner_id'),
-            ('fashion_form_partner_rel', 'supplier_id'),
-            ('mail_compose_message', 'author_id'),
-            ('mail_compose_message_res_partner_rel', 'partner_id'),
-            ('mail_followers', 'partner_id'),
-            ('mail_message', 'author_id'),
-            ('mail_message_res_partner_rel', 'res_partner_id'),
-            ('mail_notification', 'partner_id'),
-            ('mail_wizard_invite_res_partner_rel', 'res_partner_id'),
-            ('portal_wizard_user', 'partner_id'),
-            ('product_supplierinfo', 'name'),
-            ('res_company', 'partner_id'),
-            ('res_partner_bank', 'partner_id'),
-            ('res_partner', 'group_id'),
-            ('res_partner', 'parent_id'),
-            ('res_partner_res_partner_category_rel', 'partner_id'), # could raise error!!!
-            ('res_partner_unique_name_wizard', 'partner_id'),
-            ('res_request', 'ref_partner_id'),
-            ('res_users', 'partner_id'),
-            ('sale_order_line', 'address_allotment_id'),
-            ('sale_order_line', 'order_partner_id'),
-            ('sale_order', 'partner_id'),
-            ('sale_order', 'partner_invoice_id'),
-            ('sale_order', 'partner_shipping_id'),
-            )
         deactivate_ids = []        
 
         for name in unify_name:
@@ -211,6 +211,28 @@ class ResPartnerUniqueNameWizard(orm.TransientModel):
         return {
             'type': 'ir.actions.act_window_close'
             }
+    def action_mark_unused(self, cr, uid, ids, context=None):
+        ''' Mark unused partner checking foreign tables
+        '''
+        _logger.info('Mark customer for deletion:')
+        used_ids = []
+        partner_pool = self.pool.get('res.partner')
+        
+        for table, field in query_db:
+            query = 'SELECT %s FROM %s;' % (field, table)
+            try:    
+                _logger.info(query)
+                cr.execute(query)                
+            except:
+                _logger.error('%s %s' % (table, field))
+
+            used_ids.extend([item[0] for item in cr.fetchall() if item[0]])
+
+        unused_ids = partner_pool.search(cr, uid, [
+            ('id', 'not in', used_ids)], context=context)
+        return partner_pool.write(cr, uid, unused_ids, {
+            'unused': True,
+            }, context=context)    
 
     _columns = {
         'partner_id': fields.many2one(

@@ -12,6 +12,7 @@
                        <!--<button name="action_done" string="Done" type="object" icon="gtk-jump-to" class="oe_highlight" />-->
                        <!--<button name="unify_all_terms" string="Unify terms" type="object" />-->
                        <button name="unify_all" string="Unify all" type="object" icon="gtk-jump-to" class="oe_highlight" />
+                       <button name="action_mark_unused" string="Mark unused" type="object" />
                    </header>                   
                    <!--<group colspan="4" col="4">
                         <field name="partner_id" />
