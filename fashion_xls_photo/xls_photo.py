@@ -68,6 +68,7 @@ class FashionForm(orm.Model):
         # Read model from CSV file and get model list:
         # ---------------------------------------------------------------------
         active_ids = []
+        not_found = []
         for model in item_code:            
             form_ids = form_pool.search(cr, uid, [
                 ('model', '=', model), # XXX last review!
@@ -76,6 +77,7 @@ class FashionForm(orm.Model):
                 active_ids.append(form_ids[0])
             else:
                 _logger.error('Code not found: %s' % model)    
+                not_found.append(model)
                 
         # ---------------------------------------------------------------------
         # Generate PDF report:     
@@ -91,5 +93,5 @@ class FashionForm(orm.Model):
         # Call report:            
         (result, extension) = service.create(
             cr, uid, active_ids, {'model': 'fashion.form'}, context=context)        
-        return xmlrpclib.Binary(result)
+        return xmlrpclib.Binary(result), not_found
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

@@ -74,7 +74,7 @@ for row in csv_f:
     if model not in code_list:
         code_list.append(model)
                 
-binary_data = sock.execute(
+binary_data, not_found = sock.execute(
     dbname, uid, pwd, 'fashion.form', 
     'generate_report_xls_photo_pdf', code_list,
     )
@@ -86,3 +86,9 @@ if binary_data:
     pdf_f = open(pdf_file, 'wb')
     pdf_f.write(binary_data.data)
     pdf_f.close()
+
+if not_found:
+    error_f = open('%sERR' % pdf_file[:-3], 'w')
+    error_f.write('%s' % (not_found, ))
+    error_f.close()
+    
