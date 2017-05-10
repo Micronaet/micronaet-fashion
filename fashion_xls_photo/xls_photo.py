@@ -83,7 +83,7 @@ class FashionForm(orm.Model):
         # Generate PDF report:     
         # ---------------------------------------------------------------------
         if not active_ids:
-            return False
+            return False, not_found
             
         # Parameter:
         report_name = 'fashion_xls_photo_report'        
