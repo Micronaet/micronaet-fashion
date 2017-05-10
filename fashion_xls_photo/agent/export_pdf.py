@@ -64,7 +64,7 @@ i = 0
 code_list = []
 for row in csv_f:
     i += 1
-    if i <= 4: # Start article line
+    if i < 4: # Start article line
         continue
     row = row.split(';')
     model = row[1]
