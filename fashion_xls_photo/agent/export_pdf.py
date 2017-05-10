@@ -71,7 +71,8 @@ for row in csv_f:
     if not model:
         break
     model = model[:7].replace('-', '')
-    code_list.append(model)
+    if model not in code_list:
+        code_list.append(model)
                 
 binary_data = sock.execute(
     dbname, uid, pwd, 'fashion.form', 
