@@ -29,12 +29,45 @@
 #
 ##############################################################################
 
+import os
+import sys
+import logging
 from openerp.report import report_sxw
 from openerp.report.report_sxw import rml_parse
+
+_logger = logging.getLogger(__name__)
+
 
 class Parser(report_sxw.rml_parse):
     def __init__(self, cr, uid, name, context):
         super(Parser, self).__init__(cr, uid, name, context)
         self.localcontext.update({
+            'get_row_objects': self.get_row_objects,
         })
+        
+    def get_row_objects(self, objects):
+        ''' Put in row of 3 elements the data
+        '''
+        # Readability:
+        cr = self.cr
+        uid = self.uid
+        context = {}
+
+        res = []
+        row = [False, False, False]
+
+        i = 0  # Line goes from 0 to 2
+        _logger.info('Print %s images' % len(objects))
+
+        for o in objects:
+            if i == 3:
+                res.append(row)
+                row = [False, False, False]
+                i = 0
+            row[i] = o
+            i += 1
+                
+        if i != 0: # write last
+            res.append(row) # TODO test
+        return res
 

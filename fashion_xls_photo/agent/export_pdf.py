@@ -22,6 +22,8 @@
 
 import sys
 import os
+import xmlrpclib
+import base64
 import ConfigParser
 
 # -----------------------------------------------------------------------------
@@ -53,6 +55,33 @@ sock = xmlrpclib.ServerProxy(
 uid = sock.login(dbname, user, pwd)
 sock = xmlrpclib.ServerProxy(
     'http://%s:%s/xmlrpc/object' % (server, port), allow_none=True)
-sock.execute(
-    dbname, uid, pwd, 'fashion.form', 'create', csv_file, pdf_file)
 
+# -----------------------------------------------------------------------------
+# Read file CSV:
+# -----------------------------------------------------------------------------
+csv_f = open(csv_file, 'r')
+i = 0
+code_list = []
+for row in csv_f:
+    i += 1
+    if i <= 4: # Start article line
+        continue
+    row = row.split(';')
+    model = row[1]
+    if not model:
+        break
+    model = model[:7].replace('-', '')
+    code_list.append(model)
+                
+binary_data = sock.execute(
+    dbname, uid, pwd, 'fashion.form', 
+    'generate_report_xls_photo_pdf', code_list,
+    )
+
+# -----------------------------------------------------------------------------
+# Write PDF file:    
+# -----------------------------------------------------------------------------
+if binary_data:
+    pdf_f = open(pdf_file, 'wb')
+    pdf_f.write(binary_data.data)
+    pdf_f.close()

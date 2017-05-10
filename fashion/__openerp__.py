@@ -47,7 +47,7 @@
         'fashion-kanban',
         'fashion_sheet_wide',
         'web_washing_symbol',
-        'web_m2x_options', # lock create in m2o
+        #'web_m2x_options', # lock create in m2o XXX sometimes gives problem!
         ],
     'init_xml': [],
     'demo_xml': [],

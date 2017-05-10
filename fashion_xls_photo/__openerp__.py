@@ -18,22 +18,24 @@
 ###############################################################################
 
 {
-    'name': '',
+    'name': 'Fashion extract PDF',
     'version': '0.1',
-    'category': '',
-    'description': '''        
+    'category': 'Fashion',
+    'description': '''  
+        Extract PDF photo according to csv accounting file for get model list
         ''',
     'author': 'Micronaet S.r.l. - Nicola Riolini',
     'website': 'http://www.micronaet.it',
     'license': 'AGPL-3',
     'depends': [
         'base',
+        'fashion',
+        'report_aeroo',
         ],
     'init_xml': [],
     'demo': [],
     'data': [
-        #'security/ir.model.access.csv',    
-        #'_view.xml',
+        'report/report_image.xml',
         ],
     'active': False,
     'installable': True,
