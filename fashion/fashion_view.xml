@@ -989,9 +989,9 @@
                                     <li>Cliente: <field name="detail_info_partner"></field></li>                                    
                                     <li>Stagione: <field name="season_id"></field></li>
                                     <li>Stato: <field name="state"></field></li>
-                                    <!--<li>Base: <field name="base_name"></field></li>-->
-                                    <!--<li>Original: <field name="original"></field></li>
-                                    <br />-->
+                                    <li>Base: <field name="base_name"></field></li>
+                                    <li>Originale: <field name="original"></field></li>
+                                    <br />
                                 </ul>
                                 <a type="button">
                                     <button name="open_form_item" type="object" class="oe_highlight">
