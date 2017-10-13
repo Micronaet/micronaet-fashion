@@ -896,7 +896,7 @@ class fashion_form(osv.osv):
                 if measure.header:
                     found_id = measure.id
                     break
-            
+
             # -----------------------------------------------------------------   
             # Mode:  '42' or '42 S'    
             # -----------------------------------------------------------------   
@@ -926,7 +926,7 @@ class fashion_form(osv.osv):
                     error = 'Lettera massima: %s' % avail_measure[
                         -total_col + ref_col + 1]
                     raise error
-                                        
+
                 letter_cr = '\n'    
             else:
                 letter_i = False
