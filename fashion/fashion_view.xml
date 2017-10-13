@@ -664,7 +664,7 @@
                     <field name="review"/>
                     <field name="user_id" options="{'create': false, 'create_edit': false}"/>
                     <field name="base_name" />
-                    <field name="size_base"/>
+                    <field name="size_base" on_change="onchange_size_base_reload_intestation(size_base)"/>
                     <!--<field name="base_id" readonly="1"/>-->
 
                     <field name="original" placeholder="Add a generic model that started..."/>

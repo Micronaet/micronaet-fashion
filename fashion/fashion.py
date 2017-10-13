@@ -445,7 +445,7 @@ class fashion_form_fabric(osv.osv):
         'symbol': fields.char('Wash symbol', size=10),
         'season_id': fields.many2one('fashion.season', 'Season'),
         'test': fields.boolean('Test fabric', 
-            help='This fabric is used for a model testing, maybe it won't be produced!'),
+            help="This fabric is used for a model testing, maybe it won't be produced!"),
         'um': fields.char('U.M.', size=5),
         'cost': fields.float('Cost', digits=(10, 4)),
          
@@ -514,6 +514,14 @@ class fashion_form(osv.osv):
     # --------------------
     # On change functions:
     # --------------------
+    def onchange_size_base_reload_intestation(self, cr, uid, ids, size_base, 
+            context=None):
+        ''' reload intestation when change base measure
+        '''    
+        res = {}
+        #TODO
+        return res
+        
     def on_change_model(self, cr, uid, ids, model, review, context=None):
         ''' Split model code in all the part 
         '''
@@ -871,12 +879,16 @@ class fashion_form(osv.osv):
         '''
         try:
             error = ''
+            total_col = 13
+            ref_col = 2
             avail_measure = [
-                '6XS', '5XS', '4XS', '3XS', 'XXS', 'XS',
+                '10XS',
+                '9XS', '8XS', '7XS', '6XS', '5XS', '4XS', '3XS', 'XXS', 'XS',
                 'S',
                 'M', 
                 'L',
-                'XL', 'XXL', '3XL', '4XL', '5XL', '6XL',
+                'XL', 'XXL', '3XL', '4XL', '5XL', '6XL', '7XL', '8XL', '9XL',
+                '10XL',                
                 ]
 
             # test if there's yet a header line
@@ -904,9 +916,23 @@ class fashion_form(osv.osv):
                         avail_measure,
                         )
                     raise error
-                    
+
+                letter_i = avail_measure.index(letter) - ref_col
+
+                # check negative
+                if letter_i < 0:
+                    error = 'Lettera minima: %s' % avail_measure[ref_col]
+                    raise error
+                # TODO not correct
+                if letter_i + total_col - 1 > len(avail_measure):
+                    error = 'Lettera massima: %s' % avail_measure[
+                        -total_col + ref_col + 1]
+                    raise error
+                                        
+                letter_cr = '\n'    
             else:
-                letter = False    
+                letter_i = False
+                letter_cr = ''
                         
             start = tg - 2 * ((form_proxy.col_ref or 3) - 1)
             data = {
@@ -915,22 +941,18 @@ class fashion_form(osv.osv):
                 'form_id': form_proxy.id,
                 'measure_id': False,
                 'name': _('Header'),
-                'size_1': 'Tg.%s' % (start),
-                'size_2': 'Tg.%s' % (start + 2),
-                'size_3': 'Tg.%s' % (start + 4),
-                'size_4': 'Tg.%s' % (start + 6),
-                'size_5': 'Tg.%s' % (start + 8),
-                'size_6': 'Tg.%s' % (start + 10),
-                'size_7': 'Tg.%s' % (start + 12),
-                'size_8': 'Tg.%s' % (start + 14),
-                'size_9': 'Tg.%s' % (start + 16),
-                'size_10': 'Tg.%s' % (start + 18),
-                'size_11': 'Tg.%s' % (start + 20),
-                'size_12': 'Tg.%s' % (start + 22),
-                'size_13': 'Tg.%s' % (start + 24),
                 'visible': False,
                 'real': False,
                 }
+            for i in range(1, 14):
+                error = 'Fuori range, cambiare la lettera di partenza!'
+                try:
+                    data['size_%s' % i] = 'Tg.%s%s%s' % (
+                        start + 2 * (i - 1), letter_cr, 
+                        avail_measure[letter_i + i -1] if letter_i else '',
+                        )                        
+                except:
+                    raise error       
             
             measure_pool = self.pool.get('fashion.form.measure.rel')
             if found_id: # Update
