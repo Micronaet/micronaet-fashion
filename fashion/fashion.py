@@ -931,7 +931,7 @@ class fashion_form(osv.osv):
             else:
                 letter_i = False
                 letter_cr = ''
-                        
+
             start = tg - 2 * ((form_proxy.col_ref or 3) - 1)
             data = {
                 'header': True,
