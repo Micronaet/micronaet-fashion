@@ -599,7 +599,6 @@
             </form>
         </field>
     </record>
-
     <record id="fashion_article_tree" model="ir.ui.view">
         <field name="name">fashion.article.tree</field>
         <field name="model">fashion.article</field>
@@ -611,7 +610,6 @@
             </tree>
         </field>
     </record>
-
     <record id="action_fashion_article" model="ir.actions.act_window">
             <field name="name">Fashion article</field>
             <field name="res_model">fashion.article</field>
@@ -1018,7 +1016,7 @@
                 <field name="model_article" string="Type"/>
                 <field name="model_number" />
                 <field name="season_id" />
-                <!--<field name="article_id"/>-->
+                <field name="article_id"/>
 
                 <field name="detail_partner" />
                 <field name="detail_fabric" />
