@@ -882,13 +882,11 @@ class fashion_form(osv.osv):
             total_col = 13
             ref_col = 2
             avail_measure = [
-                '10XS',
+                '12XS', '11XS', '10XS',
                 '9XS', '8XS', '7XS', '6XS', '5XS', '4XS', '3XS', 'XXS', 'XS',
-                'S',
-                'M', 
-                'L',
+                'S', 'M', 'L',
                 'XL', 'XXL', '3XL', '4XL', '5XL', '6XL', '7XL', '8XL', '9XL',
-                '10XL',                
+                '10XL', '11XL', '12XL', 
                 ]
 
             # test if there's yet a header line
