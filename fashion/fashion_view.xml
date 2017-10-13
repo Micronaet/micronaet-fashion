@@ -628,15 +628,15 @@
             <form string="Form" version="7.0">
             <header>
                 <button string='Sample' name='form_draft_sample' type='workflow' states='draft' icon='gtk-go-forward' groups="fashion.group_fashion_production"/>
-                <button string='Discarded' name='form_draft_discarded' type='workflow' states='draft' icon='gtk-stop' groups="fashion.group_fashion_production"/>
+                <button string='Discarded' name='form_draft_discarded' type='workflow' states='draft' icon='gtk-stop' groups="fashion.group_fashion_production" confirm="Scarto la scheda, confermi?"/>
 
                 <button string='Ok Production' name='form_sample_ok' type='workflow' states='sample' icon='gtk-apply' groups="fashion.group_fashion_production"/>
-                <button string='Discarded' name='form_sample_discarded' type='workflow' states='sample' icon='gtk-stop' groups="fashion.group_fashion_production"/>
+                <button string='Discarded' name='form_sample_discarded' type='workflow' states='sample' icon='gtk-stop' groups="fashion.group_fashion_production" confirm="Scarto la scheda, confermi?"/>
 
                 <button string='Produced' name='form_ok_produced' type='workflow' states='ok' icon='gtk-execute' groups="fashion.group_fashion_production"/>
-                <button string='Discarded' name='form_ok_discarded' type='workflow' states='ok' icon='gtk-stop' groups="fashion.group_fashion_production"/>
+                <button string='Discarded' name='form_ok_discarded' type='workflow' states='ok' icon='gtk-stop' groups="fashion.group_fashion_production" confirm="Scarto la scheda, confermi?"/>
 
-                <button string='Discarded' name='form_produced_discarded' type='workflow' states='produced' icon='gtk-stop' groups="fashion.group_fashion_production"/>
+                <button string='Discarded' name='form_produced_discarded' type='workflow' states='produced' icon='gtk-stop' groups="fashion.group_fashion_production" confirm="Scarto la scheda, confermi?"/>
 
                 <button string='Draft' name='form_discarded_draft' type='workflow' states='discarded' icon='gtk-refresh' groups="fashion.group_fashion_production"/>
                 <label string=" "/>
@@ -645,7 +645,7 @@
                 <button string='Print' name='%(fashion.action_report_wizard_duplication)d' type="action" icon='gtk-print-preview'/>
                 <label string=" " />
                 
-                <button string='Obsolete' name='set_obsolete' type="object" attrs="{'invisible': [('obsolete','=',True)]}" context="{'obsolete':True}" icon='STOCK_NO' groups="fashion.group_fashion_production"/>
+                <button string='Obsolete' name='set_obsolete' type="object" attrs="{'invisible': [('obsolete','=',True)]}" context="{'obsolete':True}" icon='STOCK_NO' groups="fashion.group_fashion_production" confirm="Marco la scheda obsoleta, confermi?"/>
                 <button string='Not obsolete' name='set_obsolete' type="object" attrs="{'invisible': [('obsolete','=',False)]}" context="{'obsolete':False}" icon='STOCK_YES' groups="fashion.group_fashion_production"/>
                 <label string=" " />
 

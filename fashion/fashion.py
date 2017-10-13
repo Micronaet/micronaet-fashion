@@ -85,7 +85,7 @@ class fashion_season(osv.osv):
          
          # Link di importazione:
          'access_id': fields.integer(
-             'Access ID', help="ID Importazione che tiene il link"),
+             'Access ID', help='ID Importazione che tiene il link'),
     }
 
 class fashion_article(osv.osv):
@@ -105,7 +105,7 @@ class fashion_article(osv.osv):
          
          # Link di importazione:
          'access_id': fields.integer(
-             'Access ID', help="ID Importazione che tiene il link"),
+             'Access ID', help='ID Importazione che tiene il link'),
     }
 
 class fashion_form_characteristic(osv.osv):
@@ -122,7 +122,7 @@ class fashion_form_characteristic(osv.osv):
 
          # Link di importazione:
          'access_id': fields.integer(
-             'Access ID', help="ID Importazione che tiene il link"),
+             'Access ID', help='ID Importazione che tiene il link'),
     }
 
 class fashion_form_cost(osv.osv):
@@ -141,7 +141,7 @@ class fashion_form_cost(osv.osv):
     
          # Link di importazione:
          'access_id': fields.integer(
-             'Access ID', help="ID Importazione che tiene il link"),
+             'Access ID', help='ID Importazione che tiene il link'),
      }
 
     _defaults = {
@@ -166,7 +166,7 @@ class fashion_form_accessory(osv.osv):
                 ], 'Type', select=True),
 
          # Link di importazione:
-         'access_id': fields.integer('Access ID', help="ID Importazione che tiene il link"),
+         'access_id': fields.integer('Access ID', help='ID Importazione che tiene il link'),
     }
     _defaults = {
         'sequence': lambda *x: 1000, # normal accessory have high number
@@ -229,7 +229,7 @@ class fashion_form_accessory_pricelist(osv.osv):
         '''
         res = []
         for item in self.browse(cr, uid, ids, context = context):
-            res.append((item.id, "%s %s" % (item.name or '', item.extra_info or '')))
+            res.append((item.id, '%s %s' % (item.name or '', item.extra_info or '')))
         return res        
 
     _columns = {
@@ -247,7 +247,7 @@ class fashion_form_accessory_pricelist(osv.osv):
 
         # Link di importazione:
         'access_id': fields.integer(
-            'Access ID', help="ID Importazione che tiene il link"),
+            'Access ID', help='ID Importazione che tiene il link'),
         }
 
 class fashion_form_accessory(osv.osv):
@@ -383,7 +383,7 @@ class fashion_form_fabric(osv.osv):
         '''
         # TODO maybe better as onchange?
         fabric_proxy = self.browse(cr, uid, ids, context=context)[0]
-        code = fabric_proxy.code.split('-')[-1] # 3 final char after "-"
+        code = fabric_proxy.code.split('-')[-1] # 3 final char after '-'
         composition_pool = self.pool.get('fashion.form.fabric.composition')
         composition_ids = composition_pool.search(cr, uid, [
             ('season_id', '=', fabric_proxy.season_id.id),
@@ -402,7 +402,7 @@ class fashion_form_fabric(osv.osv):
                 'symbol': composition_proxy.symbol,
                 }, context=context)
         else:
-            raise osv.except_osv(_('Error'), _("Season and code not found!"))        
+            raise osv.except_osv(_('Error'), _('Season and code not found!'))        
         return True        
     
     #Override:
@@ -445,7 +445,7 @@ class fashion_form_fabric(osv.osv):
         'symbol': fields.char('Wash symbol', size=10),
         'season_id': fields.many2one('fashion.season', 'Season'),
         'test': fields.boolean('Test fabric', 
-            help="This fabric is used for a model testing, maybe it won't be produced!"),
+            help='This fabric is used for a model testing, maybe it won't be produced!'),
         'um': fields.char('U.M.', size=5),
         'cost': fields.float('Cost', digits=(10, 4)),
          
@@ -460,7 +460,7 @@ class fashion_form_fabric(osv.osv):
 
         # Link di importazione:
         'access_id': fields.integer(
-            'Access ID', help="ID Importazione che tiene il link"),
+            'Access ID', help='ID Importazione che tiene il link'),
     }
     _defaults = {
         'um': lambda *x: 'MT'
@@ -480,7 +480,7 @@ class fashion_form_stitch(osv.osv):
     
          # Link di importazione:
          'access_id': fields.integer('Access ID', 
-             help="ID Importazione che tiene il link"),
+             help='ID Importazione che tiene il link'),
     }
 
 class fashion_form_measure(osv.osv):
@@ -497,7 +497,7 @@ class fashion_form_measure(osv.osv):
 
          # Link di importazione:
          'access_id': fields.integer('Access ID', 
-             help="ID Importazione che tiene il link"),
+             help='ID Importazione che tiene il link'),
     }
 
 class fashion_form(osv.osv):
@@ -525,7 +525,7 @@ class fashion_form(osv.osv):
 
         model = model.upper()
         res['value']['model'] = model
-        res['value']['name'] = "%s.%s" % (model, review)
+        res['value']['name'] = '%s.%s' % (model, review)
         
         if model[0:1].isalpha():
             if model[1:2].isalpha():
@@ -567,12 +567,12 @@ class fashion_form(osv.osv):
     def _get_form_name(self, model, review):
         ''' Return name of form element
         '''
-        return "%s.%s" % (model, review)
+        return '%s.%s' % (model, review)
     
     def _get_draw_image_name(self, obj):
         ''' Return name of image from browese obj passed
         '''
-        return ("%s.%s" % (self._get_form_name(
+        return ('%s.%s' % (self._get_form_name(
             obj.model, obj.review), self._default_extension)).lower()
         
     # Image function:
@@ -585,7 +585,7 @@ class fashion_form(osv.osv):
         ''' Load image from file:
         '''
         path = os.path.expanduser(os.path.join(
-            "~/etl/fashion/image", type_image)) # TODO parametrize
+            '~/etl/fashion/image', type_image)) # TODO parametrize
         filename = os.path.join(path, name)
         try:
             f = open(filename, 'rb')
@@ -599,7 +599,7 @@ class fashion_form(osv.osv):
         ''' Unload image to file:
         '''
         path = os.path.expanduser(os.path.join(
-            "~/etl/fashion/image", type_image)) # TODO parametrize
+            '~/etl/fashion/image', type_image)) # TODO parametrize
         filename = os.path.join(path, name)
         try:
             f = open(filename, 'wb')
@@ -642,7 +642,7 @@ class fashion_form(osv.osv):
         
         @return: returns a id of new record
         """
-        # Explode model element ("name" created in onchange "model.review")
+        # Explode model element ('name' created in onchange 'model.review')
         vals.update(self.on_change_model(
             cr, uid, 0, 
             vals.get('model', False), 
@@ -746,7 +746,7 @@ class fashion_form(osv.osv):
     def reset_duplicate_characteristic(self, cr, uid, ids, context=None):
         ''' Remove file used for copy paste operations
         '''
-        fn = get_temp_filename("%s.car.dat" % uid) 
+        fn = get_temp_filename('%s.car.dat' % uid) 
         try:
             os.remove(fn)
         except:
@@ -756,9 +756,9 @@ class fashion_form(osv.osv):
     def paste_duplicate_characteristic(self, cr, uid, ids, context=None):
         ''' Paste operation in form
         '''
-        fn = get_temp_filename("%s.car.dat" % uid) 
+        fn = get_temp_filename('%s.car.dat' % uid) 
         try:
-            f = open(fn, "r")
+            f = open(fn, 'r')
         except:
             # TODO Comunicate error?
             return False
@@ -788,7 +788,7 @@ class fashion_form(osv.osv):
     def reset_duplicate_accessory(self, cr, uid, ids, context=None):
         ''' Remove file used for copy paste operations
         '''
-        fn = get_temp_filename("%s.acc.dat" % uid) 
+        fn = get_temp_filename('%s.acc.dat' % uid) 
         try:
             os.remove(fn)
         except:
@@ -798,9 +798,9 @@ class fashion_form(osv.osv):
     def paste_duplicate_accessory(self, cr, uid, ids, context=None):
         ''' Paste operation in form
         '''
-        fn = get_temp_filename("%s.acc.dat" % uid) 
+        fn = get_temp_filename('%s.acc.dat' % uid) 
         try:
-            f = open(fn, "r")
+            f = open(fn, 'r')
         except:
             # TODO Comunicate error?
             return False
@@ -870,6 +870,15 @@ class fashion_form(osv.osv):
             > fashion.form.measure.rel
         '''
         try:
+            error = ''
+            avail_measure = [
+                '6XS', '5XS', '4XS', '3XS', 'XXS', 'XS',
+                'S',
+                'M', 
+                'L',
+                'XL', 'XXL', '3XL', '4XL', '5XL', '6XL',
+                ]
+
             # test if there's yet a header line
             found_id = False
             form_proxy = self.browse(cr, uid, ids, context=context)[0]
@@ -877,38 +886,64 @@ class fashion_form(osv.osv):
                 if measure.header:
                     found_id = measure.id
                     break
-                
-            start = int(form_proxy.size_base or '42') - 2 * (
-                (form_proxy.col_ref or 3) - 1)
+            
+            # -----------------------------------------------------------------   
+            # Mode:  '42' or '42 S'    
+            # -----------------------------------------------------------------   
+            # Get tg:
+            size_base = form_proxy.size_base
+            size_base_item = size_base.split()
+            tg = int(size_base_item[0] or '42')
+
+            # Manage letter:
+            if len(size_base_item) == 2: # use also letter
+                letter = size_base_item[-1].upper()
+                if letter not in avail_measure:
+                    error = 'Inserire una lettera [%s] coerente: %s' % (
+                        letter,
+                        avail_measure,
+                        )
+                    raise error
+                    
+            else:
+                letter = False    
+                        
+            start = tg - 2 * ((form_proxy.col_ref or 3) - 1)
             data = {
                 'header': True,
                 'sequence': 0,
                 'form_id': form_proxy.id,
                 'measure_id': False,
                 'name': _('Header'),
-                'size_1': "Tg.%s" % (start),
-                'size_2': "Tg.%s" % (start + 2),
-                'size_3': "Tg.%s" % (start + 4),
-                'size_4': "Tg.%s" % (start + 6),
-                'size_5': "Tg.%s" % (start + 8),
-                'size_6': "Tg.%s" % (start + 10),
-                'size_7': "Tg.%s" % (start + 12),
-                'size_8': "Tg.%s" % (start + 14),
-                'size_9': "Tg.%s" % (start + 16),
-                'size_10': "Tg.%s" % (start + 18),
-                'size_11': "Tg.%s" % (start + 20),
-                'size_12': "Tg.%s" % (start + 22),
-                'size_13': "Tg.%s" % (start + 24),
+                'size_1': 'Tg.%s' % (start),
+                'size_2': 'Tg.%s' % (start + 2),
+                'size_3': 'Tg.%s' % (start + 4),
+                'size_4': 'Tg.%s' % (start + 6),
+                'size_5': 'Tg.%s' % (start + 8),
+                'size_6': 'Tg.%s' % (start + 10),
+                'size_7': 'Tg.%s' % (start + 12),
+                'size_8': 'Tg.%s' % (start + 14),
+                'size_9': 'Tg.%s' % (start + 16),
+                'size_10': 'Tg.%s' % (start + 18),
+                'size_11': 'Tg.%s' % (start + 20),
+                'size_12': 'Tg.%s' % (start + 22),
+                'size_13': 'Tg.%s' % (start + 24),
                 'visible': False,
                 'real': False,
-            }        
+                }
+            
             measure_pool = self.pool.get('fashion.form.measure.rel')
             if found_id: # Update
                 measure_pool.write(cr, uid, found_id, data, context=context)
             else:     # Create a header elements:
                 measure_pool.create(cr, uid, data, context=context)
         except: 
-            return False # if error no creation        
+            if error:
+                raise osv.except_osv(
+                    _('Error'), 
+                    error,
+                    )
+            return False                    
         return True
 
     def insert_article(self, cr, uid, ids, context=None):
@@ -950,7 +985,7 @@ class fashion_form(osv.osv):
             for col in range(1, 13):                
                 if col == 3:
                     continue
-                data["size_%s" % col] = False
+                data['size_%s' % col] = False
             self.pool.get('fashion.form.measure.rel').write(
                 cr, uid, item.id, data, context=context)
                 
@@ -988,7 +1023,7 @@ class fashion_form(osv.osv):
         '''        
         form_proxy = self.browse(cr, uid, item_id, context=context)[0]
 
-        final_url = (r"fashion://%s/%s.%s.%s" % (
+        final_url = (r'fashion://%s/%s.%s.%s' % (
             context.get('side', 'A'),
             form_proxy.model,
             form_proxy.review,
@@ -1083,7 +1118,7 @@ class fashion_form(osv.osv):
     def _get_resized_image(self, cr, uid, ids, name, args, context=None):
         ''' Resize defaulf draw_image_a
         '''
-        type_of_image = name.split("_")[-1] # from field name (last block)
+        type_of_image = name.split('_')[-1] # from field name (last block)
         if type_of_image == 'medium':
             width = 800
         elif type_of_image == 'small':
@@ -1144,11 +1179,11 @@ class fashion_form(osv.osv):
             res[form.id]['detail_fabric'] = False  # only for search
             
             for detail in form.partner_rel_ids:
-                res[form.id]['detail_info_partner'] += "%s\n" % (
-                    detail.partner_id.name if detail.partner_id else "?",
+                res[form.id]['detail_info_partner'] += '%s\n' % (
+                    detail.partner_id.name if detail.partner_id else '?',
                     )
-                res[form.id]['detail_info_fabric'] += "%s\n" % (
-                    detail.fabric_id.code if detail.fabric_id else "?",
+                res[form.id]['detail_info_fabric'] += '%s\n' % (
+                    detail.fabric_id.code if detail.fabric_id else '?',
                     )
         return res
         
@@ -1162,11 +1197,11 @@ class fashion_form(osv.osv):
 
         try:
             search_id = args[0][2]
-            cr.execute("""
+            cr.execute('''
                 SELECT DISTINCT form_id 
                 FROM fashion_form_partner_rel 
                 WHERE %s = %s;
-                """ % (field_name, search_id))
+                ''' % (field_name, search_id))
             return [('id', 'in', 
                 [item[0] for item in cr.fetchall()])]
         except:        
@@ -1187,7 +1222,7 @@ class fashion_form(osv.osv):
          'write_uid': fields.many2one('res.users', 'by User', readonly=True),
          'original': fields.char('Original', size=80),
          'base_id': fields.many2one('fashion.form', 'Base form', 
-             help="Duplicated from"),
+             help='Duplicated from'),
          'base_name': fields.char('Duplicated form', size=40),
          'h_lining': fields.char('Height lining', size=10),
          'mt_lining': fields.char('Meters lining', size=10),
@@ -1222,71 +1257,71 @@ class fashion_form(osv.osv):
          
          # Function for totals:
          'sum_accessory': fields.function(_get_sum_items, 
-             string="Total accessory", 
-             type="float", digits=(10, 2), store=False, multi='totals',
-             help="Sum of the accessory list (see page Accessory for details)",
+             string='Total accessory', 
+             type='float', digits=(10, 2), store=False, multi='totals',
+             help='Sum of the accessory list (see page Accessory for details)',
              ),
-         'sum_cost': fields.function(_get_sum_items, string="Total cost list", 
-             type="float", digits=(10, 2), store=False, multi='totals',
-             help="Sum of costs in the list on the left"),
+         'sum_cost': fields.function(_get_sum_items, string='Total cost list', 
+             type='float', digits=(10, 2), store=False, multi='totals',
+             help='Sum of costs in the list on the left'),
          'sum_extra_cost': fields.function(_get_sum_items, 
-             string="Total extra cost", 
-             type="float", digits=(10, 2), store=False, multi='totals',
-             help="Sum of accessory cost and cost list "
-                 "(no fabric in this total)"),
+             string='Total extra cost', 
+             type='float', digits=(10, 2), store=False, multi='totals',
+             help='Sum of accessory cost and cost list '
+                 '(no fabric in this total)'),
          
          # Image:
          'draw_image_a': fields.function(_get_draw_image, 
              fnct_inv=_set_draw_image,
-             string="Draw Image A", type="binary",
-             help="Image for draw side A. Usual size:"\
-                  "1024 x 768"\
-                  "The image is printed in report form and, in small size"\
-                  "in kanban report views"),
+             string='Draw Image A', type='binary',
+             help='Image for draw side A. Usual size:'\
+                  '1024 x 768'\
+                  'The image is printed in report form and, in small size'\
+                  'in kanban report views'),
          'draw_image_b': fields.function(_get_draw_image, 
              fnct_inv=_set_draw_image,
-             string="Draw Image B", type="binary",
-             help="Image for draw side B. Usual size:"\
-                  "1024 x 768"\
-                  "The image is printed in report form and, in small size"\
-                  "in kanban report views"),
+             string='Draw Image B', type='binary',
+             help='Image for draw side B. Usual size:'\
+                  '1024 x 768'\
+                  'The image is printed in report form and, in small size'\
+                  'in kanban report views'),
          
          # Photos:
          'draw_image_c': fields.function(_get_draw_image, 
              fnct_inv=_set_draw_image,
-             string="Photo", type="binary",
-             help="Image for draw side B. Usual size:"\
-                  "1024 x 768"\
-                  "The image is printed in report form and, in small size"\
-                  "in kanban report views"),
+             string='Photo', type='binary',
+             help='Image for draw side B. Usual size:'\
+                  '1024 x 768'\
+                  'The image is printed in report form and, in small size'\
+                  'in kanban report views'),
          'draw_image_d': fields.function(_get_draw_image, 
              fnct_inv=_set_draw_image,
-             string="Photo", type="binary",
-             help="Image for draw side B. Usual size:"\
-                  "1024 x 768"\
-                  "The image is printed in report form and, in small size"\
-                  "in kanban report views"),
+             string='Photo', type='binary',
+             help='Image for draw side B. Usual size:'\
+                  '1024 x 768'\
+                  'The image is printed in report form and, in small size'\
+                  'in kanban report views'),
 
         # Resize dinamically images:
         'draw_image_a_medium': fields.function(_get_resized_image, 
             fnct_inv=_set_resized_image,
-            string="Medium-sized image", type="binary",
-            help="Medium-sized image of the product. It is automatically "
-                 "resized as a 800px large image, with aspect ratio preserved "
-                 "only when the image exceeds one of those sizes. Use this "
-                 "field in form views or some kanban views."),
+            string='Medium-sized image', type='binary',
+            help='Medium-sized image of the product. It is automatically '
+                 'resized as a 800px large image, with aspect ratio preserved '
+                 'only when the image exceeds one of those sizes. Use this '
+                 'field in form views or some kanban views.'),
                  
         'draw_image_a_small': fields.function(_get_resized_image, 
             fnct_inv=_set_resized_image,
-            string="Small-sized image", type="binary",
-            help="Small-sized image of the product. It is automatically"
-                 "resized as a 128px large image, with aspect ratio preserved."
-                 "Use this field anywhere a small image is required."),
+            string='Small-sized image', type='binary',
+            help='Small-sized image of the product. It is automatically'
+                 'resized as a 128px large image, with aspect ratio preserved.'
+                 'Use this field anywhere a small image is required.'),
 
          # Inherit fields:
          'product_id': fields.many2one('product.product', 'Product',
-              ondelete = "restrict", required=True,
-              help="Inherits value for link form to a product"),
+              ondelete = 'restrict', required=True,
+              help='Inherits value for link form to a product'),
 
          # Details fields (and search)
          'detail_info_partner': fields.function(
@@ -1325,7 +1360,7 @@ class fashion_form(osv.osv):
 
          # Link di importazione:
          'access_id': fields.integer('Access ID', 
-             help="ID Importazione che tiene il link"),
+             help='ID Importazione che tiene il link'),
              }
 
     _defaults = {
@@ -1393,10 +1428,11 @@ class fashion_form_measure_rel(osv.osv):
 
         # Link di importazione:
         'access_id': fields.integer('Access ID', 
-            help="ID Importazione che tiene il link"),
+            help='ID Importazione che tiene il link'),
         }
     
     _defaults = {
+        'visible': lambda *x: True,        
         'header': lambda *x: False,
         'sequence': lambda *x: 0,
         }
@@ -1433,9 +1469,9 @@ class fashion_form_characteristic_rel(osv.osv):
     def duplicate_characteristic(self, cr, uid, ids, context=None):
         ''' Duplicate characteristic element
         '''
-        fn = get_temp_filename("%s.car.dat" % uid) 
-        f = open(fn, "a")
-        f.write("%s\n" % ids[0])
+        fn = get_temp_filename('%s.car.dat' % uid) 
+        f = open(fn, 'a')
+        f.write('%s\n' % ids[0])
         f.close()
         return True
 
@@ -1466,7 +1502,7 @@ class fashion_form_characteristic_rel(osv.osv):
          
         # Link di importazione:
         'access_id': fields.integer('Access ID', 
-            help="ID Importazione che tiene il link"),
+            help='ID Importazione che tiene il link'),
         }
     _defaults = {
         'sequence': lambda *x: 1,
@@ -1536,7 +1572,7 @@ class fashion_form_characteristic_rel_specific(osv.osv):
 
         # Link di importazione:
         'access_id': fields.integer('Access ID', 
-            help="ID Importazione che tiene il link"),
+            help='ID Importazione che tiene il link'),
         }
 
     _defaults = {
@@ -1557,7 +1593,7 @@ class fashion_form_cost_rel(osv.osv):
 
         # Link di importazione:
         'access_id': fields.integer('Access ID', 
-            help="ID Importazione che tiene il link"),
+            help='ID Importazione che tiene il link'),
         }
 
 class fashion_form_cost_rel_pricelist(osv.osv):
@@ -1579,7 +1615,7 @@ class fashion_form_cost_rel_pricelist(osv.osv):
 
         # Link di importazione:
         'access_id': fields.integer('Access ID', 
-            help="ID Importazione che tiene il link"),
+            help='ID Importazione che tiene il link'),
         }
     
     _defaults = {
@@ -1610,9 +1646,9 @@ class fashion_form_accessory_rel(osv.osv):
     def duplicate_accessory(self, cr, uid, ids, context=None):
         ''' Duplicate accessory element
         '''        
-        fn = get_temp_filename("%s.acc.dat" % uid)         
-        f = open(fn, "a")
-        f.write("%s\n" % ids[0])
+        fn = get_temp_filename('%s.acc.dat' % uid)         
+        f = open(fn, 'a')
+        f.write('%s\n' % ids[0])
         f.close()
         return True 
     
@@ -1714,7 +1750,7 @@ class fashion_form_accessory_rel(osv.osv):
         res['value'] = {}
         if pricelist_id:
             pricelist_proxy = self.pool.get(
-                "fashion.form.accessory.pricelist").browse(
+                'fashion.form.accessory.pricelist').browse(
                     cr, uid, pricelist_id, context=context)
             res['value']['supplier_id'] = pricelist_proxy.supplier_id.id if pricelist_proxy.supplier_id else False
             res['value']['currency'] = pricelist_proxy.cost or 0.0
@@ -1758,7 +1794,7 @@ class fashion_form_accessory_rel(osv.osv):
 
         # Link di importazione:
         'access_id': fields.integer('Access ID', 
-            help="ID Importazione che tiene il link"),
+            help='ID Importazione che tiene il link'),
         }
         
     _defaults = {
@@ -1780,7 +1816,7 @@ class fashion_form_stitch_rel(osv.osv):
 
         # Link di importazione:
         'access_id': fields.integer('Access ID', 
-            help="ID Importazione che tiene il link"),
+            help='ID Importazione che tiene il link'),
         }
 
 class fashion_form_comment_rel(osv.osv):
@@ -1815,15 +1851,15 @@ class fashion_form_comment_rel(osv.osv):
          'form_id': fields.many2one('fashion.form', 'Form'),
          'date': fields.date('Date'),
          'user_id': fields.many2one('res.users', 'User', 
-             help="User that insert comment"),
+             help='User that insert comment'),
          'reference': fields.char('Reference', size=50, 
-             help="If it is not the user or is an external reference write "
-                 "here the name."),
+             help='If it is not the user or is an external reference write '
+                 'here the name.'),
          'hide_in_report':fields.boolean('Hide in report'),        
 
          # Link di importazione:
          'access_id': fields.integer('Access ID', 
-             help="ID Importazione che tiene il link"),
+             help='ID Importazione che tiene il link'),
          }
 
     _defaults = {
@@ -1844,7 +1880,7 @@ class fashion_measure_rel(osv.osv):
 
          # Link di importazione:
          'access_id': fields.integer('Access ID', 
-             help="ID Importazione che tiene il link"),
+             help='ID Importazione che tiene il link'),
          }
 
 class fashion_article(osv.osv):
@@ -1881,7 +1917,7 @@ class fashion_form_partner_rel(osv.osv):
         for item in self.browse(cr, uid, ids, context = context):
             res.append((item.id, '%s [%s] %s' % (
                 item.partner_id.name,
-                item.fabric_id.code if item.fabric_id else "???",
+                item.fabric_id.code if item.fabric_id else '???',
                 (item.fabric_id.article_code or '') if from_wizard else ''
                 )))
                 
@@ -1904,7 +1940,7 @@ class fashion_form_partner_rel(osv.osv):
         return {
             'model': 'fashion.form',
             'type': 'ir.actions.report.xml',
-            'report_name': "fashion_form_A",
+            'report_name': 'fashion_form_A',
             'datas': datas,
             }
 
@@ -1947,7 +1983,7 @@ class fashion_form_partner_rel(osv.osv):
         return {
             'model': 'fashion.form',
             'type': 'ir.actions.report.xml',
-            'report_name': "fashion_form_C",
+            'report_name': 'fashion_form_C',
             'datas': datas,
             }
 
@@ -1974,10 +2010,10 @@ class fashion_form_partner_rel(osv.osv):
         res['value']['supplier_id'] = fabric_proxy.supplier_id.id
         res['value']['perc_fabric'] = fabric_proxy.perc_composition
         res['value']['cost'] = fabric_proxy.cost
-        res['value']['note_fabric'] = "%s%s %s" % (
-            fabric_proxy.supplier_id.name if fabric_proxy.supplier_id else "", 
-            " ART %s" % (
-                fabric_proxy.article_code) if fabric_proxy.article_code else "", 
+        res['value']['note_fabric'] = '%s%s %s' % (
+            fabric_proxy.supplier_id.name if fabric_proxy.supplier_id else '', 
+            ' ART %s' % (
+                fabric_proxy.article_code) if fabric_proxy.article_code else '', 
             fabric_proxy.note or '')
         return res
         
@@ -2010,11 +2046,11 @@ class fashion_form_partner_rel(osv.osv):
             res[obj.id]['total_fabric'] = obj.cost * obj.mt_fabric
             res[obj.id]['total_cost'] = res[obj.id]['total_fabric'] + obj.form_id.sum_extra_cost # TODO + cost list + accessory totale
             profit = obj.sale - res[obj.id]['total_cost']
-            res[obj.id]['margin_note'] = _("%5.2f%s(Mar.)\n%5.2f%s(Ric.)\n%10.2f€(Ut.)") % (
+            res[obj.id]['margin_note'] = _('%5.2f%s(Mar.)\n%5.2f%s(Ric.)\n%10.2f€(Ut.)') % (
                 (profit * 100.0 / res[obj.id]['total_cost']) if res[obj.id]['total_cost'] else 0.0,
-                "%",
+                '%',
                 (profit * 100.0 / obj.sale) if obj.sale else 0.0,
-                "%",
+                '%',
                 profit,
             )            
         return res
@@ -2076,19 +2112,19 @@ class fashion_form_partner_rel(osv.osv):
         'mt_fabric': fields.float('Mt.', digits=(10, 2)),
         
         'cost': fields.float('Cost', digits=(10, 4), 
-            help="Unit price for fabric"),
+            help='Unit price for fabric'),
         'retail': fields.float('Retail', digits=(10, 4)),
         'wholesale': fields.float('Wholesale', digits=(10, 4)),
         'sale': fields.float('Selling price', digits=(10, 4)),
         
         # Calculated fields:
         'total_fabric': fields.function(_get_total_fabric, 
-            string="Total fabric", 
-            type="float", digits=(10, 2), store=False, multi='totals'),  # m_lining * cost
-        'total_cost': fields.function(_get_total_fabric, string="Total cost", 
-            type="float", digits=(10, 2), store=False, multi='totals'),  # total_fabric + cost list + accessory
-        'margin_note': fields.function(_get_total_fabric, string="Balance", 
-            type="char", size=100, store=False, multi='totals'),  # margin information
+            string='Total fabric', 
+            type='float', digits=(10, 2), store=False, multi='totals'),  # m_lining * cost
+        'total_cost': fields.function(_get_total_fabric, string='Total cost', 
+            type='float', digits=(10, 2), store=False, multi='totals'),  # total_fabric + cost list + accessory
+        'margin_note': fields.function(_get_total_fabric, string='Balance', 
+            type='char', size=100, store=False, multi='totals'),  # margin information
 
         
         'code': fields.char('Customer Code', size=10),
@@ -2163,9 +2199,9 @@ class fashion_form_partner_rel(osv.osv):
                 
         # Link di importazione:
         'access_id': fields.integer('Access ID', 
-            help="ID Importazione che tiene il link"),
+            help='ID Importazione che tiene il link'),
         'access_2_id': fields.integer('Access 2 ID', 
-            help="ID Importazione che tiene il link con partner costi"),
+            help='ID Importazione che tiene il link con partner costi'),
         }
 
 class fashion_form_photo(osv.osv):
@@ -2281,7 +2317,7 @@ class res_partner(osv.osv):
 
         # Link di importazione:
         'access_id': fields.integer('Access ID', 
-            help="ID Importazione che tiene il link"),
+            help='ID Importazione che tiene il link'),
         }
     
 class fashion_form_extra_relations(osv.osv):
