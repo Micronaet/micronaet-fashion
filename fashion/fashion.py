@@ -115,15 +115,27 @@ class fashion_form_characteristic(osv.osv):
     _description = 'Characteristic'
     _order = 'sequence,name'
 
+    def unactive_duplicate(self, cr, uid, ids, context=None):
+        ''' Hide record
+        '''
+        return self.write(cr, uid, ids, {
+            'active': False,
+            }, context=context)
+            
     _columns = {
-         'name': fields.char('Name', size = 40, required = True),
-         'note': fields.text('Note'),
-         'sequence': fields.integer('Sequence'),
+        'active': fields.boolean('Active'),
+        'name': fields.char('Name', size = 40, required = True),
+        'note': fields.text('Note'),
+        'sequence': fields.integer('Sequence'),
 
-         # Link di importazione:
-         'access_id': fields.integer(
-             'Access ID', help='ID Importazione che tiene il link'),
-    }
+        # Link di importazione:
+        'access_id': fields.integer(
+            'Access ID', help='ID Importazione che tiene il link'),
+        }
+        
+    _defaults = {
+        'active': lambda *x: True,
+        }
 
 class fashion_form_cost(osv.osv):
     '''Table that manages the cost
@@ -155,22 +167,32 @@ class fashion_form_accessory(osv.osv):
     _description = 'Accessory'
     _order = 'sequence,name'
 
-    _columns = {
-         'name': fields.char('Name', size = 40, required = True),
-         'gerber_char': fields.char('Gerber char', size = 1, required = False),
-         'note': fields.text('Note'),
-         'sequence': fields.integer('Sequence'),
-         'type': fields.selection([
-                ('t', 'Cut'),
-                ('a', 'Accessory'),
-                ], 'Type', select=True),
+    def unactive_duplicate(self, cr, uid, ids, context=None):
+        ''' Hide record
+        '''
+        return self.write(cr, uid, ids, {
+            'active': False,
+            }, context=context)
 
-         # Link di importazione:
-         'access_id': fields.integer('Access ID', help='ID Importazione che tiene il link'),
-    }
+    _columns = {
+        'active': fields.boolean('Active'),
+        'name': fields.char('Name', size = 40, required = True),
+        'gerber_char': fields.char('Gerber char', size = 1, required = False),
+        'note': fields.text('Note'),
+        'sequence': fields.integer('Sequence'),
+        'type': fields.selection([
+            ('t', 'Cut'),
+            ('a', 'Accessory'),
+            ], 'Type', select=True),
+
+        # Link di importazione:
+        'access_id': fields.integer('Access ID', help='ID Importazione che tiene il link'),
+        }
+    
     _defaults = {
+        'active': lambda *x: True,    
         'sequence': lambda *x: 1000, # normal accessory have high number
-    }
+        }
 
 class fashion_form_accessory_pricelist(osv.osv):
     '''Table that manages the accessory pricelist
@@ -416,19 +438,19 @@ class fashion_form_fabric(osv.osv):
 
         res = []
         for fabric in self.browse(cr, uid, ids, context=context):
-            if extra_info:
-                name = '%s (%s) %s [%s]' % (
-                    fabric.code, 
-                    #fabric.supplier_id.name if fabric.supplier_id else '',
-                    fabric.article_code or '',
-                    fabric.perc_composition or '',
-                    fabric.season_id.code if fabric.season_id else '', 
-                    )
-            else:
-                name = '%s [%s]' % (
-                    fabric.code, 
-                    fabric.season_id.code if fabric.season_id else '', 
-                    )            
+            #if extra_info:
+            name = '%s (%s) %s [%s]' % (
+                fabric.code, 
+                #fabric.supplier_id.name if fabric.supplier_id else '',
+                fabric.article_code or '',
+                fabric.perc_composition or '',
+                fabric.season_id.code if fabric.season_id else '', 
+                )
+            #else:
+            #    name = '%s [%s]' % (
+            #        fabric.code, 
+            #        fabric.season_id.code if fabric.season_id else '', 
+            #        )            
             res.append((fabric.id, name))
         return res
 
@@ -474,8 +496,8 @@ class fashion_form_stitch(osv.osv):
     _order = 'sequence,name'
 
     _columns = {
-        'active': fields.boolean('Attiva'),
-        'name': fields.char('Name', size = 40, required = True),
+        'active': fields.boolean('Active'),
+        'name': fields.char('Name', size=40, required=True),
         'note': fields.text('Note'),
         'sequence': fields.integer('Sequence'),
     
@@ -495,15 +517,27 @@ class fashion_form_measure(osv.osv):
     _description = 'Measure'
     _order = 'name'
 
-    _columns = {
-         'letter': fields.char('Letter', size=1),
-         'name': fields.char('Description', size=40, required=True),
-         'note': fields.text('Note'),
+    def unactive_duplicate(self, cr, uid, ids, context=None):
+        ''' Hide record
+        '''
+        return self.write(cr, uid, ids, {
+            'active': False,
+            }, context=context)
 
-         # Link di importazione:
-         'access_id': fields.integer('Access ID', 
-             help='ID Importazione che tiene il link'),
-    }
+    _columns = {
+        'active': fields.boolean('Active'),
+        'letter': fields.char('Letter', size=1),
+        'name': fields.char('Description', size=40, required=True),
+        'note': fields.text('Note'),
+
+        # Link di importazione:
+        'access_id': fields.integer('Access ID', 
+            help='ID Importazione che tiene il link'),
+        }
+    
+    _defaults = {
+        'active': lambda *x: True,
+        }
 
 class fashion_form(osv.osv):
     ''' Table that manages the form
@@ -1541,8 +1575,8 @@ class fashion_form_characteristic_rel_specific(osv.osv):
     _order = 'type,name'
 
     # Button events:
-    def hide_terms(self, cr, uid, ids, context=None):
-        ''' Hide terms
+    def unactive_duplicate(self, cr, uid, ids, context=None):
+        ''' Hide record
         '''
         return self.write(cr, uid, ids, {
             'active': False,
@@ -1560,7 +1594,6 @@ class fashion_form_characteristic_rel_specific(osv.osv):
         """
         if 'name' in vals:
             vals['name'] = vals['name'].upper()
-        #return osv.osv.create(self, cr, uid, ids, context=context)
         return super(fashion_form_characteristic_rel_specific, self).create(
             cr, uid, vals, context=context)
 
@@ -1576,14 +1609,11 @@ class fashion_form_characteristic_rel_specific(osv.osv):
         @param context: context arguments, like lang, time zone
         
         @return: True on success, False otherwise
-        """
-    
+        """    
         if 'name' in vals:
-            vals['name'] = vals['name'].upper()
-            
-        #return osv.osv.create(self, cr, uid, ids, context=context)
-        return super(fashion_form_characteristic_rel_specific, self).create(
-            cr, uid, vals, context=context)
+            vals['name'] = vals['name'].upper()            
+        return super(fashion_form_characteristic_rel_specific, self).write(
+            cr, uid, ids, vals, context=context)
     
     _columns = {
         'active': fields.boolean('Active', help='Rimuove termine dalla lista'),
@@ -1603,6 +1633,7 @@ class fashion_form_characteristic_rel_specific(osv.osv):
     _defaults = {
         'active': lambda *x: True,        
         }
+        
 class fashion_form_cost_rel(osv.osv):
     '''Table that manage the relation cost/form
     '''
@@ -2178,6 +2209,7 @@ class fashion_form_partner_rel(osv.osv):
         'cost_id': fields.many2one('fashion.form.cost', 'Cost'),
         'value': fields.float('Value', digits=(10, 2)),
         'note': fields.text('Note'),
+        # TODO change in store with rules:
         'article_id': fields.related('form_id', 'article_id', type='many2one',
             relation='fashion.article', string='Article', readonly=True, 
             store=True),

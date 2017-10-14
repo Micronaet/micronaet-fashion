@@ -60,20 +60,22 @@
     </record>
 
     <!--fashion.form.characteristic-->
-
     <record id="fashion_form_characteristic_form" model="ir.ui.view">
         <field name="name">fashion.form.characteristic.form</field>
         <field name="model">fashion.form.characteristic</field>
         <field name="arch" type="xml">
             <form string="Characteristic" version="7.0">
-            <sheet>
-                <group colspan='4' col='4'>
-                    <field name="sequence"/>
-                    <field name="name"/>
-                    <separator string='Note' colspan='4'/>
-                    <field name="note" nolabel='1' colspan='4'/>
-                </group>
-            </sheet>
+                <header>
+                    <button name="unactive_duplicate" string="Nascondi" type="object" confirm="Attenzione non sarà più visibile questa voce nel'anagrafica, confermi?" icon="gtk-cancel"/>
+                </header>
+                <sheet>
+                    <group colspan='4' col='4'>
+                        <field name="sequence"/>
+                        <field name="name"/>
+                        <separator string='Note' colspan='4'/>
+                        <field name="note" nolabel='1' colspan='4'/>
+                    </group>
+                </sheet>
             </form>
         </field>
     </record>
@@ -86,6 +88,7 @@
                 <field name="sequence" style="width='30'"/>
                 <field name="name"/>
                 <field name="note"/>
+                <button name="unactive_duplicate" string="Nascondi" type="object" confirm="Attenzione non sarà più visibile questa voce nel'anagrafica, confermi?" icon="gtk-cancel"/>
             </tree>
         </field>
     </record>
@@ -165,16 +168,18 @@
         <field name="model">fashion.form.accessory.pricelist</field>
         <field name="arch" type="xml">
             <form string="Accessory" version="7.0">
-                <group colspan="4" col="4">
-                    <field name="accessory_id" />
-                    <field name="supplier_id" />
-                    <field name="name" />
-                    <field name="um" />
-                    <field name="extra_info" />
-                    <field name="cost" />
-                    <field name="note" />
-                    <field name="create_date" />                
-                </group>
+                <sheet>
+                    <group colspan="4" col="4">
+                        <field name="accessory_id" />
+                        <field name="supplier_id" />
+                        <field name="name" />
+                        <field name="um" />
+                        <field name="extra_info" />
+                        <field name="cost" />
+                        <field name="note" />
+                        <field name="create_date" />                
+                    </group>
+                </sheet>
             </form>
         </field>
     </record>    
@@ -211,46 +216,48 @@
         <field name="model">fashion.form.accessory</field>
         <field name="arch" type="xml">
             <form string="Accessory" version="7.0">
-            <sheet>
-                <group colspan='4' col='4'>
-                    <field name="sequence"/>
-                    <field name="type"/>
-                    <field name="gerber_char"/>
-                    <field name="name"/>
-                    <notebook colspan="4">
-                       <page string="Pricelist">
-                            <field name="pricelist_ids" colspan="4">
-                                <tree string="Pricelist" editable="bottom">
-                                    <field name="supplier_id" context="{'default_is_company':True,'default_supplier':True,'default_customer':False}"/>
-                                    <field name="name" />
-                                    <field name="um" />
-                                    <field name="extra_info" />
-                                    <field name="cost" />
-                                    <field name="note" />
-                                    <field name="create_date" />
-                                </tree>
-                                <form>
-                                    <field name="supplier_id" context="{'default_is_company':True,'default_supplier':True,'default_customer':False}" />
-                                    <field name="name" />
-                                    <field name="um" />
-                                    <field name="extra_info" />
-                                    <field name="cost" />
-                                    <field name="note" />
-                                    <field name="create_date" />
-                                </form>
-                            </field>
-                       </page>
-                       <page string="Note">
-                            <separator string='Note' colspan='4'/>
-                            <field name="note" nolabel='1' colspan='4'/>                           
-                       </page>
-                    </notebook>
-                </group>
-            </sheet>
+                <header>
+                    <button name="unactive_duplicate" string="Nascondi" type="object" confirm="Attenzione non sarà più visibile questa voce nel'anagrafica, confermi?" icon="gtk-cancel"/>
+                </header>
+                <sheet>
+                    <group colspan='4' col='4'>
+                        <field name="sequence"/>
+                        <field name="type"/>
+                        <field name="gerber_char"/>
+                        <field name="name"/>
+                        <notebook colspan="4">
+                           <page string="Pricelist">
+                                <field name="pricelist_ids" colspan="4">
+                                    <tree string="Pricelist" editable="bottom">
+                                        <field name="supplier_id" context="{'default_is_company':True,'default_supplier':True,'default_customer':False}"/>
+                                        <field name="name" />
+                                        <field name="um" />
+                                        <field name="extra_info" />
+                                        <field name="cost" />
+                                        <field name="note" />
+                                        <field name="create_date" />
+                                    </tree>
+                                    <form>
+                                        <field name="supplier_id" context="{'default_is_company':True,'default_supplier':True,'default_customer':False}" />
+                                        <field name="name" />
+                                        <field name="um" />
+                                        <field name="extra_info" />
+                                        <field name="cost" />
+                                        <field name="note" />
+                                        <field name="create_date" />
+                                    </form>
+                                </field>
+                           </page>
+                           <page string="Note">
+                                <separator string='Note' colspan='4'/>
+                                <field name="note" nolabel='1' colspan='4'/>                           
+                           </page>
+                        </notebook>
+                    </group>
+                </sheet>
             </form>
         </field>
     </record>
-
     <record id="fashion_form_accessory_tree" model="ir.ui.view">
         <field name="name">fashion.form.accessory.tree</field>
         <field name="model">fashion.form.accessory</field>
@@ -261,10 +268,10 @@
                     <field name="gerber_char"/>
                     <field name="name"/>
                     <field name="note"/>
+                    <button name="unactive_duplicate" string="Nascondi" type="object" confirm="Attenzione non sarà più visibile questa voce nel'anagrafica, confermi?" icon="gtk-cancel"/>
             </tree>
         </field>
     </record>
-
     <record id="fashion_form_accessory_search" model="ir.ui.view">
         <field name="name">fashion.form.accessory.search</field>
         <field name="model">fashion.form.accessory</field>
@@ -532,36 +539,37 @@
     </record>
 
     <!--fashion.form.measure-->
-
     <record id="fashion_form_measure_form" model="ir.ui.view">
         <field name="name">fashion.form.measure.form</field>
         <field name="model">fashion.form.measure</field>
         <field name="arch" type="xml">
             <form string="Measure" version="7.0">
-            <sheet>
-                <group colspan='4' col='4'>
-                    <field name="letter"/>
-                    <field name="name"/>
-                    <separator string='Note' colspan='4'/>
-                    <field name="note" nolabel='1' colspan='4'/>
-                </group>
-            </sheet>
+                <header>
+                    <button name="unactive_duplicate" string="Nascondi" type="object" confirm="Attenzione non sarà più visibile questa voce nel'anagrafica, confermi?" icon="gtk-cancel"/>
+                </header>                
+                <sheet>
+                    <group colspan='4' col='4'>
+                        <field name="letter"/>
+                        <field name="name"/>
+                        <separator string='Note' colspan='4'/>
+                        <field name="note" nolabel='1' colspan='4'/>
+                    </group>
+                </sheet>
             </form>
         </field>
     </record>
-
     <record id="fashion_form_measure_tree" model="ir.ui.view">
         <field name="name">fashion.form.measure.tree</field>
         <field name="model">fashion.form.measure</field>
         <field name="arch" type="xml">
             <tree string="Measure">
-                    <field name="letter"/>
-                    <field name="name"/>
-                    <field name="note"/>
+                <field name="letter"/>
+                <field name="name"/>
+                <field name="note"/>
+                <button name="unactive_duplicate" string="Nascondi" type="object" confirm="Attenzione non sarà più visibile questa voce nel'anagrafica, confermi?" icon="gtk-cancel"/>
             </tree>
         </field>
     </record>
-
     <record id="action_fashion_form_measure" model="ir.actions.act_window">
             <field name="name">Fashion measure</field>
             <field name="res_model">fashion.form.measure</field>
@@ -570,8 +578,7 @@
             <field name="view_id" ref="fashion_form_measure_tree"/>
     </record>
 
-<!--fashion.form.measure-->
-
+<!--fashion.article-->
     <record id="fashion_article_form" model="ir.ui.view">
         <field name="name">fashion.article.form</field>
         <field name="model">fashion.article</field>
@@ -1112,36 +1119,35 @@
             </search>
         </field>
     </record>
-
     <record id="fashion_form_characteristic_rel_specific_form" model="ir.ui.view">
         <field name="name">fashion.form.characteristic.rel.specific.form</field>
         <field name="model">fashion.form.characteristic.rel.specific</field>
         <field name="arch" type="xml">
             <form string="Characteristic specific" version="7.0">
-            <sheet>
-                <group colspan='4' col='4'>
-                    <field name="active" />
-                    <field name="name"/>
-                    <field name="type"/>
-                </group>
-            </sheet>
+                <header>
+                    <button name="unactive_duplicate" string="Nascondi" type="object" confirm="Attenzione non sarà più visibile questa voce nel'anagrafica, confermi?" icon="gtk-cancel"/>
+                </header>                
+                <sheet>
+                    <group colspan='4' col='4'>
+                        <field name="name"/>
+                        <field name="type"/>
+                    </group>
+                </sheet>
             </form>
         </field>
     </record>
-
     <record id="fashion_form_characteristic_rel_specific_tree" model="ir.ui.view">
         <field name="name">fashion.form.characteristic.rel.specific.tree</field>
         <field name="model">fashion.form.characteristic.rel.specific</field>
         <field name="arch" type="xml">
             <tree string="Characteristic specific">
-                <!--<button name="hide_terms" string="Hide" type="object" icon="gtk-no" attrs="{'invisible': [('active','=',False)]}"/>-->
                 <field name="active" invisible="1"/>
                 <field name="name"/>
                 <field name="type"/>
+                    <button name="unactive_duplicate" string="Nascondi" type="object" confirm="Attenzione non sarà più visibile questa voce nel'anagrafica, confermi?" icon="gtk-cancel"/>
             </tree>
         </field>
     </record>
-
     <record id="action_fashion_form_characteristic_rel_specific" model="ir.actions.act_window">
             <field name="name">Caracteristic terms</field>
             <field name="res_model">fashion.form.characteristic.rel.specific</field>
