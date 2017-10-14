@@ -1,0 +1,59 @@
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:          dropbox
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Should-Start:      $network $time $local_fs
+# Should-Stop:       $network $time $local_fs
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: dropbox - file synchronization daemon
+# Description:       Dropbox is a Web-based file hosting service operated by
+#                    Dropbox, Inc. that uses cloud storage to enable users to store and share files
+#                    and folders with others across the Internet using file synchronization
+### END INIT INFO
+# Install dropbox
+# Install dropbox script and put in /ust/local/bin
+# DROPBOX_USERS="administrator"
+
+DAEMON=/usr/local/bin/dropbox
+
+# dropbox don't use X server
+unset DISPLAY
+
+start() {
+    echo "Starting dropbox..."
+    $DAEMON start
+    done
+}
+
+stop() {
+    echo "Stopping dropbox..."
+    $DAEMON stop
+    done
+}
+
+status() {
+    $DAEMON status
+    done
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    restart|reload|force-reload)
+        stop
+        start
+        ;;
+    status)
+        status
+        ;;
+    *)
+        echo "Usage: /etc/init.d/dropbox {start|stop|reload|force-reload|restart|status}"
+        exit 1
+esac
+exit 0
