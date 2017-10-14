@@ -13,8 +13,7 @@
 #                    and folders with others across the Internet using file synchronization
 ### END INIT INFO
 # Install dropbox
-# Install dropbox script and put in /ust/local/bin
-# DROPBOX_USERS="administrator"
+# Install dropbox script and put in /ust/local/bin (+x)
 
 DAEMON=/usr/local/bin/dropbox
 
@@ -22,20 +21,15 @@ DAEMON=/usr/local/bin/dropbox
 unset DISPLAY
 
 start() {
-    echo "Starting dropbox..."
     $DAEMON start
-    done
 }
 
 stop() {
-    echo "Stopping dropbox..."
     $DAEMON stop
-    done
 }
 
 status() {
     $DAEMON status
-    done
 }
 
 case "$1" in
