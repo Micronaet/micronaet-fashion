@@ -744,6 +744,7 @@ class fashion_form(osv.osv):
             'target': 'current', # 'new'
             'nodestroy': False,
             }
+            
     def import_dropbox_photo(self, cr, uid, ids, context=None):
         ''' Search image in input folder and create image elements
         '''
