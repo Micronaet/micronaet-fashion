@@ -2310,6 +2310,10 @@ class fashion_form_photo(osv.osv):
             # Read original image
             filename = os.path.join(path, '%s.%s' % (
                 photo.id, self._extension))
+            extension = self._extension.upper()
+            if extension == 'JPG':
+                extension = 'JPEG'
+                
             try:
                 f = open(filename, 'rb')
                 img = base64.encodestring(f.read())
@@ -2319,7 +2323,7 @@ class fashion_form_photo(osv.osv):
             if width and img:
                 res[photo.id] = tools.image_resize_image(
                     img, size=(width, None), encoding='base64', 
-                    filetype=self._extension.upper(), avoid_if_small=True)
+                    filetype=extension, avoid_if_small=True)
             else:                        
                 res[photo.id] = img
         return res       
