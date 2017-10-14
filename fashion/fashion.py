@@ -474,14 +474,19 @@ class fashion_form_stitch(osv.osv):
     _order = 'sequence,name'
 
     _columns = {
-         'name': fields.char('Name', size = 40, required = True),
-         'note': fields.text('Note'),
-         'sequence': fields.integer('Sequence'),
+        'active': fields.boolean('Attiva'),
+        'name': fields.char('Name', size = 40, required = True),
+        'note': fields.text('Note'),
+        'sequence': fields.integer('Sequence'),
     
-         # Link di importazione:
-         'access_id': fields.integer('Access ID', 
-             help='ID Importazione che tiene il link'),
-    }
+        # Link di importazione:
+        'access_id': fields.integer('Access ID', 
+            help='ID Importazione che tiene il link'),
+        }
+          
+    _defaults = {
+        'active': lambda *x: True,
+        }     
 
 class fashion_form_measure(osv.osv):
     '''Table that manages the measure

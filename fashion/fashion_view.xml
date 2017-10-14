@@ -815,7 +815,7 @@
                                 <group colspan='4'>
                                     <field name="stitch_rel_ids" nolabel='1' colspan='4'>
                                         <tree string="Seams" editable='bottom'>
-                                            <field name='stitch_id'/>
+                                            <field name='stitch_id' domain="[('active', '=', True)]"/>
                                             <field name='name'/>
                                             <field name='topstitch'/>
                                         </tree>
@@ -835,10 +835,10 @@
                                             <field name='characteristic_id' string="Type"/>
                                             <field name='old_name' invisible="1" /><!--<field name="show_old_model" -->
                                             <field name='lenght' on_change="on_change_upper_lenght(lenght)" string="Stitch"/>
-                                            <field name='stitch_type_id' context="{'default_type':'1'}" string="Type of stitch"/>
+                                            <field name='stitch_type_id' context="{'default_type':'1'}" string="Type of stitch" domain="[('active', '=', True)]"/>
                                             <!--<field name='stitch_verse_id' context="{'default_type':'2'}"/>-->
-                                            <field name='stitch_cut_id' context="{'default_type':'3'}" string="Stich cut"/>
-                                            <field name='stitch_top_id' context="{'default_type':'4'}" string="Top stich"/>
+                                            <field name='stitch_cut_id' context="{'default_type':'3'}" string="Stich cut" domain="[('active', '=', True)]"/>
+                                            <field name='stitch_top_id' context="{'default_type':'4'}" string="Top stich" domain="[('active', '=', True)]"/>
                                             <!--<field name='stitch_top_type_id' context="{'default_type':'5'}" />-->
                                             <field name='bindello'/>
                                             <field name='name' on_change="on_change_upper_characteristic(name)" string="Description"/>
@@ -1102,6 +1102,7 @@
         <field name="model">fashion.form.characteristic.rel.specific</field>
         <field name="arch" type="xml">
             <search string="Terms">
+                <field name="active" />
                 <field name="name" filter_domain="[('name','ilike',self)]"/>
                 <field name="type" filter_domain="[('type,'ilike',self)]"/>
 
@@ -1119,8 +1120,9 @@
             <form string="Characteristic specific" version="7.0">
             <sheet>
                 <group colspan='4' col='4'>
-                   <field name="name"/>
-                   <field name="type"/>
+                    <field name="active" />
+                    <field name="name"/>
+                    <field name="type"/>
                 </group>
             </sheet>
             </form>
