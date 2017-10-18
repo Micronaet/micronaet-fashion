@@ -52,16 +52,15 @@ class Parser(report_sxw.rml_parse):
         })
 
     def get_fabric(self, fabric):
-        ''' 
+        ''' generate name 
         '''
-        import pdb; pdb.set_trace()
         if not fabric:
             return ''
-        return '%s (%s) %s [%s]' % (
+        return '%s [%s] (%s) %s' % (
                 fabric.code, 
+                fabric.season_id.code if fabric.season_id else '', 
                 fabric.article_code or '',
                 fabric.perc_composition or '',
-                fabric.season_id.code if fabric.season_id else '', 
                 )
         
     def is_last(self, item_id):
