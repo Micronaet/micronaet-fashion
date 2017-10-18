@@ -330,12 +330,17 @@ class fashion_form_fabric(osv.osv):
         ids = []
         
         if name:
-            ids = self.search(cr, uid, [
-                '|', '|', 
-                ('code', 'ilike', name),
-                ('article_code', 'ilike', name),                
-                ('note', 'ilike', name),
-                ] + args, limit=limit)
+            if name[-1] == '-':
+                ids = self.search(cr, uid, [
+                    ('code', operator, name[:-1])
+                    ] + args, limit=limit)
+            else:
+                ids = self.search(cr, uid, [
+                    '|', '|', 
+                    ('code', 'ilike', name),
+                    ('article_code', 'ilike', name),                
+                    ('note', 'ilike', name),
+                    ] + args, limit=limit)
         if not ids:
             ids = self.search(cr, uid, [
                 ('code', operator, name)
@@ -439,12 +444,13 @@ class fashion_form_fabric(osv.osv):
         res = []
         for fabric in self.browse(cr, uid, ids, context=context):
             #if extra_info:
-            name = '%s (%s) %s [%s]' % (
+            name = '%s%s [%s] (%s) %s' % (
                 fabric.code, 
+                '' if '-' in fabric.code else '-',
+                fabric.season_id.code if fabric.season_id else '', 
                 #fabric.supplier_id.name if fabric.supplier_id else '',
                 fabric.article_code or '',
                 fabric.perc_composition or '',
-                fabric.season_id.code if fabric.season_id else '', 
                 )
             #else:
             #    name = '%s [%s]' % (
