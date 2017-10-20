@@ -564,8 +564,12 @@ class fashion_form(osv.osv):
         ''' reload intestation when change base measure
         '''    
         res = {}
-        #TODO
         return res
+        #if not ids:
+        #    _logger.warning('Record not saved for size_base onchange')
+        #    return res
+        #self.create_update_header(cr, uid, ids, context=context)    
+        #return res
         
     def on_change_model(self, cr, uid, ids, model, review, context=None):
         ''' Split model code in all the part 
@@ -682,9 +686,10 @@ class fashion_form(osv.osv):
             'form_id': ids[0],
             }, context=context)
         return True
-    # ------------------
+        
+    # -------------------------------------------------------------------------
     # Override function:
-    # ------------------
+    # -------------------------------------------------------------------------
     def create(self, cr, uid, vals, context=None):
         """
         Create a new record for a model ModelName
@@ -700,9 +705,13 @@ class fashion_form(osv.osv):
             cr, uid, 0, 
             vals.get('model', False), 
             vals.get('review', 0), 
-            context=context)['value'])     
-        return super(fashion_form, self).create(
+            context=context)['value'])
+        item_id = super(fashion_form, self).create(
             cr, uid, vals, context=context)
+        _logger.warning('Create header for measure')    
+        self.create_update_header(cr, uid, [item_id], context=context)
+        return item_id
+            
 
     def write(self, cr, uid, ids, vals, context=None):
         """
@@ -727,8 +736,16 @@ class fashion_form(osv.osv):
                 vals.get('model', form_proxy.model), 
                 vals.get('review', form_proxy.review), 
                 context=context)['value'])
-        return super(fashion_form, self).write(
+
+        res = super(fashion_form, self).write(
             cr, uid, ids, vals, context=context)
+            
+        # not work:
+        #if 'size_base' in vals:       
+        #    _logger.warning('Update header for measure')    
+        #    self.create_update_header(cr, uid, [ids], context=context)
+        return res    
+            
             
     # ------------
     # Button event
@@ -1272,7 +1289,34 @@ class fashion_form(osv.osv):
                 [item[0] for item in cr.fetchall()])]
         except:        
             return [('id', 'in', [])] # if error
-            
+                    
+    def _get_error_state_form(self, cr, uid, ids, fields, args, context=None):
+        ''' Check error state in all form
+        '''
+        res = {}
+        for form in self.browse(cr, uid, ids, context=context):
+            res[form.id] = ''             
+
+            # Control partner price:                    
+            for cost in form.partner_rel_ids:
+                if not cost.cost:
+                    res[form.id] += _(
+                        '[Clienti con costo a 0] ')
+                    break
+                    
+                if not cost.sale:
+                    res[form.id] += _(
+                        '[Clienti con prezzo di vendita a 0] ')
+                    break
+
+            # Control accessory cost:
+            for cost in form.accessory_rel_ids:
+                if not cost.tot_cost:
+                    res[form.id] = _('[Accessori a costo 0] ')
+                    break
+
+        return res
+
     _columns = {
          'model': fields.char('Model', size=10, required=True),
          'customer_code': fields.char('Customer code', size=18),
@@ -1409,6 +1453,10 @@ class fashion_form(osv.osv):
              fnct_search=_search_detail_info,
              store=False, multi='detail_info'), 
 
+         'error_state': fields.function(
+             _get_error_state_form, method=True, 
+             type='char', size=100, string='Error state', store=False), 
+                         
          # Explosion of model (on change setted)
          'model_customer': fields.char('Sigla cliente', size=1), 
          'model_article': fields.char('Sigla articolo', size=1),

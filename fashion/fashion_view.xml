@@ -656,12 +656,16 @@
 
                 <button string='Refresh' name='button_refresh' type="object" icon='gtk-refresh'/>
                 <field name='state' widget='statusbar' readonly='1'/>
+
+                <div style="background-color: red;text-align: center;font-weight:bold;color:white;">
+                   <field name="error_state" readonly="1" nolabel="1" colspan="4" attrs="{'invisible': [('error_state', '=', False)]}" />
+                </div>
             </header>
             <sheet>
                 <group col='4'>
                     <div class="oe_title" colspan="4">
                         <h1>
-                            <field name="model" on_change='on_change_model(model,review)'/>
+                            <field name="model" on_change='on_change_model(model,review)'/>                            
                         </h1>
                     </div>
                     <newline/>
@@ -669,8 +673,11 @@
                     <field name="review"/>
                     <field name="user_id" options="{'create': false, 'create_edit': false}"/>
                     <field name="base_name" />
-                    <field name="size_base" on_change="onchange_size_base_reload_intestation(size_base)"/>
-                    <!--<field name="base_id" readonly="1"/>-->
+                    <group col="3" colspan="2">
+                        <field name="size_base" on_change="onchange_size_base_reload_intestation(size_base)"/>
+                        <button string="Header row" name="create_update_header" type="object" icon="gtk-ok" colspan="1"/>
+                        <!--<field name="base_id" readonly="1"/>-->
+                    </group>    
 
                     <field name="original" placeholder="Add a generic model that started..."/>
                     <field name="season_id" options="{'create': false, 'create_edit': false}" domain="[('obsolete','=',False)]"/>
