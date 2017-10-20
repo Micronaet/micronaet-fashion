@@ -1312,7 +1312,7 @@ class fashion_form(osv.osv):
             # Control accessory cost:
             for cost in form.accessory_rel_ids:
                 if not cost.tot_cost:
-                    res[form.id] = _('[Accessori a costo 0] ')
+                    res[form.id] += _('[Accessori a costo 0] ')
                     break
 
         return res
