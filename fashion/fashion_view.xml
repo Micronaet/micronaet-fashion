@@ -872,7 +872,7 @@
                                 </group>    
                                 <group col='4'>
                                     <field name="accessory_rel_ids" nolabel='1' colspan='4' context="{'fashion_form_name_get': True}">
-                                        <tree string="Accessory" editable='bottom'>
+                                        <tree string="Accessory" editable='bottom' colors="red:quantity==0 or currency==0">
                                             <field name='accessory_id' string="Article" on_change="onchange_accessory(accessory_id)"/>
                                             <field name='code' on_change="on_change_upper_code(code)"/>
                                             <field name='sequence' invisible="1"/>
