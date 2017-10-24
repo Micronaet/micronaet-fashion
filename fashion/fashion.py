@@ -176,6 +176,7 @@ class fashion_form_accessory(osv.osv):
 
     _columns = {
         'active': fields.boolean('Active'),
+        'no_price': fields.boolean('No price'),        
         'name': fields.char('Name', size = 40, required = True),
         'gerber_char': fields.char('Gerber char', size = 1, required = False),
         'note': fields.text('Note'),
@@ -1881,6 +1882,8 @@ class fashion_form_accessory_rel(osv.osv):
         'form_id': fields.many2one('fashion.form', 'Form'),
         'sequence': fields.integer('Seq.'),
         'accessory_id': fields.many2one('fashion.form.accessory', 'Accessory'),
+        'no_price': fields.related('accessory_id', 'no_price', 
+            type='boolean', string='No prezzo', store=False),
         'fabric_id': fields.many2one('fashion.form.fabric', 'Fabric'),
         'name': fields.text('Description'),
         'extra': fields.char('Extra', size=50),

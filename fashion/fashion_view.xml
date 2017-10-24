@@ -225,6 +225,7 @@
                         <field name="type"/>
                         <field name="gerber_char"/>
                         <field name="name"/>
+                        <field name="no_price" />
                         <notebook colspan="4">
                            <page string="Pricelist">
                                 <field name="pricelist_ids" colspan="4">
@@ -262,11 +263,12 @@
         <field name="name">fashion.form.accessory.tree</field>
         <field name="model">fashion.form.accessory</field>
         <field name="arch" type="xml">
-            <tree string="Accessory">
+            <tree string="Accessory" colors="blue:no_price==True">
                     <field name="sequence"/>
                     <field name="type"/>
                     <field name="gerber_char"/>
                     <field name="name"/>
+                    <field name="no_price" />
                     <field name="note"/>
                     <button name="unactive_duplicate" string="Nascondi" type="object" confirm="Attenzione non sarà più visibile questa voce nel'anagrafica, confermi?" icon="gtk-cancel"/>
             </tree>
@@ -872,8 +874,9 @@
                                 </group>    
                                 <group col='4'>
                                     <field name="accessory_rel_ids" nolabel='1' colspan='4' context="{'fashion_form_name_get': True}">
-                                        <tree string="Accessory" editable='bottom' colors="red:quantity==0 or currency==0">
+                                        <tree string="Accessory" editable='bottom' colors="red:no_price==False and (quantity==0 or currency==0)">
                                             <field name='accessory_id' string="Article" on_change="onchange_accessory(accessory_id)"/>
+                                            <field name="no_price" invisible="1" />
                                             <field name='code' on_change="on_change_upper_code(code)"/>
                                             <field name='sequence' invisible="1"/>
                                             <field name='fabric_id' string="Fabric" on_change="onchange_fabric(fabric_id, context)" attrs="{'readonly':[('code','=',False)]}" context="{'fashion_form_name_get': True,}"/> <!--TODO put correct list value-->
