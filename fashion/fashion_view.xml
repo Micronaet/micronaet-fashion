@@ -657,9 +657,9 @@
                 <button string='Refresh' name='button_refresh' type="object" icon='gtk-refresh'/>
                 <field name='state' widget='statusbar' readonly='1'/>
 
-                <div style="background-color: red;text-align: center;font-weight:bold;color:white;">
+                <!--<div style="background-color: red;text-align: center;font-weight:bold;color:white;">
                    <field name="error_state" readonly="1" nolabel="1" colspan="4" attrs="{'invisible': [('error_state', '=', False)]}" />
-                </div>
+                </div>-->
             </header>
             <sheet>
                 <group col='4'>
