@@ -154,11 +154,7 @@ class fashion_form_cost(osv.osv):
          # Link di importazione:
          'access_id': fields.integer(
              'Access ID', help='ID Importazione che tiene il link'),
-     }
-
-    _defaults = {
-        'default': False,
-    }
+         }
 
 class fashion_form_accessory(osv.osv):
     '''Table that manages the accessory
