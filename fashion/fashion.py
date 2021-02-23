@@ -198,6 +198,28 @@ class fashion_form_accessory_pricelist(osv.osv):
     _description = 'Accessory pricelist'
     _order = 'supplier_id,create_date desc'
 
+    def search_form_accessory_pricelist(self, cr, uid, ids, context=None):
+        """ Search in rel customer-form the forms that use this fabric
+            and return a tree view with it
+        """
+        pricelist_id = ids[0]
+        cr.execute("""
+            SELECT distinct form_id 
+            FROM fashion_form_accessory_rel
+            WHERE pricelist_id = %s
+            """ % pricelist_id)
+        form_ids = [i[0] for i in cr.fetchall()]
+
+        return {
+            'view_type': 'form',
+            'view_mode': 'tree,form',
+            'res_model': 'fashion.form', # object linked to the view
+            'domain': [('id', '=', form_ids)],
+            'type': 'ir.actions.act_window',
+            #'res_id': form_id,
+            }
+
+
     def write(self, cr, uid, ids, vals, context=None):
         """ Update redord(s) comes in {ids}, with new value comes as {vals}
             return True on success, False otherwise
@@ -659,7 +681,7 @@ class fashion_form(osv.osv):
             f = open(filename, 'wb')
             f.write(base64.decodestring(value))
             f.close()
-            try: # Set parameter for update
+            try:  # Set parameter for update
                 os.chmod(filename, 0777)
                 os.chown(filename, -1, 1000)
             except:
@@ -742,7 +764,6 @@ class fashion_form(osv.osv):
         #    _logger.warning('Update header for measure')
         #    self.create_update_header(cr, uid, [ids], context=context)
         return res
-
 
     # ------------
     # Button event

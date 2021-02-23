@@ -168,6 +168,9 @@
         <field name="model">fashion.form.accessory.pricelist</field>
         <field name="arch" type="xml">
             <form string="Accessory" version="7.0">
+                <header>
+                     <button name="search_form_accessory_pricelist" string="Mostra dove usato" type="object" icon="gtk-find"/>
+                </header>
                 <sheet>
                     <group colspan="4" col="4">
                         <field name="accessory_id" />
@@ -177,12 +180,12 @@
                         <field name="extra_info" />
                         <field name="cost" />
                         <field name="note" />
-                        <field name="create_date" />                
+                        <field name="create_date" />
                     </group>
                 </sheet>
             </form>
         </field>
-    </record>    
+    </record>
     <record id="fashion_form_accessory_pricelist_tree" model="ir.ui.view">
         <field name="name">fashion.form.accessory.pricelist.tree</field>
         <field name="model">fashion.form.accessory.pricelist</field>
@@ -195,10 +198,10 @@
                     <field name="extra_info" />
                     <field name="cost" />
                     <field name="note" />
-                    <field name="create_date" />                
+                    <field name="create_date" />
             </tree>
         </field>
-    </record>    
+    </record>
     <record model="ir.actions.act_window" id="action_fashion_form_accessory_pricelist">
         <field name="name">Accessory pricelist</field>
         <field name="res_model">fashion.form.accessory.pricelist</field>
@@ -209,7 +212,7 @@
         <field name="context">{}</field>
         <field name="domain">[]</field>
     </record>
-       
+
     <!--fashion.form.accessory-->
     <record id="fashion_form_accessory_form" model="ir.ui.view">
         <field name="name">fashion.form.accessory.form</field>
@@ -251,7 +254,7 @@
                            </page>
                            <page string="Note">
                                 <separator string='Note' colspan='4'/>
-                                <field name="note" nolabel='1' colspan='4'/>                           
+                                <field name="note" nolabel='1' colspan='4'/>
                            </page>
                         </notebook>
                     </group>
@@ -331,34 +334,34 @@
                 <group colspan='4' col='5'>
                     <!--<field name="test" />
                     <newline />-->
-                    
+
                     <field name="code"/>
                     <field name="season_id"/>
                     <newline />
-                    
+
                     <field name="um" />
                     <field name="cost" />
                     <newline />
-                    
+
                     <field name="supplier_id" domain="[('supplier','=',True)]" context="{'default_supplier':True}"/>
                     <field name="article_code"/>
                     <newline />
 
                     <field name="perc_composition"/>
-                    <field name="symbol"/>                    
+                    <field name="symbol"/>
                     <button name="load_from_composition" string="Load composition" type="object" icon="gtk-leave-fullscreen"/>
-                    
+
                     <field name="h_fabric"/>
                     <field name="preferred_fabric" />
                     <newline />
 
-                    <field name="weight" string="Peso MTL GR."/>                    
-                    <field name="weight_mq"/>                    
+                    <field name="weight" string="Peso MTL GR."/>
+                    <field name="weight_mq"/>
                     <!--<field name="tag"/>-->
                     <newline />
 
                     <field name="range_supplier_cost" groups="fashion.group_fashion_accounting"/>
-                    <field name="range_final_cost" groups="fashion.group_fashion_accounting"/> 
+                    <field name="range_final_cost" groups="fashion.group_fashion_accounting"/>
                     <newline />
 
                     <field name="note" colspan='4'/>
@@ -384,7 +387,7 @@
 
                 <!--<field name="h_fabric"/>
                 <field name="weight"/>-->
-                <field name="tag" groups="fashion.group_fashion_accounting" />                    
+                <field name="tag" groups="fashion.group_fashion_accounting" />
                 <field name="preferred_fabric" groups="fashion.group_fashion_accounting" />
                 <field name="range_supplier_cost" groups="fashion.group_fashion_accounting" />
                 <field name="range_final_cost" groups="fashion.group_fashion_accounting" />
@@ -465,14 +468,14 @@
             <form string="Composition" version="7.0">
             <sheet>
                 <group colspan='4' col='4'>
-                    
+
                     <field name="code"/>
                     <field name="season_id"/>
-                    
+
                     <field name="perc_composition"/>
                     <field name="symbol"/>
-                    
-                    <field name="note" nolabel='1' colspan='4'/>                   
+
+                    <field name="note" nolabel='1' colspan='4'/>
                 </group>
             </sheet>
             </form>
@@ -548,7 +551,7 @@
             <form string="Measure" version="7.0">
                 <header>
                     <button name="unactive_duplicate" string="Nascondi" type="object" confirm="Attenzione non sarà più visibile questa voce nel'anagrafica, confermi?" icon="gtk-cancel"/>
-                </header>                
+                </header>
                 <sheet>
                     <group colspan='4' col='4'>
                         <field name="letter"/>
@@ -647,11 +650,11 @@
 
                 <button string='Draft' name='form_discarded_draft' type='workflow' states='discarded' icon='gtk-refresh' groups="fashion.group_fashion_production"/>
                 <label string=" "/>
-                
+
                 <button string='Duplication' name="%(fashion.action_fashion_duplication)d" type="action" icon='STOCK_COPY' groups="fashion.group_fashion_production"/>
                 <button string='Print' name='%(fashion.action_report_wizard_duplication)d' type="action" icon='gtk-print-preview'/>
                 <label string=" " />
-                
+
                 <button string='Obsolete' name='set_obsolete' type="object" attrs="{'invisible': [('obsolete','=',True)]}" context="{'obsolete':True}" icon='STOCK_NO' groups="fashion.group_fashion_production" confirm="Marco la scheda obsoleta, confermi?"/>
                 <button string='Not obsolete' name='set_obsolete' type="object" attrs="{'invisible': [('obsolete','=',False)]}" context="{'obsolete':False}" icon='STOCK_YES' groups="fashion.group_fashion_production"/>
                 <label string=" " />
@@ -667,7 +670,7 @@
                 <group col='4'>
                     <div class="oe_title" colspan="4">
                         <h1>
-                            <field name="model" on_change='on_change_model(model,review)'/>                            
+                            <field name="model" on_change='on_change_model(model,review)'/>
                         </h1>
                     </div>
                     <newline/>
@@ -679,7 +682,7 @@
                         <field name="size_base" on_change="onchange_size_base_reload_intestation(size_base)"/>
                         <button string="Header row" name="create_update_header" type="object" icon="gtk-ok" colspan="1"/>
                         <!--<field name="base_id" readonly="1"/>-->
-                    </group>    
+                    </group>
 
                     <field name="original" placeholder="Add a generic model that started..."/>
                     <field name="season_id" options="{'create': false, 'create_edit': false}" domain="[('obsolete','=',False)]"/>
@@ -707,7 +710,7 @@
                                 </group>
                             </page>
                             <!--<page string="Immagini">
-                                <group colspan="4" col="4">                                   
+                                <group colspan="4" col="4">
                                     <group colspan="2" col='3'>
                                         <button name="modify_draw_image" type="object" string="Modify" context="{'side':'C'}" colspan="1" class="oe_highlight"/>
                                         <button name="reset_image" type="object" string="Reset Image" context="{'side':'C'}" colspan="1" confirm="Vuoi veramente CANCELLARE l'immagine inserita?"/>
@@ -716,7 +719,7 @@
                                 </group>
                             </page>-->
                             <page string="Foto">
-                                <group colspan="4" col="4">   
+                                <group colspan="4" col="4">
                                     <button name="import_dropbox_photo" string="Import images" type="object" />
                                     <button name="kanban_photo_tree" string="Photo list" type="object" />
                                     <field name="photo_ids" colspan="4" nolabel="1" context="{'embedded_view': True}" mode="kanban">
@@ -743,15 +746,15 @@
                                                     </div>
                                                 </t>
                                             </templates>
-                                        </kanban>                           
-                                    </field>    
+                                        </kanban>
+                                    </field>
                                 </group>
                             </page>
                             <page string='Client'>
                                 <group colspan='4' col='6'>
                                     <separator string="Fabric cost list" colspan='2' groups="fashion.group_fashion_accounting"/>
                                     <button string='Cost model' name='set_cost_model' type="object" icon='terp-dolar' groups="fashion.group_fashion_accounting" colspan="1" attrs="{'invisible':[('model_for_cost','=',True)]}"/>
-                                    <button string='Not cost model' name='set_not_cost_model' type="object" icon='terp-stock_format-default' groups="fashion.group_fashion_accounting" colspan="1" attrs="{'invisible':[('model_for_cost','=',False)]}"/>                                    
+                                    <button string='Not cost model' name='set_not_cost_model' type="object" icon='terp-stock_format-default' groups="fashion.group_fashion_accounting" colspan="1" attrs="{'invisible':[('model_for_cost','=',False)]}"/>
                                     <button string='Calculate' name='button_refresh' type="object" icon='stock_graph' groups="fashion.group_fashion_accounting" colspan="1" attrs="{'invisible':[('model_for_cost','=',False)]}"/>
                                     <field name="model_for_cost" groups="fashion.group_fashion_accounting" invisible="1" />
 
@@ -768,7 +771,7 @@
                                             <field name='mt_fabric' on_change="onchange_cost_computation(mt_fabric,cost,retail,wholesale,sale,parent.sum_extra_cost)"/>
                                             <!--<field name='note_fabric' groups="fashion.group_fashion_production" invisible="context.get('view_cost',False)"/>-->
                                             <field name='cost' groups="fashion.group_fashion_accounting" on_change="onchange_cost_computation(mt_fabric,cost,retail,wholesale,sale,parent.sum_extra_cost)" />
-                                            
+
                                             <field name='total_fabric' groups="fashion.group_fashion_accounting" invisible="context.get('view_production',False)"/>
                                             <field name='total_cost' groups="fashion.group_fashion_accounting" invisible="context.get('view_production',False)"/>
 
@@ -792,7 +795,7 @@
                                                 <field name='cost_id'/>
                                                 <field name='value' sum="total" />
                                                 <field name='note'/>
-                                            </tree>                            
+                                            </tree>
                                             <form string="Cost">
                                                 <field name='cost_id'/>
                                                 <field name='value' sum="total" />
@@ -809,7 +812,7 @@
                                                 </field>
                                                 <separator string="Note" colspan="4"/>
                                                 <field name='note' colspan="4" nolabel="1"/>
-                                            </form>                            
+                                            </form>
                                         </field>
                                     </group>
                                     <group colspan="2" col="2">
@@ -817,14 +820,14 @@
                                         <field name="sum_cost" />
                                         <field name="sum_accessory"/>
                                         <field name="sum_extra_cost" string="Totale costi"/>
-                                    </group>    
+                                    </group>
                                 </group>
                                 <group colspan='4' col='4' groups="fashion.group_fashion_production">
                                     <separator string="Production info" colspan='4' />
                                     <field name="customer_code" />
                                     <field name="cut" placeholder="Add number of cut-out models..."/>
                                     <field name="size" placeholder="Add sizes achieve..."/>
-                                    <field name="colors" placeholder="Add colors to be cut..."/>                                    
+                                    <field name="colors" placeholder="Add colors to be cut..."/>
                                 </group>
                             </page>
                             <page string='Old seamns' attrs="{'invisible':[('show_old_model','=',False)]}">
@@ -842,7 +845,7 @@
                                 <group col='10'>
                                     <button name="reset_duplicate_characteristic" type="object" string="Reset" icon="STOCK_DELETE" />
                                     <button name="paste_duplicate_characteristic" type="object" string="Paste" icon="STOCK_SAVE" />
-                                </group>    
+                                </group>
                                 <group colspan='4' col='4'>
                                     <field name="characteristic_rel_ids" nolabel='1' colspan='4'>
                                         <tree string="Characteristic" editable='bottom'>
@@ -871,7 +874,7 @@
                                 <group col='10'>
                                     <button name="reset_duplicate_accessory" type="object" string="Reset" icon="STOCK_DELETE" />
                                     <button name="paste_duplicate_accessory" type="object" string="Paste" icon="STOCK_SAVE" />
-                                </group>    
+                                </group>
                                 <group col='4'>
                                     <field name="accessory_rel_ids" nolabel='1' colspan='4' context="{'fashion_form_name_get': True}">
                                         <tree string="Accessory" editable='bottom' colors="red:no_price==False and (quantity==0 or currency==0)">
@@ -932,7 +935,7 @@
                                     <button string="Insert" name="insert_article" type="object" icon="gtk-refresh" colspan="1"/>
                                     <button string="Empty" name="empty_article" type="object" icon="STOCK_NEW" colspan="1"/>
                                     <button string="Header row" name="create_update_header" type="object" icon="gtk-ok" colspan="1"/>
-                                                                        
+
                                     <field name="start" attrs="{'invisible':[('show_old_model','=',False)]}"/>
                                     <field name="col_ref" attrs="{'invisible':[('show_old_model','=',False)]}"/>
                                 </group>
@@ -963,8 +966,8 @@
         <field name="arch" type="xml">
             <tree string="Form" colors="red:state=='draft';blue:state=='sample';black:state=='produced';green:state=='ok';brown:state=='discarded'">
                 <field name="name"/>
-                <field name="detail_info_fabric"/>                
-                <field name="detail_info_partner"/>                
+                <field name="detail_info_fabric"/>
+                <field name="detail_info_partner"/>
                 <field name="season_id"/>
                 <field name="customer_code"/>
                 <field name="write_date"/>
@@ -999,9 +1002,9 @@
                                 <div name="tags"/>
                                 <ul>
                                     <!--<li>Date: <field name="date"></field></li>-->
-                                    <li>Codice cliente: <field name="customer_code"></field></li>                                    
+                                    <li>Codice cliente: <field name="customer_code"></field></li>
                                     <li>Articolo: <field name="detail_info_fabric"></field></li>
-                                    <li>Cliente: <field name="detail_info_partner"></field></li>                                    
+                                    <li>Cliente: <field name="detail_info_partner"></field></li>
                                     <li>Stagione: <field name="season_id"></field></li>
                                     <li>Stato: <field name="state"></field></li>
                                     <li>Base: <field name="base_name"></field></li>
@@ -1038,28 +1041,28 @@
                 <field name="detail_partner" />
                 <field name="detail_fabric" />
                 <separator/>
-                
+
                 <filter string="Draft" domain="[('state','=','draft')]"/>
                 <filter string="Sample" domain="[('state','=','sample')]"/>
                 <filter string="Ok for Production" domain="[('state','=','ok')]"/>
                 <filter string="Produced" domain="[('state','=','produced')]"/>
                 <!--<filter string="Discarded" domain="[('state','=','discarded')]"/>-->
                 <separator/>
-                
+
                 <!--<filter name="active" string="Active" domain="[('state','!=','discarded'),('obsolete','=',False)]"/>
                 <filter name="inactive" string="Not Active" domain="['|',('state','=','discarded'),('obsolete','=',True)]"/>-->
                 <separator/>
-                
+
                 <!--<filter string="Obsolete" domain="[('obsolete','=',True)]"/>-->
                 <!--<filter string="My last modified" domain="[('write_uid','=',active_id),('write_date','&gt;=',(context_today() - datetime.timedelta(1)).strftime('%%Y-%%m-%%d 00:00:00')]"/>-->
                 <filter string="Company form" domain="[('model_customer','=',False)]"/>
                 <filter name="only_model_for_cost" string="Model for cost" domain="[('model_for_cost','=',True)]" groups="fashion.group_fashion_accounting"/>
                 <separator/>
-                
+
                 <filter string="Normal" domain="[('conformed','=',False)]"/>
                 <filter string="Conformed" domain="[('conformed','=',True)]"/>
                 <separator/>
-                
+
                 <group expand="1" string="Group By...">
                     <!--<filter string="Model" domain="[]" context="{'group_by':'model'}"/>-->
                     <filter string="Season" domain="[]" context="{'group_by':'season_id'}"/>
@@ -1069,7 +1072,7 @@
                     <filter string="Customer code" domain="[]" context="{'group_by':'model_customer'}"/>
                     <filter string="Type" domain="[]" context="{'group_by':'model_article'}"/>
                 </group>
-                
+
             </search>
         </field>
     </record>
@@ -1136,7 +1139,7 @@
             <form string="Characteristic specific" version="7.0">
                 <header>
                     <button name="unactive_duplicate" string="Nascondi" type="object" confirm="Attenzione non sarà più visibile questa voce nel'anagrafica, confermi?" icon="gtk-cancel"/>
-                </header>                
+                </header>
                 <sheet>
                     <group colspan='4' col='4'>
                         <field name="name"/>
@@ -1165,7 +1168,7 @@
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref="fashion_form_characteristic_rel_specific_tree"/>
     </record>
-    
+
     <!--res.partner-->
     <record id='res_partner_fashion_form' model='ir.ui.view'>
         <field name='name'>res.partner.fashion.form</field>
@@ -1284,7 +1287,7 @@
                 <field name="season_id"/>
                 <field name="article_id"/>
                 <separator/>
-                
+
                 <filter string="Company form" domain="[('model_customer','=',False)]"/>
                 <filter string="Partner group form" domain="[('group_id','!=',False)]"/>
 
@@ -1340,7 +1343,7 @@
                 <field name="datetime"/>
                 <field name="user_id" />
                 <field name="form_id" />
-                <field name="note" />                
+                <field name="note" />
             </tree>
         </field>
     </record>
@@ -1352,19 +1355,19 @@
                 <sheet>
                     <group colspan="4" col="4">
                         <group colspan="2" col="2">
-                            <field name="name"/>                            
+                            <field name="name"/>
                             <field name="datetime"/>
                             <field name="user_id" />
-                            
+
                             <field name="form_id" />
                             <separator string="Note" colspan="2"/>
                             <field name="note" colspan="2" nolabel="1" />
-                        </group>    
+                        </group>
                         <group colspan="2" col="2">
                             <field name="photo_medium" widget="image" nolabel="1" />
-                        </group>    
-                    </group>    
-                </sheet>    
+                        </group>
+                    </group>
+                </sheet>
             </form>
         </field>
     </record>
@@ -1388,7 +1391,7 @@
                                 <ul>
                                     <li>Creazione: <field name="datetime"></field></li>
                                     <li>Utente: <field name="user_id"></field></li>
-                                    <li>Form: <field name="form_id"></field></li>                                    
+                                    <li>Form: <field name="form_id"></field></li>
                                     <li>Note: <field name="note"></field></li>
                                 </ul>
                                 <a type="button">
@@ -1414,7 +1417,7 @@
                 <field name="note" />
                 <field name="form_id" />
                 <separator/>
-                
+
                 <filter name="associated" string="Associate" domain="[('form_id','=',True)]"/>
                 <filter name="not_associated" string="Non associate" domain="[('form_id','=',False)]"/>
 
@@ -1437,11 +1440,11 @@
     </record>
 
     <!--Menuitem-->
-    <menuitem name="Fashion" id="menu_fashion_root" sequence="5" />        
+    <menuitem name="Fashion" id="menu_fashion_root" sequence="5" />
         <menuitem name="Form" parent="menu_fashion_root" id="menu_fashion_form" sequence="10"/>
             <menuitem name="Form for cost" parent="menu_fashion_form" id="menu_fashion_form_form_cost" sequence="5" action="action_fashion_form_cost" groups="fashion.group_fashion_accounting"/>
             <menuitem name="Form" parent="menu_fashion_form" id="menu_fashion_form_form" sequence="10" action="action_fashion_form"/>
-                <menuitem name="Inactive form" parent="menu_fashion_form_form" id="menu_fashion_form_inactive_form" sequence="10" action="action_fashion_form_obsolete"/>            
+                <menuitem name="Inactive form" parent="menu_fashion_form_form" id="menu_fashion_form_inactive_form" sequence="10" action="action_fashion_form_obsolete"/>
                 <menuitem name="Form with client" parent="menu_fashion_form_form" id="menu_fashion_form_form_client" sequence="20" action="action_fashion_form_partner_rel"/>
             <menuitem name="Form photo" parent="menu_fashion_form" id="menu_fashion_form_photo_form" sequence="25" action="action_fashion_form_photo_form" />
         <menuitem name="Configuration" parent="menu_fashion_root" id="menu_fashion_configuration" sequence="90" groups="fashion.group_fashion_admin,fashion.group_fashion_accounting"/>
@@ -1451,7 +1454,7 @@
             <!--<menuitem name="Cost (var.)" parent="menu_fashion_configuration" id="menu_fashion_configuration_cost" sequence="30" action='action_fashion_form_cost_variable' />-->
             <menuitem name="Partner" parent="menu_fashion_configuration" id="menu_res_partner" sequence="30" action='action_res_partner' />
                 <menuitem name="Inutilizzati" parent="menu_res_partner" id="menu_action_res_partner_unused" sequence="30" action='action_res_partner_unused' />
-            
+
             <menuitem name="Cost (fixed)" parent="menu_fashion_configuration" id="menu_fashion_configuration_cost_fixed" sequence="35" action='action_fashion_form_cost_fixed' groups="fashion.group_fashion_accounting"/>
             <menuitem name="Accessory" parent="menu_fashion_configuration" id="menu_fashion_configuration_accessory" sequence="40" action='action_fashion_form_accessory' />
                 <menuitem name="Accessory pricelist" parent="menu_fashion_configuration_accessory" id="menu_fashion_configuration_accessory_pricelist" sequence="10" action='action_fashion_form_accessory_pricelist' />
