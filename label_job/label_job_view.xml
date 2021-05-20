@@ -1,12 +1,37 @@
 <?xml version="1.0"?>
 <openerp>
     <data>
+        <record model="ir.ui.view" id="view_label_job_search">
+            <field name="name">label.job.search</field>
+            <field name="model">label.job</field>
+            <field name="arch" type="xml">
+                <search string="Job etichette" version="7.0">
+                    <field name="batch" />
+                    <field name="name" />
+                    <field name="internal" />
+                    <field name="style" />
+                    <field name="size" />
+                    <field name="barcode" />
+                    <filter name="state_new" string="Da stampare" domain="[('state','=','new')]"/>
+                    <filter name="state_printed" string="Stampate" domain="[('state','=','printed')]"/>
+                    <filter name="state_closed" string="Closed" domain="[('state','=','closed')]"/>
+                    <group expand="0" string="Group By...">
+                        <filter name="group_name" string="Modello cliente" context="{'group_by': 'name'}"/>
+                        <filter name="group_internal" string="Modello interno" context="{'group_by': 'internal'}"/>
+                        <filter name="group_batch" string="Lotto" context="{'group_by': 'batch'}"/>
+                        <filter name="group_barcode" string="Codice a barre" context="{'group_by': 'barcode'}"/>
+                        <filter name="group_state" string="Statuo" context="{'group_by': 'state'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
         <record model="ir.ui.view" id="view_label_job_tree">
             <field name="name">label.job.tree</field>
             <field name="model">label.job</field>
             <field name="arch" type="xml">
                 <tree string="Label" editable="bottom" colors="green:state=='printed'">
                     <field name="import_date" />
+                    <field name="batch" />
                     <field name="name" />
                     <field name="internal" />
                     <field name="style" />
@@ -14,6 +39,9 @@
                     <field name="barcode" />
                     <field name="total" />
                     <field name="state" />
+                    <button name="wkf_print" type="object" string="Stampa" icon="gtk-print" attrs="{'invisible': [('state', '=', 'closed')]}"/>
+                    <button name="wkf_close" type="object" string="Chiudi" icon="gtk-no" attrs="{'invisible': [('state', 'not in', ('new', 'printed'))]}"/>
+                    <button name="wkf_restart" type="object" string="Ripristina" icon="gtk-yes" attrs="{'invisible': [('state', '!=', 'closed')]}"/>
                 </tree>
             </field>
         </record>
@@ -30,8 +58,9 @@
                     </header>
                     <sheet>
                         <group col="4" colspan="4">
+                            <field name="batch" />
                             <field name="import_date" />
-                            <newline/>
+
                             <field name="name" />
                             <field name="internal" />
                             <field name="style" />
@@ -55,7 +84,7 @@
 
         <menuitem id="menu_label_job_root" name="Etichette" sequence="10"/>
             <menuitem id="menu_label_job_config" name="Job etichette" parent="menu_label_job_root" sequence="10"/>
-                <menuitem id="action_label_job_tree" name="Elenco job" parent="menu_label_job_config" sequence="10"/>
+                <menuitem id="action_label_job_tree" name="Elenco job" parent="menu_label_job_config" sequence="10" action="action_label_job"/>
     </data>
 </openerp>
 

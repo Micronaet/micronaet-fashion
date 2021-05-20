@@ -58,8 +58,9 @@ class LabelJob(orm.Model):
         }, context=context)
 
     _columns = {
-        'name': fields.char('Modello ufficiale', size=80, required=True),
-        'internal': fields.char('Modello aziendale', size=80),
+        'batch': fields.char('Lotto', size=80),
+        'name': fields.char('Modello cliente', size=80, required=True),
+        'internal': fields.char('Modello interno', size=80),
         'style': fields.char('Style number', size=40),
         'size': fields.char('Taglia', size=20),
         'barcode': fields.char('Codice EAN13', size=20),
@@ -76,4 +77,5 @@ class LabelJob(orm.Model):
     _defaults = {
         'import_date': lambda *a: datetime.now().strftime(
             DEFAULT_SERVER_DATETIME_FORMAT),
+        'state': lambda *x: 'new',
         }
