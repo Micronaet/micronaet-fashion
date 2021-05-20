@@ -6,10 +6,10 @@
             <field name="name">Import job wizard</field>
             <field name="model">report.job.import.wizard</field>
             <field name="arch" type="xml">
-                <form string="Analytic report" version="7.0">
+                <form string="Importa Job" version="7.0">
                     <head>
                         <button string="Cancel" special="cancel" colspan="2" />
-                        <button name="print_report" type="object" string="Print" icon="gtk-print" colspan="2" class="oe_highlight"/>
+                        <button name="action_import_file" type="object" string="Importa file" icon="gtk-ok" colspan="2" class="oe_highlight"/>
                     </head>
                     <sheet>
                         <group colspan="4" col="4">
@@ -33,7 +33,7 @@
 
    <menuitem name="Import job etichette"
           parent="menu_label_job_config"
-          id="menu_import_job_wizard_form"
+          id="menu_import_job_wizard"
           action="action_import_job_wizard_form"
           sequence="20"
           />
