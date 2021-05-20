@@ -69,7 +69,7 @@ class LabelJob(orm.Model):
                     # {'includetext': True, 'height': 0.4, 'margin': 1},
                 )
                 pdb.set_trace()
-                code.save(fullname) #, {'type': 'PNG'})
+                code.save(fullname)  #, {'type': 'PNG'})
 
             try:
                 fullname = os.path.join(fullname_ext)
