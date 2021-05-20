@@ -85,12 +85,22 @@
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref="view_label_job_tree"/>
             <field name="context">{}</field>
-            <field name="domain">[]</field>
+            <field name="domain">[('state', '!=', 'closed')]</field>
+        </record>
+        <record model="ir.actions.act_window" id="action_label_closed_job">
+            <field name="name">Job etichette chiuse</field>
+            <field name="res_model">label.job</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_label_job_tree"/>
+            <field name="context">{}</field>
+            <field name="domain">[('state', '=', 'closed')]</field>
         </record>
 
         <menuitem id="menu_label_job_root" name="Etichette" sequence="10"/>
             <menuitem id="menu_label_job_config" name="Job etichette" parent="menu_label_job_root" sequence="10"/>
                 <menuitem id="action_label_job_tree" name="Elenco job" parent="menu_label_job_config" sequence="10" action="action_label_job"/>
+                <menuitem id="action_label_closed_job_tree" name="Elenco job chiusi" parent="menu_label_job_config" sequence="10" action="action_label_closed_job"/>
     </data>
 </openerp>
 
