@@ -55,7 +55,7 @@
 
         <menuitem id="menu_label_job_root" name="Etichette" sequence="10"/>
             <menuitem id="menu_label_job_config" name="Job etichette" parent="menu_label_job_root" sequence="10"/>
-                <menuitem id="action_label_job" name="Elenco job" parent="menu_label_job_config" sequence="10"/>
+                <menuitem id="action_label_job_tree" name="Elenco job" parent="menu_label_job_config" sequence="10"/>
     </data>
 </openerp>
 

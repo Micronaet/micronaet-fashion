@@ -63,7 +63,7 @@ class LabelJob(orm.Model):
         'style': fields.char('Style number', size=40),
         'size': fields.char('Taglia', size=20),
         'barcode': fields.char('Codice EAN13', size=20),
-        'total': fields.interger('Totale'),
+        'total': fields.integer('Totale'),
 
         'import_date': fields.datetime('Importazione'),
         'state': fields.selection([

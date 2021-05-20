@@ -30,10 +30,10 @@ class Parser(report_sxw.rml_parse):
         })
 
     def get_object_line(self, data):
-        ''' Selected object + print object
-        '''
+        """ Selected object + print object
+        """
         cr = self.cr
         uid = self.uid
         context = {'lang': 'IT_it'}
-
+        return []
 
