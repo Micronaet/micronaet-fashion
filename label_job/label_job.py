@@ -58,16 +58,18 @@ class LabelJob(orm.Model):
 
     def _get_image_ean13_field(
             self, cr, uid, ids, field_name, arg, context=None):
-        pdb.set_trace()
         res = {}
         for job in self.browse(cr, uid, ids, context=context):
             ean = job.barcode
             fullname = os.path.join('/tmp', ean)  # Auto svg ext.
             fullname_ext = os.path.join('/tmp', '%s.png' % ean)
             if not os.path.isfile(fullname_ext):
-                code = barcode('ean13', ean, options=dict(
-                    includetext=True, height=0.4), margin=1)
+                code = barcode.get_barcode(
+                    'ean13', ean,
+                    # options=dict(includetext=True, height=0.4), margin=1
+                )
                 code.save(fullname, 'PNG')
+            pdb.set_trace()
 
             try:
                 fullname = os.path.join(fullname_ext)
