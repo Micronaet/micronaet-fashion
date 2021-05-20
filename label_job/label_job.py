@@ -63,15 +63,13 @@ class LabelJob(orm.Model):
         res = {}
         for job in self.browse(cr, uid, ids, context=context):
             ean = job.barcode
-            filename = ean
-            fullname = os.path.join('/tmp', filename)  # Auto svg ext.
+            fullname = os.path.join('/tmp', ean)  # Auto svg ext.
             if not os.path.isfile(fullname):
                 code = EAN13(ean)
                 code.save(fullname)
             try:
                 # (fullname, header) = urllib.urlretrieve(filename)
-                filename = '%.svg' % ean
-                fullname = os.path.join('/tmp', filename)  # Auto svg ext.
+                fullname = os.path.join('/tmp', '%.svg' % ean)
                 f = open(fullname, 'rb')
                 img = base64.encodestring(f.read())
                 f.close()
