@@ -26,14 +26,28 @@ class Parser(report_sxw.rml_parse):
     def __init__(self, cr, uid, name, context):
         super(Parser, self).__init__(cr, uid, name, context)
         self.localcontext.update({
-            'get_object_line': self.get_object_line,
+            'get_line_label': self.get_line_label,
         })
 
-    def get_object_line(self, data):
+    def get_line_label(self, data):
         """ Selected object + print object
         """
+
         cr = self.cr
         uid = self.uid
         context = {'lang': 'IT_it'}
-        return []
+        label1 = {}
+        label2 = {}
+        label3 = {}
+
+        return [
+            (2, (label1, label2, label3)),
+            (1, (label1, label2, label3)),
+            (1, (label1, label2, label3)),
+            (1, (label1, label2, label3)),
+            (1, (label1, label2, label3)),
+            (1, (label1, label2, label3)),
+            (1, (label1, label2, label3)),
+            (2, (label1, label2, label3)),
+        ]
 
