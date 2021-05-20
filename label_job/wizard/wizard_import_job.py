@@ -69,7 +69,6 @@ class ReportJobImportWizard(orm.TransientModel):
         # ---------------------------------------------------------------------
         row_start = 0
         ws_name = wb.sheet_names()[0]
-        pdb.set_trace()
         ws = wb.sheet_by_name(ws_name)
         _logger.warning('Read page: %s' % ws_name)
 
@@ -108,7 +107,21 @@ class ReportJobImportWizard(orm.TransientModel):
             }
             job_pool.create(cr, uid, data, context=context)
             _logger.info('%s. Imported job: %s' % (sequence, name))
-        return True
+
+        form_view_id = tree_view_id = False
+        return {
+            'type': 'ir.actions.act_window',
+            'name': _('Job importati'),
+            'view_type': 'form',
+            'view_mode': 'tree',
+            'res_model': 'label.job',
+            'view_id': tree_view_id,
+            'views': [(tree_view_id, 'tree'), (form_view_id, 'form')],
+            'domain': [],
+            'context': context,
+            'target': 'current',
+            'nodestroy': False,
+            }
 
     _columns = {
         'xlsx_file': fields.binary('File XLSX', required=True),
