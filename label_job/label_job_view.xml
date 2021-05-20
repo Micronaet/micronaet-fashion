@@ -1,9 +1,61 @@
 <?xml version="1.0"?>
 <openerp>
     <data>
+        <record model="ir.ui.view" id="view_label_job_tree">
+            <field name="name">label.job.tree</field>
+            <field name="model">label.job</field>
+            <field name="arch" type="xml">
+                <tree string="Label" editable="bottom" colors="green:state=='printed'">
+                    <field name="import_date" />
+                    <field name="name" />
+                    <field name="internal" />
+                    <field name="style" />
+                    <field name="size" />
+                    <field name="barcode" />
+                    <field name="total" />
+                    <field name="state" />
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_label_job_form">
+            <field name="name">label.job.form</field>
+            <field name="model">label.job</field>
+            <field name="arch" type="xml">
+                <form string="Label" version="7.0">
+                    <header>
+                        <button name="wkf_print" type="object" string="Stampa" icon="gtk-print" attrs="{'invisible': [('state', '=', 'closed')]}"/>
+                        <button name="wkf_close" type="object" string="Chiudi" icon="gtk-no" attrs="{'invisible': [('state', 'not in', ('new', 'printed'))]}"/>
+                        <button name="wkf_restart" type="object" string="Ripristina" icon="gtk-yes" attrs="{'invisible': [('state', '!=', 'closed')]}"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group col="4" colspan="4">
+                            <field name="import_date" />
+                            <newline/>
+                            <field name="name" />
+                            <field name="internal" />
+                            <field name="style" />
+                            <field name="size" />
+                            <field name="barcode" />
+                            <field name="total" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_label_job">
+            <field name="name">Job etichette</field>
+            <field name="res_model">label.job</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_label_job_tree"/>
+            <field name="context">{}</field>
+            <field name="domain">[]</field>
+        </record>
 
         <menuitem id="menu_label_job_root" name="Etichette" sequence="10"/>
             <menuitem id="menu_label_job_config" name="Job etichette" parent="menu_label_job_root" sequence="10"/>
+                <menuitem id="action_label_job" name="Elenco job" parent="menu_label_job_config" sequence="10"/>
     </data>
 </openerp>
 

@@ -27,14 +27,53 @@ class LabelJob(orm.Model):
     _rec_name = 'name'
     _order = 'import_date desc'
 
-    _columns = {
-        'name': fields.char(
-            'Name', size=64, required=True,
-            ),
-        'import_date': fields.date('Import', required=True),
+    def wkf_print(self, cr, uid, ids, context=None):
+        """ Print label
+        """
+        datas = {}
+        report_name = 'label_job_report'
 
+        self.write(cr, uid, ids, {
+            'state': 'printed',
+        }, context=context)
+
+        return {
+            'type': 'ir.actions.report.xml',
+            'report_name': report_name,
+            'datas': datas,
+            }
+
+    def wkf_close(self, cr, uid, ids, context=None):
+        """ Print label
+        """
+        return self.write(cr, uid, ids, {
+            'state': 'closed',
+        }, context=context)
+
+    def wkf_restart(self, cr, uid, ids, context=None):
+        """ Print label
+        """
+        return self.write(cr, uid, ids, {
+            'state': 'new',
+        }, context=context)
+
+    _columns = {
+        'name': fields.char('Modello ufficiale', size=80, required=True),
+        'internal': fields.char('Modello aziendale', size=80),
+        'style': fields.char('Style number', size=40),
+        'size': fields.char('Taglia', size=20),
+        'barcode': fields.char('Codice EAN13', size=20),
+        'total': fields.interger('Totale'),
+
+        'import_date': fields.datetime('Importazione'),
+        'state': fields.selection([
+            ('new', 'Nuova'),
+            ('printed', 'Stampata'),
+            ('closed', 'Chiusa'),
+        ], 'Stato'),
     }
 
     _defaults = {
-        #   'name': lambda *a: None,
+        'import_date': lambda *a: datetime.now().strftime(
+            DEFAULT_SERVER_DATETIME_FORMAT),
         }

@@ -15,7 +15,7 @@
                         <group colspan="4" col="4">
                             <field name="xlsx_file" />
                             <separator string="Note" colspan="4"/>
-                            <field name="note" colspan="4" />
+                            <field name="note" colspan="4" nolabel="1"/>
                         </group>
                     </sheet>
                 </form>
