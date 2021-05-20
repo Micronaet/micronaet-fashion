@@ -2,7 +2,6 @@
 # Copyright 2019  Micronaet SRL (<http://micronaet.com>).
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
-import urllib
 import base64
 import os
 import pdb
@@ -17,7 +16,7 @@ from openerp.tools import (DEFAULT_SERVER_DATE_FORMAT,
     DEFAULT_SERVER_DATETIME_FORMAT,
     DATETIME_FORMATS_MAP,
     float_compare)
-from barcode import EAN13
+import barcode
 
 _logger = logging.getLogger(__name__)
 
@@ -64,12 +63,14 @@ class LabelJob(orm.Model):
         for job in self.browse(cr, uid, ids, context=context):
             ean = job.barcode
             fullname = os.path.join('/tmp', ean)  # Auto svg ext.
-            if not os.path.isfile(fullname):
-                code = EAN13(ean)
-                code.save(fullname)
+            fullname_ext = os.path.join('/tmp', '%s.png' % ean)
+            if not os.path.isfile(fullname_ext):
+                code = barcode('ean13', ean, options=dict(
+                    includetext=True, height=0.4), margin=1)
+                code.save(fullname, 'PNG')
+
             try:
-                # (fullname, header) = urllib.urlretrieve(filename)
-                fullname = os.path.join('/tmp', '%.svg' % ean)
+                fullname = os.path.join(fullname_ext)
                 f = open(fullname, 'rb')
                 img = base64.encodestring(f.read())
                 f.close()
