@@ -25,7 +25,7 @@ class LabelJob(orm.Model):
     _name = 'label.job'
     _description = 'Label job'
     _rec_name = 'name'
-    _order = 'import_date desc'
+    _order = 'import_date desc, sequence'
 
     def wkf_print(self, cr, uid, ids, context=None):
         """ Print label
@@ -59,6 +59,7 @@ class LabelJob(orm.Model):
 
     _columns = {
         'batch': fields.char('Lotto', size=80),
+        'sequence': fields.integer('Riga'),
         'name': fields.char('Modello cliente', size=80, required=True),
         'internal': fields.char('Modello interno', size=80),
         'style': fields.char('Style number', size=40),
@@ -76,7 +77,5 @@ class LabelJob(orm.Model):
     }
 
     _defaults = {
-        'import_date': lambda *a: datetime.now().strftime(
-            DEFAULT_SERVER_DATETIME_FORMAT),
         'state': lambda *x: 'new',
         }

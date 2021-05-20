@@ -33,6 +33,7 @@
                 <tree string="Label" editable="bottom" colors="green:state=='printed'">
                     <field name="import_date" />
                     <field name="batch" />
+                    <field name="sequence" />
                     <field name="name" />
                     <field name="internal" />
                     <field name="style" />
@@ -61,7 +62,9 @@
                     <sheet>
                         <group col="4" colspan="4">
                             <field name="batch" />
+                            <newline/>
                             <field name="import_date" />
+                            <field name="sequence" />
 
                             <field name="name" />
                             <field name="internal" />

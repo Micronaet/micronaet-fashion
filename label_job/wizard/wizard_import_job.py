@@ -78,7 +78,9 @@ class ReportJobImportWizard(orm.TransientModel):
             total = ws.cell(row, 7).value
             if type(total) not in (int, float):
                 _logger.info('%s. Not imported job' % (row + 1))
+                continue
 
+            sequence = row + 1
             name = ws.cell(row, 0).value or data.get('name')
             internal = ws.cell(row, 1).value or data.get('internal')
             style = ws.cell(row, 2).value or data.get('style')
@@ -86,7 +88,15 @@ class ReportJobImportWizard(orm.TransientModel):
             size = ws.cell(row, 4).value
             barcode = ws.cell(row, 5).value
 
+            # Correct:
+            if type(style) == float:
+                style = int(style)
+            if type(size) == float:
+                size = int(size)
+
             data = {
+                'sequence': sequence,
+                'import_date': now,
                 'batch': ws_name,
                 'name': name,
                 'internal': internal,
@@ -94,9 +104,11 @@ class ReportJobImportWizard(orm.TransientModel):
                 'color': color,
                 'size': size,
                 'barcode': barcode,
+                'total': total,
             }
             job_pool.create(cr, uid, data, context=context)
-            _logger.info('%s. Imported job: %s' % (row + 1, name))
+            _logger.info('%s. Imported job: %s' % (sequence, name))
+        return True
 
     _columns = {
         'xlsx_file': fields.binary('File XLSX', required=True),
