@@ -66,10 +66,10 @@ class LabelJob(orm.Model):
             if not os.path.isfile(fullname_ext):
                 code = barcode.get_barcode(
                     'ean13', ean,
-                    # options=dict(includetext=True, height=0.4), margin=1
+                    # {'includetext': True, 'height': 0.4, 'margin': 1},
                 )
-                code.save(fullname, 'PNG')
-            pdb.set_trace()
+                pdb.set_trace()
+                code.save(fullname) #, {'type': 'PNG'})
 
             try:
                 fullname = os.path.join(fullname_ext)
