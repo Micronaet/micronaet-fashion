@@ -23,15 +23,15 @@
       </record>
 
       <record id="action_import_job_wizard_form" model="ir.actions.act_window">
-        <field name="name">Importa job etichette</field>
-        <field name="type">ir.actions.act_window</field>
-        <field name="res_model">report.job.import.wizard</field>
-        <field name="view_type">form</field>
-        <field name="view_mode">form</field>
-        <field name="target">new</field>
+          <field name="name">Importa job etichette</field>
+          <field name="type">ir.actions.act_window</field>
+          <field name="res_model">report.job.import.wizard</field>
+          <field name="view_type">form</field>
+          <field name="view_mode">form</field>
+          <field name="target">new</field>
       </record>
 
-   <menuitem name="Import job etichette"
+      <menuitem name="Import job etichette"
           parent="menu_label_job_config"
           id="menu_import_job_wizard"
           action="action_import_job_wizard_form"

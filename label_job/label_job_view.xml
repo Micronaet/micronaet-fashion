@@ -3,7 +3,7 @@
     <data>
 
         <menuitem id="menu_label_job_root" name="Etichette" sequence="10"/>
-            <menuitem id="menu_label_job_config" name="Job etichette" sequence="10"/>
+            <menuitem id="menu_label_job_config" name="Job etichette" parent="menu_label_job_root" sequence="10"/>
     </data>
 </openerp>
 
