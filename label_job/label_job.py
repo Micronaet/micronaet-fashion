@@ -2,6 +2,8 @@
 # Copyright 2019  Micronaet SRL (<http://micronaet.com>).
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
+import urllib
+import base64
 import os
 import pdb
 import sys
@@ -15,6 +17,7 @@ from openerp.tools import (DEFAULT_SERVER_DATE_FORMAT,
     DEFAULT_SERVER_DATETIME_FORMAT,
     DATETIME_FORMATS_MAP,
     float_compare)
+from barcode import EAN13
 
 _logger = logging.getLogger(__name__)
 
@@ -54,6 +57,30 @@ class LabelJob(orm.Model):
             'state': 'new',
         }, context=context)
 
+    def _get_image_ean13_field(
+            self, cr, uid, ids, field_name, arg, context=None):
+        pdb.set_trace()
+        res = {}
+        for job in self.browse(cr, uid, ids, context=context):
+            ean = job.barcode
+            filename = ean
+            fullname = os.path.join('/tmp', filename)  # Auto svg ext.
+            if not os.path.isfile(fullname):
+                code = EAN13(ean)
+                code.save(fullname)
+            try:
+                # (fullname, header) = urllib.urlretrieve(filename)
+                filename = '%.svg' % ean
+                fullname = os.path.join('/tmp', filename)  # Auto svg ext.
+                f = open(fullname, 'rb')
+                img = base64.encodestring(f.read())
+                f.close()
+            except:
+                img = ''
+
+            res[job.id] = img
+        return res
+
     _columns = {
         'batch': fields.char('Lotto', size=80),
         'sequence': fields.integer('Riga'),
@@ -64,6 +91,8 @@ class LabelJob(orm.Model):
         'size': fields.char('Taglia', size=20),
         'barcode': fields.char('Codice EAN13', size=20),
         'total': fields.integer('Totale'),
+        'ean13_image': fields.function(
+            _get_image_ean13_field, type='binary', method=True),
 
         'import_date': fields.datetime('Importazione'),
         'state': fields.selection([

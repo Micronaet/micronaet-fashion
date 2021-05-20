@@ -43,25 +43,19 @@ class Parser(report_sxw.rml_parse):
         cols = 3
         rows = 8
 
-        label1 = {}
-        label2 = {}
-        label3 = {}
-        pdb.set_trace()
-
         lines = []
         for label in objects:
             label_id = label.id
             total = label.total
 
-            row = 0
             current_col = current_label = 0
             for col in range(0, total, cols):
                 # Choose label mode:
                 current_col += 1
-                if col in (1, 8):
+                if current_col in (1, 8):
                     mode = 2
-                    if col == 8:
-                        current_col = 0  # Reset countet
+                    if current_col == 8:
+                        current_col = 0  # Reset counter
                 else:
                     mode = 1
 
@@ -70,9 +64,9 @@ class Parser(report_sxw.rml_parse):
                 for row in range(cols):
                     current_label += 1
                     if current_label <= total:
-                        line[mode].append(label)
+                        line[1].append(label)
                     else:
-                        line[mode].append(False)  # No more label
+                        line[1].append(False)  # No more label
                 lines.append(line)
             # Complete all the sheet? (for multilabel)
 
