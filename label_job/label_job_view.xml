@@ -10,6 +10,7 @@
                     <field name="name" />
                     <field name="internal" />
                     <field name="style" />
+                    <field name="color" />
                     <field name="size" />
                     <field name="barcode" />
                     <filter name="state_new" string="Da stampare" domain="[('state','=','new')]"/>
@@ -35,6 +36,7 @@
                     <field name="name" />
                     <field name="internal" />
                     <field name="style" />
+                    <field name="color" />
                     <field name="size" />
                     <field name="barcode" />
                     <field name="total" />
@@ -64,6 +66,7 @@
                             <field name="name" />
                             <field name="internal" />
                             <field name="style" />
+                            <field name="color" />
                             <field name="size" />
                             <field name="barcode" />
                             <field name="total" />

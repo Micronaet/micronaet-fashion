@@ -62,6 +62,7 @@ class LabelJob(orm.Model):
         'name': fields.char('Modello cliente', size=80, required=True),
         'internal': fields.char('Modello interno', size=80),
         'style': fields.char('Style number', size=40),
+        'color': fields.char('Colore', size=40),
         'size': fields.char('Taglia', size=20),
         'barcode': fields.char('Codice EAN13', size=20),
         'total': fields.integer('Totale'),
