@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <openerp>
     <data>
-
+        <menuitem id="menu_label_job_root" name="Job etichette" sequence="10"/>
     </data>
 </openerp>
 
