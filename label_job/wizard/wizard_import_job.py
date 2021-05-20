@@ -72,6 +72,7 @@ class ReportJobImportWizard(orm.TransientModel):
         ws = wb.sheet_by_name(ws_name)
         _logger.warning('Read page: %s' % ws_name)
 
+        imported_ids = []
         data = {}  # Setup for old
         for row in range(row_start, ws.nrows):
             total = ws.cell(row, 7).value
@@ -105,7 +106,7 @@ class ReportJobImportWizard(orm.TransientModel):
                 'barcode': barcode,
                 'total': total,
             }
-            job_pool.create(cr, uid, data, context=context)
+            imported_ids.append(job_pool.create(cr, uid, data, context=context))
             _logger.info('%s. Imported job: %s' % (sequence, name))
 
         form_view_id = tree_view_id = False
@@ -117,7 +118,7 @@ class ReportJobImportWizard(orm.TransientModel):
             'res_model': 'label.job',
             'view_id': tree_view_id,
             'views': [(tree_view_id, 'tree'), (form_view_id, 'form')],
-            'domain': [],
+            'domain': [('id', 'in', imported_ids)],
             'context': context,
             'target': 'current',
             'nodestroy': False,
