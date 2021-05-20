@@ -30,26 +30,56 @@ class Parser(report_sxw.rml_parse):
             'get_line_label': self.get_line_label,
         })
 
-    def get_line_label(self, data):
+    def get_line_label(self, objects, data):
         """ Selected object + print object
         """
+        label_pool = self.pool.get('label.job')
 
         cr = self.cr
         uid = self.uid
         context = {'lang': 'IT_it'}
+
+        # Layour sheet:
+        cols = 3
+        rows = 8
+
         label1 = {}
         label2 = {}
         label3 = {}
-
         pdb.set_trace()
-        return [
-            (2, (label1, label2, label3)),
-            (1, (label1, label2, label3)),
-            (1, (label1, label2, label3)),
-            (1, (label1, label2, label3)),
-            (1, (label1, label2, label3)),
-            (1, (label1, label2, label3)),
-            (1, (label1, label2, label3)),
-            (2, (label1, label2, label3)),
-        ]
+
+        lines = []
+        for label in objects:
+            label_id = label.id
+            total = label.total
+
+            row = 0
+            current_col = current_label = 0
+            for col in range(0, total, cols):
+                # Choose label mode:
+                current_col += 1
+                if col in (1, 8):
+                    mode = 2
+                    if col == 8:
+                        current_col = 0  # Reset countet
+                else:
+                    mode = 1
+
+                # Prepare label line:
+                line = [mode, []]
+                for row in range(cols):
+                    current_label += 1
+                    if current_label <= total:
+                        line[mode].append(label)
+                    else:
+                        line[mode].append(False)  # No more label
+                lines.append(line)
+            # Complete all the sheet? (for multilabel)
+
+            # Update label as printed:
+            label_pool.write(cr, uid, [label_id], {
+                'state': 'printed',
+            }, context=context)
+
+        return lines
 

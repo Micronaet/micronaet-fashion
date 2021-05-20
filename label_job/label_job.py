@@ -3,6 +3,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 import os
+import pdb
 import sys
 import logging
 from openerp.osv import fields, osv, expression, orm
@@ -32,10 +33,6 @@ class LabelJob(orm.Model):
         """
         datas = {}
         report_name = 'label_job_report'
-
-        self.write(cr, uid, ids, {
-            'state': 'printed',
-        }, context=context)
 
         return {
             'type': 'ir.actions.report.xml',
