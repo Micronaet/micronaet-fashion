@@ -62,7 +62,7 @@ class LabelJob(orm.Model):
         for job in self.browse(cr, uid, ids, context=context):
             ean = job.barcode
             fullname = os.path.join('/tmp', ean)  # Auto svg ext.
-            fullname_ext = os.path.join('/tmp', '%s.png' % ean)
+            fullname_ext = os.path.join('/tmp', '%s.svg' % ean)
             if not os.path.isfile(fullname_ext):
                 code = barcode.get_barcode(
                     'ean13', ean,
@@ -74,7 +74,7 @@ class LabelJob(orm.Model):
             try:
                 fullname = os.path.join(fullname_ext)
                 f = open(fullname, 'rb')
-                img = base64.encodestring(f.read())
+                img = base64.encodebytes(f.read())
                 f.close()
             except:
                 img = ''
