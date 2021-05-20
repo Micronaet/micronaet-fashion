@@ -4,6 +4,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 import os
+import pdb
 import sys
 import logging
 from openerp.osv import fields, osv, expression, orm
@@ -40,6 +41,7 @@ class Parser(report_sxw.rml_parse):
         label2 = {}
         label3 = {}
 
+        pdb.set_trace()
         return [
             (2, (label1, label2, label3)),
             (1, (label1, label2, label3)),
