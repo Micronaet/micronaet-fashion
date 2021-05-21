@@ -2,6 +2,6 @@
 # Copyright 2019  Micronaet SRL (<http://micronaet.com>).
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
-from . import label_job
-from . import report
-from . import wizard
+import label_job
+import report
+import wizard
