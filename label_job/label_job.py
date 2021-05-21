@@ -16,7 +16,7 @@ from openerp.tools import (DEFAULT_SERVER_DATE_FORMAT,
     DEFAULT_SERVER_DATETIME_FORMAT,
     DATETIME_FORMATS_MAP,
     float_compare)
-import barcode
+# import barcode
 
 _logger = logging.getLogger(__name__)
 
@@ -56,7 +56,7 @@ class LabelJob(orm.Model):
             'state': 'new',
         }, context=context)
 
-    def _get_image_ean13_field(
+    """def _get_image_ean13_field(
             self, cr, uid, ids, field_name, arg, context=None):
         res = {}
         for job in self.browse(cr, uid, ids, context=context):
@@ -80,7 +80,7 @@ class LabelJob(orm.Model):
                 img = ''
 
             res[job.id] = img
-        return res
+        return res"""
 
     _columns = {
         'batch': fields.char('Lotto', size=80),
@@ -92,8 +92,8 @@ class LabelJob(orm.Model):
         'size': fields.char('Taglia', size=20),
         'barcode': fields.char('Codice EAN13', size=20),
         'total': fields.integer('Totale'),
-        'ean13_image': fields.function(
-            _get_image_ean13_field, type='binary', method=True),
+        #'ean13_image': fields.function(
+        #    _get_image_ean13_field, type='binary', method=True),
 
         'import_date': fields.datetime('Importazione'),
         'state': fields.selection([
