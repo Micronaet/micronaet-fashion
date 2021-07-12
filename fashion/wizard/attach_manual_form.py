@@ -193,13 +193,12 @@ class FashionAttachManualFormWizard(osv.osv_memory):
         form_id = wizard.form_id.id
         attach_id = wizard.attachment_id.id
 
-        pdb.set_trace()
         if not attach_id:
             attach_id = attach_pool.create(cr, uid, {
                 'name': wizard.name,
                 'form_id': form_id,
                 }, context=context)
-        attach_filename = self.browse(
+        attach_filename = attach_pool.browse(
             cr, uid, attach_id, context=context).filename
 
         b64_file = base64.decodestring(wizard.file)
