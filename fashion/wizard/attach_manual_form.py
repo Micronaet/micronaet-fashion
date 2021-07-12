@@ -194,7 +194,7 @@ class FashionAttachManualFormWizard(osv.osv_memory):
         attach_id = wizard.attachment_id.id
 
         if not attach_id:
-            attach_id = attach_pool.create(cr, uid, ids, {
+            attach_id = attach_pool.create(cr, uid, {
                 'name': wizard.name,
                 'form_id': form_id,
                 }, context=context)
