@@ -153,7 +153,7 @@ class FashionForm(osv.osv):
         model_pool = self.pool.get('ir.model.data')
         view_id = model_pool.get_object_reference(
             cr, uid,
-            'micronaet-fashion', 'view_fashion_attach_manual_form_form')[1]
+            'fashion', 'view_fashion_attach_manual_form_form')[1]
 
         res_id = attach_pool.create(cr, uid, {
             'form_id': form_id,
