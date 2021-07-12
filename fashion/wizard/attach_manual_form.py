@@ -149,13 +149,13 @@ class FashionForm(osv.osv):
             self, cr, uid, form_id, attachment_id, context=None):
         """ Open wizard wit 2 mode:
         """
-        attach_pool = self.pool.get('fashion.form.attachment')
+        wizard_pool = self.pool.get('fashion.attach.manual.form.wizard')
         model_pool = self.pool.get('ir.model.data')
         view_id = model_pool.get_object_reference(
             cr, uid,
             'fashion', 'view_fashion_attach_manual_form_form')[1]
 
-        res_id = attach_pool.create(cr, uid, {
+        res_id = wizard_pool.create(cr, uid, {
             'form_id': form_id,
             'attachment_id': attachment_id,
         }, context=context)
