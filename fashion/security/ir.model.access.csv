@@ -2,6 +2,7 @@
 "access_fashion_article_user","fashion.article","model_fashion_article","base.group_user",1,1,1,1
 "access_fashion_season_user","fashion.season","model_fashion_season","base.group_user",1,1,1,1
 "access_fashion_form_accessory_user","fashion.form.accessory","model_fashion_form_accessory","base.group_user",1,1,1,1
+"access_fashion_form_attachment_user","fashion.form.attachment","model_fashion_form_attachment","base.group_user",1,1,1,1
 "access_fashion_form_accessory_rel_user","fashion.form.accessory.rel","model_fashion_form_accessory_rel","base.group_user",1,1,1,1
 "access_fashion_form_accessory_pricelist_user","fashion.form.accessory.pricelist","model_fashion_form_accessory_pricelist","base.group_user",1,1,1,1
 "access_fashion_form_characteristic_rel_user","fashion.form.characteristic.rel","model_fashion_form_characteristic_rel","base.group_user",1,1,1,1

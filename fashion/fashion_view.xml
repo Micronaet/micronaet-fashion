@@ -660,6 +660,7 @@
                 <label string=" " />
 
                 <button string='Refresh' name='button_refresh' type="object" icon='gtk-refresh'/>
+                <button string='Allega documento' name='open_attachment_wizard' type="object" icon='gtk-execute'/>
                 <field name='state' widget='statusbar' readonly='1'/>
 
                 <!--<div style="background-color: red;text-align: center;font-weight:bold;color:white;">
@@ -700,6 +701,17 @@
                     <!--<field name="size_measure"/>-->
                     <!--<field name="area" colspan='4'/>-->
                     <notebook colspan='4'>
+                            <page string="Allegati" attrs="{'invisible': [('attachment_ids', '=', False]}">
+                                <group colspan="4" col="4">
+                                    <field name="attachment_ids" colspan="4" nolabel="1">
+                                        <tree editable="bottom" string="Allegati">
+                                            <field name="name"/>
+                                            <button string='Riallega documento' name='open_attachment_wizard' type="object" icon='gtk-execute'/>
+                                            <button string='Scarica documento' name='open_file' type="object" icon='gtk-download'/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
                             <page string="Image">
                                 <group colspan="4" col="4">
                                     <group colspan="2" col="3">

@@ -47,7 +47,7 @@
         'fashion-kanban',
         'fashion_sheet_wide',
         'web_washing_symbol',
-        #'web_m2x_options', # lock create in m2o XXX sometimes gives problem!
+        # 'web_m2x_options', # lock create in m2o XXX sometimes gives problem!
         ],
     'init_xml': [],
     'demo_xml': [],
@@ -64,17 +64,19 @@
             'wizard/report_wizard.xml',
             'wizard/force_fabric_view.xml',
             'wizard/partner_unique_view.xml',
+            'wizard/attach_manual_wizard.xml',
 
             # View:
             'fashion_view.xml',
-            
+
             'wizard/extract_xls_view.xml',
-             
+
             # Workflow:
             'fashion_form_workflow.xml',
 
-            #'scheduler.xml', 
+            #'scheduler.xml',
             #'data/list.xml',
+            'data/config_data.xml',
             ],
     'active': False,
     'installable': True,

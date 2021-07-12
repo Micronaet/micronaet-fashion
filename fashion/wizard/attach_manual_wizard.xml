@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<openerp>
+  <data>
+    <!--fashion.attach.manual.form-->
+    <record id="view_fashion_attach_manual_form_form" model="ir.ui.view">
+        <field name="name">fashion.attach.manual.form.form</field>
+        <field name="model">fashion.attach.manual.form</field>
+        <field name="arch" type="xml">
+            <form string="Report" version="7.0">
+                <sheet>
+                   <group col='4'>
+                      <field name="form_id" invisible='1' readonly="1"/>
+                      <field name="attachment_id" invisible='1' readonly="1"/>
+                      <field name="name" colspan="4" attrs="{required': [('attachment_id', '=', False)]}"/>
+                      <field name="file" colspan="4"/>
+                      <button string='Importa' name='add_attachment' type='object' icon='gtk-execute'/>
+                      <button string="Cancel" special="cancel" icon='STOCK_CANCEL'/>
+                   </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_view_fashion_attach_manual_form" model="ir.actions.act_window">
+            <field name="name">Import attachment report</field>
+            <field name="res_model">fashion.attach.manual.form</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_fashion_attach_manual_form_form"/>
+            <field name="target">new</field>
+    </record>
+    <!--<act_window
+        id="act_window_wizard_report_form"
+        name="Form Report"
+        res_model="fashion.report.wizard"
+        src_model="fashion.form"
+        view_mode="form"
+        view_type="form"
+        target="new"
+        />-->
+
+  </data>
+</openerp>
