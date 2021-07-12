@@ -184,9 +184,8 @@ class FashionForm(osv.osv):
 class FashionAttachManualFormWizard(osv.osv_memory):
     """ Attach manual form
     """
-    _name = 'fashion.attach.manual.form'
+    _name = 'fashion.attach.manual.form.wizard'
     _description = 'Collega scheda manuale'
-
 
     def add_attachment(self, cr, uid, ids, context=None):
         """ Add attachement
