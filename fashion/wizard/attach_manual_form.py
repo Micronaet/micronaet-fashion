@@ -155,22 +155,20 @@ class FashionForm(osv.osv):
             cr, uid,
             'fashion', 'view_fashion_attach_manual_form_form')[1]
 
-        res_id = wizard_pool.create(cr, uid, {
-            'form_id': form_id,
-            'attachment_id': attachment_id,
-        }, context=context)
-
+        ctx = context.copy()
+        ctx['default_form_id'] = form_id
+        ctx['default_attachment_id'] = attachment_id
         return {
             'type': 'ir.actions.act_window',
             'name': _('Importa allegati'),
             'view_type': 'form',
             'view_mode': 'form',
-            'res_id': res_id,
+            'res_id': False,
             'res_model': 'fashion.form.attachment',
             'view_id': view_id,
             'views': [(False, 'form')],
             'domain': [],
-            'context': context,
+            'context': ctx,
             'target': 'new',
             'nodestroy': False,
             }
