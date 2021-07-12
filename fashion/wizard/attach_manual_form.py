@@ -114,7 +114,7 @@ class FashionFormAttachment(osv.osv):
             attach_id = attachment.id
             res[attach_id] = os.path.join(
                 root,
-                '%s.%s' % (attachment.id, attachment.pdf),
+                '%s.%s' % (attachment.id, attachment.extension),
                 )
         return res
 
