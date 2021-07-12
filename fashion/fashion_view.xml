@@ -701,7 +701,7 @@
                     <!--<field name="size_measure"/>-->
                     <!--<field name="area" colspan='4'/>-->
                     <notebook colspan='4'>
-                            <page string="Allegati" attrs="{'invisible': [('attachment_ids', '=', False)]}">
+                            <page string="Allegati" attrs="{'invisible': [('attachment_ids', '=', [])]}">
                                 <group colspan="4" col="4">
                                     <field name="attachment_ids" colspan="4" nolabel="1">
                                         <tree editable="bottom" string="Allegati">
