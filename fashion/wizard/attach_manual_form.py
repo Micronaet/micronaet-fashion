@@ -51,7 +51,7 @@ class FashionFormAttachment(osv.osv):
         return form_pool.open_attachment_detailed(
             cr, uid, form_id, attachment_id, context=context)
 
-    def open_file(self, cr, uid, ids, fields, args, context=None):
+    def open_file(self, cr, uid, ids, context=None):
         """ Fields function for calculate
         """
         attachment = self.browse(cr, uid, ids, context=context)[0]
