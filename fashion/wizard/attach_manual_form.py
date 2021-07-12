@@ -38,7 +38,7 @@ class FashionFormAttachment(osv.osv):
     """
     _name = 'fashion.form.attachment'
     _description = 'Collega scheda manuale'
-    _store_folder = '~/Store'
+    _store_folder = '~/smb/openerp/image/pdf'
 
     def open_attachment_wizard(self, cr, uid, ids, context=None):
         """ Button from Form
