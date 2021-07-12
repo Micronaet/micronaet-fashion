@@ -12,7 +12,7 @@
                       <button string="Cancel" special="cancel" icon='STOCK_CANCEL'/>
                 </header>
                 <sheet>
-                   <group col='4'>
+                   <group>
                       <field name="form_id" invisible='1' readonly="1"/>
                       <field name="attachment_id" invisible='1' readonly="1"/>
                       <field name="name" colspan="4" attrs="{'required': [('attachment_id', '=', False)]}"/>
