@@ -164,7 +164,7 @@ class FashionForm(osv.osv):
             'view_type': 'form',
             'view_mode': 'form',
             'res_id': False,
-            'res_model': 'ffashion.attach.manual.form.wizard',
+            'res_model': 'fashion.attach.manual.form.wizard',
             'view_id': view_id,
             'views': [(view_id, 'form')],
             'domain': [],
