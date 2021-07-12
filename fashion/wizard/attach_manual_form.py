@@ -82,7 +82,7 @@ class FashionFormAttachment(osv.osv):
         """ Generate return object for pased files
         """
         config_pool = self.pool.get('ir.config_parameter')
-        key = 'web.base.url.fahsion'
+        key = 'web.base.url.fashion'
         config_ids = config_pool.search(cr, uid, [
             ('key', '=', key)], context=context)
         if not config_ids:
