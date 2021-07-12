@@ -7,16 +7,19 @@
         <field name="model">fashion.attach.manual.form.wizard</field>
         <field name="arch" type="xml">
             <form string="Allega wizard" version="7.0">
+                <header>
+                      <button string='Importa' name='add_attachment' type='object' icon='gtk-execute'/>
+                      <button string="Cancel" special="cancel" icon='STOCK_CANCEL'/>
+                </header>
                 <sheet>
                    <group col='4'>
                       <field name="form_id" invisible='1' readonly="1"/>
                       <field name="attachment_id" invisible='1' readonly="1"/>
                       <field name="name" colspan="4" attrs="{'required': [('attachment_id', '=', False)]}"/>
                       <field name="file" colspan="4"/>
-                      <button string='Importa' name='add_attachment' type='object' icon='gtk-execute'/>
-                      <button string="Cancel" special="cancel" icon='STOCK_CANCEL'/>
                    </group>
                 </sheet>
+                <footer></footer>
             </form>
         </field>
     </record>
