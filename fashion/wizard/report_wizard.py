@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    OpenERP, Open Source Management Solution    
+#    OpenERP, Open Source Management Solution
 #    Copyright (C) 2004-2009 Tiny SPRL (<http://tiny.be>). All Rights Reserved
 #    d$
 #
@@ -24,31 +24,33 @@ from openerp.osv import osv, fields
 from datetime import datetime
 import pdb
 
+
 class fashion_report_wizard(osv.osv_memory):
-    ''' Manage report parameter (before printing)
-    '''
+    """ Manage report parameter (before printing)
+    """
     _name = 'fashion.report.wizard'
     _description = 'Report wizard'
 
     def get_form_id(self, cr, uid, context=None):
         return context.get('active_id', False)
-    
+
     def get_partner_fabric_id(self, cr, uid, context=None):
         form_id = context.get('active_id', False)
         if form_id:
-            form_proxy = self.pool.get('fashion.form').browse(cr, uid, form_id, context=context)
+            form_proxy = self.pool.get('fashion.form').browse(
+                cr, uid, form_id, context=context)
             if len(form_proxy.partner_rel_ids) == 1:
                 return form_proxy.partner_rel_ids[0].id
         return False
-    
+
     def onchange_type(self, cr, uid, ids, report_type, context=None):
-        ''' Set default in report A
-        '''
+        """ Set default in report A
+        """
         res = {}
         res['value'] = {}
         res['value']['summary'] = report_type == 'a' # True only for A
         return res
-    
+
     _columns = {
          'type': fields.selection([
              ('a', 'A - Scheda Storica'),
@@ -56,12 +58,15 @@ class fashion_report_wizard(osv.osv_memory):
              ('c', 'C - Scheda Tecnica'),
              ('d', 'Riscontro'),
              ('e', 'Lanciato'),
+             ('f', 'Solo foto'),
          ], 'Type of report', select=True),
-         #'prototipe': fields.bolean('Prototipe'),
+         # 'prototipe': fields.bolean('Prototipe'),
          'form_id': fields.many2one('fashion.form', 'Form'),
-         'partner_fabric_id': fields.many2one('fashion.form.partner.rel', 'Partner Fabric'),
-         'accessory_id': fields.many2one('fashion.form.accessory.rel', 'Accessory'),
-         'summary': fields.boolean('Summary'), #TODO Inserire i gruppi
+         'partner_fabric_id': fields.many2one(
+             'fashion.form.partner.rel', 'Partner Fabric'),
+         'accessory_id': fields.many2one(
+             'fashion.form.accessory.rel', 'Accessory'),
+         'summary': fields.boolean('Summary'),   # todo Inserire i gruppi
          'total': fields.boolean('Total'),
          'image': fields.boolean('Image'),
     }
@@ -72,26 +77,33 @@ class fashion_report_wizard(osv.osv_memory):
         'summary': True,
         'total': False,
         'image': True,
-        'partner_fabric_id': lambda s,cr,uid,ctx: s.get_partner_fabric_id(cr, uid, ctx),
-        #'prototipe': False,
+        'partner_fabric_id': lambda s,cr,uid,ctx:
+            s.get_partner_fabric_id(cr, uid, ctx),
+        # 'prototipe': False,
     }
 
     def print_report(self, cr, uid, ids, context=None):
-        ''' Print report passing parameter dictionary
-        '''
+        """ Print report passing parameter dictionary
+        """
         wiz_proxy = self.browse(cr, uid, ids, context=context)[0]
         datas = {}
         datas['from_wizard'] = True
         datas['active_ids'] = context.get('active_ids', [])
         datas['active_id'] = context.get('active_id', False)
-        datas['partner_fabric_id'] = wiz_proxy.partner_fabric_id.id if wiz_proxy.partner_fabric_id else False
-        datas['accessory_id'] = wiz_proxy.accessory_id.id if wiz_proxy.accessory_id else False
+        datas['partner_fabric_id'] = wiz_proxy.partner_fabric_id.id \
+            if wiz_proxy.partner_fabric_id else False
+        datas['accessory_id'] = wiz_proxy.accessory_id.id \
+            if wiz_proxy.accessory_id else False
         datas['summary'] = wiz_proxy.summary
         datas['total'] = wiz_proxy.total
         datas['image'] = wiz_proxy.image
-        #datas['note_fabric'] = wiz_proxy.partner_fabric_id.note_fabric if wiz_proxy.partner_fabric_id else ''
-        #datas['partner_fabric_id'] = wiz_proxy.partner_fabric_id.id if wiz_proxy.partner_fabric_id else False
-        
+        # datas['note_fabric'] =
+        # wiz_proxy.partner_fabric_id.note_fabric
+        # if wiz_proxy.partner_fabric_id else ''
+        # datas['partner_fabric_id'] =
+        # wiz_proxy.partner_fabric_id.id
+        # if wiz_proxy.partner_fabric_id else False
+
         if wiz_proxy.type == 'a':
             report = "fashion_form_A"
         elif wiz_proxy.type == 'b':
@@ -102,13 +114,15 @@ class fashion_report_wizard(osv.osv_memory):
             report = "fashion_form_D"
         elif wiz_proxy.type == 'e':
             report = "fashion_form_E"
-        else: # default
-            report = "fashion_form_A"        
-            
+        elif wiz_proxy.type == 'f':
+            report = "fashion_form_B"  # Same as commercial
+            datas['only_photo'] = True  # But add parameter
+        else:  # default
+            report = "fashion_form_A"
+
         return {
             'model': 'fashion.form',
             'type': 'ir.actions.report.xml',
             'report_name': report,
             'datas': datas,
             }
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
