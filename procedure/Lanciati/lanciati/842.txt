@@ -1,0 +1,4 @@
+  842;P3478--T010C199S5E41C3N ;T010C199                ;        1,15;          37;ART.010 COL.199                                         
+  842;P3478--T010C199S5E41C3N ;FODPANEC199             ;        0,13;          37;PANAMINO POL/COT. TC88 C199                             
+  842;P3478--T010C199S5E41C3N ;ADE020-C199             ;        0,02;          37;ADESIVO ART. 020/655 BISTRETCH C199                     
+  842;P3478--T010C199S5E41C3N ;T167C199                ;        0,12;          37;ART.167 COL.199                                         

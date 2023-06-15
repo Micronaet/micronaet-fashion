@@ -1,0 +1,623 @@
+DESCO S.R.L.                                                                                31/08/18                     Scadenza da           
+Dettaglio capi in ordine con riga L Art. in lavorazione                                                                  Pagina   1
+                   parametri di scelta: cliente                          Stagione S5  Articolo                     
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Ordine   Articolo                                        Capi Cliente                                         | Note  Fase   n.DL     Data Terzista
+  221   COORD03T100C199S5E52C37  COORD. C03 ART           11 501.00557 MARIA GLENSTER P. PAPAGEORGIOU         |    624   3 110621 09/08/18 651.00248 MARIA LIU' DIC. 2017    
+  221   COORD03T100C170S5E52C37  COORD. C03 ART            4 501.00557 MARIA GLENSTER P. PAPAGEORGIOU         |    624   3 110621 09/08/18 651.00248 MARIA LIU' DIC. 2017    
+Modello COORD03T100 . . . . . . . . . . . .tot. ..........15                                                  |
+  232   COORD05T232C199S5E17C18  COORD. C05 ART           20 501.00314 VARDAS A.E.V.E.E.                      |    520   3 110814 27/08/18 651.00252 CARLO GIUGNO 2018       
+Modello COORD05T232 . . . . . . . . . . . .tot. ..........20                                                  |
+  232   COORD07T010C299S5E17C18  COORD. C07 ART           33 501.00314 VARDAS A.E.V.E.E.                      |    672   3 110798 28/08/18 651.00248 MARIA LIU' DIC. 2017    
+  232   COORD07T010C150S5E17C18  COORD. C07 ART           27 501.00314 VARDAS A.E.V.E.E.                      |    672   3 110798 28/08/18 651.00248 MARIA LIU' DIC. 2017    
+Modello COORD07T010 . . . . . . . . . . . .tot. ..........60                                                  |
+  178   G009---T309C299S5E1CC25  GON.MOD.G009 A            6 501.01573 SLAMI, s.r.o.                          |    578   2   3882 30/08/18 651.00244 STELLA NUOVO            
+  178   G009---T309C180S5E1CC25  GON.MOD.G009 A            6 501.01573 SLAMI, s.r.o.                          |    578   2   3882 30/08/18 651.00244 STELLA NUOVO            
+Modello G009---T309 . . . . . . . . . . . .tot. ..........12                                                  |
+  157   G2490--T311C170S5E3TC05  GONNA G2490 AR            2 501.01345 LE PRIME DONNE DI EVA SRLS             |    595   3 110768 23/08/18 651.00251 PAOLO/GIULIA 2          
+Modello G2490--T311 . . . . . . . . . . . .tot. ...........2                                                  |
+  173   G2533--T241C299S5E1CC25  GONNA G2533 AR            3 501.01438 IP SIMONENKO ALEKSANDR SERGEEV         |     78   3 110325 10/07/18 651.00251 PAOLO/GIULIA 2          
+  173   G2533--T241C199S5E1CC25  GONNA G2533 AR            3 501.01438 IP SIMONENKO ALEKSANDR SERGEEV         |     78   3 110325 10/07/18 651.00251 PAOLO/GIULIA 2          
+  178   G2533--T241C299S5E1CC25  GONNA G2533 AR            1 501.01573 SLAMI, s.r.o.                          |     79   3 110324 10/07/18 651.00251 PAOLO/GIULIA 2          
+  178   G2533--T241C199S5E1CC25  GONNA G2533 AR            1 501.01573 SLAMI, s.r.o.                          |     79   3 110324 10/07/18 651.00251 PAOLO/GIULIA 2          
+  221   G2533--T241C199S5E52C37  GONNA G2533 AR            1 501.00557 MARIA GLENSTER P. PAPAGEORGIOU         |     80   3 110323 10/07/18 651.00251 PAOLO/GIULIA 2          
+Modello G2533--T241 . . . . . . . . . . . .tot. ...........9                                                  |
+  173   G2534--T310C170S5E1CC25  GON.MOD.G2534             8 501.01438 IP SIMONENKO ALEKSANDR SERGEEV         |    777   3   3888 30/08/18 651.00242 LINDA/CHEN              
+  173   G2534--T310C150S5E1CC25  GON.MOD.G2534             7 501.01438 IP SIMONENKO ALEKSANDR SERGEEV         |    777   3   3888 30/08/18 651.00242 LINDA/CHEN              
+  178   G2534--T310C150S5E1CC25  GON.MOD.G2534             5 501.01573 SLAMI, s.r.o.                          |    780   2   3891 30/08/18 651.00242 LINDA/CHEN              
+  178   G2534--T310C170S5E1CC25  GON.MOD.G2534             5 501.01573 SLAMI, s.r.o.                          |    780   2   3891 30/08/18 651.00242 LINDA/CHEN              
+  232   G2534--T310C170S5E17C18  GON.MOD.G2534            33 501.00314 VARDAS A.E.V.E.E.                      |    778   2   3889 30/08/18 651.00242 LINDA/CHEN              
+  250   G2534--T310C170S5E3VC39  GON.MOD.G2534             2 501.01253 DONNE DA SOGNO S.R.L.                  |    779   2   3890 30/08/18 651.00242 LINDA/CHEN              
+  250   G2534--T310C399S5E3VC39  GON.MOD.G2534           150 501.01253 DONNE DA SOGNO S.R.L.                  |    779   2   3890 30/08/18 651.00242 LINDA/CHEN              
+  251   G2534--T310C399S5E9HC06  GON.MOD.G2534             4 501.01253 DONNE DA SOGNO S.R.L.                  |    779   2   3890 30/08/18 651.00242 LINDA/CHEN              
+  251   G2534--T310C399S5E9HC06  GON.MOD.G2534             4 501.01253 DONNE DA SOGNO S.R.L.                  |    779   2   3890 30/08/18 651.00242 LINDA/CHEN              
+  251   G2534--T310C170S5E9HC06  GON.MOD.G2534             4 501.01253 DONNE DA SOGNO S.R.L.                  |    779   2   3890 30/08/18 651.00242 LINDA/CHEN              
+Modello G2534--T310 . . . . . . . . . . . .tot. .........222                                                  |
+  178   G2538--T348C399S5E1CC25  GONNA G2538 AR            1 501.01573 SLAMI, s.r.o.                          |    385   2   3851 28/08/18 651.00232 MARIO DAL 01/08/16      
+  178   G2538--T348C399S5E1CC25  GONNA G2538 AR            3 501.01573 SLAMI, s.r.o.                          |    385   2   3851 28/08/18 651.00232 MARIO DAL 01/08/16      
+  232   G2538--T348C399S5E17C18  GONNA G2538 AR           24 501.00314 VARDAS A.E.V.E.E.                      |    384   2   3850 28/08/18 651.00232 MARIO DAL 01/08/16      
+Modello G2538--T348 . . . . . . . . . . . .tot. ..........28                                                  |
+  232   H1935--T317C199S5E17C18  MANTELLA H1935           30 501.00314 VARDAS A.E.V.E.E.                      |    438   2   2919 27/06/18 651.00252 CARLO GIUGNO 2018       
+Modello H1935--T317 . . . . . . . . . . . .tot. ..........30                                                  |
+  114   H1935LFT207C299S5E1QC33  MANTELLA H1935           60 501.00977 LFC OUTLETS S.R.L.                     |    408   2   3212 11/07/18 651.00252 CARLO GIUGNO 2018       
+  114   H1935LFT207C170S5E1QC33  MANTELLA H1935           60 501.00977 LFC OUTLETS S.R.L.                     |    408   2   3212 11/07/18 651.00252 CARLO GIUGNO 2018       
+Modello H1935LFT207 . . . . . . . . . . . .tot. .........120                                                  |
+  157   H1946--T322C399S5E3TC05  CAPPOTTO H1946           10 501.01345 LE PRIME DONNE DI EVA SRLS             |    468   2   3568 27/07/18 651.00252 CARLO GIUGNO 2018       
+  157   H1946--T322C299S5E3TC05  CAPPOTTO H1946           13 501.01345 LE PRIME DONNE DI EVA SRLS             |    468   2   3568 27/07/18 651.00252 CARLO GIUGNO 2018       
+  157   H1946--T322C299S5E3TC05  CAPPOTTO H1946            3 501.01345 LE PRIME DONNE DI EVA SRLS             |    468   2   3568 27/07/18 651.00252 CARLO GIUGNO 2018       
+  195   H1946--T322C299S5E2ZC5C  CAPPOTTO H1946           14 501.00456 THE WING ON DEPARTEMENT STORES         |    468   2   3568 27/07/18 651.00252 CARLO GIUGNO 2018       
+  221   H1946--T322C299S5E52C37  CAPPOTTO H1946           10 501.00557 MARIA GLENSTER P. PAPAGEORGIOU         |    468   2   3568 27/07/18 651.00252 CARLO GIUGNO 2018       
+  221   H1946--T322C399S5E52C37  CAPPOTTO H1946            2 501.00557 MARIA GLENSTER P. PAPAGEORGIOU         |    468   2   3568 27/07/18 651.00252 CARLO GIUGNO 2018       
+  279   H1946--T322C299S5E93C4E  CAPPOTTO H1946            8 501.00816 IL GIRAMODA s.a.s. di Gennari          |    467   2   3567 27/07/18 651.00252 CARLO GIUGNO 2018       
+  279   H1946--T322C299S5E93C4E  CAPPOTTO H1946           13 501.00816 IL GIRAMODA s.a.s. di Gennari          |    467   2   3567 27/07/18 651.00252 CARLO GIUGNO 2018       
+  279   H1946--T322C299S5E93C4E  CAPPOTTO H1946           69 501.00816 IL GIRAMODA s.a.s. di Gennari          |    467   2   3567 27/07/18 651.00252 CARLO GIUGNO 2018       
+Modello H1946--T322 . . . . . . . . . . . .tot. .........142                                                  |
+  173   H1947--T100C170S5E1CC25  GIACCA H1947 A            4 501.01438 IP SIMONENKO ALEKSANDR SERGEEV         |    629   2   3545 26/07/18 651.00252 CARLO GIUGNO 2018       
+  221   H1947--T100C170S5E52C37  GIACCA H1947 A            2 501.00557 MARIA GLENSTER P. PAPAGEORGIOU         |    630   2   3546 26/07/18 651.00252 CARLO GIUGNO 2018       
+  221   H1947--T100C199S5E52C37  GIACCA H1947 A            1 501.00557 MARIA GLENSTER P. PAPAGEORGIOU         |    630   2   3546 26/07/18 651.00252 CARLO GIUGNO 2018       
+Modello H1947--T100 . . . . . . . . . . . .tot. ...........7                                                  |
+  254   H1949--T100C299S5E27C1P  GIACCA H1949 A            4 501.01444 ZANETTI MODA s.r.l.                    |    631   2   3489 23/07/18 651.00252 CARLO GIUGNO 2018       
+  254   H1949--T100C199S5E27C1P  GIACCA H1949 A            5 501.01444 ZANETTI MODA s.r.l.                    |    631   2   3489 23/07/18 651.00252 CARLO GIUGNO 2018       
+  254   H1949--T100C170S5E27C1P  GIACCA H1949 A            7 501.01444 ZANETTI MODA s.r.l.                    |    631   2   3489 23/07/18 651.00252 CARLO GIUGNO 2018       
+  254   H1949--T100C160S5E27C1P  GIACCA H1949 A           23 501.01444 ZANETTI MODA s.r.l.                    |    631   2   3489 23/07/18 651.00252 CARLO GIUGNO 2018       
+
+
+
+
+DESCO S.R.L.                                                                                31/08/18                     Scadenza da           
+Dettaglio capi in ordine con riga L Art. in lavorazione                                                                  Pagina   2
+                   parametri di scelta: cliente                          Stagione S5  Articolo                     
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Ordine   Articolo                                        Capi Cliente                                         | Note  Fase   n.DL     Data Terzista
+  254   H1949--T100C300S5E27C1P  GIACCA H1949 A            1 501.01444 ZANETTI MODA s.r.l.                    |    631   2   3489 23/07/18 651.00252 CARLO GIUGNO 2018       
+  254   H1949--T100C160S5E27C43  GIACCA H1949 A            4 501.01444 ZANETTI MODA s.r.l.                    |    631   2   3489 23/07/18 651.00252 CARLO GIUGNO 2018       
+  276   H1949--T100C160S5E08C1H  GIACCA H1949 A           11 501.01444 ZANETTI MODA s.r.l.                    |    631   2   3489 23/07/18 651.00252 CARLO GIUGNO 2018       
+  276   H1949--T100C199S5E08C1H  GIACCA H1949 A            7 501.01444 ZANETTI MODA s.r.l.                    |    631   2   3489 23/07/18 651.00252 CARLO GIUGNO 2018       
+Modello H1949--T100 . . . . . . . . . . . .tot. ..........62                                                  |
+  254   H1951--T322C299S5E27C1P  CAPPOTTO H1951          122 501.01444 ZANETTI MODA s.r.l.                    |    469   2   3429 19/07/18 651.00252 CARLO GIUGNO 2018       
+  254   H1951--T322C299S5E27C43  CAPPOTTO H1951           10 501.01444 ZANETTI MODA s.r.l.                    |    469   2   3429 19/07/18 651.00252 CARLO GIUGNO 2018       
+  254   H1951--T322C399S5E27C1P  CAPPOTTO H1951            2 501.01444 ZANETTI MODA s.r.l.                    |    469   2   3429 19/07/18 651.00252 CARLO GIUGNO 2018       
+  272   H1951--T322C299S5E27C3H  CAPPOTTO H1951           40 501.01444 ZANETTI MODA s.r.l.                    |    469   2   3429 19/07/18 651.00252 CARLO GIUGNO 2018       
+  273   H1951--T322C299S5E26C83  CAPPOTTO H1951            3 501.01444 ZANETTI MODA s.r.l.                    |    469   2   3429 19/07/18 651.00252 CARLO GIUGNO 2018       
+  274   H1951--T322C299S5E37C9L  CAPPOTTO H1951            3 501.01444 ZANETTI MODA s.r.l.                    |    469   2   3429 19/07/18 651.00252 CARLO GIUGNO 2018       
+  275   H1951--T322C299S5E62C9Z  CAPPOTTO H1951            3 501.01444 ZANETTI MODA s.r.l.                    |    469   2   3429 19/07/18 651.00252 CARLO GIUGNO 2018       
+  276   H1951--T322C299S5E08C1H  CAPPOTTO H1951           12 501.01444 ZANETTI MODA s.r.l.                    |    469   2   3429 19/07/18 651.00252 CARLO GIUGNO 2018       
+  277   H1951--T322C299S5E40C3H  CAPPOTTO H1951            5 501.01444 ZANETTI MODA s.r.l.                    |    469   2   3429 19/07/18 651.00252 CARLO GIUGNO 2018       
+  277   H1951--T322C399S5E40C3H  CAPPOTTO H1951            3 501.01444 ZANETTI MODA s.r.l.                    |    469   2   3429 19/07/18 651.00252 CARLO GIUGNO 2018       
+Modello H1951--T322 . . . . . . . . . . . .tot. .........203                                                  |
+  254   H1952--T128C150S5E27C1P  CAPPOTTO H1952           10 501.01444 ZANETTI MODA s.r.l.                    |    149   2   3428 19/07/18 651.00252 CARLO GIUGNO 2018       
+  254   H1952--T128C120S5E27C1P  CAPPOTTO H1952            3 501.01444 ZANETTI MODA s.r.l.                    |    149   2   3428 19/07/18 651.00252 CARLO GIUGNO 2018       
+  254   H1952--T128C299S5E27C43  CAPPOTTO H1952            3 501.01444 ZANETTI MODA s.r.l.                    |    149   2   3428 19/07/18 651.00252 CARLO GIUGNO 2018       
+  254   H1952--T128C299S5E27C1P  CAPPOTTO H1952            6 501.01444 ZANETTI MODA s.r.l.                    |    149   2   3428 19/07/18 651.00252 CARLO GIUGNO 2018       
+  254   H1952--T128C320S5E27C1P  CAPPOTTO H1952            4 501.01444 ZANETTI MODA s.r.l.                    |    149   2   3428 19/07/18 651.00252 CARLO GIUGNO 2018       
+  254   H1952--T128C170S5E27C1P  CAPPOTTO H1952            6 501.01444 ZANETTI MODA s.r.l.                    |    149   2   3428 19/07/18 651.00252 CARLO GIUGNO 2018       
+  272   H1952--T128C299S5E27C3H  CAPPOTTO H1952           30 501.01444 ZANETTI MODA s.r.l.                    |    149   2   3428 19/07/18 651.00252 CARLO GIUGNO 2018       
+  272   H1952--T128C320S5E27C3H  CAPPOTTO H1952           30 501.01444 ZANETTI MODA s.r.l.                    |    149   2   3428 19/07/18 651.00252 CARLO GIUGNO 2018       
+  276   H1952--T128C320S5E08C1H  CAPPOTTO H1952            5 501.01444 ZANETTI MODA s.r.l.                    |    149   2   3428 19/07/18 651.00252 CARLO GIUGNO 2018       
+  276   H1952--T128C299S5E08C1H  CAPPOTTO H1952            2 501.01444 ZANETTI MODA s.r.l.                    |    149   2   3428 19/07/18 651.00252 CARLO GIUGNO 2018       
+Modello H1952--T128 . . . . . . . . . . . .tot. ..........99                                                  |
+  254   H1953--T322C299S5C27C43  MANTELLA H1953            2 501.01444 ZANETTI MODA s.r.l.                    |    470   2   3572 27/07/18 651.00252 CARLO GIUGNO 2018       
+  254   H1953--T322C299S5E27C1P  MANTELLA H1953           70 501.01444 ZANETTI MODA s.r.l.                    |    470   2   3572 27/07/18 651.00252 CARLO GIUGNO 2018       
+  254   H1953--T322C399S5E27C1P  MANTELLA H1953            7 501.01444 ZANETTI MODA s.r.l.                    |    470   2   3572 27/07/18 651.00252 CARLO GIUGNO 2018       
+  272   H1953--T322C299S5E27C3H  MANTELLA H1953           20 501.01444 ZANETTI MODA s.r.l.                    |    470   2   3572 27/07/18 651.00252 CARLO GIUGNO 2018       
+  273   H1953--T322C299S5E26C83  MANTELLA H1953            2 501.01444 ZANETTI MODA s.r.l.                    |    470   2   3572 27/07/18 651.00252 CARLO GIUGNO 2018       
+  276   H1953--T322C299S5E08C1H  MANTELLA H1953            2 501.01444 ZANETTI MODA s.r.l.                    |    470   2   3572 27/07/18 651.00252 CARLO GIUGNO 2018       
+  277   H1953--T322C399S5E40C3H  MANTELLA H1953            2 501.01444 ZANETTI MODA s.r.l.                    |    470   2   3572 27/07/18 651.00252 CARLO GIUGNO 2018       
+  277   H1953--T322C299S5E40C3H  MANTELLA H1953            2 501.01444 ZANETTI MODA s.r.l.                    |    470   2   3572 27/07/18 651.00252 CARLO GIUGNO 2018       
+Modello H1953--T322 . . . . . . . . . . . .tot. .........107                                                  |
+  241   H1954--T128C199S5E1CC25  CAPPOTTO H1954            1 501.00234 NICO S.P.A.                            |    151   3 110221 21/06/18 651.00234 CARLO DA GEN 2017       
+  241   H1954--T128C120S5E1CC25  CAPPOTTO H1954            1 501.00234 NICO S.P.A.                            |    151   3 110221 21/06/18 651.00234 CARLO DA GEN 2017       
+  245   H1954--T128C150S5E1CC25  CAPPOTTO H1954            1 501.00234 NICO S.P.A.                            |    151   3 110221 21/06/18 651.00234 CARLO DA GEN 2017       
+  282   H1954--T128C120S5E1CC25  CAPPOTTO H1954            3 501.00234 NICO S.P.A.                            |    380   3 110430 21/06/18 651.00234 CARLO DA GEN 2017       
+Modello H1954--T128 . . . . . . . . . . . .tot. ...........6                                                  |
+  157   H1956--T307C199S5E3TC05  CAPPOTTO H1956           15 501.01345 LE PRIME DONNE DI EVA SRLS             |    483   2   3011 29/06/18 651.00252 CARLO GIUGNO 2018       
+  195   H1956--T307C199S5E2ZC5C  CAPPOTTO H1956            9 501.00456 THE WING ON DEPARTEMENT STORES         |    483   2   3011 29/06/18 651.00252 CARLO GIUGNO 2018       
+  220   H1956--T307C199S5E10C1T  CAPPOTTO H1956           13 501.01074 DONNAEFFE s.r.l.                       |    479   2   3007 29/06/18 651.00252 CARLO GIUGNO 2018       
+  232   H1956--T307C199S5E17C18  CAPPOTTO H1956           37 501.00314 VARDAS A.E.V.E.E.                      |    480   2   3008 29/06/18 651.00252 CARLO GIUGNO 2018       
+  279   H1956--T307C199S5E93C4E  CAPPOTTO H1956           71 501.00816 IL GIRAMODA s.a.s. di Gennari          |    482   2   3010 29/06/18 651.00252 CARLO GIUGNO 2018       
+  279   H1956--T307C199S5E93C4E  CAPPOTTO H1956            5 501.00816 IL GIRAMODA s.a.s. di Gennari          |    482   2   3010 29/06/18 651.00252 CARLO GIUGNO 2018       
+Modello H1956--T307 . . . . . . . . . . . .tot. .........150                                                  |
+  222   H1956G-T307C199S5E11C37  CAPPOTTO H1956            7 501.00557 MARIA GLENSTER P. PAPAGEORGIOU         |    484   2   3012 29/06/18 651.00252 CARLO GIUGNO 2018       
+Modello H1956G-T307 . . . . . . . . . . . .tot. ...........7                                                  |
+  114   H1956LFT307C199S5E1QC33  CAPPOTTO H1956          100 501.00977 LFC OUTLETS S.R.L.                     |    485   2   3013 29/06/18 651.00252 CARLO GIUGNO 2018       
+Modello H1956LFT307 . . . . . . . . . . . .tot. .........100                                                  |
+  232   H1957--T319C199S5E17C18  GIACCA H1957 A            1 501.00314 VARDAS A.E.V.E.E.                      |    250   3 110414 21/06/18 651.00234 CARLO DA GEN 2017       
+  248   H1957--T319C199S5E1CC25  GIACCA H1957 A            1 501.00537 NICO POLSKA SP. Z O.O.                 |    251   3 110416 21/06/18 651.00234 CARLO DA GEN 2017       
+Modello H1957--T319 . . . . . . . . . . . .tot. ...........2                                                  |
+  220   H1958--T318C470S5E10C1T  CAPPOTTO H1958           18 501.01074 DONNAEFFE s.r.l.                       |    810   2   3858 28/08/18 651.00252 CARLO GIUGNO 2018       
+  220   H1958--T318C399S5E10C1T  CAPPOTTO H1958           18 501.01074 DONNAEFFE s.r.l.                       |    810   2   3858 28/08/18 651.00252 CARLO GIUGNO 2018       
+
+
+
+
+DESCO S.R.L.                                                                                31/08/18                     Scadenza da           
+Dettaglio capi in ordine con riga L Art. in lavorazione                                                                  Pagina   3
+                   parametri di scelta: cliente                          Stagione S5  Articolo                     
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Ordine   Articolo                                        Capi Cliente                                         | Note  Fase   n.DL     Data Terzista
+  232   H1958--T318C399S5E17C18  CAPPOTTO H1958           31 501.00314 VARDAS A.E.V.E.E.                      |    809   2   3857 28/08/18 651.00252 CARLO GIUGNO 2018       
+Modello H1958--T318 . . . . . . . . . . . .tot. ..........67                                                  |
+  173   H1977--T322C299S5E1CC25  MANTELLA H1977            6 501.01438 IP SIMONENKO ALEKSANDR SERGEEV         |    472   2   3562 27/07/18 651.00252 CARLO GIUGNO 2018       
+  220   H1977--T322C399S5E10C1T  MANTELLA H1977           10 501.01074 DONNAEFFE s.r.l.                       |    471   2   3561 27/07/18 651.00252 CARLO GIUGNO 2018       
+  220   H1977--T322C299S5E10C1T  MANTELLA H1977           18 501.01074 DONNAEFFE s.r.l.                       |    471   2   3561 27/07/18 651.00252 CARLO GIUGNO 2018       
+  221   H1977--T322C399S5E52C37  MANTELLA H1977            1 501.00557 MARIA GLENSTER P. PAPAGEORGIOU         |    474   2   3564 27/07/18 651.00252 CARLO GIUGNO 2018       
+  241   H1977--T322C399S5E1CC25  MANTELLA H1977            1 501.00234 NICO S.P.A.                            |    474   2   3564 27/07/18 651.00252 CARLO GIUGNO 2018       
+  241   H1977--T322C399S5E1CC25  MANTELLA H1977            3 501.00234 NICO S.P.A.                            |    474   2   3564 27/07/18 651.00252 CARLO GIUGNO 2018       
+  243   H1977--T322C299S5E1CC25  MANTELLA H1977            4 501.00234 NICO S.P.A.                            |    474   2   3564 27/07/18 651.00252 CARLO GIUGNO 2018       
+  244   H1977--T322C299S5E1CC25  MANTELLA H1977            3 501.00234 NICO S.P.A.                            |    474   2   3564 27/07/18 651.00252 CARLO GIUGNO 2018       
+  245   H1977--T322C399S5E1CC25  MANTELLA H1977            2 501.00234 NICO S.P.A.                            |    474   2   3564 27/07/18 651.00252 CARLO GIUGNO 2018       
+  245   H1977--T322C399S5E1CC25  MANTELLA H1977            1 501.00234 NICO S.P.A.                            |    474   2   3564 27/07/18 651.00252 CARLO GIUGNO 2018       
+  282   H1977--T322C299S5E1CC25  MANTELLA H1977            4 501.00234 NICO S.P.A.                            |    474   2   3564 27/07/18 651.00252 CARLO GIUGNO 2018       
+Modello H1977--T322 . . . . . . . . . . . .tot. ..........53                                                  |
+  221   H1978--T344C199S5E52C37  GIACCA H1978 A            1 501.00557 MARIA GLENSTER P. PAPAGEORGIOU         |    188   2   2288 31/05/18 651.00234 CARLO DA GEN 2017       
+Modello H1978--T344 . . . . . . . . . . . .tot. ...........1                                                  |
+  173   H1984--T308C170S5E1CC25  GIACCA H1984 A            4 501.01438 IP SIMONENKO ALEKSANDR SERGEEV         |    516   2   3701 03/08/18 651.00252 CARLO GIUGNO 2018       
+Modello H1984--T308 . . . . . . . . . . . .tot. ...........4                                                  |
+  195   H1992--T300C299S5E2ZC5C  MONTGOM.H1992            11 501.00456 THE WING ON DEPARTEMENT STORES         |    546   2   3726 07/08/18 651.00252 CARLO GIUGNO 2018       
+  221   H1992--T300C299S5E52C37  MONTGOM.H1992             6 501.00557 MARIA GLENSTER P. PAPAGEORGIOU         |    546   2   3726 07/08/18 651.00252 CARLO GIUGNO 2018       
+Modello H1992--T300 . . . . . . . . . . . .tot. ..........17                                                  |
+  157   H1993--T323C199S5E3TC05  GIACCA H1993 A           15 501.01345 LE PRIME DONNE DI EVA SRLS             |    802   2   3854 28/08/18 651.00252 CARLO GIUGNO 2018       
+  178   H1993--T323C199S5E1CC25  GIACCA H1993 A            5 501.01573 SLAMI, s.r.o.                          |    803   2   3855 28/08/18 651.00252 CARLO GIUGNO 2018       
+  195   H1993--T323C170S5E2ZC5C  GIACCA H1993 A           13 501.00456 THE WING ON DEPARTEMENT STORES         |    803   2   3855 28/08/18 651.00252 CARLO GIUGNO 2018       
+  195   H1993--T323C199S5E2ZC5C  GIACCA H1993 A           14 501.00456 THE WING ON DEPARTEMENT STORES         |    803   2   3855 28/08/18 651.00252 CARLO GIUGNO 2018       
+  232   H1993--T323C199S5E17C18  GIACCA H1993 A           32 501.00314 VARDAS A.E.V.E.E.                      |    801   2   3853 28/08/18 651.00252 CARLO GIUGNO 2018       
+  241   H1993--T323C199S5E1CC25  GIACCA H1993 A            1 501.00234 NICO S.P.A.                            |    803   2   3855 28/08/18 651.00252 CARLO GIUGNO 2018       
+  241   H1993--T323C199S5E1CC25  GIACCA H1993 A            7 501.00234 NICO S.P.A.                            |    803   2   3855 28/08/18 651.00252 CARLO GIUGNO 2018       
+  243   H1993--T323C199S5E1CC25  GIACCA H1993 A            8 501.00234 NICO S.P.A.                            |    803   2   3855 28/08/18 651.00252 CARLO GIUGNO 2018       
+  243   H1993--T323C199S5E1CC25  GIACCA H1993 A            1 501.00234 NICO S.P.A.                            |    803   2   3855 28/08/18 651.00252 CARLO GIUGNO 2018       
+Modello H1993--T323 . . . . . . . . . . . .tot. ..........96                                                  |
+  157   H1994--T318C470S5E3TC05  CAPPOTTO H1994           13 501.01345 LE PRIME DONNE DI EVA SRLS             |    815   2   3836 27/08/18 651.00252 CARLO GIUGNO 2018       
+  157   H1994--T318C470S5E3TC05  CAPPOTTO H1994            2 501.01345 LE PRIME DONNE DI EVA SRLS             |    815   2   3836 27/08/18 651.00252 CARLO GIUGNO 2018       
+  195   H1994--T318C470S5E2ZC5C  CAPPOTTO H1994           10 501.00456 THE WING ON DEPARTEMENT STORES         |    815   2   3836 27/08/18 651.00252 CARLO GIUGNO 2018       
+  232   H1994--T318C470S5E17C18  CAPPOTTO H1994           37 501.00314 VARDAS A.E.V.E.E.                      |    813   2   3834 27/08/18 651.00252 CARLO GIUGNO 2018       
+Modello H1994--T318 . . . . . . . . . . . .tot. ..........62                                                  |
+  195   H2000--T325C299S5E2ZC5C  GIACCA H2000 A           14 501.00456 THE WING ON DEPARTEMENT STORES         |    461   2   3358 17/07/18 651.00252 CARLO GIUGNO 2018       
+  195   H2000--T325C299S5E2ZC5C  GIACCA H2000 A            2 501.00456 THE WING ON DEPARTEMENT STORES         |    461   2   3358 17/07/18 651.00252 CARLO GIUGNO 2018       
+  195   H2000--T325C170S5E2ZC5C  GIACCA H2000 A           13 501.00456 THE WING ON DEPARTEMENT STORES         |    461   2   3358 17/07/18 651.00252 CARLO GIUGNO 2018       
+  221   H2000--T325C170S5E52C37  GIACCA H2000 A            2 501.00557 MARIA GLENSTER P. PAPAGEORGIOU         |    461   2   3358 17/07/18 651.00252 CARLO GIUGNO 2018       
+  221   H2000--T325C299S5E52C37  GIACCA H2000 A            1 501.00557 MARIA GLENSTER P. PAPAGEORGIOU         |    461   2   3358 17/07/18 651.00252 CARLO GIUGNO 2018       
+  221   H2000--T325C299S5E52C37  GIACCA H2000 A            8 501.00557 MARIA GLENSTER P. PAPAGEORGIOU         |    461   2   3358 17/07/18 651.00252 CARLO GIUGNO 2018       
+Modello H2000--T325 . . . . . . . . . . . .tot. ..........40                                                  |
+  114   H2000LFT325C299S5E1QC33  GIACCA H2000LF           70 501.00977 LFC OUTLETS S.R.L.                     |    462   2   3359 17/07/18 651.00252 CARLO GIUGNO 2018       
+Modello H2000LFT325 . . . . . . . . . . . .tot. ..........70                                                  |
+  250   H2002--T318C399S5E3VC39  CAPPOTTO H2002            1 501.01253 DONNE DA SOGNO S.R.L.                  |    816   2   3861 28/08/18 651.00252 CARLO GIUGNO 2018       
+  251   H2002--T318C470S5E9HC06  CAPPOTTO H2002            3 501.01253 DONNE DA SOGNO S.R.L.                  |    816   2   3861 28/08/18 651.00252 CARLO GIUGNO 2018       
+  251   H2002--T318C470S5E9HC06  CAPPOTTO H2002            6 501.01253 DONNE DA SOGNO S.R.L.                  |    816   2   3861 28/08/18 651.00252 CARLO GIUGNO 2018       
+  251   H2002--T318C399S5E9HC06  CAPPOTTO H2002            4 501.01253 DONNE DA SOGNO S.R.L.                  |    816   2   3861 28/08/18 651.00252 CARLO GIUGNO 2018       
+  251   H2002--T318C399S5E9HC06  CAPPOTTO H2002            8 501.01253 DONNE DA SOGNO S.R.L.                  |    816   2   3861 28/08/18 651.00252 CARLO GIUGNO 2018       
+  253   H2002--T318C470S5E64C1Q  CAPPOTTO H2002            2 501.01253 DONNE DA SOGNO S.R.L.                  |    816   2   3861 28/08/18 651.00252 CARLO GIUGNO 2018       
+Modello H2002--T318 . . . . . . . . . . . .tot. ..........24                                                  |
+  250   H2003--T310C170S5E3VC39  GIACCA H2003 A            6 501.01253 DONNE DA SOGNO S.R.L.                  |    783   2   3897 31/08/18 651.00252 CARLO GIUGNO 2018       
+  250   H2003--T310C399S5E3VC39  GIACCA H2003 A          131 501.01253 DONNE DA SOGNO S.R.L.                  |    783   2   3897 31/08/18 651.00252 CARLO GIUGNO 2018       
+  251   H2003--T310C399S5E9HC06  GIACCA H2003 A            7 501.01253 DONNE DA SOGNO S.R.L.                  |    783   2   3897 31/08/18 651.00252 CARLO GIUGNO 2018       
+  251   H2003--T310C150S5E9HC06  GIACCA H2003 A            5 501.01253 DONNE DA SOGNO S.R.L.                  |    783   2   3897 31/08/18 651.00252 CARLO GIUGNO 2018       
+  251   H2003--T310C170S5E9HC06  GIACCA H2003 A            2 501.01253 DONNE DA SOGNO S.R.L.                  |    783   2   3897 31/08/18 651.00252 CARLO GIUGNO 2018       
+
+
+
+
+DESCO S.R.L.                                                                                31/08/18                     Scadenza da           
+Dettaglio capi in ordine con riga L Art. in lavorazione                                                                  Pagina   4
+                   parametri di scelta: cliente                          Stagione S5  Articolo                     
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Ordine   Articolo                                        Capi Cliente                                         | Note  Fase   n.DL     Data Terzista
+Modello H2003--T310 . . . . . . . . . . . .tot. .........151                                                  |
+  241   H2054--T307C199S5E1CC25  CAPPOTTO H2054            9 501.00234 NICO S.P.A.                            |    489   2   3136 05/07/18 651.00252 CARLO GIUGNO 2018       
+  243   H2054--T307C199S5E1CC25  CAPPOTTO H2054           10 501.00234 NICO S.P.A.                            |    489   2   3136 05/07/18 651.00252 CARLO GIUGNO 2018       
+  244   H2054--T307C199S5E1CC25  CAPPOTTO H2054            3 501.00234 NICO S.P.A.                            |    489   2   3136 05/07/18 651.00252 CARLO GIUGNO 2018       
+  245   H2054--T307C199S5E1CC25  CAPPOTTO H2054            5 501.00234 NICO S.P.A.                            |    489   2   3136 05/07/18 651.00252 CARLO GIUGNO 2018       
+  247   H2054--T307C199S5E1CC25  CAPPOTTO H2054            5 501.00234 NICO S.P.A.                            |    489   2   3136 05/07/18 651.00252 CARLO GIUGNO 2018       
+  282   H2054--T307C199S5E1CC25  CAPPOTTO H2054            3 501.00234 NICO S.P.A.                            |    489   2   3136 05/07/18 651.00252 CARLO GIUGNO 2018       
+Modello H2054--T307 . . . . . . . . . . . .tot. ..........35                                                  |
+  220   HC008--T350C300S5E10C1T  COLLO HC008 AR           10 501.01074 DONNAEFFE s.r.l.                       |    406   2   3722 07/08/18 651.00252 CARLO GIUGNO 2018       
+  220   HC008--T350C199S5E10C1T  COLLO HC008 AR           10 501.01074 DONNAEFFE s.r.l.                       |    406   2   3722 07/08/18 651.00252 CARLO GIUGNO 2018       
+  220   HC008--T350C299S5E10C1T  COLLO HC008 AR            5 501.01074 DONNAEFFE s.r.l.                       |    406   2   3722 07/08/18 651.00252 CARLO GIUGNO 2018       
+  221   HC008--T350C199S5E52C37  COLLO HC008 AR            4 501.00557 MARIA GLENSTER P. PAPAGEORGIOU         |    407   2   3723 07/08/18 651.00252 CARLO GIUGNO 2018       
+  221   HC008--T350C300S5E52C37  COLLO HC008 AR            5 501.00557 MARIA GLENSTER P. PAPAGEORGIOU         |    407   2   3723 07/08/18 651.00252 CARLO GIUGNO 2018       
+Modello HC008--T350 . . . . . . . . . . . .tot. ..........34                                                  |
+  251   P1475--T010C299S5E9HC06  PANT. P1475 AR            1 501.01253 DONNE DA SOGNO S.R.L.                  |    692   3 110595 03/08/18 651.00244 STELLA NUOVO            
+  251   P1475--T010C199S5E9HC06  PANT. P1475 AR            1 501.01253 DONNE DA SOGNO S.R.L.                  |    692   3 110595 03/08/18 651.00244 STELLA NUOVO            
+Modello P1475--T010 . . . . . . . . . . . .tot. ...........2                                                  |
+  280   P3436--T311C170S5E14C1D  PANT.MOD.P3436            3 501.00816 IL GIRAMODA s.a.s. di Gennari          |    603   1   3621 31/07/18 651.00239 JOHN DAL 29.03.17       
+  280   P3436--T311C170S5E14C1D  PANT.MOD.P3436           91 501.00816 IL GIRAMODA s.a.s. di Gennari          |    603   1   3621 31/07/18 651.00239 JOHN DAL 29.03.17       
+Modello P3436--T311 . . . . . . . . . . . .tot. ..........94                                                  |
+  178   P3661--T312C170S5E1CC25  PANT.MOD.P3661            6 501.01573 SLAMI, s.r.o.                          |    618   2   3867 29/08/18 651.00251 PAOLO/GIULIA 2          
+  196   P3661--T312C170S5E2EC2V  PANT.MOD.P3661            8 501.00686 NEGOZI PELLIZZARI SRL UNIPERSO         |    618   2   3867 29/08/18 651.00251 PAOLO/GIULIA 2          
+  197   P3661--T312C170S5E2EC2V  PANT.MOD.P3661            7 501.00686 NEGOZI PELLIZZARI SRL UNIPERSO         |    618   2   3867 29/08/18 651.00251 PAOLO/GIULIA 2          
+  198   P3661--T312C170S5E2EC2V  PANT.MOD.P3661            7 501.00686 NEGOZI PELLIZZARI SRL UNIPERSO         |    618   2   3867 29/08/18 651.00251 PAOLO/GIULIA 2          
+  199   P3661--T312C170S5E2EC2V  PANT.MOD.P3661            7 501.00686 NEGOZI PELLIZZARI SRL UNIPERSO         |    618   2   3867 29/08/18 651.00251 PAOLO/GIULIA 2          
+  200   P3661--T312C170S5E2EC2V  PANT.MOD.P3661            7 501.00686 NEGOZI PELLIZZARI SRL UNIPERSO         |    618   2   3867 29/08/18 651.00251 PAOLO/GIULIA 2          
+  201   P3661--T312C170S5E2EC2V  PANT.MOD.P3661            8 501.00686 NEGOZI PELLIZZARI SRL UNIPERSO         |    618   2   3867 29/08/18 651.00251 PAOLO/GIULIA 2          
+  202   P3661--T312C170S5E2EC2V  PANT.MOD.P3661            7 501.00686 NEGOZI PELLIZZARI SRL UNIPERSO         |    618   2   3867 29/08/18 651.00251 PAOLO/GIULIA 2          
+  203   P3661--T312C170S5E2EC2V  PANT.MOD.P3661            7 501.00686 NEGOZI PELLIZZARI SRL UNIPERSO         |    618   2   3867 29/08/18 651.00251 PAOLO/GIULIA 2          
+  204   P3661--T312C170S5E2EC2V  PANT.MOD.P3661            7 501.00686 NEGOZI PELLIZZARI SRL UNIPERSO         |    618   2   3867 29/08/18 651.00251 PAOLO/GIULIA 2          
+  205   P3661--T312C170S5E2EC2V  PANT.MOD.P3661            8 501.00686 NEGOZI PELLIZZARI SRL UNIPERSO         |    618   2   3867 29/08/18 651.00251 PAOLO/GIULIA 2          
+  232   P3661--T312C170S5E17C18  PANT.MOD.P3661           21 501.00314 VARDAS A.E.V.E.E.                      |    617   2   3866 29/08/18 651.00251 PAOLO/GIULIA 2          
+  233   P3661--T312C170S5E1CC25  PANT.MOD.P3661           10 501.00234 NICO S.P.A.                            |    618   2   3867 29/08/18 651.00251 PAOLO/GIULIA 2          
+  235   P3661--T312C170S5E1CC25  PANT.MOD.P3661           10 501.00234 NICO S.P.A.                            |    618   2   3867 29/08/18 651.00251 PAOLO/GIULIA 2          
+  236   P3661--T312C170S5E1CC25  PANT.MOD.P3661            8 501.00234 NICO S.P.A.                            |    618   2   3867 29/08/18 651.00251 PAOLO/GIULIA 2          
+  239   P3661--T312C170S5E1CC25  PANT.MOD.P3661            8 501.00234 NICO S.P.A.                            |    618   2   3867 29/08/18 651.00251 PAOLO/GIULIA 2          
+  281   P3661--T312C170S5E1CC25  PANT.MOD.P3661            9 501.00234 NICO S.P.A.                            |    618   2   3867 29/08/18 651.00251 PAOLO/GIULIA 2          
+Modello P3661--T312 . . . . . . . . . . . .tot. .........145                                                  |
+  173   P3710--T313C390S5E1CC25  PANT. P3710 AR            7 501.01438 IP SIMONENKO ALEKSANDR SERGEEV         |    401   2   3869 29/08/18 651.00251 PAOLO/GIULIA 2          
+  232   P3710--T313C390S5E17C18  PANT. P3710 AR           18 501.00314 VARDAS A.E.V.E.E.                      |    400   2   3868 29/08/18 651.00251 PAOLO/GIULIA 2          
+Modello P3710--T313 . . . . . . . . . . . .tot. ..........25                                                  |
+  157   P3714--T347C299S5E3TC05  PANT. P3714 AR           13 501.01345 LE PRIME DONNE DI EVA SRLS             |    659   2   3881 30/08/18 651.00244 STELLA NUOVO            
+  157   P3714--T347C370S5E3TC05  PANT. P3714 AR           10 501.01345 LE PRIME DONNE DI EVA SRLS             |    659   2   3881 30/08/18 651.00244 STELLA NUOVO            
+Modello P3714--T347 . . . . . . . . . . . .tot. ..........23                                                  |
+  194   P3720--T100C170S5E56C73  PANT. P3720 AR           13 501.00456 THE WING ON DEPARTEMENT STORES         |    638   2   3669 02/08/18 651.00232 MARIO DAL 01/08/16      
+  194   P3720--T100C299S5E56C73  PANT. P3720 AR            8 501.00456 THE WING ON DEPARTEMENT STORES         |    638   2   3669 02/08/18 651.00232 MARIO DAL 01/08/16      
+Modello P3720--T100 . . . . . . . . . . . .tot. ..........21                                                  |
+  233   P3720--T190C170S5E1CC25  PANT. P3720 AR           10 501.00234 NICO S.P.A.                            |    755   1   3682 03/08/18 651.00239 JOHN DAL 29.03.17       
+  234   P3720--T190C170S5E1CC25  PANT. P3720 AR            9 501.00234 NICO S.P.A.                            |    755   1   3682 03/08/18 651.00239 JOHN DAL 29.03.17       
+  235   P3720--T190C170S5E1CC25  PANT. P3720 AR           12 501.00234 NICO S.P.A.                            |    755   1   3682 03/08/18 651.00239 JOHN DAL 29.03.17       
+  236   P3720--T190C170S5E1CC25  PANT. P3720 AR           10 501.00234 NICO S.P.A.                            |    755   1   3682 03/08/18 651.00239 JOHN DAL 29.03.17       
+  239   P3720--T190C170S5E1CC25  PANT. P3720 AR            9 501.00234 NICO S.P.A.                            |    755   1   3682 03/08/18 651.00239 JOHN DAL 29.03.17       
+  281   P3720--T190C170S5E1CC25  PANT. P3720 AR           10 501.00234 NICO S.P.A.                            |    755   1   3682 03/08/18 651.00239 JOHN DAL 29.03.17       
+Modello P3720--T190 . . . . . . . . . . . .tot. ..........60                                                  |
+  251   P3720B-T190C170S5E9HC06  PANT.P3720B BA            9 501.01253 DONNE DA SOGNO S.R.L.                  |    756   1   3683 03/08/18 651.00239 JOHN DAL 29.03.17       
+  251   P3720B-T190C399S5E9HC06  PANT.P3720B BA            5 501.01253 DONNE DA SOGNO S.R.L.                  |    756   1   3683 03/08/18 651.00239 JOHN DAL 29.03.17       
+  251   P3720B-T190C170S5E9HC06  PANT.P3720B BA            3 501.01253 DONNE DA SOGNO S.R.L.                  |    756   1   3683 03/08/18 651.00239 JOHN DAL 29.03.17       
+
+
+
+
+DESCO S.R.L.                                                                                31/08/18                     Scadenza da           
+Dettaglio capi in ordine con riga L Art. in lavorazione                                                                  Pagina   5
+                   parametri di scelta: cliente                          Stagione S5  Articolo                     
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Ordine   Articolo                                        Capi Cliente                                         | Note  Fase   n.DL     Data Terzista
+Modello P3720B-T190 . . . . . . . . . . . .tot. ..........17                                                  |
+  250   P3720D-T190C170S5E3VC39  PANT.P3720D D.            4 501.01253 DONNE DA SOGNO S.R.L.                  |    757   1   3684 03/08/18 651.00239 JOHN DAL 29.03.17       
+Modello P3720D-T190 . . . . . . . . . . . .tot. ...........4                                                  |
+  114   P3721V-T190C170S5E1QC33  PANT.P3721V AR          120 501.00977 LFC OUTLETS S.R.L.                     |    759   1   3690 03/08/18 651.00239 JOHN DAL 29.03.17       
+  114   P3721V-T190C180S5E1QC33  PANT.P3721V AR          120 501.00977 LFC OUTLETS S.R.L.                     |    759   1   3690 03/08/18 651.00239 JOHN DAL 29.03.17       
+Modello P3721V-T190 . . . . . . . . . . . .tot. .........240                                                  |
+  222   P3722--T190C180S5E11C37  PANT. P3722 AR           20 501.00557 MARIA GLENSTER P. PAPAGEORGIOU         |    760   1   3681 03/08/18 651.00239 JOHN DAL 29.03.17       
+Modello P3722--T190 . . . . . . . . . . . .tot. ..........20                                                  |
+  173   P3722--T308C170S5E1CC25  PANT. P3722 AR            7 501.01438 IP SIMONENKO ALEKSANDR SERGEEV         |    567   2   3707 03/08/18 651.00251 PAOLO/GIULIA 2          
+Modello P3722--T308 . . . . . . . . . . . .tot. ...........7                                                  |
+  194   P3723--T347C299S5E56C73  PANT. P3723 AR            8 501.00456 THE WING ON DEPARTEMENT STORES         |    664   2   3782 10/08/18 651.00232 MARIO DAL 01/08/16      
+  194   P3723--T347C790S5E56C73  PANT. P3723 AR            6 501.00456 THE WING ON DEPARTEMENT STORES         |    664   2   3782 10/08/18 651.00232 MARIO DAL 01/08/16      
+Modello P3723--T347 . . . . . . . . . . . .tot. ..........14                                                  |
+  254   P3730--T310C150S5E27C43  PANT. P3730 AR            4 501.01444 ZANETTI MODA s.r.l.                    |    795   2   3879 29/08/18 651.00248 MARIA LIU' DIC. 2017    
+  254   P3730--T310C170S5E27C43  PANT. P3730 AR            5 501.01444 ZANETTI MODA s.r.l.                    |    795   2   3879 29/08/18 651.00248 MARIA LIU' DIC. 2017    
+  254   P3730--T310C399S5E27C1P  PANT. P3730 AR            8 501.01444 ZANETTI MODA s.r.l.                    |    795   2   3879 29/08/18 651.00248 MARIA LIU' DIC. 2017    
+  254   P3730--T310C150S5E27C1P  PANT. P3730 AR           72 501.01444 ZANETTI MODA s.r.l.                    |    795   2   3879 29/08/18 651.00248 MARIA LIU' DIC. 2017    
+  254   P3730--T310C170S5E27C1P  PANT. P3730 AR            5 501.01444 ZANETTI MODA s.r.l.                    |    795   2   3879 29/08/18 651.00248 MARIA LIU' DIC. 2017    
+  273   P3730--T310C150S5E26C83  PANT. P3730 AR            3 501.01444 ZANETTI MODA s.r.l.                    |    795   2   3879 29/08/18 651.00248 MARIA LIU' DIC. 2017    
+  276   P3730--T310C150S5E08C1H  PANT. P3730 AR           11 501.01444 ZANETTI MODA s.r.l.                    |    795   2   3879 29/08/18 651.00248 MARIA LIU' DIC. 2017    
+Modello P3730--T310 . . . . . . . . . . . .tot. .........108                                                  |
+  254   P3731--T100C199S5E27C43  PANT. P3731 AR            1 501.01444 ZANETTI MODA s.r.l.                    |    642   3 110469 25/07/18 651.00251 PAOLO/GIULIA 2          
+Modello P3731--T100 . . . . . . . . . . . .tot. ...........1                                                  |
+  254   P3738--T347C320S5E27C1P  PANT. P3738 AR           23 501.01444 ZANETTI MODA s.r.l.                    |    665   2   3844 27/08/18 651.00251 PAOLO/GIULIA 2          
+  254   P3738--T347C370S5E27C1P  PANT. P3738 AR            8 501.01444 ZANETTI MODA s.r.l.                    |    665   2   3844 27/08/18 651.00251 PAOLO/GIULIA 2          
+  254   P3738--T347C299S5E27C1P  PANT. P3738 AR           13 501.01444 ZANETTI MODA s.r.l.                    |    665   2   3844 27/08/18 651.00251 PAOLO/GIULIA 2          
+  254   P3738--T347C499S5E27C1P  PANT. P3738 AR            2 501.01444 ZANETTI MODA s.r.l.                    |    665   2   3844 27/08/18 651.00251 PAOLO/GIULIA 2          
+  273   P3738--T347C370S5E26C83  PANT. P3738 AR            5 501.01444 ZANETTI MODA s.r.l.                    |    665   2   3844 27/08/18 651.00251 PAOLO/GIULIA 2          
+  273   P3738--T347C299S5E26C83  PANT. P3738 AR            5 501.01444 ZANETTI MODA s.r.l.                    |    665   2   3844 27/08/18 651.00251 PAOLO/GIULIA 2          
+  274   P3738--T347C299S5E37C9L  PANT. P3738 AR            3 501.01444 ZANETTI MODA s.r.l.                    |    665   2   3844 27/08/18 651.00251 PAOLO/GIULIA 2          
+  274   P3738--T347C320S5E37C9L  PANT. P3738 AR            3 501.01444 ZANETTI MODA s.r.l.                    |    665   2   3844 27/08/18 651.00251 PAOLO/GIULIA 2          
+  274   P3738--T347C370S5E37C9L  PANT. P3738 AR            3 501.01444 ZANETTI MODA s.r.l.                    |    665   2   3844 27/08/18 651.00251 PAOLO/GIULIA 2          
+  276   P3738--T347C320S5E08C1H  PANT. P3738 AR            4 501.01444 ZANETTI MODA s.r.l.                    |    665   2   3844 27/08/18 651.00251 PAOLO/GIULIA 2          
+Modello P3738--T347 . . . . . . . . . . . .tot. ..........69                                                  |
+  178   P3742--T344C199S5E1CC25  PANT. P3742 AR            1 501.01573 SLAMI, s.r.o.                          |    191   3 110092 14/06/18 651.00248 MARIA LIU' DIC. 2017    
+  193   P3742--T344C199S5E86C20  PANT. P3742 AR            1 501.00178 LIGHT LAND INTERNATIONAL LTD           |    191   3 110092 14/06/18 651.00248 MARIA LIU' DIC. 2017    
+Modello P3742--T344 . . . . . . . . . . . .tot. ...........2                                                  |
+  251   P3749B-T190C399S5E9HC06  PANT.P3749B BA            2 501.01253 DONNE DA SOGNO S.R.L.                  |    761   1   3687 03/08/18 651.00239 JOHN DAL 29.03.17       
+  251   P3749B-T190C170S5E9HC06  PANT.P3749B BA            4 501.01253 DONNE DA SOGNO S.R.L.                  |    761   1   3687 03/08/18 651.00239 JOHN DAL 29.03.17       
+Modello P3749B-T190 . . . . . . . . . . . .tot. ...........6                                                  |
+  250   P3749D-T190C399S5E3VC39  PANT.P3749D D.            7 501.01253 DONNE DA SOGNO S.R.L.                  |    762   1   3688 03/08/18 651.00239 JOHN DAL 29.03.17       
+Modello P3749D-T190 . . . . . . . . . . . .tot. ...........7                                                  |
+  120   P3754--T311C170S5E88C7F  PANT. P3754 AR           62 501.00287 SMART S.P.A.                           |    612   2   3877 29/08/18 651.00248 MARIA LIU' DIC. 2017    
+  120   P3754--T311C399S5E88C7F  PANT. P3754 AR           62 501.00287 SMART S.P.A.                           |    612   2   3877 29/08/18 651.00248 MARIA LIU' DIC. 2017    
+Modello P3754--T311 . . . . . . . . . . . .tot. .........124                                                  |
+  157   P3758--T246C199S5E3TC05  PANT. P3758 AR           30 501.01345 LE PRIME DONNE DI EVA SRLS             |    743   2   3874 29/08/18 651.00248 MARIA LIU' DIC. 2017    
+Modello P3758--T246 . . . . . . . . . . . .tot. ..........30                                                  |
+  243   P3763--T251C170S5E1CC25  PANT. P3763 AR            2 501.00234 NICO S.P.A.                            |    136   3 109978 30/05/18 651.00232 MARIO DAL 01/08/16      
+Modello P3763--T251 . . . . . . . . . . . .tot. ...........2                                                  |
+  280   P3804--T330C170S5E14C1D  PANT. P3804 AR            3 501.00816 IL GIRAMODA s.a.s. di Gennari          |    214   1   2309 31/05/18 651.00239 JOHN DAL 29.03.17       
+  280   P3804--T330C299S5E14C1D  PANT. P3804 AR            8 501.00816 IL GIRAMODA s.a.s. di Gennari          |    214   1   2309 31/05/18 651.00239 JOHN DAL 29.03.17       
+  280   P3804--T330C299S5E14C1D  PANT. P3804 AR           31 501.00816 IL GIRAMODA s.a.s. di Gennari          |    214   1   2309 31/05/18 651.00239 JOHN DAL 29.03.17       
+Modello P3804--T330 . . . . . . . . . . . .tot. ..........42                                                  |
+  279   P3806--T308C170S5E93C53  PANT. P3806 AR           21 501.00816 IL GIRAMODA s.a.s. di Gennari          |    575   2   3845 27/08/18 651.00251 PAOLO/GIULIA 2          
+  279   P3806--T308C170S5E93C53  PANT. P3806 AR          107 501.00816 IL GIRAMODA s.a.s. di Gennari          |    575   2   3845 27/08/18 651.00251 PAOLO/GIULIA 2          
+Modello P3806--T308 . . . . . . . . . . . .tot. .........128                                                  |
+  173   R798---T339C199S5E1CC25  CAMICIA R798 A            1 501.01438 IP SIMONENKO ALEKSANDR SERGEEV         |    116   2   2535 12/06/18 651.00242 LINDA/CHEN              
+
+
+
+
+DESCO S.R.L.                                                                                31/08/18                     Scadenza da           
+Dettaglio capi in ordine con riga L Art. in lavorazione                                                                  Pagina   6
+                   parametri di scelta: cliente                          Stagione S5  Articolo                     
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Ordine   Articolo                                        Capi Cliente                                         | Note  Fase   n.DL     Data Terzista
+  173   R798---T339C199S5E1CC25  CAMICIA R798 A            5 501.01438 IP SIMONENKO ALEKSANDR SERGEEV         |    116   2   2535 12/06/18 651.00242 LINDA/CHEN              
+  173   R798---T339C298S5E1CC25  CAMICIA R798 A            6 501.01438 IP SIMONENKO ALEKSANDR SERGEEV         |    116   2   2535 12/06/18 651.00242 LINDA/CHEN              
+  178   R798---T339C110S5E1CC25  CAMICIA R798 A            6 501.01573 SLAMI, s.r.o.                          |    114   2   2532 12/06/18 651.00242 LINDA/CHEN              
+  178   R798---T339C199S5E1CC25  CAMICIA R798 A            6 501.01573 SLAMI, s.r.o.                          |    114   2   2532 12/06/18 651.00242 LINDA/CHEN              
+  178   R798---T339C298S5E1CC25  CAMICIA R798 A            6 501.01573 SLAMI, s.r.o.                          |    114   2   2532 12/06/18 651.00242 LINDA/CHEN              
+  221   R798---T339C460S5E52C37  CAMICIA R798 A            3 501.00557 MARIA GLENSTER P. PAPAGEORGIOU         |    118   3 110771 22/08/18 651.00242 LINDA/CHEN              
+  232   R798---T339C298S5E17C01  CAMICIA R798 A           35 501.00314 VARDAS A.E.V.E.E.                      |    115   2   2533 12/06/18 651.00242 LINDA/CHEN              
+Modello R798---T339 . . . . . . . . . . . .tot. ..........68                                                  |
+  221   R804---T331C499S5E52C37  CAMICIA R804 A            2 501.00557 MARIA GLENSTER P. PAPAGEORGIOU         |     72   3 110362 15/07/18 651.00247 ANGELICA                
+Modello R804---T331 . . . . . . . . . . . .tot. ...........2                                                  |
+  232   Z1840--T331C499S5E17C01  ABITO Z1840 AR            6 501.00314 VARDAS A.E.V.E.E.                      |     74   3 110070 11/06/18 651.00242 LINDA/CHEN              
+Modello Z1840--T331 . . . . . . . . . . . .tot. ...........6                                                  |
+  178   Z1843--T323C199S5E1CC25  ABITO Z1843 AR            6 501.01573 SLAMI, s.r.o.                          |    807   1   3642 31/07/18 651.00239 JOHN DAL 29.03.17       
+  232   Z1843--T323C199S5E17C18  ABITO Z1843 AR           36 501.00314 VARDAS A.E.V.E.E.                      |    805   1   3640 31/07/18 651.00239 JOHN DAL 29.03.17       
+Modello Z1843--T323 . . . . . . . . . . . .tot. ..........42                                                  |
+  195   Z1843SAT323C199S5E2ZC5C  ABITO Z1843 S.            8 501.00456 THE WING ON DEPARTEMENT STORES         |    808   1   3643 31/07/18 651.00239 JOHN DAL 29.03.17       
+Modello Z1843SAT323 . . . . . . . . . . . .tot. ...........8                                                  |
+  173   Z1852--T348C170S5E1CC25  ABITO Z1852 AR            7 501.01438 IP SIMONENKO ALEKSANDR SERGEEV         |    390   2   3848 28/08/18 651.00232 MARIO DAL 01/08/16      
+  173   Z1852--T348C399S5E1CC25  ABITO Z1852 AR            7 501.01438 IP SIMONENKO ALEKSANDR SERGEEV         |    390   2   3848 28/08/18 651.00232 MARIO DAL 01/08/16      
+  178   Z1852--T348C399S5E1CC25  ABITO Z1852 AR            1 501.01573 SLAMI, s.r.o.                          |    391   2   3849 28/08/18 651.00232 MARIO DAL 01/08/16      
+  178   Z1852--T348C399S5E1CC25  ABITO Z1852 AR            5 501.01573 SLAMI, s.r.o.                          |    391   2   3849 28/08/18 651.00232 MARIO DAL 01/08/16      
+  178   Z1852--T348C170S5E1CC25  ABITO Z1852 AR            6 501.01573 SLAMI, s.r.o.                          |    391   2   3849 28/08/18 651.00232 MARIO DAL 01/08/16      
+  232   Z1852--T348C399S5E17C18  ABITO Z1852 AR           39 501.00314 VARDAS A.E.V.E.E.                      |    389   2   3847 28/08/18 651.00232 MARIO DAL 01/08/16      
+Modello Z1852--T348 . . . . . . . . . . . .tot. ..........65                                                  |
+  114   Z1859--T334C170S5E1QC33  ABITO Z1859 AR           31 501.00977 LFC OUTLETS S.R.L.                     |    172   3 110368 10/07/18 651.00242 LINDA/CHEN              
+  172   Z1859--T334C300S5E1CC25  ABITO Z1859 AR            5 501.01494 FA\C7ADE ENTERPRISE CO., LTD.            |    175   2   3029 29/06/18 651.00242 LINDA/CHEN              
+  172   Z1859--T334C299S5E1CC25  ABITO Z1859 AR            5 501.01494 FA\C7ADE ENTERPRISE CO., LTD.            |    175   2   3029 29/06/18 651.00242 LINDA/CHEN              
+  173   Z1859--T334C299S5E1CC25  ABITO Z1859 AR            4 501.01438 IP SIMONENKO ALEKSANDR SERGEEV         |    174   2   3028 29/06/18 651.00242 LINDA/CHEN              
+  173   Z1859--T334C300S5E1CC25  ABITO Z1859 AR            5 501.01438 IP SIMONENKO ALEKSANDR SERGEEV         |    174   2   3028 29/06/18 651.00242 LINDA/CHEN              
+  279   Z1859--T334C170S5E93C4E  ABITO Z1859 AR            6 501.00816 IL GIRAMODA s.a.s. di Gennari          |    398   3 110604 03/08/18 651.00242 LINDA/CHEN              
+  279   Z1859--T334C170S5E93C4E  ABITO Z1859 AR            5 501.00816 IL GIRAMODA s.a.s. di Gennari          |    398   3 110604 03/08/18 651.00242 LINDA/CHEN              
+  279   Z1859--T334C300S5E93C4E  ABITO Z1859 AR            2 501.00816 IL GIRAMODA s.a.s. di Gennari          |    398   3 110604 03/08/18 651.00242 LINDA/CHEN              
+Modello Z1859--T334 . . . . . . . . . . . .tot. ..........63                                                  |
+
+
+Totale                                                 3.502                                                  |
+
+Totale suddiviso per capi:
+C      Coordinato | COORD03 COORD05 COORD07                                                                  3|      95
+                  |                                                                                           |
+                  |                                                                                           |
+G      Gonna      | G009--- G2490-- G2533-- G2534-- G2538--                                                  5|     273
+                  |                                                                                           |
+                  |                                                                                           |
+H      Giacca     | H1935-- H1935LF H1946-- H1947-- H1949-- H1951-- H1952-- H1953-- H1954-- H1956-- H1956G- 26|   1.689
+                  | H1956LF H1957-- H1958-- H1977-- H1978-- H1984-- H1992-- H1993-- H1994-- H2000-- H2000LF   |
+                  | H2002-- H2003-- H2054-- HC008--                                                           |
+P      Pantalone  | P1475-- P3436-- P3661-- P3710-- P3714-- P3720-- P3720-- P3720B- P3720D- P3721V- P3722-- 24|   1.191
+                  | P3722-- P3723-- P3730-- P3731-- P3738-- P3742-- P3749B- P3749D- P3754-- P3758-- P3763--   |
+                  | P3804-- P3806--                                                                           |
+R      Camicia    | R798--- R804---                                                                          2|      70
+                  |                                                                                           |
+                  |                                                                                           |
+Z      Abito      | Z1840-- Z1843-- Z1843SA Z1852-- Z1859--                                                  5|     184
+                  |                                                                                           |
+                  |                                                                                           |
+Modelli per cliente
+
+
+
+
+DESCO S.R.L.                                                                                31/08/18                     Scadenza da           
+Dettaglio capi in ordine con riga L Art. in lavorazione                                                                  Pagina   7
+                   parametri di scelta: cliente                          Stagione S5  Articolo                     
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Ordine   Articolo                                        Capi Cliente                                         | Note  Fase   n.DL     Data Terzista
+------------------------------------------------------------
+LIGHT LAND INTERNATIONAL LTD                                
+Totale in lavorazione           
+P3742--T344        1
+Totale             1
+------------------------------------------------------------
+NICO S.P.A.                                                 
+Totale in lavorazione           
+H1954--T128        6
+H1977--T322       18
+H1993--T323       17
+H2054--T307       35
+P3661--T312       45
+P3720--T190       60
+P3763--T251        2
+Totale           183
+------------------------------------------------------------
+SMART S.P.A.                                                
+Totale in lavorazione           
+P3754--T311      124
+Totale           124
+------------------------------------------------------------
+VARDAS A.E.V.E.E.                                           
+Totale in lavorazione           
+COORD05T232       20
+COORD07T010       60
+G2534--T310       33
+G2538--T348       24
+H1935--T317       30
+H1956--T307       37
+H1957--T319        1
+H1958--T318       31
+H1993--T323       32
+H1994--T318       37
+P3661--T312       21
+P3710--T313       18
+R798---T339       35
+Z1840--T331        6
+Z1843--T323       36
+Z1852--T348       39
+Totale           460
+------------------------------------------------------------
+THE WING ON DEPARTEMENT STORES (HONG KONG) LIMITED          
+Totale in lavorazione           
+H1946--T322       14
+H1956--T307        9
+H1992--T300       11
+H1993--T323       27
+H1994--T318       10
+H2000--T325       29
+P3720--T100       21
+P3723--T347       14
+Z1843SAT323        8
+Totale           143
+------------------------------------------------------------
+NICO POLSKA SP. Z O.O.                                      
+Totale in lavorazione           
+
+
+
+
+DESCO S.R.L.                                                                                31/08/18                     Scadenza da           
+Dettaglio capi in ordine con riga L Art. in lavorazione                                                                  Pagina   8
+                   parametri di scelta: cliente                          Stagione S5  Articolo                     
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Ordine   Articolo                                        Capi Cliente                                         | Note  Fase   n.DL     Data Terzista
+H1957--T319        1
+Totale             1
+------------------------------------------------------------
+MARIA GLENSTER P. PAPAGEORGIOU A. VLAHAKIS O.E.             
+Totale in lavorazione           
+COORD03T100       15
+G2533--T241        1
+H1946--T322       12
+H1947--T100        3
+H1956G-T307        7
+H1977--T322        1
+H1978--T344        1
+H1992--T300        6
+H2000--T325       11
+HC008--T350        9
+P3722--T190       20
+R798---T339        3
+R804---T331        2
+Totale            91
+------------------------------------------------------------
+NEGOZI PELLIZZARI SRL UNIPERSONALE                          
+Totale in lavorazione           
+P3661--T312       73
+Totale            73
+------------------------------------------------------------
+IL GIRAMODA s.a.s. di Gennari Massimo e C.                  
+Totale in lavorazione           
+H1946--T322       90
+H1956--T307       76
+P3436--T311       94
+P3804--T330       42
+P3806--T308      128
+Z1859--T334       13
+Totale           443
+------------------------------------------------------------
+LFC OUTLETS S.R.L.                                          
+Totale in lavorazione           
+H1935LFT207      120
+H1956LFT307      100
+H2000LFT325       70
+P3721V-T190      240
+Z1859--T334       31
+Totale           561
+------------------------------------------------------------
+PAN WON CO., LTD                                            
+Totale in lavorazione           
+Totale             0
+------------------------------------------------------------
+DONNAEFFE s.r.l.                                            
+Totale in lavorazione           
+H1956--T307       13
+H1958--T318       36
+H1977--T322       28
+HC008--T350       25
+Totale           102
+------------------------------------------------------------
+DONNE DA SOGNO S.R.L.                                       
+
+
+
+
+DESCO S.R.L.                                                                                31/08/18                     Scadenza da           
+Dettaglio capi in ordine con riga L Art. in lavorazione                                                                  Pagina   9
+                   parametri di scelta: cliente                          Stagione S5  Articolo                     
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Ordine   Articolo                                        Capi Cliente                                         | Note  Fase   n.DL     Data Terzista
+Totale in lavorazione           
+G2534--T310      164
+H2002--T318       24
+H2003--T310      151
+P1475--T010        2
+P3720B-T190       17
+P3720D-T190        4
+P3749B-T190        6
+P3749D-T190        7
+Totale           375
+------------------------------------------------------------
+LE PRIME DONNE DI EVA SRLS                                  
+Totale in lavorazione           
+G2490--T311        2
+H1946--T322       26
+H1956--T307       15
+H1993--T323       15
+H1994--T318       15
+P3714--T347       23
+P3758--T246       30
+Totale           126
+------------------------------------------------------------
+IP SIMONENKO ALEKSANDR SERGEEVICH                           
+Totale in lavorazione           
+G2533--T241        6
+G2534--T310       15
+H1947--T100        4
+H1977--T322        6
+H1984--T308        4
+P3710--T313        7
+P3722--T308        7
+R798---T339       12
+Z1852--T348       14
+Z1859--T334        9
+Totale            84
+------------------------------------------------------------
+ZANETTI MODA s.r.l.                                         
+Totale in lavorazione           
+H1949--T100       62
+H1951--T322      203
+H1952--T128       99
+H1953--T322      107
+P3730--T310      108
+P3731--T100        1
+P3738--T347       69
+Totale           649
+------------------------------------------------------------
+FA\C7ADE ENTERPRISE CO., LTD.                                 
+Totale in lavorazione           
+Z1859--T334       10
+Totale            10
+------------------------------------------------------------
+SLAMI, s.r.o.                                               
+Totale in lavorazione           
+G009---T309       12
+G2533--T241        2
+G2534--T310       10
+
+
+
+
+DESCO S.R.L.                                                                                31/08/18                     Scadenza da           
+Dettaglio capi in ordine con riga L Art. in lavorazione                                                                  Pagina  10
+                   parametri di scelta: cliente                          Stagione S5  Articolo                     
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Ordine   Articolo                                        Capi Cliente                                         | Note  Fase   n.DL     Data Terzista
+G2538--T348        4
+H1993--T323        5
+P3661--T312        6
+P3742--T344        1
+R798---T339       18
+Z1843--T323        6
+Z1852--T348       12
+Totale            76
+
+Lavorante                      Modelli in lavorazione                                                                                                                                                                   Mod.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+651.00248 MARIA LIU' DIC. 2017 COORD03 COORD07 P3730-- P3742-- P3754-- P3758--                                                                                                                                             6
+651.00252 CARLO GIUGNO 2018    COORD05 H1935-- H1935LF H1946-- H1947-- H1949-- H1951-- H1952-- H1953-- H1956-- H1956G- H1956LF H1958-- H1977-- H1984-- H1992-- H1993--  H1994-- H2000-- H2000LF H2002-- H2003-- H2054--   24
+                               HC008--                                                                                                                                                                                 
+651.00244 STELLA NUOVO         G009--- P1475-- P3714--                                                                                                                                                                     3
+651.00251 PAOLO/GIULIA 2       G2490-- G2533-- P3661-- P3710-- P3722-- P3731-- P3738-- P3806--                                                                                                                             8
+651.00242 LINDA/CHEN           G2534-- R798--- Z1840-- Z1859--                                                                                                                                                             4
+651.00232 MARIO DAL 01/08/16   G2538-- P3720-- P3723-- P3763-- Z1852--                                                                                                                                                     5
+651.00234 CARLO DA GEN 2017    H1954-- H1957-- H1978--                                                                                                                                                                     3
+651.00239 JOHN DAL 29.03.17    P3436-- P3720-- P3720B- P3720D- P3721V- P3722-- P3749B- P3749D- P3804-- Z1843-- Z1843SA                                                                                                    11
+651.00247 ANGELICA             R804---                                                                                                                                                                                     1
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ultima pagina
+

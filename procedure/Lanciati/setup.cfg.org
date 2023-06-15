@@ -1,0 +1,8 @@
+[parameters]
+
+folder: C:\Users\glori\Dropbox\git\Desco\Lanciati\lanciati
+
+output: C:\Users\glori\Dropbox\git\Desco\Lanciati\sviluppo.xlsx
+
+
+

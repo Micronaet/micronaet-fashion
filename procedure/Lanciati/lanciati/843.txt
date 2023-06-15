@@ -1,0 +1,6 @@
+  843;P3724--T232C180S5E41C3N ;T232C180                ;        1,28;          12;ART.232 COL.180                                         
+  843;P3724--T232C180S5E41C3N ;ADE020-C199             ;        0,15;          12;ADESIVO ART. 020/655 BISTRETCH C199                     
+  843;P3724--T232C180S5E41C3N ;FODPANEC199             ;        0,25;          12;PANAMINO POL/COT. TC88 C199                             
+  843;P3724--T232C199S5E41C3N ;T232C199                ;        1,28;          24;ART.232 COL.199                                         
+  843;P3724--T232C199S5E41C3N ;ADE020-C199             ;        0,15;          24;ADESIVO ART. 020/655 BISTRETCH C199                     
+  843;P3724--T232C199S5E41C3N ;FODPANEC199             ;        0,25;          24;PANAMINO POL/COT. TC88 C199                             
