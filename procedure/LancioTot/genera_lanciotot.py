@@ -133,6 +133,7 @@ file_data = {
 col_tag = ''
 current = -1
 start_position = 0
+pdb.set_trace()
 for line in lines[7:]:
     current += 1
     if line.startswith(start_text['composition']):
