@@ -110,7 +110,9 @@ for line in open(file_csv, 'r'):
 # Add some extra description fields from file:
 file_data = {
     'date': lines[0][len(start_text['mes']):].strip()[:10],
-    'lot': remove_extra_space(lines['lot'][len(start_text['log']):]),
+    'lot': remove_extra_space(
+        lines['lot'][len(start_text['lot']):]
+    ),
     'article_name': lines[6],
     'composition': lines[7][len(start_text['composition']):],
     'material': remove_extra_space(lines[8][len(start_text['mt']):]),
