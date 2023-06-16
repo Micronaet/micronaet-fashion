@@ -33,8 +33,9 @@ except:
 ExcelWriter = excel_export.excelwriter.ExcelWriter
 
 # Parameters:
-w1 = 2  # Size of columns width
-w = 3  # Size of columns width
+w2 = 3  # Size of columns width (total)
+w1 = 2  # Size of columns width (left)
+w = 3  # Size of columns width (center)
 
 
 # -----------------------------------------------------------------------------
@@ -230,8 +231,8 @@ left = [
 center = []
 right = []
 for loop in range(total_size):  # Dynamic (x tg):
-    center.extend([w,  w,  w])
-    right.append(w)
+    center.extend([w2,  w2,  w2])
+    right.append(w2)
 
 right.append(12)  # Total columns
 
