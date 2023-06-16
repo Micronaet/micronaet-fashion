@@ -131,6 +131,7 @@ file_data = {
 
 # Over 7:
 col_tag = ''
+current = 0
 for line in lines[7:]:
     if line.startswith(start_text['composition']):
         file_data['composition'] = line[len(start_text['composition']):]
@@ -139,6 +140,9 @@ for line in lines[7:]:
             line[len(start_text['mt']):])
     elif line.startswith(start_text['coltag']):
         col_tag = line[24:104]
+        start_position = current + 2
+    current += 1
+
 
 # -----------------------------------------------------------------------------
 # Load total list of size tag:
@@ -153,7 +157,7 @@ for i in range(0, len(col_tag), 5):
     size = col_tag[i:i + 5].strip()
     file_data['col_tag'][col] = size
 
-for pos in range(11, len(lines), 2):
+for pos in range(start_position, len(lines), 2):
     # Description data:
     article = lines[pos]
 
