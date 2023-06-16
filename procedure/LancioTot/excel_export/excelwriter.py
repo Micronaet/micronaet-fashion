@@ -204,11 +204,11 @@ class ExcelWriter:
     def set_format(
             self,
             # Title:
-            title_font='Courier 10 pitch', title_size=11, title_fg='black',
+            title_font='Verdana', title_size=11, title_fg='black',
             # Header:
-            header_font='Courier 10 pitch', header_size=9, header_fg='black',
+            header_font='Verdana', header_size=9, header_fg='black',
             # Text:
-            text_font='Courier 10 pitch', text_size=9, text_fg='black',
+            text_font='Verdana', text_size=9, text_fg='black',
             # Number:
             number_format='#,##0.#0',
             # Layout:
