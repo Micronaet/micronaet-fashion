@@ -116,6 +116,8 @@ file_data = {
         lines[2][len(start_text['lot']):]
     ),
     'article_name': lines[6],
+    'composition': '/',
+    'material': '/',
 
     # Start population data:
     'master': {},
