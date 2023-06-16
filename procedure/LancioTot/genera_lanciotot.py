@@ -141,6 +141,8 @@ for pos in range(11, len(lines), 2):
     # Description data:
     article = lines[pos]
 
+    if article.startswith(start_text['eof']):
+        break
     if article.startswith(' '):  # Comment line jump for now
         comment = remove_extra_space(lines[pos + 2])
         try:
@@ -148,8 +150,6 @@ for pos in range(11, len(lines), 2):
         except:
             pass
         continue
-    if article.startswith(start_text['eof']):
-        break
 
     line1 = lines[pos + 1]
     # comment = remove_extra_space(lines[pos + 2])
