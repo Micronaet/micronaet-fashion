@@ -116,8 +116,6 @@ file_data = {
         lines[2][len(start_text['lot']):]
     ),
     'article_name': lines[6],
-    'composition': lines[7][len(start_text['composition']):],
-    'material': remove_extra_space(lines[8][len(start_text['mt']):]),
 
     # Start population data:
     'master': {},
@@ -129,10 +127,24 @@ file_data = {
     'article_reference': '',  # Changed in procedure
 }
 
+# Over 7:
+col_tag = ''
+for line in lines[7:]:
+    if line.startswith(start_text['composition']):
+        file_data['composition'] = line[len(start_text['composition']):]
+    elif line.startswith(start_text['mt']):
+        file_data['material'] = remove_extra_space(
+            line[len(start_text['mt']):])
+    elif line.startswith(start_text['coltag']):
+        col_tag = line[24:104]
+
 # -----------------------------------------------------------------------------
 # Load total list of size tag:
 # -----------------------------------------------------------------------------
-col_tag = lines[9][24:104]
+if not col_tag:
+    print('Errore riga taglie non identificata')
+    pdb.set_trace()
+
 col = -1
 for i in range(0, len(col_tag), 5):
     col += 1
@@ -266,7 +278,6 @@ block_2 = [('RAGGRUPPAMENTO', f_text_title), '', '', '', '', '', '']
 first = True
 block_3 = []
 block_4 = []
-pdb.set_trace()
 for loop in range(total_size):
     block_3.extend(['', '', ''])  # 3 x size
     block_4.extend([''])  # 1 x size
