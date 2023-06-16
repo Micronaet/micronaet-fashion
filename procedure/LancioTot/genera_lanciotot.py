@@ -142,13 +142,18 @@ for pos in range(11, len(lines), 2):
     article = lines[pos]
 
     if article.startswith(' '):  # Comment line jump for now
+        comment = remove_extra_space(lines[pos + 2])
+        try:
+            file_data['comment'][color] = comment
+        except:
+            pass
         continue
     if article.startswith(start_text['eof']):
         break
 
     line1 = lines[pos + 1]
     # comment = remove_extra_space(lines[pos + 2])
-    comment = ''
+    # comment = ''
     # line2 = lines[pos + 3]
 
     # Color:
@@ -158,7 +163,7 @@ for pos in range(11, len(lines), 2):
     else:
         color = article_split[1]  # raise error?
     file_data['color'].append(color)
-    file_data['comment'][color] = comment
+    file_data['comment'][color] = ''  # comment
 
     # Article:
     if file_data['article_reference']:
