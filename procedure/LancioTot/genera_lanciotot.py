@@ -92,11 +92,11 @@ filename = os.path.expanduser(file_csv)
 #                               Parse Mexal file:
 # -----------------------------------------------------------------------------
 start_text = {
-    0: 'M&S S.R.L.',
-    1: 'LANCIO IN PRODUZIONE n. ',
-    7: 'Comp. fodera             : ',
-    8: 'Consumo da scheda tecnica: ',
-    11: 'COL/TAG',
+    'mes': 'M&S S.R.L.',
+    'lot': 'LANCIO IN PRODUZIONE n. ',
+    'composition': 'Comp. fodera             : ',
+    'mt': 'Consumo da scheda tecnica: ',
+    'coltag': 'COL/TAG',
     'eof': 'per tag',
     'eol': '. . . . . . . . . . . . . . . . . . . ',
 }
@@ -109,11 +109,11 @@ for line in open(file_csv, 'r'):
 
 # Add some extra description fields from file:
 file_data = {
-    'date': lines[0][len(start_text[0]):].strip()[:10],
-    'lot': remove_extra_space(lines[1][len(start_text[1]):]),
-    'article_name': lines[5],
-    'composition': lines[6][len(start_text[7]):],
-    'material': remove_extra_space(lines[7][len(start_text[8]):]),
+    'date': lines[0][len(start_text['mes']):].strip()[:10],
+    'lot': remove_extra_space(lines['lot'][len(start_text[1]):]),
+    'article_name': lines[6],
+    'composition': lines[7][len(start_text['composition']):],
+    'material': remove_extra_space(lines[8][len(start_text['mt']):]),
 
     # Start population data:
     'master': {},
@@ -128,14 +128,14 @@ file_data = {
 # -----------------------------------------------------------------------------
 # Load total list of size tag:
 # -----------------------------------------------------------------------------
-col_tag = lines[10][24:104]
+col_tag = lines[9][24:104]
 col = -1
 for i in range(0, len(col_tag), 5):
     col += 1
     size = col_tag[i:i + 5].strip()
     file_data['col_tag'][col] = size
 
-for pos in range(12, len(lines), 2):
+for pos in range(11, len(lines), 2):
     # Description data:
     pdb.set_trace()
     article = lines[pos]
