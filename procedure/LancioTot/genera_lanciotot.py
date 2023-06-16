@@ -157,6 +157,7 @@ for i in range(0, len(col_tag), 5):
     size = col_tag[i:i + 5].strip()
     file_data['col_tag'][col] = size
 
+pdb.set_trace()
 for pos in range(start_position, len(lines), 2):
     # Description data:
     article = lines[pos]
