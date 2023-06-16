@@ -131,8 +131,10 @@ file_data = {
 
 # Over 7:
 col_tag = ''
-current = 0
+current = -1
+start_position = 0
 for line in lines[7:]:
+    current += 1
     if line.startswith(start_text['composition']):
         file_data['composition'] = line[len(start_text['composition']):]
     elif line.startswith(start_text['mt']):
@@ -141,7 +143,6 @@ for line in lines[7:]:
     elif line.startswith(start_text['coltag']):
         col_tag = line[24:104]
         start_position = current + 2
-    current += 1
 
 
 # -----------------------------------------------------------------------------
