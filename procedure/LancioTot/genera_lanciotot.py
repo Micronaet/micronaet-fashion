@@ -143,7 +143,7 @@ for line in lines[7:]:
             line[len(start_text['mt']):])
     elif line.startswith(start_text['coltag']):
         col_tag = line[24:104]
-        start_position = current + 2
+        start_position = current + 7 + 2
 
 
 # -----------------------------------------------------------------------------
