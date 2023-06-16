@@ -23,8 +23,12 @@ import os
 import pdb
 import sys
 import xlsxwriter
-import ConfigParser
 import excel_export
+try:
+    import ConfigParser
+except:
+    import configparser as ConfigParser
+
 
 ExcelWriter = excel_export.excelwriter.ExcelWriter
 
