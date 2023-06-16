@@ -133,7 +133,6 @@ file_data = {
 col_tag = ''
 current = -1
 start_position = 0
-pdb.set_trace()
 for line in lines[7:]:
     current += 1
     if line.startswith(start_text['composition']):
@@ -151,7 +150,6 @@ for line in lines[7:]:
 # -----------------------------------------------------------------------------
 if not col_tag:
     print('Errore riga taglie non identificata')
-    pdb.set_trace()
 
 col = -1
 for i in range(0, len(col_tag), 5):
@@ -159,7 +157,6 @@ for i in range(0, len(col_tag), 5):
     size = col_tag[i:i + 5].strip()
     file_data['col_tag'][col] = size
 
-pdb.set_trace()
 for pos in range(start_position, len(lines), 2):
     # Description data:
     article = lines[pos]
