@@ -266,6 +266,7 @@ block_2 = [('RAGGRUPPAMENTO', f_text_title), '', '', '', '', '', '']
 first = True
 block_3 = []
 block_4 = []
+pdb.set_trace()
 for loop in range(total_size):
     block_3.extend(['', '', ''])  # 3 x size
     block_4.extend([''])  # 1 x size
