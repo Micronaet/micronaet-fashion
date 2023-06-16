@@ -222,10 +222,10 @@ left = [
     w1, w1, w1, w1, w1, w1, w1,
 
     # Fabric:
-    w,  w,
+    w2,  w2,
 
     # Color:
-    w,  w,  w,  w,  w,
+    w2,  w2,  w2,  w2,  w2,
     ]
 
 center = []
