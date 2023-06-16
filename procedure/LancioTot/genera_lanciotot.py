@@ -139,7 +139,6 @@ for i in range(0, len(col_tag), 5):
 
 for pos in range(11, len(lines), 2):
     # Description data:
-    pdb.set_trace()
     article = lines[pos]
 
     if article.startswith(' '):  # Comment line jump for now
