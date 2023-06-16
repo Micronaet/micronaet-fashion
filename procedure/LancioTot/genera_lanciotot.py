@@ -104,7 +104,7 @@ start_text = {
 pos = 0
 lines = []
 for line in open(file_csv, 'r'):
-    line = line.strip()
+    line = line.rstrip()
     lines.append(line)
 
 # Add some extra description fields from file:
@@ -141,8 +141,12 @@ for pos in range(11, len(lines), 2):
     # Description data:
     pdb.set_trace()
     article = lines[pos]
+
+    if article.startswith(' '):  # Comment line jump for now
+        continue
     if article.startswith(start_text['eof']):
         break
+
     line1 = lines[pos + 1]
     # comment = remove_extra_space(lines[pos + 2])
     comment = ''
