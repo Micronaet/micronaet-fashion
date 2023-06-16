@@ -137,10 +137,10 @@ for i in range(0, len(col_tag), 5):
 
 for pos in range(12, len(lines), 2):
     # Description data:
+    pdb.set_trace()
     article = lines[pos]
     if article.startswith(start_text['eof']):
         break
-    pdb.set_trace()
     line1 = lines[pos + 1]
     # comment = remove_extra_space(lines[pos + 2])
     comment = ''
