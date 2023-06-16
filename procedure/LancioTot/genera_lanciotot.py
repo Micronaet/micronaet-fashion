@@ -33,6 +33,7 @@ except:
 ExcelWriter = excel_export.excelwriter.ExcelWriter
 
 # Parameters:
+w4 = 5  # Size of columns width (total)
 w2 = 4  # Size of columns width (total)
 w1 = 2  # Size of columns width (left)
 w = 3  # Size of columns width (center)
@@ -222,7 +223,7 @@ left = [
     w1, w1, w1, w1, w1, w1, w1,
 
     # Fabric:
-    w2,  w2,
+    w4,  w4,
 
     # Color:
     w2,  w2,  w2,  w2,  w2,
