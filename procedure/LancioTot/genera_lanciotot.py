@@ -194,7 +194,8 @@ for pos in range(11, len(lines), 2):
 # Last line will be jumped (per tag)
 print('Columns range: %s' % file_data['col_range'])
 pdb.set_trace()
-file_data['col_tag_clean'] = file_data['col_tag'].values()[
+
+file_data['col_tag_clean'] = [v for v in file_data['col_tag'].values()][
     file_data['col_range'][0]:file_data['col_range'][1] + 1]
 
 total_size = len(file_data['col_tag_clean'])  # todo only active filter!
