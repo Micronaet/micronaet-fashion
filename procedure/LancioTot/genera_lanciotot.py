@@ -145,7 +145,7 @@ for pos in range(11, len(lines), 2):
         break
 
     if article.startswith(' '):  # Comment line jump for now
-        comment = remove_extra_space(lines[pos + 2])
+        comment = remove_extra_space(lines[pos])
         try:
             file_data['comment'][color] = comment
         except:
