@@ -33,7 +33,7 @@ except:
 ExcelWriter = excel_export.excelwriter.ExcelWriter
 
 # Parameters:
-w2 = 3  # Size of columns width (total)
+w2 = 4  # Size of columns width (total)
 w1 = 2  # Size of columns width (left)
 w = 3  # Size of columns width (center)
 
