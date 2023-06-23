@@ -38,6 +38,8 @@ w2 = 4  # Size of columns width (total)
 w1 = 2  # Size of columns width (left)
 w = 3  # Size of columns width (center)
 
+data_row_height = 20
+
 
 # -----------------------------------------------------------------------------
 # Utility:
@@ -478,6 +480,9 @@ for row in first_rows:
     if not total_row:
         total_row = row  # First line
     # Write data:
+
+    # Row height different:
+    Excel.row_height(detail_page, [row], height=data_row_height)
 
     # First 7 columns merge:
     for col in range(7):
