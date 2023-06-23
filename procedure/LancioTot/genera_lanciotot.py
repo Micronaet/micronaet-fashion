@@ -482,7 +482,7 @@ for row in first_rows:
     # Write data:
 
     # Row height different:
-    Excel.row_height(detail_page, [row], height=data_row_height)
+    Excel.row_height(detail_page, [row, row+1, row+2], height=data_row_height)
 
     # First 7 columns merge:
     for col in range(7):
