@@ -38,7 +38,7 @@ w2 = 4  # Size of columns width (total)
 w1 = 2  # Size of columns width (left)
 w = 3  # Size of columns width (center)
 
-data_row_height = 20
+data_row_height = 30
 
 
 # -----------------------------------------------------------------------------
