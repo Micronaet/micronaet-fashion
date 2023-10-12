@@ -108,10 +108,14 @@ start_text = {
 pos = 0
 lines = []
 for line in open(file_csv, 'r'):
-    line = line.rstrip()
+    line = line.rstrip()  # .replace('\r', '')
+    if line.startswith('\r'):
+        lines.append('')
+        line = line[1:]
     lines.append(line)
 
 # Add some extra description fields from file:
+import pdb; pdb.set_trace()
 file_data = {
     'date': lines[0][len(start_text['mes']):].strip()[:10],
     'lot': remove_extra_space(
@@ -463,10 +467,13 @@ for color in range(-1, total_color):  # Add extra block of lines for header
             this_line[9] = ''
 
         # Merge:
-        Excel.merge_cell(detail_page, [
-            row + x, len_b1, row + x, len_b1 + 2 - 1])
-        Excel.merge_cell(detail_page, [
-            row + x, len_b1 + 2, row + x, len_b1 + 2 + 5 - 1])
+        # import pdb; pdb.set_trace()
+        dimension = [row + x, len_b1, row + x, len_b1 + 2 - 1]
+        print(dimension)
+        Excel.merge_cell(detail_page, dimension)
+        dimension = [row + x, len_b1 + 2, row + x, len_b1 + 2 + 5 - 1]
+        print(dimension)
+        Excel.merge_cell(detail_page, dimension)
     row += block
 
 # Merge after title cell (before raise problems)
