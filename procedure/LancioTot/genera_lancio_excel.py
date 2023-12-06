@@ -386,6 +386,28 @@ excel_line.extend(['' for i in range(fixed_side['right'] - 1)])  # - 1 x NOTE
 Excel.write_xls_line(
     detail_page, row, excel_line, f_text)
 
+# -----------------------------------------------------------------------------
+# ROW 3
+# -----------------------------------------------------------------------------
+row += 1
+excel_line = ['Data', 'Lung. Tappeto', '']
+excel_line.extend(['' for i in range(fixed_side['center'])])
+excel_line.extend(['' for i in range(fixed_side['right'])])
+
+Excel.write_xls_line(
+    detail_page, row, excel_line, f_text)
+
+# -----------------------------------------------------------------------------
+# ROW 4
+# -----------------------------------------------------------------------------
+row += 1
+excel_line = ['/', 'Lung. progressiva', '']
+excel_line.extend(['' for i in range(fixed_side['center'])])
+excel_line.extend(['' for i in range(fixed_side['right'])])
+
+Excel.write_xls_line(
+    detail_page, row, excel_line, f_text)
+
 """
 
 # Center + Right:
