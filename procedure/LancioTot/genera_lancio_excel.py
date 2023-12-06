@@ -347,11 +347,14 @@ line_1 = [
     ('RAGGRUPPAMENTO', f_text_title), '',
     ('MODELLO: ', f_text_title),
 ]
-line_1.extend(['' for i in range(center_fixed)])  # 7 x 3 - 1 (MODELLO)
+line_1.extend(['' for i in range(fixed_side['center']-1)])  # - 1 x MODELLO
 line_1.extend([
     ('NOTE', f_text_title),
 ])
-line_1.extend(['' for i in range(right_fixed)])  # 7 x 3 - 1 (MODELLO)
+line_1.extend(['' for i in range(fixed_side['center'])])  # 7 x 3 - 1 (MODELLO)
+
+Excel.write_xls_line(
+    detail_page, row, line_1, f_text)
 
 """
 
