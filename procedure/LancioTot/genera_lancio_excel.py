@@ -47,14 +47,14 @@ category_setup = (
 
     # 1 start
     ('T', 'Tessuto'),
-    ('F', 'Fodera'),
+    ('FOD', 'Fodera'),
     # ('L', 'Lampo'),
 )
 
 sort_category = {
     'Tessuto': 1,
-    'Fodera': 2,
-    'Adesivo': 3,
+    'Adesivo': 2,
+    'Fodera': 3,
     'Panamino': 4,
     # 'Lampo': 3,
     # 'Filo': 5,
@@ -123,7 +123,10 @@ file_data = {
     # Master detail used
     'master': {},  # Master data for job list
     'master_component': {},  # Master data for component linked
+    'compact_component': {},  # List of component
+
     'total': 0,  # Total pz.
+    'range_tg': [100, 0],  # Tg range position
 
     # Extra detail used:
     'components': {},  # Job - Line: components list
@@ -167,9 +170,9 @@ for line in open(file_product, 'r'):
 #                          Load Job from file:
 # -----------------------------------------------------------------------------
 # Setup file data:
-tg_cols = 17  # total tg col
+tg_cols = 16  # total tg col (no TOT)
 fixed_col = 4  # Job, row, MRP code, Description
-empty_tg = [0 for i in range(tg_cols)]
+empty_tg = [0 for i in range(tg_cols)]  # No TOT col
 
 pos = 0
 for line in open(file_job, 'r'):
@@ -181,7 +184,7 @@ for line in open(file_job, 'r'):
         # ---------------------------------------------------------------------
         tg_pos = 0
         file_data['col_tag'] = empty_tg[:]
-        for tg in part[fixed_col:]:  # Jump 4 unused columns:
+        for tg in part[fixed_col:-1]:  # Jump 4 unused columns and TOT:
             file_data['col_tag'][tg_pos] = clean(tg)
             tg_pos += 1
     else:
@@ -213,13 +216,24 @@ for line in open(file_job, 'r'):
         file_data['master_component'][key].append(component_key)
         # Populate:
         tg_pos = 0
-        for quantity in part[fixed_col:]:
+        for quantity in part[fixed_col:-1]:
             try:
                 this_quantity = int(quantity)
                 file_data['master'][key][tg_pos] += this_quantity
                 # Last columns is total!
             except:
                 this_quantity = 0  # empty
+
+            # -----------------------------------------------------------------
+            # Range check:
+            # -----------------------------------------------------------------
+            if this_quantity > 0:
+                # Min:
+                if tg_pos < file_data['range_tg'][0]:
+                    file_data['range_tg'][0] = tg_pos
+                # Max:
+                if tg_pos > file_data['range_tg'][1]:
+                    file_data['range_tg'][1] = tg_pos
             tg_pos += 1
         file_data['total'] += this_quantity  # Update with last number find
 
@@ -231,12 +245,22 @@ print('MODELLO', file_data['mrp_name'],
       'LANCIO IN PRODUZIONE', file_data['jobs'])
 print('TESSUTO', file_data['fabric_material'],
       'FODERA', file_data['fodera_material'])
-print('TAGLIE', file_data['col_tag'])
+# print('TAGLIE COMPLETE', file_data['col_tag'])
+# print('RANGE TAGLIE', file_data['range_tg'])
+print('TAGLIE ATTIVE',
+      file_data['col_tag'][
+         file_data['range_tg'][0]:file_data['range_tg'][1] + 1])
 
 for master_key in file_data['master']:
-    print('>>>>>>> Blocco ARTICOLO-COLORE', master_key[1:], 'TAGLIE', file_data['master'][master_key])
+    subtotal = sum(tuple(file_data['master'][master_key]))
+    file_data['total'] += subtotal
+    tg_block = file_data['master'][master_key][
+               file_data['range_tg'][0]:file_data['range_tg'][1] + 1]
+    print('>>>>>>> BLOCCO: ARTICOLO-COLORE', master_key[1:],
+          'TAGLIE', tg_block, 'Tot', subtotal)
 
     # Job linked:
+    file_data['components'][master_key] = []
     for job_reference in file_data['master_component'][master_key]:
         references = file_data['components'][job_reference]
         for category in sorted(references,
@@ -244,12 +268,14 @@ for master_key in file_data['master']:
 
             categories = file_data['components'][job_reference][category]
             for product_name in categories:
-                quantity = categories[product_name]
-                print(category, product_name)
+                if product_name not in file_data['components'][master_key]:
+                    file_data['components'][master_key].append(product_name)
+                    # quantity = categories[product_name]
+                    print(category, product_name)  # Only first!
 
 print('Totale', file_data['total'])
 
-print(file_data)
+# print(file_data)
 # -----------------------------------------------------------------------------
 #                            Excel file:
 # -----------------------------------------------------------------------------
