@@ -247,9 +247,13 @@ print('TESSUTO', file_data['fabric_material'],
       'FODERA', file_data['fodera_material'])
 # print('TAGLIE COMPLETE', file_data['col_tag'])
 # print('RANGE TAGLIE', file_data['range_tg'])
-print('TAGLIE ATTIVE',
-      file_data['col_tag'][
-         file_data['range_tg'][0]:file_data['range_tg'][1] + 1])
+file_data['active_col_tg'] = file_data['col_tag'][
+         file_data['range_tg'][0]:file_data['range_tg'][1] + 1]
+print('TAGLIE ATTIVE', file_data['active_col_tg'])
+block = {
+    'center': 9,
+    'right': len(file_data['active_col_tg']),
+    }
 
 for master_key in file_data['master']:
     subtotal = sum(tuple(file_data['master'][master_key]))
@@ -279,7 +283,6 @@ print('Totale', file_data['total'])
 # -----------------------------------------------------------------------------
 #                            Excel file:
 # -----------------------------------------------------------------------------
-"""
 # Create WB:
 Excel = ExcelWriter(xlsx_file, verbose=True)
 
@@ -288,33 +291,35 @@ detail_page = 'Lanciati totali'
 Excel.create_worksheet(detail_page)
 
 # Parameters:
-w4 = 5  # Size of columns width (total)
-w2 = 4  # Size of columns width (total)
-w1 = 2  # Size of columns width (left)
-w = 3  # Size of columns width (center)
+pixel = {
+    # Colums:
+    'less': 10,
+    'standard': 15,
+    'big': 20,
 
-data_row_height = 30
+    'center': 4,
+    'tg': 5,
 
+    # Row:
+    'header': 20,
+    'data': 30,
+}
+
+left_fixed = 3
 left = [
     # Start
-    w1, w1, w1, w1, w1, w1, w1,
+    pixel['standard'],
 
-    # Fabric:
-    w4,  w4,
-
-    # Color:
-    w2,  w2,  w2,  w2,  w2,
+    # Group:
+    pixel['less'],
+    pixel['standard'],
     ]
 
-center = []
-right = []
+center_fixed = 7 * 3
+center = [pixel['center'] for i in range(7)]
 
-
-for loop in range(total_size):  # Dynamic (x tg):
-    center.extend([w2,  w2,  w2])
-    right.append(w2)
-
-right.append(12)  # Total columns
+right_fixed = len(file_data['active_col_tg']) + 1  # TOT
+right = [pixel['tg'] for i in range(right_fixed)]
 
 total_columns = left + center + right
 Excel.column_width(detail_page, total_columns)
@@ -337,9 +342,18 @@ f_number = Excel.get_format('number')
 # ROW 0
 # -----------------------------------------------------------------------------
 row = 0
-# Left:
-block_1 = [('PASSANTI', f_text_title), '', '', '', '', '', '']
-block_2 = [('RAGGRUPPAMENTO', f_text_title), '', '', '', '', '', '']
+line_1 = [
+    ('PASSANTI', f_text_title),
+    ('RAGGRUPPAMENTO', f_text_title), '',
+    ('MODELLO: ', f_text_title),
+]
+line_1.extend(['' for i in range(center_fixed)])  # 7 x 3 - 1 (MODELLO)
+line_1.extend([
+    ('NOTE', f_text_title),
+])
+line_1.extend(['' for i in range(right_fixed)])  # 7 x 3 - 1 (MODELLO)
+
+"""
 
 # Center + Right:
 first = True
@@ -406,6 +420,14 @@ Excel.write_xls_line(
     block_1 + block_2 + block_3 + block_4, f_text)
 
 block_1[0] = ''
+
+
+for loop in range(total_size):  # Dynamic (x tg):
+    center.extend([w2,  w2,  w2])
+    right.append(w2)
+
+right.append(12)  # Total columns
+
 
 # -----------------------------------------------------------------------------
 #                               Merge cells:
@@ -677,5 +699,5 @@ formula = "=SUM(%s:%s)" % (
 Excel.write_formula(detail_page, row, 3, formula, f_number, total_db[fabric])
 '''
 print(file_data)
-Excel.close_workbook()
 """
+Excel.close_workbook()
