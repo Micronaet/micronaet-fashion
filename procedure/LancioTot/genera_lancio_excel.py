@@ -362,7 +362,8 @@ Excel.write_xls_line(
 row += 1
 excel_line = ['', '', '']
 
-excel_line.extend(['LANCIO IN PRODUZIONE N.: '])
+excel_line.extend([
+    ('LANCIO IN PRODUZIONE N.: ', f_text_title)])
 
 excel_line.extend(['' for i in range(fixed_side['center'] - 1)])
 
@@ -376,7 +377,11 @@ Excel.write_xls_line(
 # ROW 2
 # -----------------------------------------------------------------------------
 row += 1
-excel_line = ['', 'Alt. Matrici', '']
+excel_line = [
+    '',
+    ('Alt. Matrici', f_text_title),
+    '',
+]
 
 excel_line.extend(['' for i in range(fixed_side['center'])])
 
@@ -390,7 +395,10 @@ Excel.write_xls_line(
 # ROW 3
 # -----------------------------------------------------------------------------
 row += 1
-excel_line = ['Data', 'Lung. Tappeto', '']
+excel_line = [
+    ('Data', f_text_title),
+    ('Lung. Tappeto', f_text_title),
+    '']
 excel_line.extend(['' for i in range(fixed_side['center'])])
 excel_line.extend(['' for i in range(fixed_side['right'])])
 
