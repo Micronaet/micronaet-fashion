@@ -420,6 +420,23 @@ excel_line.extend(['' for i in range(fixed_side['right'])])
 Excel.write_xls_line(
     detail_page, row, excel_line, f_text)
 
+# -----------------------------------------------------------------------------
+# ROW 4 - Header title:
+# -----------------------------------------------------------------------------
+row += 1
+excel_line = [
+    '',
+    ('ARTICOLO', f_text_title),
+    ('COLORE', f_text_title),
+]
+excel_line.extend(['' for i in range(fixed_side['center'])])
+excel_line.extend(file_data['active_col_tg'])
+excel_line.extend([
+    ('Totale\nCapi', f_text_title),])
+
+Excel.write_xls_line(
+    detail_page, row, excel_line, f_text)
+
 """
 
 # Center + Right:
