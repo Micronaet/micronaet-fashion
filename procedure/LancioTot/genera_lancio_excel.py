@@ -342,19 +342,32 @@ f_number = Excel.get_format('number')
 # ROW 0
 # -----------------------------------------------------------------------------
 row = 0
-line_1 = [
+excel_line = [
     ('PASSANTI', f_text_title),
     ('RAGGRUPPAMENTO', f_text_title), '',
     ('MODELLO: ', f_text_title),
 ]
-line_1.extend(['' for i in range(fixed_side['center']-1)])  # - 1 x MODELLO
-line_1.extend([
+excel_line.extend(['' for i in range(fixed_side['center'] - 1)])  # - 1 x MODELLO
+excel_line.extend([
     ('NOTE', f_text_title),
 ])
-line_1.extend(['' for i in range(fixed_side['center'])])  # 7 x 3 - 1 (MODELLO)
+excel_line.extend(['' for i in range(fixed_side['right'] - 1)])  # - 1 x NOTE
 
 Excel.write_xls_line(
-    detail_page, row, line_1, f_text)
+    detail_page, row, excel_line, f_text)
+
+# -----------------------------------------------------------------------------
+# ROW 1
+# -----------------------------------------------------------------------------
+row += 1
+excel_line = ['', '', '']
+excel_line.extend(['LANCIO IN PRODUZIONE N.: '])
+excel_line.extend(['' for i in range(fixed_side['center'] - 1)])
+excel_line.extend([('Comp. fodera', f_text_title)])
+excel_line.extend(['' for i in range(fixed_side['right'] - 1)])  # - 1 x NOTE
+
+Excel.write_xls_line(
+    detail_page, row, excel_line, f_text)
 
 """
 
