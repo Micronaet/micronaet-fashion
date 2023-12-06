@@ -361,9 +361,26 @@ Excel.write_xls_line(
 # -----------------------------------------------------------------------------
 row += 1
 excel_line = ['', '', '']
+
 excel_line.extend(['LANCIO IN PRODUZIONE N.: '])
+
 excel_line.extend(['' for i in range(fixed_side['center'] - 1)])
-excel_line.extend([('Comp. fodera', f_text_title)])
+
+excel_line.extend([('Comp. fodera:', f_text_title)])
+excel_line.extend(['' for i in range(fixed_side['right'] - 1)])  # - 1 x NOTE
+
+Excel.write_xls_line(
+    detail_page, row, excel_line, f_text)
+
+# -----------------------------------------------------------------------------
+# ROW 2
+# -----------------------------------------------------------------------------
+row += 1
+excel_line = ['', 'Alt. Matrici', '']
+
+excel_line.extend(['' for i in range(fixed_side['center'])])
+
+excel_line.extend([('Consumo:', f_text_title)])
 excel_line.extend(['' for i in range(fixed_side['right'] - 1)])  # - 1 x NOTE
 
 Excel.write_xls_line(
