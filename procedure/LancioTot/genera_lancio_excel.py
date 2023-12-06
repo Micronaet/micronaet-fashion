@@ -305,24 +305,24 @@ pixel = {
     'data': 30,
 }
 
-left_fixed = 3
-left = [
-    # Start
-    pixel['standard'],
+fixed_side = {
+    'left': 3,
+    'center': 7 * 3,
+    'right': len(file_data['active_col_tg']) + 1,  # +TOT
+}
 
-    # Group:
+# 3 part:
+left = [
+    # Passanti
+    pixel['standard'],
+    # Raggruppamento:
     pixel['less'],
     pixel['standard'],
     ]
+center = [pixel['center'] for i in range(fixed_side['center'])]
+right = [pixel['tg'] for i in range(fixed_side['right'])]
 
-center_fixed = 7 * 3
-center = [pixel['center'] for i in range(7)]
-
-right_fixed = len(file_data['active_col_tg']) + 1  # TOT
-right = [pixel['tg'] for i in range(right_fixed)]
-
-total_columns = left + center + right
-Excel.column_width(detail_page, total_columns)
+Excel.column_width(detail_page, left + center + right)
 
 # Create format:
 f_title = Excel.get_format('title')
