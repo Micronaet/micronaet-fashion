@@ -32,7 +32,6 @@ except:
 
 ExcelWriter = excel_export.excelwriter.ExcelWriter
 
-debug = False
 
 # -----------------------------------------------------------------------------
 # Utility:
@@ -365,13 +364,13 @@ f_number = Excel.get_format('number')
 # -----------------------------------------------------------------------------
 row = 0
 excel_line = [
-    (u'PASSANTI', f_text_title),
-    (u'RAGGRUPPAMENTO', f_text_title), '',
-    (u'MODELLO: %s' % file_data['mrp_name'], f_text_title),
+    ('PASSANTI', f_text_title),
+    ('RAGGRUPPAMENTO', f_text_title), '',
+    ('MODELLO: %s' % file_data['mrp_name'], f_text_title),
 ]
 excel_line.extend(['' for i in range(fixed_side['center'] - 1)])  # - 1 x MOD.
 excel_line.extend([
-    (u'NOTE', f_text_title),
+    ('NOTE', f_text_title),
 ])
 excel_line.extend(['' for i in range(fixed_side['right'] - 1)])  # - 1 x NOTE
 
@@ -391,7 +390,7 @@ Excel.merge_cell(detail_page, [
 row += 1
 excel_line = [
     '',
-    (u'LANCIO IN PRODUZIONE N.: %s' % ', '.join(file_data['jobs']),
+    ('LANCIO IN PRODUZIONE N.: %s' % ', '.join(file_data['jobs']),
      f_text_title),
     '',
     ]
@@ -414,7 +413,7 @@ Excel.merge_cell(detail_page, [
 row += 1
 excel_line = [
     '',
-    (u'Alt. Matrici', f_text_title),
+    ('Alt. Matrici', f_text_title),
     '',
 ]
 
@@ -438,8 +437,8 @@ Excel.merge_cell(detail_page, [
 # -----------------------------------------------------------------------------
 row += 1
 excel_line = [
-    (u'Data', f_text_title),
-    (u'Lung. Tappeto', f_text_title),
+    ('Data', f_text_title),
+    ('Lung. Tappeto', f_text_title),
     '']
 excel_line.extend(['' for i in range(fixed_side['center'])])
 excel_line.extend(['' for i in range(fixed_side['right'])])
@@ -460,8 +459,8 @@ Excel.merge_cell(detail_page, [
 row += 1
 excel_line = [
     file_data['date'],
-    (u'Lung. progressiva', f_text_title),
-    u'',
+    ('Lung. progressiva', f_text_title),
+    '',
 ]
 excel_line.extend(['' for i in range(fixed_side['center'])])
 excel_line.extend(['' for i in range(fixed_side['right'])])
@@ -487,19 +486,19 @@ Excel.row_height(
 row += 1
 excel_line = [
     '',
-    (u'ARTICOLO', f_text_title_center),
-    (u'COLORE', f_text_title_center),
+    ('ARTICOLO', f_text_title_center),
+    ('COLORE', f_text_title_center),
 ]
 excel_line.extend(['' for i in range(fixed_side['center'])])
 excel_line.extend([
     (cell, f_text_title_center) for cell in file_data['active_col_tg']])
-excel_line.extend([(u'Totale\nCapi', f_text_title_center)])
+excel_line.extend([('Totale\nCapi', f_text_title_center)])
 
 Excel.write_xls_line(
     detail_page, row, excel_line, f_text)
 
 # Row height header:
-Excel.row_height(detail_page, [row], height=pixel['h_data'])
+Excel.row_height(detail_page, [row ], height=pixel['h_data'])
 
 # Merge 3 lines and block 3x3:
 for this_row in range(2, 5):
@@ -565,14 +564,6 @@ Excel.write_xls_line(
 # Row height data:
 Excel.row_height(
     detail_page, tuple(range(start_row, row)), height=pixel['h_data'])
-
-if debug:
-    print('DETTAGLIO COLLEGAMENTO COMPONENTI:')
-    print(file_data['master_component'])
-
-    print('DETTAGLIO COMPONENTI:')
-    print(file_data['components_check'])
-    pdb.set_trace()
 
 """
 # cell_1 = Excel.rowcol_to_cell(row, 4)
