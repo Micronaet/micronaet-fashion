@@ -117,8 +117,6 @@ file_data = {
     # Header detail:
     'date': datetime.now().strftime('%d/%m/%Y'),
     'mrp_name': '',  # Product MRP name
-    'fodera_material': '',
-    'fabric_material': '',
     'jobs': [],  # Total Job touched
 
     # -------------------------------------------------------------------------
@@ -129,17 +127,16 @@ file_data = {
     # Master data for component linked:
     #         MRP KEY              JOB LINE KEY
     # (mrp name, article, color): [(job, line)]
-
+    'components': {},
+    # Job - Line: components list (completed)
 
     'total_tg': [],
-    'total': 0,  # Total pz.
     'range_tg': [100, 0],  # Tg range position
+    'total': 0,  # Total pz.
 
     # Extra detail used:
     'components_set': {},  # List of component (file 1)
     # not used!
-    'components': {},
-    # Job - Line: components list
 
     'components_check': {},
     # Job - Line: components list (check code!)
@@ -572,11 +569,20 @@ Excel.row_height(
 
 debug = False
 if debug:
-    print('TOTALE DATA')
-    print(file_data)
+    print('MASTER')
+    print(file_data['master'])
 
-    print('DETTAGLIO COMPONENTI')
+    print('\n\nMASTER JOB')
+    print(file_data['master_jobs'])
+
+    print('\n\nDETTAGLIO LISTA COMPONENTI')
+    print(file_data['components'])
+
+    print('\n\nDETTAGLIO SET COMPONENTI')
     print(file_data['components_set'])
+
+    # print('\n\nDETTAGLIO CHECK COMPONENTI')
+    # print(file_data['components_set'])
 
     pdb.set_trace()
 
