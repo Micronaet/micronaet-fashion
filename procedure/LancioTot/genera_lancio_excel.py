@@ -200,8 +200,15 @@ for line in open(file_job, 'r'):
         mrp_product = clean(part[2])
         description = clean(part[3])
         key = tuple(description.split(' '))
-        print(key)
-        mrp_name, article_name, color = key
+
+        # Compact extra data for key:
+        if len(key) > 3:
+            key = tuple(key[:2])
+            key3 = ' '.join(key[2:])
+            key.append(key3)
+            key = tuple(key)
+
+        mrp_name, article_name, color = key[:3]  # Only first 3 part
 
         if not file_data['mrp_name']:
             file_data['mrp_name'] = mrp_name  # always the same?
