@@ -203,6 +203,7 @@ for line in open(file_job, 'r'):
 
         # Compact extra data for key:
         if len(key) > 3:
+            pdb.set_trace()
             new_key = list(key[:2])
             key3 = ' '.join(key[2:])
             new_key.append(key3)
