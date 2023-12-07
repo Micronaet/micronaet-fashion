@@ -203,11 +203,10 @@ for line in open(file_job, 'r'):
 
         # Compact extra data for key:
         if len(key) > 3:
-            pdb.set_trace()
-            key = list(key[:2])
+            new_key = list(key[:2])
             key3 = ' '.join(key[2:])
-            key.append(key3)
-            key = tuple(key)
+            new_key.append(key3)
+            key = tuple(new_key)
 
         mrp_name, article_name, color = key[:3]  # Only first 3 part
 
