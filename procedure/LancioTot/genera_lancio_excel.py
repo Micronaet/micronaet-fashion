@@ -290,7 +290,8 @@ for master_key in file_data['master']:
                 if default_code not in file_data['components_check'][
                         master_key]:
                     record = categories[default_code]
-
+                    if category == 'Adesivo':
+                        pdb.set_trace()
                     component_name = (
                         category,
                         u'%s\n%s-%s\n%s' % (
