@@ -31,7 +31,8 @@ except:
     import configparser as ConfigParser
 
 ExcelWriter = excel_export.excelwriter.ExcelWriter
-
+debug = False
+final_debug = False
 
 # -----------------------------------------------------------------------------
 # Utility:
@@ -269,6 +270,8 @@ block = {
     }
 
 for mrp_key in file_data['master']:
+    if debug:
+        print(mrp_key)
     subtotal = sum(tuple(file_data['master'][mrp_key]))
     file_data['total'] += subtotal
     tg_block = file_data['master'][mrp_key][
@@ -567,8 +570,7 @@ Excel.write_xls_line(
 Excel.row_height(
     detail_page, tuple(range(start_row, row)), height=pixel['h_data'])
 
-debug = True
-if debug:
+if final_debug:
     print('MASTER')
     print(file_data['master'])
 
@@ -579,6 +581,8 @@ if debug:
     print(file_data['components'])
 
     print('\n\nDETTAGLIO SET COMPONENTI')
+    print(file_data['components_set'].keys())
+    print('\n\n')
     print(file_data['components_set'])
 
     # print('\n\nDETTAGLIO CHECK COMPONENTI')
