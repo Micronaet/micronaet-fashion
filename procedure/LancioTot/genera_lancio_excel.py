@@ -200,6 +200,7 @@ for line in open(file_job, 'r'):
         mrp_product = clean(part[2])
         description = clean(part[3])
         key = tuple(description.split(' '))
+        print(key)
         mrp_name, article_name, color = key
 
         if not file_data['mrp_name']:
@@ -502,7 +503,6 @@ start_row = row
 for master_key in file_data['master']:
     block_row = row
 
-    print(master_key)
     mrp_name, block_name, color_name = master_key
     fabric_name = '%s %s' % (block_name, color_name)
     tg_block = file_data['master'][master_key][
