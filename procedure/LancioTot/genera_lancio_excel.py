@@ -567,7 +567,7 @@ Excel.write_xls_line(
 Excel.row_height(
     detail_page, tuple(range(start_row, row)), height=pixel['h_data'])
 
-debug = False
+debug = True
 if debug:
     print('MASTER')
     print(file_data['master'])
