@@ -37,7 +37,7 @@ ExcelWriter = excel_export.excelwriter.ExcelWriter
 # Utility:
 # -----------------------------------------------------------------------------
 # Utility dict:
-center_cols = 7 * 3
+center_cols = 9 * 3
 category_setup = (
     # 3 start (before)
     ('ADE', 'Adesivo'),  # Start, Category, order
@@ -132,6 +132,7 @@ file_data = {
 
     # Extra detail used:
     'components': {},  # Job - Line: components list
+    'components_check': {},  # Job - Line: components list (check code!)
     }
 
 # -----------------------------------------------------------------------------
@@ -156,12 +157,13 @@ for line in open(file_product, 'r'):
         continue
     if category not in file_data['components'][key]:
         file_data['components'][key][category] = {}
-    # name not default_code
-    if name not in file_data['components'][key][category]:
-        file_data['components'][key][category][name] = 0.0
-    file_data['components'][key][category][name] += quantity
 
-    # Update header data:
+    if default_code not in file_data['components'][key][category]:
+        # Save all line only once!
+        file_data['components'][key][category][default_code] = part
+    # file_data['components'][key][category][name] += quantity
+
+    # Update header data (used?):
     if category == 'Fodera' and not file_data['fodera_material']:
         file_data['fodera_material'] = material  # Always the same!
 
@@ -203,7 +205,6 @@ for line in open(file_job, 'r'):
 
         # Compact extra data for key:
         if len(key) > 3:
-            pdb.set_trace()
             new_key = list(key[:2])
             key3 = ' '.join(key[2:])
             new_key.append(key3)
@@ -275,7 +276,8 @@ for master_key in file_data['master']:
         file_data['total_tg'][tg_pos] += tg_value
         tg_pos += 1
 
-    # Job linked:
+    # Component linked with job-line:
+    file_data['components_check'][master_key] = []  # Save code x check double
     file_data['components'][master_key] = []
     for job_reference in file_data['master_component'][master_key]:
         references = file_data['components'][job_reference]
@@ -283,11 +285,25 @@ for master_key in file_data['master']:
                                key=lambda x: sort_category.get(x, 0)):
 
             categories = file_data['components'][job_reference][category]
-            for product_name in categories:
-                if product_name not in file_data['components'][master_key]:
-                    file_data['components'][master_key].append(product_name)
-                    # quantity = categories[product_name]
-                    print(category, product_name)  # Only first!
+            for default_code in categories:
+                # Use check list:
+                if default_code not in file_data['components_check'][
+                        master_key]:
+                    record = categories[default_code]
+
+                    component_name = (
+                        category,
+                        '%s\n%s-%s\n%s' % (
+                        record[3].strip(),  # Component name
+                        record[6].strip(),  # Supplier code
+                        record[7].strip(),  # Supplier name
+                        record[8].strip(),  # Supplier name
+                        ))
+                    # Save for report:
+                    file_data['components'][master_key].append(component_name)
+                    # Update check list:
+                    file_data['components_check'][master_key].append(
+                        default_code)
 
 # -----------------------------------------------------------------------------
 #                            Excel file:
@@ -307,7 +323,7 @@ pixel = {
     'center': 4, 'tg': 5,
 
     # Row:
-    'h_header': 20, 'h_data': 30,
+    'h_header': 20, 'h_data': 35,
 }
 
 fixed_side = {
@@ -373,18 +389,14 @@ Excel.merge_cell(detail_page, [
 # ROW 1
 # -----------------------------------------------------------------------------
 row += 1
-excel_line = ['', '', '']
-
-excel_line.extend([
+excel_line = [
+    '',
     ('LANCIO IN PRODUZIONE N.: %s' % ', '.join(file_data['jobs']),
-     f_text_title)])
-
-excel_line.extend(['' for i in range(fixed_side['center'] - 1)])
-
-excel_line.extend([
-    ('Comp. fodera: %s' % file_data['fodera_material'], f_text_title)])
-excel_line.extend(['' for i in range(fixed_side['right'] - 1)])  # - 1 x NOTE
-# print('TESSUTO', file_data['fabric_material'],
+     f_text_title),
+    '',
+    ]
+excel_line.extend(['' for i in range(fixed_side['center'])])
+excel_line.extend(['' for i in range(fixed_side['right'])])
 
 Excel.write_xls_line(
     detail_page, row, excel_line, f_text)
@@ -408,8 +420,8 @@ excel_line = [
 
 excel_line.extend(['' for i in range(fixed_side['center'])])
 
-excel_line.extend([('Consumo:', f_text_title)])
-excel_line.extend(['' for i in range(fixed_side['right'] - 1)])  # - 1 x NOTE
+# excel_line.extend([('Consumo:', f_text_title)])
+excel_line.extend(['' for i in range(fixed_side['right'])])
 
 Excel.write_xls_line(
     detail_page, row, excel_line, f_text)
@@ -513,14 +525,14 @@ for master_key in file_data['master']:
     block_row = row
 
     mrp_name, block_name, color_name = master_key
-    fabric_name = '%s %s' % (block_name, color_name)
+    # fabric_name = '%s %s' % (block_name, color_name)
     tg_block = file_data['master'][master_key][
                file_data['range_tg'][0]:file_data['range_tg'][1] + 1]
     subtotal = sum(tuple(file_data['master'][master_key]))
 
     # Article first line:
     excel_line = [
-        '', block_name, color_name]
+        '', (block_name, f_text_title), (color_name, f_text_title)]
     excel_line.extend(empty_center)
     excel_line.extend([(cell, f_text_center) for cell in tg_block])
     excel_line.extend([(subtotal, f_text_title_center)])
@@ -530,10 +542,10 @@ for master_key in file_data['master']:
 
     # Component extra line:
     excel_line = empty_component[:]
-    for component in file_data['components'][master_key]:
-        if component == fabric_name:
-            continue  # Jump fabric name
-        excel_line[2] = component
+    for component_detail in file_data['components'][master_key]:
+        # Also fabric is always loaded!
+        excel_line[1] = component_detail[0]  # category
+        excel_line[2] = component_detail[1]  # component
         Excel.write_xls_line(
             detail_page, row, excel_line, f_text)
         row += 1
