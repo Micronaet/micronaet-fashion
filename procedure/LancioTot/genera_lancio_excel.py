@@ -320,7 +320,8 @@ left = [
     pixel['standard'],
     ]
 center = [pixel['center'] for i in range(fixed_side['center'])]
-right = [pixel['tg'] for i in range(fixed_side['right'])]
+right = [pixel['tg'] for i in range(fixed_side['right'] - 1)]
+right.append(pixel['less'])  # Total column
 
 Excel.column_width(detail_page, left + center + right)
 
