@@ -463,9 +463,8 @@ Excel.merge_cell(detail_page, [
     row, 3 + fixed_side['center'] + fixed_side['right'] - 1])
 
 # Row height header:
-pdb.set_trace()
-row_touched = tuple(range(0, row + 1))
-Excel.row_height(detail_page, row_touched, height=pixel['h_header'])
+Excel.row_height(
+    detail_page, tuple(range(0, row + 1)), height=pixel['h_header'])
 
 # -----------------------------------------------------------------------------
 #                                  DATA BLOCK:
@@ -551,7 +550,8 @@ Excel.write_xls_line(
     col=fixed_side['left'] + fixed_side['center'])
 
 # Row height data:
-Excel.row_height(detail_page, range(start_row, row), height=pixel['h_data'])
+Excel.row_height(
+    detail_page, tuple(range(start_row, row)), height=pixel['h_data'])
 
 """
 # cell_1 = Excel.rowcol_to_cell(row, 4)
