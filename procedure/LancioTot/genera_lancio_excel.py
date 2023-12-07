@@ -203,7 +203,7 @@ for line in open(file_job, 'r'):
 
         # Compact extra data for key:
         if len(key) > 3:
-            key = tuple(key[:2])
+            key = list(key[:2])
             key3 = ' '.join(key[2:])
             key.append(key3)
             key = tuple(key)
