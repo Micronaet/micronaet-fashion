@@ -260,6 +260,12 @@ for master_key in file_data['master']:
     tg_block = file_data['master'][master_key][
                file_data['range_tg'][0]:file_data['range_tg'][1] + 1]
 
+    # Update total line
+    tg_pos = 0
+    for tg_value in tg_block:
+        file_data['total_tg'][tg_pos] += tg_value
+        tg_pos += 1
+
     # Job linked:
     file_data['components'][master_key] = []
     for job_reference in file_data['master_component'][master_key]:
