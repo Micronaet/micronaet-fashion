@@ -503,6 +503,7 @@ for master_key in file_data['master']:
     block_row = row
 
     mrp_name, block_name, color_name = master_key
+    fabric_name = '%s %s' % (block_name, color_name)
     tg_block = file_data['master'][master_key][
                file_data['range_tg'][0]:file_data['range_tg'][1] + 1]
     subtotal = sum(tuple(file_data['master'][master_key]))
@@ -520,6 +521,8 @@ for master_key in file_data['master']:
     # Component extra line:
     excel_line = empty_component[:]
     for component in file_data['components'][master_key]:
+        if component == fabric_name:
+            continue  # Jump fabric name
         excel_line[2] = component
         Excel.write_xls_line(
             detail_page, row, excel_line, f_text)
