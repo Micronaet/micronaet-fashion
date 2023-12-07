@@ -548,9 +548,9 @@ for master_key in file_data['master']:
 
 excel_line = file_data['total_tg'][:]
 excel_line.append(file_data['total'])
-Excel.write_xls_line(
-    detail_page, row, [(v, f_text_title_center) for v in excel_line], f_text,
-    col=fixed_side['left'] + fixed_side['center'])
+#Excel.write_xls_line(
+#    detail_page, row, [(v, f_text_title_center) for v in excel_line], f_text,
+#    col=fixed_side['left'] + fixed_side['center'])
 
 # Row height data:
 Excel.row_height(
