@@ -290,8 +290,6 @@ for master_key in file_data['master']:
                 if default_code not in file_data['components_check'][
                         master_key]:
                     record = categories[default_code]
-                    if category == 'Adesivo':
-                        pdb.set_trace()
                     component_name = (
                         category,
                         u'%s\n%s-%s\n%s' % (
@@ -300,6 +298,9 @@ for master_key in file_data['master']:
                         record[7].strip(),  # Supplier name
                         record[8].strip(),  # Supplier name
                         ))
+                    if category == 'Adesivo':
+                        print(component_name)
+                        pdb.set_trace()
                     # Save for report:
                     file_data['components'][master_key].append(component_name)
                     # Update check list:
