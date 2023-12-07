@@ -480,7 +480,7 @@ Excel.write_xls_line(
 Excel.row_height(detail_page, [row ], height=pixel['h_data'])
 
 # Merge 3 lines and block 3x3:
-for this_row in range(2, 6):
+for this_row in range(2, 5):
     for col in range(0, fixed_side['center'], 3):
         this_col = fixed_side['left'] + col
         Excel.merge_cell(
@@ -492,15 +492,18 @@ for this_row in range(2, 6):
 # -----------------------------------------------------------------------------
 row += 1
 start_row = row
+empty_component = ['', '', '']
+excel_line.extend(empty_center)
+excel_line.extend(['' for cell in tg_block])
+excel_line.extend([''])
+
 for master_key in file_data['master']:
     mrp_name, block_name, color_name = master_key
     tg_block = file_data['master'][master_key][
                file_data['range_tg'][0]:file_data['range_tg'][1] + 1]
     subtotal = sum(tuple(file_data['master'][master_key]))
 
-    # Job linked:
-    component_list = file_data['components'][master_key]
-
+    # Article first line:
     excel_line = [
         '', block_name, color_name]
     excel_line.extend(empty_center)
@@ -509,6 +512,15 @@ for master_key in file_data['master']:
     Excel.write_xls_line(
         detail_page, row, excel_line, f_text)
     row += 1
+
+    # Component extra line:
+    excel_line = empty_component[:]
+    for component in file_data['components'][master_key]:
+        excel_line[2] = component
+        Excel.write_xls_line(
+            detail_page, row, excel_line, f_text)
+    row += 1
+
 
 excel_line = file_data['total_tg'][:]
 excel_line.append(file_data['total'])
