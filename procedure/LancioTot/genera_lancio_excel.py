@@ -126,6 +126,7 @@ file_data = {
     'master_component': {},  # Master data for component linked
     'compact_component': {},  # List of component
 
+    'total_tg': [],
     'total': 0,  # Total pz.
     'range_tg': [100, 0],  # Tg range position
 
@@ -244,7 +245,7 @@ for line in open(file_job, 'r'):
 # Compact component view:
 file_data['active_col_tg'] = file_data['col_tag'][
          file_data['range_tg'][0]:file_data['range_tg'][1] + 1]
-print('TAGLIE ATTIVE', file_data['active_col_tg'])
+file_data['total_tg'] = file_data['active_col_tg'][:]  # Total (last line)
 block = {
     'center': 9,
     'right': len(file_data['active_col_tg']),
@@ -255,8 +256,6 @@ for master_key in file_data['master']:
     file_data['total'] += subtotal
     tg_block = file_data['master'][master_key][
                file_data['range_tg'][0]:file_data['range_tg'][1] + 1]
-    print('>>>>>>> BLOCCO: ARTICOLO-COLORE', master_key[1:],
-          'TAGLIE', tg_block, 'Tot', subtotal)
 
     # Job linked:
     file_data['components'][master_key] = []
@@ -271,8 +270,6 @@ for master_key in file_data['master']:
                     file_data['components'][master_key].append(product_name)
                     # quantity = categories[product_name]
                     print(category, product_name)  # Only first!
-
-print('Totale', file_data['total'])
 
 # -----------------------------------------------------------------------------
 #                            Excel file:
@@ -504,164 +501,22 @@ for master_key in file_data['master']:
         detail_page, row, excel_line, f_text)
     row += 1
 
-master_total = file_data['total']
+excel_line = file_data['total_tg'][:]
+excel_line.append(file_data['total'])
+
+Excel.write_xls_line(
+    detail_page, row, excel_line, f_text,
+    col=fixed_side['left'] + fixed_side['center'])
 
 # Row height data:
 Excel.row_height(detail_page, range(start_row, row), height=pixel['h_data'])
 
 """
-    for x in range(block):
-        Excel.write_xls_line(
-            detail_page, row + x, this_line, f_text)
-
-        # Clean header data after written first time:
-        if not x:
-            first_rows.append(row)
-        if color == -1 and not x:
-            title_row = row
-            this_line[7] = ''
-            this_line[9] = ''
-
-        # Merge:
-        dimension = [row + x, len_b1, row + x, len_b1 + 2 - 1]
-        Excel.merge_cell(detail_page, dimension)
-        dimension = [row + x, len_b1 + 2, row + x, len_b1 + 2 + 5 - 1]
-        print(dimension)
-        Excel.merge_cell(detail_page, dimension)
-    row += block
-
-# Merge after title cell (before raise problems)
-# Title:
-Excel.merge_cell(detail_page, [
-    first_rows[0], len_b1 + 2, first_rows[0] + 2, len_b1 + 7 - 1])
-
-# Unify 2 row in a column (only first 7)
-total_row = 0
-for row in first_rows:
-    if not total_row:
-        total_row = row  # First line
-    # Write data:
-
-    # Row height different:
-    Excel.row_height(detail_page, [row, row+1, row+2], height=data_row_height)
-
-    # First 7 columns merge:
-    for col in range(7):
-        Excel.merge_cell(detail_page, [
-            row, col, row + 2, col])
-
-    # Article merge
-    Excel.merge_cell(detail_page, [
-        row, 7, row + 2, 8])
-
-# Total block right merge:
-total_start = len_b1 + len_b2 + len_b3
-for tot_col in range(total_start, total_start + len_b4):
-    Excel.merge_cell(detail_page, [
-        total_row, tot_col, total_row + 2, tot_col])
-
-data_ref.update({
-    'from_row': first_rows[0],
-    'total_start_col': total_start,
-    })
-
-# -----------------------------------------------------------------------------
-#                                   DATA:
-# -----------------------------------------------------------------------------
-# Header data:
-# -----------------------------------------------------------------------------
-# Lots:
-Excel.write_xls_line(
-    detail_page, 0, [
-        ('MODELLO: %s' % file_data['article_name'], f_text_title)], f_text,
-    col=len_b1+len_b2)
-Excel.write_xls_line(
-    detail_page, 1, [
-        ('Lancio in produzione n.: %s' % file_data['lot'], f_text_title)],
-    f_text,
-    col=len_b1+len_b2)
-
-# Note:
-Excel.write_xls_line(
-    detail_page, 0, [('NOTE', f_text_title)], f_text,
-    col=len_b1+len_b2+len_b3)
-
-Excel.write_xls_line(
-    detail_page, 1, [u'Comp. fodera: %s' % file_data['composition']], f_text,
-    col=len_b1+len_b2+len_b3)
-Excel.write_xls_line(
-    detail_page, 2, [u'Consumo: %s' % file_data['material']], f_text,
-    col=len_b1+len_b2+len_b3)
-
-
-# Write line references:
-this_row = data_ref['from_row'] + 3  # Jump header yet compiled
-
-# Generate empty line for total
-master_total = [0 for l in file_data['col_tag_clean']]
-master_total.append(0)  # Line total
-
-for item in file_data['color']:
-    # Article
-    Excel.write_xls_line(
-        detail_page, this_row, [file_data['article_reference']], f_text, col=7)
-    # Color
-    Excel.write_xls_line(
-        detail_page, this_row, [item], f_text, col=9)  # f_text_no_low
-    # Comment
-    Excel.write_xls_line(
-        detail_page, this_row + 1, [file_data['comment'][item]], f_text, col=9)
-
-    # Total for this size (right)
-    total_block = file_data['master'][item][
-        file_data['col_range'][0]:
-        file_data['col_range'][1] + 1]
-    total_of_line = sum([int(t) for t in total_block if t])
-
-    # Update master total:
-    for position in range(len(total_block)):
-        if total_block[position]:
-            if total_block[position]:
-                master_total[position] += total_block[position]
-    master_total[-1] += total_of_line
-
-    Excel.write_xls_line(
-        detail_page, this_row, total_block,
-        f_text_center, col=data_ref['total_start_col'])
-
-    # Total of line with formula:
-    Excel.write_xls_line(
-        detail_page, this_row, [total_of_line],
-        f_text_title_center, col=data_ref['total_start_col'] + len_b4 - 1)
-
-    # Unity 3 for per every column:
-    total_column_range = range(
-        data_ref['total_start_col'], data_ref['total_start_col'] + len_b4)
-    for this_col in total_column_range:
-        Excel.merge_cell(
-            detail_page, [this_row, this_col, this_row + 2, this_col])
-    this_row += 3  # multiple rows!
-
-# Write total sizes (and total column):
-size_data_complete = file_data['col_tag_clean'][:]
-size_data_complete.append('Totale\ncapi')
-Excel.write_xls_line(
-    detail_page, data_ref['from_row'], size_data_complete,
-    default_format=f_text_title_center, col=data_ref['total_start_col'])
-
-# Master total:
-Excel.write_xls_line(
-    detail_page, this_row, master_total,
-    f_text_title_center, col=len_b1 + len_b2 + len_b3)
-
-# , default_format=False, data='')
-
 # cell_1 = Excel.rowcol_to_cell(row, 4)
 # cell_2 = Excel.rowcol_to_cell(row, 5)
 # Excel.write_formula(detail_page, row, 6, '=%s*%s' % (
 #    cell_1, cell_2), f_number, subtotal)
 
-'''
 # -------------------------------------------------------------------------
 # Write formula for subtotal:
 # -------------------------------------------------------------------------
@@ -674,7 +529,5 @@ formula = "=SUM(%s:%s)" % (
     )
 
 Excel.write_formula(detail_page, row, 3, formula, f_number, total_db[fabric])
-'''
-print(file_data)
 """
 Excel.close_workbook()
