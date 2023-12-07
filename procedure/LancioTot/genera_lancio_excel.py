@@ -354,7 +354,7 @@ Excel.write_xls_line(
     detail_page, row, excel_line, f_text)
 
 # Group:
-Excel.merge_cell(detail_page, [0, 1, 0, 2])
+Excel.merge_cell(detail_page, [row, 1, row, 2])
 
 # -----------------------------------------------------------------------------
 # ROW 1
@@ -374,7 +374,7 @@ Excel.write_xls_line(
     detail_page, row, excel_line, f_text)
 
 # Group:
-Excel.merge_cell(detail_page, [1, 1, 1, 2])
+Excel.merge_cell(detail_page, [row, 1, row, 2])
 
 # -----------------------------------------------------------------------------
 # ROW 2
@@ -393,6 +393,9 @@ excel_line.extend(['' for i in range(fixed_side['right'] - 1)])  # - 1 x NOTE
 
 Excel.write_xls_line(
     detail_page, row, excel_line, f_text)
+
+# Group:
+Excel.merge_cell(detail_page, [row, 1, row, 2])
 
 # -----------------------------------------------------------------------------
 # ROW 3
@@ -423,6 +426,9 @@ excel_line.extend(['' for i in range(fixed_side['right'])])
 Excel.write_xls_line(
     detail_page, row, excel_line, f_text)
 
+# Group:
+Excel.merge_cell(detail_page, [row, 1, row, 2])
+
 # -----------------------------------------------------------------------------
 # ROW 4 - Header title:
 # -----------------------------------------------------------------------------
@@ -439,6 +445,9 @@ excel_line.extend([('Totale\nCapi', f_text_title_center)])
 
 Excel.write_xls_line(
     detail_page, row, excel_line, f_text)
+
+# Group:
+Excel.merge_cell(detail_page, [row, 1, row, 2])
 
 """
 # -----------------------------------------------------------------------------
