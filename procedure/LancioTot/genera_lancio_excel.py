@@ -292,7 +292,7 @@ for master_key in file_data['master']:
                     component_record = categories[default_code]
                     component_name = (
                         category,
-                        u'%s\n%s-%s\n%s' % (
+                        '%s\n%s-%s\n%s' % (
                         component_record[3].strip(),  # Component name
                         component_record[6].strip(),  # Supplier code
                         component_record[7].strip(),  # Supplier name
