@@ -37,6 +37,7 @@ ExcelWriter = excel_export.excelwriter.ExcelWriter
 # Utility:
 # -----------------------------------------------------------------------------
 # Utility dict:
+center_cols = 7 * 3
 category_setup = (
     # 3 start (before)
     ('ADE', 'Adesivo'),  # Start, Category, order
@@ -173,6 +174,7 @@ for line in open(file_product, 'r'):
 tg_cols = 16  # total tg col (no TOT)
 fixed_col = 4  # Job, row, MRP code, Description
 empty_tg = [0 for i in range(tg_cols)]  # No TOT col
+empty_center = [0 for i in range(center_cols)]  # Center empty cols
 
 pos = 0
 for line in open(file_job, 'r'):
@@ -303,7 +305,7 @@ pixel = {
 
 fixed_side = {
     'left': 3,
-    'center': 7 * 3,
+    'center': center_cols,
     'right': len(file_data['active_col_tg']) + 1,  # +TOT
 }
 
@@ -447,14 +449,6 @@ Excel.write_xls_line(
 
 # Group:
 Excel.merge_cell(detail_page, [row, 1, row, 2])
-# Merge 3 lines and block 3x3:
-for this_row in range(2, 5):
-    for col in range(0, fixed_side['center'], 3):
-        this_col = fixed_side['left'] + col
-        Excel.merge_cell(
-            detail_page, [
-                this_row, this_col, this_row, this_col + 2])
-
 Excel.merge_cell(detail_page, [
     row, 3 + fixed_side['center'],
     row, 3 + fixed_side['center'] + fixed_side['right'] - 1])
@@ -481,9 +475,38 @@ excel_line.extend([('Totale\nCapi', f_text_title_center)])
 Excel.write_xls_line(
     detail_page, row, excel_line, f_text)
 
+# Merge 3 lines and block 3x3:
+for this_row in range(2, 6):
+    for col in range(0, fixed_side['center'], 3):
+        this_col = fixed_side['left'] + col
+        Excel.merge_cell(
+            detail_page, [
+                this_row, this_col, this_row, this_col + 2])
+
 # -----------------------------------------------------------------------------
 # ROW 5 - Line data:
 # -----------------------------------------------------------------------------
+row += 1
+start_row = row
+for master_key in file_data['master']:
+    mrp_name, block_name, color_name = master_key
+    tg_block = file_data['master'][master_key][
+               file_data['range_tg'][0]:file_data['range_tg'][1] + 1]
+    subtotal = sum(tuple(file_data['master'][master_key]))
+
+    # Job linked:
+    component_list = file_data['components'][master_key]
+
+    excel_line = [
+        '', block_name, color_name]
+    excel_line.extend(empty_center)
+    excel_line.extend(tg_block)
+    excel_line.extend([subtotal])
+    Excel.write_xls_line(
+        detail_page, row, excel_line, f_text)
+    row += 1
+
+master_total = file_data['total']
 
 # Group:
 # Excel.merge_cell(detail_page, [row, 1, row, 2])
