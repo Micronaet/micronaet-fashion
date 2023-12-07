@@ -174,7 +174,7 @@ for line in open(file_product, 'r'):
 tg_cols = 16  # total tg col (no TOT)
 fixed_col = 4  # Job, row, MRP code, Description
 empty_tg = [0 for i in range(tg_cols)]  # No TOT col
-empty_center = [0 for i in range(center_cols)]  # Center empty cols
+empty_center = ['' for i in range(center_cols)]  # Center empty cols
 
 pos = 0
 for line in open(file_job, 'r'):
