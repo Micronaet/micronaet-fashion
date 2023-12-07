@@ -534,7 +534,6 @@ for master_key in file_data['master']:
             detail_page, [
                 block_row, this_col, row-1, this_col])
 
-
 excel_line = file_data['total_tg'][:]
 excel_line.append(file_data['total'])
 Excel.write_xls_line(
