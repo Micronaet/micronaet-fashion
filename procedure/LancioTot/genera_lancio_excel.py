@@ -293,7 +293,7 @@ Excel.create_worksheet(detail_page)
 # Parameters:
 pixel = {
     # Colums:
-    'less': 10, 'standard': 15, 'big': 20,
+    'less': 10, 'standard': 15, 'big': 20, 'wide': 40,
 
     'center': 4, 'tg': 5,
 
@@ -313,7 +313,7 @@ left = [
     pixel['standard'],
     # Raggruppamento:
     pixel['less'],
-    pixel['standard'],
+    pixel['wide'],
     ]
 center = [pixel['center'] for i in range(fixed_side['center'])]
 right = [pixel['tg'] for i in range(fixed_side['right'] - 1)]
@@ -493,9 +493,9 @@ for this_row in range(2, 5):
 row += 1
 start_row = row
 empty_component = ['', '', '']
-excel_line.extend(empty_center)
-excel_line.extend(['' for cell in tg_block])
-excel_line.extend([''])
+empty_component.extend(empty_center)
+empty_component.extend(['' for cell in tg_block])
+empty_component.extend([''])
 
 for master_key in file_data['master']:
     mrp_name, block_name, color_name = master_key
