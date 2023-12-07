@@ -32,6 +32,7 @@ except:
 
 ExcelWriter = excel_export.excelwriter.ExcelWriter
 
+debug = True
 
 # -----------------------------------------------------------------------------
 # Utility:
@@ -564,6 +565,10 @@ Excel.write_xls_line(
 # Row height data:
 Excel.row_height(
     detail_page, tuple(range(start_row, row)), height=pixel['h_data'])
+
+if debug:
+    print('DETTAGLIO COMPONENTI:')
+    print(file_data['master_component'])
 
 """
 # cell_1 = Excel.rowcol_to_cell(row, 4)
