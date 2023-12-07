@@ -293,16 +293,12 @@ Excel.create_worksheet(detail_page)
 # Parameters:
 pixel = {
     # Colums:
-    'less': 10,
-    'standard': 15,
-    'big': 20,
+    'less': 10, 'standard': 15, 'big': 20,
 
-    'center': 4,
-    'tg': 5,
+    'center': 4, 'tg': 5,
 
     # Row:
-    'header': 20,
-    'data': 30,
+    'header': 20, 'data': 30,
 }
 
 fixed_side = {
@@ -357,6 +353,9 @@ excel_line.extend(['' for i in range(fixed_side['right'] - 1)])  # - 1 x NOTE
 Excel.write_xls_line(
     detail_page, row, excel_line, f_text)
 
+# Group:
+Excel.merge_cell(detail_page, [0, 1, 0, 2])
+
 # -----------------------------------------------------------------------------
 # ROW 1
 # -----------------------------------------------------------------------------
@@ -373,6 +372,9 @@ excel_line.extend(['' for i in range(fixed_side['right'] - 1)])  # - 1 x NOTE
 
 Excel.write_xls_line(
     detail_page, row, excel_line, f_text)
+
+# Group:
+Excel.merge_cell(detail_page, [1, 1, 1, 2])
 
 # -----------------------------------------------------------------------------
 # ROW 2
@@ -431,89 +433,14 @@ excel_line = [
     ('COLORE', f_text_title),
 ]
 excel_line.extend(['' for i in range(fixed_side['center'])])
-excel_line.extend(file_data['active_col_tg'])
 excel_line.extend([
-    ('Totale\nCapi', f_text_title),])
+    (cell, f_text_title_center) for cell in file_data['active_col_tg']])
+excel_line.extend([('Totale\nCapi', f_text_title_center)])
 
 Excel.write_xls_line(
     detail_page, row, excel_line, f_text)
 
 """
-
-# Center + Right:
-first = True
-block_3 = []
-block_4 = []
-for loop in range(total_size):
-    block_3.extend(['', '', ''])  # 3 x size
-    block_4.extend([''])  # 1 x size
-
-block_4.extend([''])  # Total box
-
-Excel.write_xls_line(
-    detail_page, row,
-    block_1 + block_2 + block_3 + block_4, f_text)
-
-# -----------------------------------------------------------------------------
-# ROW 1
-# -----------------------------------------------------------------------------
-row += 1
-
-# Remove title:
-block_1[0] = ''
-block_2[0] = ''
-block_3[0] = ''
-block_4[0] = ''
-
-Excel.write_xls_line(
-    detail_page, row,
-    block_1 + block_2 + block_3 + block_4, f_text)
-
-# -----------------------------------------------------------------------------
-# ROW 2
-# -----------------------------------------------------------------------------
-row += 1
-# Assign new title:
-block_2[0] = ('Alt. Matrici', f_text_title)
-
-Excel.write_xls_line(
-    detail_page, row,
-    block_1 + block_2 + block_3 + block_4, f_text)
-
-# -----------------------------------------------------------------------------
-# ROW 3
-# -----------------------------------------------------------------------------
-row += 1
-# Assign new title:
-block_1[0] = ('Data', f_text_title)
-block_2[0] = ('Lung. Tappeto', f_text_title)
-
-Excel.write_xls_line(
-    detail_page, row,
-    block_1 + block_2 + block_3 + block_4, f_text)
-
-# -----------------------------------------------------------------------------
-# ROW 4
-# -----------------------------------------------------------------------------
-row += 1
-# Assign new title:
-block_1[0] = file_data['date']
-block_2[0] = ('Lung. progessiva', f_text_title)
-
-Excel.write_xls_line(
-    detail_page, row,
-    block_1 + block_2 + block_3 + block_4, f_text)
-
-block_1[0] = ''
-
-
-for loop in range(total_size):  # Dynamic (x tg):
-    center.extend([w2,  w2,  w2])
-    right.append(w2)
-
-right.append(12)  # Total columns
-
-
 # -----------------------------------------------------------------------------
 #                               Merge cells:
 # -----------------------------------------------------------------------------
