@@ -121,18 +121,29 @@ file_data = {
     'fabric_material': '',
     'jobs': [],  # Total Job touched
 
+    # -------------------------------------------------------------------------
     # Master detail used
+    # -------------------------------------------------------------------------
     'master': {},  # Master data for job list
-    'master_component': {},  # Master data for component linked
-    'compact_component': {},  # List of component
+    'master_component': {},
+    # Master data for component linked:
+    #         PRODUCT KEY           JOB LINE
+    # (mrp name, article, color): [(job, line)]
+
 
     'total_tg': [],
     'total': 0,  # Total pz.
     'range_tg': [100, 0],  # Tg range position
 
     # Extra detail used:
-    'components': {},  # Job - Line: components list
-    'components_check': {},  # Job - Line: components list (check code!)
+    'components_set': {},  # List of component (file 1)
+    # not used!
+    'components': {},
+    # Job - Line: components list
+
+    'components_check': {},
+    # Job - Line: components list (check code!)
+    #  PRODUCT KEY list to check if unique
     }
 
 # -----------------------------------------------------------------------------
@@ -147,28 +158,28 @@ for line in open(file_product, 'r'):
     quantity = clean_float(part[4])
     material = clean(part[5])
 
-    key = job, row
-    if key not in file_data['components']:
-        file_data['components'][key] = {}
+    job_line_key = job, row
+    if job_line_key not in file_data['components']:
+        file_data['components'][job_line_key] = {}
 
     category = get_category(default_code)
     if not category:
         # component not used
         continue
-    if category not in file_data['components'][key]:
-        file_data['components'][key][category] = {}
+    if category not in file_data['components'][job_line_key]:
+        file_data['components'][job_line_key][category] = {}
 
-    if default_code not in file_data['components'][key][category]:
+    if default_code not in file_data['components'][job_line_key][category]:
         # Save all line only once!
-        file_data['components'][key][category][default_code] = part
+        file_data['components'][job_line_key][category][default_code] = part
+
+    # Not used:
     # file_data['components'][key][category][name] += quantity
+    # if category == 'Fodera' and not file_data['fodera_material']:
+    #    file_data['fodera_material'] = material  # Always the same!
 
-    # Update header data (used?):
-    if category == 'Fodera' and not file_data['fodera_material']:
-        file_data['fodera_material'] = material  # Always the same!
-
-    if category == 'Tessuto' and not file_data['fabric_material']:
-        file_data['fabric_material'] = material  # Always the same!
+    # if category == 'Tessuto' and not file_data['fabric_material']:
+    #    file_data['fabric_material'] = material  # Always the same!
 
 # -----------------------------------------------------------------------------
 #                          Load Job from file:
@@ -201,16 +212,16 @@ for line in open(file_job, 'r'):
         row = clean(part[1])
         mrp_product = clean(part[2])
         description = clean(part[3])
-        key = tuple(description.split(' '))
+        mrp_key = tuple(description.split(' '))
 
         # Compact extra data for key:
-        if len(key) > 3:
-            new_key = list(key[:2])
-            key3 = ' '.join(key[2:])
+        if len(mrp_key) > 3:
+            new_key = list(mrp_key[:2])
+            key3 = ' '.join(mrp_key[2:])
             new_key.append(key3)
-            key = tuple(new_key)
+            mrp_key = tuple(new_key)
 
-        mrp_name, article_name, color = key[:3]  # Only first 3 part
+        mrp_name, article_name, color = mrp_key  # Must be 3 here!
 
         if not file_data['mrp_name']:
             file_data['mrp_name'] = mrp_name  # always the same?
@@ -221,18 +232,19 @@ for line in open(file_job, 'r'):
         # Tg total data:
         # ---------------------------------------------------------------------
         component_key = job, row  # Used for component
-        if key not in file_data['master']:
-            file_data['master'][key] = empty_tg[:]  # Duplicate empty
-            file_data['master_component'][key] = []  # List of component keys
+        if mrp_key not in file_data['master']:
+            file_data['master'][mrp_key] = empty_tg[:]  # Duplicate empty
+            file_data['master_component'][mrp_key] = []  # List component keys
 
         # Used for load all component needed:
-        file_data['master_component'][key].append(component_key)
+        file_data['master_component'][mrp_key].append(component_key)
         # Populate:
         tg_pos = 0
+        this_quantity = 0
         for quantity in part[fixed_col:-1]:
             try:
                 this_quantity = int(quantity)
-                file_data['master'][key][tg_pos] += this_quantity
+                file_data['master'][mrp_key][tg_pos] += this_quantity
                 # Last columns is total!
             except:
                 this_quantity = 0  # empty
@@ -264,10 +276,10 @@ block = {
     'right': len(file_data['active_col_tg']),
     }
 
-for master_key in file_data['master']:
-    subtotal = sum(tuple(file_data['master'][master_key]))
+for mrp_key in file_data['master']:
+    subtotal = sum(tuple(file_data['master'][mrp_key]))
     file_data['total'] += subtotal
-    tg_block = file_data['master'][master_key][
+    tg_block = file_data['master'][mrp_key][
                file_data['range_tg'][0]:file_data['range_tg'][1] + 1]
 
     # Update total line
@@ -277,9 +289,9 @@ for master_key in file_data['master']:
         tg_pos += 1
 
     # Component linked with job-line:
-    file_data['components_check'][master_key] = []  # Save code x check double
-    file_data['components'][master_key] = []
-    for job_reference in file_data['master_component'][master_key]:
+    file_data['components_check'][mrp_key] = []  # Save code x check double
+    file_data['components'][mrp_key] = []
+    for job_reference in file_data['master_component'][mrp_key]:
         references = file_data['components'][job_reference]
         for category in sorted(references,
                                key=lambda x: sort_category.get(x, 0)):
@@ -288,7 +300,7 @@ for master_key in file_data['master']:
             for default_code in categories:
                 # Use check list:
                 if default_code not in file_data['components_check'][
-                        master_key]:
+                        mrp_key]:
                     component_record = categories[default_code]
                     component_name = (
                         category,
@@ -299,9 +311,9 @@ for master_key in file_data['master']:
                         component_record[8].strip(),  # Supplier name
                         ))
                     # Save for report:
-                    file_data['components'][master_key].append(component_name)
+                    file_data['components'][mrp_key].append(component_name)
                     # Update check list:
-                    file_data['components_check'][master_key].append(
+                    file_data['components_check'][mrp_key].append(
                         default_code)
 
 # -----------------------------------------------------------------------------
