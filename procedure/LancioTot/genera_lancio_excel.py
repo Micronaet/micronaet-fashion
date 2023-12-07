@@ -344,7 +344,7 @@ excel_line = [
     ('RAGGRUPPAMENTO', f_text_title), '',
     ('MODELLO: ', f_text_title),
 ]
-excel_line.extend(['' for i in range(fixed_side['center'] - 1)])  # - 1 x MODELLO
+excel_line.extend(['' for i in range(fixed_side['center'] - 1)])  # - 1 x MOD.
 excel_line.extend([
     ('NOTE', f_text_title),
 ])
@@ -447,7 +447,14 @@ Excel.write_xls_line(
 
 # Group:
 Excel.merge_cell(detail_page, [row, 1, row, 2])
-# Excel.merge_cell(detail_page, [row, 3, row, 3 + fixed_side['center'] - 1])
+# Merge 3 lines and block 3x3:
+for this_row in range(2, 5):
+    for col in range(0, fixed_side['center'], 3):
+        this_col = fixed_side['left'] + col
+        Excel.merge_cell(
+            detail_page, [
+                this_row, this_col, this_row, this_col + 2])
+
 Excel.merge_cell(detail_page, [
     row, 3 + fixed_side['center'],
     row, 3 + fixed_side['center'] + fixed_side['right'] - 1])
@@ -455,6 +462,8 @@ Excel.merge_cell(detail_page, [
 # Row height header:
 Excel.row_height(detail_page, range(0, row+1), height=pixel['h_header'])
 
+# -----------------------------------------------------------------------------
+#                                  DATA BLOCK:
 # -----------------------------------------------------------------------------
 # ROW 4 - Header title:
 # -----------------------------------------------------------------------------
@@ -472,15 +481,16 @@ excel_line.extend([('Totale\nCapi', f_text_title_center)])
 Excel.write_xls_line(
     detail_page, row, excel_line, f_text)
 
+# -----------------------------------------------------------------------------
+# ROW 5 - Line data:
+# -----------------------------------------------------------------------------
+
 # Group:
 # Excel.merge_cell(detail_page, [row, 1, row, 2])
 
 # Row height header:
 Excel.row_height(detail_page, [row], height=pixel['h_data'])
 
-# -----------------------------------------------------------------------------
-#                                  DATA BLOCK:
-# -----------------------------------------------------------------------------
 """
     for x in range(block):
         Excel.write_xls_line(
