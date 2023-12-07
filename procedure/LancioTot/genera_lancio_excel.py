@@ -125,9 +125,9 @@ file_data = {
     # Master detail used
     # -------------------------------------------------------------------------
     'master': {},  # Master data for job list
-    'master_component': {},
+    'master_jobs': {},
     # Master data for component linked:
-    #         PRODUCT KEY           JOB LINE
+    #         MRP KEY              JOB LINE KEY
     # (mrp name, article, color): [(job, line)]
 
 
@@ -143,11 +143,11 @@ file_data = {
 
     'components_check': {},
     # Job - Line: components list (check code!)
-    #  PRODUCT KEY list to check if unique
+    #   MRP KEY list to check if unique
     }
 
 # -----------------------------------------------------------------------------
-#                          Load components from file:
+#                         Load components from file BL:
 # -----------------------------------------------------------------------------
 for line in open(file_product, 'r'):
     part = line.split(';')
@@ -159,6 +159,7 @@ for line in open(file_product, 'r'):
     material = clean(part[5])
 
     job_line_key = job, row
+    # 1. Level components - job line ID
     if job_line_key not in file_data['components']:
         file_data['components'][job_line_key] = {}
 
@@ -166,20 +167,14 @@ for line in open(file_product, 'r'):
     if not category:
         # component not used
         continue
+    # 2. Level components - job line ID - Category
     if category not in file_data['components'][job_line_key]:
         file_data['components'][job_line_key][category] = {}
 
+    # 2. Level components - job line ID - Category - Code > Component line
     if default_code not in file_data['components'][job_line_key][category]:
         # Save all line only once!
         file_data['components'][job_line_key][category][default_code] = part
-
-    # Not used:
-    # file_data['components'][key][category][name] += quantity
-    # if category == 'Fodera' and not file_data['fodera_material']:
-    #    file_data['fodera_material'] = material  # Always the same!
-
-    # if category == 'Tessuto' and not file_data['fabric_material']:
-    #    file_data['fabric_material'] = material  # Always the same!
 
 # -----------------------------------------------------------------------------
 #                          Load Job from file:
@@ -231,13 +226,13 @@ for line in open(file_job, 'r'):
         # ---------------------------------------------------------------------
         # Tg total data:
         # ---------------------------------------------------------------------
-        component_key = job, row  # Used for component
+        job_line_key = job, row  # Used for component
         if mrp_key not in file_data['master']:
             file_data['master'][mrp_key] = empty_tg[:]  # Duplicate empty
-            file_data['master_component'][mrp_key] = []  # List component keys
+            file_data['master_jobs'][mrp_key] = []  # List component keys
 
         # Used for load all component needed:
-        file_data['master_component'][mrp_key].append(component_key)
+        file_data['master_jobs'][mrp_key].append(job_line_key)
         # Populate:
         tg_pos = 0
         this_quantity = 0
@@ -282,26 +277,31 @@ for mrp_key in file_data['master']:
     tg_block = file_data['master'][mrp_key][
                file_data['range_tg'][0]:file_data['range_tg'][1] + 1]
 
+    # -------------------------------------------------------------------------
     # Update total line
+    # -------------------------------------------------------------------------
     tg_pos = 0
     for tg_value in tg_block:
         file_data['total_tg'][tg_pos] += tg_value
         tg_pos += 1
 
+    # -------------------------------------------------------------------------
     # Component linked with job-line:
+    # -------------------------------------------------------------------------
     file_data['components_check'][mrp_key] = []  # Save code x check double
-    file_data['components'][mrp_key] = []
-    for job_reference in file_data['master_component'][mrp_key]:
-        references = file_data['components'][job_reference]
-        for category in sorted(references,
+    file_data['components_set'][mrp_key] = []  # Save component record
+    for job_line_key in file_data['master_jobs'][mrp_key]:
+        component_list = file_data['components'][job_line_key]
+        for category in sorted(component_list,
                                key=lambda x: sort_category.get(x, 0)):
 
-            categories = file_data['components'][job_reference][category]
-            for default_code in categories:
-                # Use check list:
+            category_components = \
+                file_data['components'][job_line_key][category]
+            for default_code in category_components:
+                # Use check list to keep only first code record:
                 if default_code not in file_data['components_check'][
                         mrp_key]:
-                    component_record = categories[default_code]
+                    component_record = category_components[default_code]
                     component_name = (
                         category,
                         '%s\n%s-%s\n%s' % (
@@ -311,7 +311,7 @@ for mrp_key in file_data['master']:
                         component_record[8].strip(),  # Supplier name
                         ))
                     # Save for report:
-                    file_data['components'][mrp_key].append(component_name)
+                    file_data['components_set'][mrp_key].append(component_name)
                     # Update check list:
                     file_data['components_check'][mrp_key].append(
                         default_code)
@@ -525,14 +525,14 @@ empty_component.extend([''])
 merge_to = len(empty_component)
 
 start_row = row
-for master_key in file_data['master']:
+for mrp_key in file_data['master']:
     block_row = row
 
-    mrp_name, block_name, color_name = master_key
+    mrp_name, block_name, color_name = mrp_key
     # fabric_name = '%s %s' % (block_name, color_name)
-    tg_block = file_data['master'][master_key][
+    tg_block = file_data['master'][mrp_key][
                file_data['range_tg'][0]:file_data['range_tg'][1] + 1]
-    subtotal = sum(tuple(file_data['master'][master_key]))
+    subtotal = sum(tuple(file_data['master'][mrp_key]))
 
     # Article first line:
     excel_line = [
@@ -543,9 +543,11 @@ for master_key in file_data['master']:
     Excel.write_xls_line(detail_page, row, excel_line, f_text)
     row += 1
 
+    # -------------------------------------------------------------------------
     # Component extra line:
+    # -------------------------------------------------------------------------
     excel_line = empty_component[:]
-    for component_detail in file_data['components'][master_key]:
+    for component_detail in file_data['components_set'][mrp_key]:
         # Also fabric is always loaded!
         excel_line[1] = component_detail[0]  # category
         excel_line[2] = component_detail[1]  # component
@@ -568,14 +570,13 @@ Excel.write_xls_line(
 Excel.row_height(
     detail_page, tuple(range(start_row, row)), height=pixel['h_data'])
 
-debug = True
-pdb.set_trace()
+debug = False
 if debug:
     print('TOTALE DATA')
     print(file_data)
 
     print('DETTAGLIO COMPONENTI')
-    print(file_data['components'])
+    print(file_data['components_set'])
 
     pdb.set_trace()
 
