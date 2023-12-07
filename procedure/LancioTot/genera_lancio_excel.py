@@ -453,7 +453,7 @@ Excel.merge_cell(detail_page, [
     row, 3 + fixed_side['center'] + fixed_side['right'] - 1])
 
 # Row height header:
-Excel.row_height(detail_page, range(0, row), height=pixel['data'])
+Excel.row_height(detail_page, range(0, row+1), height=pixel['less'])
 
 # -----------------------------------------------------------------------------
 # ROW 4 - Header title:
@@ -476,7 +476,7 @@ Excel.write_xls_line(
 # Excel.merge_cell(detail_page, [row, 1, row, 2])
 
 # Row height header:
-Excel.row_height(detail_page, [row], height=pixel['header'])
+Excel.row_height(detail_page, [row], height=pixel['data'])
 
 # -----------------------------------------------------------------------------
 #                                  DATA BLOCK:
