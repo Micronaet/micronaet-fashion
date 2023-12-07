@@ -242,10 +242,6 @@ for line in open(file_job, 'r'):
     pos += 1
 
 # Compact component view:
-print('TESSUTO', file_data['fabric_material'],
-      'FODERA', file_data['fodera_material'])
-# print('TAGLIE COMPLETE', file_data['col_tag'])
-# print('RANGE TAGLIE', file_data['range_tg'])
 file_data['active_col_tg'] = file_data['col_tag'][
          file_data['range_tg'][0]:file_data['range_tg'][1] + 1]
 print('TAGLIE ATTIVE', file_data['active_col_tg'])
@@ -365,12 +361,15 @@ row += 1
 excel_line = ['', '', '']
 
 excel_line.extend([
-    ('LANCIO IN PRODUZIONE N.: %s' % ', '.join(file_data['jobs']), f_text_title)])
+    ('LANCIO IN PRODUZIONE N.: %s' % ', '.join(file_data['jobs']),
+     f_text_title)])
 
 excel_line.extend(['' for i in range(fixed_side['center'] - 1)])
 
-excel_line.extend([('Comp. fodera:', f_text_title)])
+excel_line.extend([
+    ('Comp. fodera: %s' % file_data['fodera_material'], f_text_title)])
 excel_line.extend(['' for i in range(fixed_side['right'] - 1)])  # - 1 x NOTE
+# print('TESSUTO', file_data['fabric_material'],
 
 Excel.write_xls_line(
     detail_page, row, excel_line, f_text)
