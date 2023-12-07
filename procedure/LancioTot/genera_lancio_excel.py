@@ -524,7 +524,7 @@ for master_key in file_data['master']:
             detail_page, row, excel_line, f_text)
 
     # Merge TG cells:
-    for this_col in range(merge_from, merge_to + 1):
+    for this_col in range(merge_from, merge_to):
         Excel.merge_cell(
             detail_page, [
                 start_row, this_col, row, this_col])
