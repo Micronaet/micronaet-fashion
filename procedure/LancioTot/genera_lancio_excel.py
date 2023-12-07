@@ -557,6 +557,7 @@ Excel.row_height(
     detail_page, tuple(range(start_row, row)), height=pixel['h_data'])
 
 debug = True
+pdb.set_trace()
 if debug:
     print('TOTALE DATA')
     print(file_data)
