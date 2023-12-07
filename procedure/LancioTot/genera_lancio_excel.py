@@ -298,7 +298,7 @@ pixel = {
     'center': 4, 'tg': 5,
 
     # Row:
-    'header': 50, 'data': 30,
+    'header': 20, 'data': 30,
 }
 
 fixed_side = {
@@ -453,7 +453,7 @@ Excel.merge_cell(detail_page, [
     row, 3 + fixed_side['center'] + fixed_side['right'] - 1])
 
 # Row height header:
-Excel.row_height(detail_page, range(0, row), height=pixel('header'))
+Excel.row_height(detail_page, range(0, row), height=pixel['data'])
 
 # -----------------------------------------------------------------------------
 # ROW 4 - Header title:
@@ -474,6 +474,9 @@ Excel.write_xls_line(
 
 # Group:
 # Excel.merge_cell(detail_page, [row, 1, row, 2])
+
+# Row height header:
+Excel.row_height(detail_page, [row], height=pixel['header'])
 
 # -----------------------------------------------------------------------------
 #                                  DATA BLOCK:
