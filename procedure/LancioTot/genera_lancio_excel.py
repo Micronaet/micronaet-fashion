@@ -312,6 +312,7 @@ Excel = ExcelWriter(xlsx_file, verbose=True)
 # Create WS:
 detail_page = u'Lanciati totali'
 Excel.create_worksheet(detail_page)
+pdb.set_trace()
 Excel.close_workbook()
 sys.exit()
 
