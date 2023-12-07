@@ -373,8 +373,7 @@ excel_line.extend([
 ])
 excel_line.extend(['' for i in range(fixed_side['right'] - 1)])  # - 1 x NOTE
 
-Excel.write_xls_line(
-    detail_page, row, excel_line, f_text)
+Excel.write_xls_line(detail_page, row, excel_line, f_text)
 
 # Group:
 Excel.merge_cell(detail_page, [row, 1, row, 2])
@@ -396,8 +395,7 @@ excel_line = [
 excel_line.extend(['' for i in range(fixed_side['center'])])
 excel_line.extend(['' for i in range(fixed_side['right'])])
 
-Excel.write_xls_line(
-    detail_page, row, excel_line, f_text)
+Excel.write_xls_line(detail_page, row, excel_line, f_text)
 
 # Group:
 Excel.merge_cell(detail_page, [row, 1, row, 2])
@@ -421,8 +419,7 @@ excel_line.extend(['' for i in range(fixed_side['center'])])
 # excel_line.extend([('Consumo:', f_text_title)])
 excel_line.extend(['' for i in range(fixed_side['right'])])
 
-Excel.write_xls_line(
-    detail_page, row, excel_line, f_text)
+Excel.write_xls_line(detail_page, row, excel_line, f_text)
 
 # Group:
 Excel.merge_cell(detail_page, [row, 1, row, 2])
@@ -442,8 +439,7 @@ excel_line = [
 excel_line.extend(['' for i in range(fixed_side['center'])])
 excel_line.extend(['' for i in range(fixed_side['right'])])
 
-Excel.write_xls_line(
-    detail_page, row, excel_line, f_text)
+Excel.write_xls_line(detail_page, row, excel_line, f_text)
 
 # Group:
 Excel.merge_cell(detail_page, [row, 1, row, 2])
@@ -464,8 +460,7 @@ excel_line = [
 excel_line.extend(['' for i in range(fixed_side['center'])])
 excel_line.extend(['' for i in range(fixed_side['right'])])
 
-Excel.write_xls_line(
-    detail_page, row, excel_line, f_text)
+Excel.write_xls_line(detail_page, row, excel_line, f_text)
 
 # Group:
 Excel.merge_cell(detail_page, [row, 1, row, 2])
@@ -493,8 +488,7 @@ excel_line.extend([
     (cell, f_text_title_center) for cell in file_data['active_col_tg']])
 excel_line.extend([('Totale\nCapi', f_text_title_center)])
 
-Excel.write_xls_line(
-    detail_page, row, excel_line, f_text)
+Excel.write_xls_line(detail_page, row, excel_line, f_text)
 
 # Row height header:
 Excel.row_height(detail_page, [row ], height=pixel['h_data'])
@@ -534,8 +528,7 @@ for master_key in file_data['master']:
     excel_line.extend(empty_center)
     excel_line.extend([(cell, f_text_center) for cell in tg_block])
     excel_line.extend([(subtotal, f_text_title_center)])
-    Excel.write_xls_line(
-        detail_page, row, excel_line, f_text)
+    Excel.write_xls_line(detail_page, row, excel_line, f_text)
     row += 1
 
     # Component extra line:
@@ -544,8 +537,7 @@ for master_key in file_data['master']:
         # Also fabric is always loaded!
         excel_line[1] = component_detail[0]  # category
         excel_line[2] = component_detail[1]  # component
-        Excel.write_xls_line(
-            detail_page, row, excel_line, f_text)
+        # Excel.write_xls_line(detail_page, row, excel_line, f_text)
         row += 1
 
     # Merge TG cells:
@@ -583,7 +575,4 @@ formula = "=SUM(%s:%s)" % (
 
 Excel.write_formula(detail_page, row, 3, formula, f_number, total_db[fabric])
 """
-try:
-    Excel.close_workbook()
-except:
-    pass
+Excel.close_workbook()
