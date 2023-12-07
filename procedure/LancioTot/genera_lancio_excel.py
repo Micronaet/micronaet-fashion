@@ -289,14 +289,14 @@ for master_key in file_data['master']:
                 # Use check list:
                 if default_code not in file_data['components_check'][
                         master_key]:
-                    record = categories[default_code]
+                    component_record = categories[default_code]
                     component_name = (
                         category,
                         u'%s\n%s-%s\n%s' % (
-                        record[3].strip(),  # Component name
-                        record[6].strip(),  # Supplier code
-                        record[7].strip(),  # Supplier name
-                        record[8].strip(),  # Supplier name
+                        component_record[3].strip(),  # Component name
+                        component_record[6].strip(),  # Supplier code
+                        component_record[7].strip(),  # Supplier name
+                        component_record[8].strip(),  # Supplier name
                         ))
                     # Save for report:
                     file_data['components'][master_key].append(component_name)
