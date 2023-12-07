@@ -242,9 +242,6 @@ for line in open(file_job, 'r'):
     pos += 1
 
 # Compact component view:
-print('MODELLO', file_data['mrp_name'],
-      'DATA', file_data['date'],
-      'LANCIO IN PRODUZIONE', file_data['jobs'])
 print('TESSUTO', file_data['fabric_material'],
       'FODERA', file_data['fodera_material'])
 # print('TAGLIE COMPLETE', file_data['col_tag'])
@@ -368,7 +365,7 @@ row += 1
 excel_line = ['', '', '']
 
 excel_line.extend([
-    ('LANCIO IN PRODUZIONE N.: ', f_text_title)])
+    ('LANCIO IN PRODUZIONE N.: %s' % ', '.join(file_data['jobs']), f_text_title)])
 
 excel_line.extend(['' for i in range(fixed_side['center'] - 1)])
 
