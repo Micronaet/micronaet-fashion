@@ -562,9 +562,6 @@ if debug:
     print('TOTALE DATA')
     print(file_data)
 
-    print('DETTAGLIO COMPONENTI MASTER')
-    print(file_data['master_components'])
-
     print('DETTAGLIO COMPONENTI')
     print(file_data['components'])
 
