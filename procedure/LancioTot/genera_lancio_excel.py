@@ -464,7 +464,8 @@ Excel.merge_cell(detail_page, [
 
 # Row height header:
 pdb.set_trace()
-Excel.row_height(detail_page, range(0, row + 1), height=pixel['h_header'])
+row_touched = tuple(range(0, row + 1))
+Excel.row_height(detail_page, row_touched, height=pixel['h_header'])
 
 # -----------------------------------------------------------------------------
 #                                  DATA BLOCK:
