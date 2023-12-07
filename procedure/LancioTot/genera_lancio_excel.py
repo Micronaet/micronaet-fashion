@@ -463,6 +463,7 @@ Excel.merge_cell(detail_page, [
     row, 3 + fixed_side['center'] + fixed_side['right'] - 1])
 
 # Row height header:
+pdb.set_trace()
 Excel.row_height(detail_page, range(0, row + 1), height=pixel['h_header'])
 
 # -----------------------------------------------------------------------------
