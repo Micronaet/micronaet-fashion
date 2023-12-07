@@ -281,7 +281,6 @@ for master_key in file_data['master']:
 
 print('Totale', file_data['total'])
 
-# print(file_data)
 # -----------------------------------------------------------------------------
 #                            Excel file:
 # -----------------------------------------------------------------------------
@@ -453,9 +452,6 @@ Excel.merge_cell(detail_page, [
     row, 3 + fixed_side['center'],
     row, 3 + fixed_side['center'] + fixed_side['right'] - 1])
 
-# Row height header:
-Excel.row_height(detail_page, range(0, row+1), height=pixel['h_header'])
-
 # -----------------------------------------------------------------------------
 #                                  DATA BLOCK:
 # -----------------------------------------------------------------------------
@@ -474,6 +470,9 @@ excel_line.extend([('Totale\nCapi', f_text_title_center)])
 
 Excel.write_xls_line(
     detail_page, row, excel_line, f_text)
+
+# Row height header:
+Excel.row_height(detail_page, range(0, row + 1), height=pixel['h_header'])
 
 # Merge 3 lines and block 3x3:
 for this_row in range(2, 6):
@@ -500,19 +499,16 @@ for master_key in file_data['master']:
     excel_line = [
         '', block_name, color_name]
     excel_line.extend(empty_center)
-    excel_line.extend(tg_block)
-    excel_line.extend([subtotal])
+    excel_line.extend([(cell, f_text_center) for cell in tg_block])
+    excel_line.extend([(subtotal, f_text_title_center)])
     Excel.write_xls_line(
         detail_page, row, excel_line, f_text)
     row += 1
 
 master_total = file_data['total']
 
-# Group:
-# Excel.merge_cell(detail_page, [row, 1, row, 2])
-
-# Row height header:
-Excel.row_height(detail_page, [row], height=pixel['h_data'])
+# Row height data:
+Excel.row_height(detail_page, range(start_row, row), height=pixel['h_data'])
 
 """
     for x in range(block):
