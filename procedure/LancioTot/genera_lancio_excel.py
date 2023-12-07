@@ -569,6 +569,7 @@ Excel.row_height(
 if debug:
     print('DETTAGLIO COMPONENTI:')
     print(file_data['master_component'])
+    pdb.set_trace()
 
 """
 # cell_1 = Excel.rowcol_to_cell(row, 4)
