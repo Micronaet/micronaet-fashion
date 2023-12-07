@@ -491,7 +491,6 @@ for this_row in range(2, 5):
 # ROW 5 - Line data:
 # -----------------------------------------------------------------------------
 row += 1
-start_row = row
 empty_component = ['', '', '']
 empty_component.extend(empty_center)
 merge_from = len(empty_component)
@@ -500,6 +499,8 @@ empty_component.extend([''])
 merge_to = len(empty_component)
 
 for master_key in file_data['master']:
+    start_row = row
+
     mrp_name, block_name, color_name = master_key
     tg_block = file_data['master'][master_key][
                file_data['range_tg'][0]:file_data['range_tg'][1] + 1]
