@@ -355,6 +355,7 @@ Excel.write_xls_line(
 
 # Group:
 Excel.merge_cell(detail_page, [row, 1, row, 2])
+Excel.merge_cell(detail_page, [row, 3, row, 3 + fixed_side['center'] - 1])
 
 # -----------------------------------------------------------------------------
 # ROW 1
@@ -411,6 +412,9 @@ excel_line.extend(['' for i in range(fixed_side['right'])])
 Excel.write_xls_line(
     detail_page, row, excel_line, f_text)
 
+# Group:
+Excel.merge_cell(detail_page, [row, 1, row, 2])
+
 # -----------------------------------------------------------------------------
 # ROW 4
 # -----------------------------------------------------------------------------
@@ -447,7 +451,7 @@ Excel.write_xls_line(
     detail_page, row, excel_line, f_text)
 
 # Group:
-Excel.merge_cell(detail_page, [row, 1, row, 2])
+# Excel.merge_cell(detail_page, [row, 1, row, 2])
 
 """
 # -----------------------------------------------------------------------------
