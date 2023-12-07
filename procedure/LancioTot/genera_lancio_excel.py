@@ -498,8 +498,9 @@ empty_component.extend(['' for cell in tg_block])
 empty_component.extend([''])
 merge_to = len(empty_component)
 
+start_row = row
 for master_key in file_data['master']:
-    start_row = row
+    block_row = row
 
     mrp_name, block_name, color_name = master_key
     tg_block = file_data['master'][master_key][
@@ -527,7 +528,7 @@ for master_key in file_data['master']:
     for this_col in range(merge_from, merge_to):
         Excel.merge_cell(
             detail_page, [
-                start_row, this_col, row, this_col])
+                block_row, this_col, row, this_col])
 
     row += 1
 
