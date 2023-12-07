@@ -298,7 +298,7 @@ pixel = {
     'center': 4, 'tg': 5,
 
     # Row:
-    'header': 20, 'data': 30,
+    'header': 50, 'data': 30,
 }
 
 fixed_side = {
