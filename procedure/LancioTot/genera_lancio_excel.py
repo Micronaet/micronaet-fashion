@@ -356,6 +356,9 @@ Excel.write_xls_line(
 # Group:
 Excel.merge_cell(detail_page, [row, 1, row, 2])
 Excel.merge_cell(detail_page, [row, 3, row, 3 + fixed_side['center'] - 1])
+Excel.merge_cell(detail_page, [
+    row, 3 + fixed_side['center'],
+    row, 3 + fixed_side['center'] + fixed_side['right'] - 1])
 
 # -----------------------------------------------------------------------------
 # ROW 1
@@ -376,6 +379,10 @@ Excel.write_xls_line(
 
 # Group:
 Excel.merge_cell(detail_page, [row, 1, row, 2])
+Excel.merge_cell(detail_page, [row, 3, row, 3 + fixed_side['center'] - 1])
+Excel.merge_cell(detail_page, [
+    row, 3 + fixed_side['center'],
+    row, 3 + fixed_side['center'] + fixed_side['right'] - 1])
 
 # -----------------------------------------------------------------------------
 # ROW 2
@@ -397,6 +404,10 @@ Excel.write_xls_line(
 
 # Group:
 Excel.merge_cell(detail_page, [row, 1, row, 2])
+# Excel.merge_cell(detail_page, [row, 3, row, 3 + fixed_side['center'] - 1])
+Excel.merge_cell(detail_page, [
+    row, 3 + fixed_side['center'],
+    row, 3 + fixed_side['center'] + fixed_side['right'] - 1])
 
 # -----------------------------------------------------------------------------
 # ROW 3
@@ -414,6 +425,10 @@ Excel.write_xls_line(
 
 # Group:
 Excel.merge_cell(detail_page, [row, 1, row, 2])
+# Excel.merge_cell(detail_page, [row, 3, row, 3 + fixed_side['center'] - 1])
+Excel.merge_cell(detail_page, [
+    row, 3 + fixed_side['center'],
+    row, 3 + fixed_side['center'] + fixed_side['right'] - 1])
 
 # -----------------------------------------------------------------------------
 # ROW 4
@@ -432,6 +447,13 @@ Excel.write_xls_line(
 
 # Group:
 Excel.merge_cell(detail_page, [row, 1, row, 2])
+# Excel.merge_cell(detail_page, [row, 3, row, 3 + fixed_side['center'] - 1])
+Excel.merge_cell(detail_page, [
+    row, 3 + fixed_side['center'],
+    row, 3 + fixed_side['center'] + fixed_side['right'] - 1])
+
+# Row height header:
+Excel.row_height(detail_page, range(0, row), height=pixel('header'))
 
 # -----------------------------------------------------------------------------
 # ROW 4 - Header title:
@@ -439,8 +461,8 @@ Excel.merge_cell(detail_page, [row, 1, row, 2])
 row += 1
 excel_line = [
     '',
-    ('ARTICOLO', f_text_title),
-    ('COLORE', f_text_title),
+    ('ARTICOLO', f_text_title_center),
+    ('COLORE', f_text_title_center),
 ]
 excel_line.extend(['' for i in range(fixed_side['center'])])
 excel_line.extend([
@@ -453,109 +475,10 @@ Excel.write_xls_line(
 # Group:
 # Excel.merge_cell(detail_page, [row, 1, row, 2])
 
-"""
-# -----------------------------------------------------------------------------
-#                               Merge cells:
-# -----------------------------------------------------------------------------
-len_b1 = len(block_1)
-len_b2 = len(block_2)
-len_b3 = len(block_3)
-len_b4 = len(block_4)
-
-# 1. PASSANTI
-Excel.merge_cell(detail_page, [0, 0, 0, len_b1 - 1])
-Excel.merge_cell(detail_page, [1, 0, 2, len_b1 - 1])
-
-# 1. RAGGRUPPAMENTO
-Excel.merge_cell(detail_page, [
-    0, len_b1,
-    0, len_b1 + len_b2 - 1])
-Excel.merge_cell(detail_page, [
-    1, len_b1,
-    1, len_b1 + len_b2 - 1])
-
-# 1.  MODELLO
-Excel.merge_cell(detail_page, [
-    0, len_b1 + len_b2,
-    0, len_b1 + len_b2 + len_b3 - 1])
-Excel.merge_cell(detail_page, [
-    1, len_b1 + len_b2,
-    1, len_b1 + len_b2 + len_b3 - 1])
-
-block = 3  # todo keep parameter
-this_range = range(
-    len_b1 + len_b2,
-    len_b1 + len_b2 + block * total_size,
-    block,
-)
-for x in (2, 3, 4):  # for 3 rows
-    for y in this_range:
-        Excel.merge_cell(detail_page, [x, y, x, y + block - 1])
-
-# 1.  NOTE
-for x in range(5):
-    Excel.merge_cell(detail_page, [
-        x, len_b1 + len_b2 + len_b3,
-        x, len_b1 + len_b2 + len_b3 + len_b4 - 1])
-
-# 3. Alt. Matrici
-Excel.merge_cell(detail_page, [
-    2, len_b1, 2, len_b1 + 5 - 1])
-Excel.merge_cell(detail_page, [
-    2, len_b1 + 5, 2, len_b1 + 7 - 1])
-
-# 4. Data
-Excel.merge_cell(detail_page, [
-    3, 0, 3, len_b1 - 1])
-Excel.merge_cell(detail_page, [
-    4, 0, 4, len_b1 - 1])
-
-# Lung. Tappeto
-Excel.merge_cell(detail_page, [
-    3, len_b1, 3, len_b1 + 5 - 1])
-Excel.merge_cell(detail_page, [
-    3, len_b1 + 5, 3, len_b1 + 7 - 1])
-
-# Lung. progressiva
-Excel.merge_cell(detail_page, [
-    4, len_b1,
-    4, len_b1 + 5 - 1])
-Excel.merge_cell(detail_page, [
-    4, len_b1 + 5,
-    4, len_b1 + 7 - 1])
-
 # -----------------------------------------------------------------------------
 #                                  DATA BLOCK:
 # -----------------------------------------------------------------------------
-# DATA Header
-# -----------------------------------------------------------------------------
-row += 1
-block_2[0] = ''  # Clear
-
-block = 3
-this_line = block_1 + block_2 + block_3 + block_4
-
-Excel.write_xls_line(
-    detail_page, row, this_line, f_text)
-
-# Merge Articolo:
-Excel.merge_cell(detail_page, [
-    row, len_b1, row, len_b1 + 2 - 1])
-# Merge Colore:
-Excel.merge_cell(detail_page, [
-    row, len_b1 + 2, row, len_b1 + 2 + 5 - 1])
-
-# -----------------------------------------------------------------------------
-# Data lines
-# -----------------------------------------------------------------------------
-title_row = 0  # Change in procedure
-first_rows = []
-
-for color in range(-1, total_color):  # Add extra block of lines for header
-    if color == -1:
-        this_line[7] = ('ARTICOLO', f_text_title_center)
-        this_line[9] = ('COLORE', f_text_title_center)
-
+"""
     for x in range(block):
         Excel.write_xls_line(
             detail_page, row + x, this_line, f_text)
@@ -569,9 +492,7 @@ for color in range(-1, total_color):  # Add extra block of lines for header
             this_line[9] = ''
 
         # Merge:
-        # import pdb; pdb.set_trace()
         dimension = [row + x, len_b1, row + x, len_b1 + 2 - 1]
-        print(dimension)
         Excel.merge_cell(detail_page, dimension)
         dimension = [row + x, len_b1 + 2, row + x, len_b1 + 2 + 5 - 1]
         print(dimension)
