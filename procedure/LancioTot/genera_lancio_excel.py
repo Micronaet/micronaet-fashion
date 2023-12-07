@@ -309,7 +309,7 @@ for master_key in file_data['master']:
 # -----------------------------------------------------------------------------
 # Create WB:
 Excel = ExcelWriter(xlsx_file, verbose=True)
-
+pdb.set_trace()
 # Create WS:
 detail_page = 'Lanciati totali'
 Excel.create_worksheet(detail_page)
