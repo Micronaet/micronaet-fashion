@@ -245,7 +245,10 @@ for line in open(file_job, 'r'):
 # Compact component view:
 file_data['active_col_tg'] = file_data['col_tag'][
          file_data['range_tg'][0]:file_data['range_tg'][1] + 1]
-file_data['total_tg'] = file_data['active_col_tg'][:]  # Total (last line)
+
+# Total (last line):
+file_data['total_tg'] = [0 for loop in range(len(file_data['active_col_tg']))]
+
 block = {
     'center': 9,
     'right': len(file_data['active_col_tg']),
