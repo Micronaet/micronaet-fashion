@@ -343,7 +343,7 @@ row = 0
 excel_line = [
     ('PASSANTI', f_text_title),
     ('RAGGRUPPAMENTO', f_text_title), '',
-    ('MODELLO: ', f_text_title),
+    ('MODELLO: %s' % file_data['mrp_name'], f_text_title),
 ]
 excel_line.extend(['' for i in range(fixed_side['center'] - 1)])  # - 1 x MOD.
 excel_line.extend([
@@ -436,7 +436,7 @@ Excel.merge_cell(detail_page, [
 # -----------------------------------------------------------------------------
 row += 1
 excel_line = [
-    '/',
+    file_data['date'],
     ('Lung. progressiva', f_text_title),
     '',
 ]
@@ -451,6 +451,9 @@ Excel.merge_cell(detail_page, [row, 1, row, 2])
 Excel.merge_cell(detail_page, [
     row, 3 + fixed_side['center'],
     row, 3 + fixed_side['center'] + fixed_side['right'] - 1])
+
+# Row height header:
+Excel.row_height(detail_page, range(0, row + 1), height=pixel['h_header'])
 
 # -----------------------------------------------------------------------------
 #                                  DATA BLOCK:
@@ -472,7 +475,7 @@ Excel.write_xls_line(
     detail_page, row, excel_line, f_text)
 
 # Row height header:
-Excel.row_height(detail_page, range(0, row + 1), height=pixel['h_header'])
+Excel.row_height(detail_page, [row ], height=pixel['h_data'])
 
 # Merge 3 lines and block 3x3:
 for this_row in range(2, 6):
