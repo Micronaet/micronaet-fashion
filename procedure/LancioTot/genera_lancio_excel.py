@@ -309,7 +309,6 @@ for master_key in file_data['master']:
 # -----------------------------------------------------------------------------
 # Create WB:
 Excel = ExcelWriter(xlsx_file, verbose=True)
-pdb.set_trace()
 # Create WS:
 detail_page = 'Lanciati totali'
 Excel.create_worksheet(detail_page)
@@ -584,4 +583,7 @@ formula = "=SUM(%s:%s)" % (
 
 Excel.write_formula(detail_page, row, 3, formula, f_number, total_db[fabric])
 """
-Excel.close_workbook()
+try:
+    Excel.close_workbook()
+except:
+    pass
