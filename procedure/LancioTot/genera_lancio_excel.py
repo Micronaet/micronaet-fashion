@@ -556,6 +556,19 @@ Excel.write_xls_line(
 Excel.row_height(
     detail_page, tuple(range(start_row, row)), height=pixel['h_data'])
 
+debug = True
+if debug:
+    print('TOTALE DATA')
+    print(file_data)
+
+    print('DETTAGLIO COMPONENTI MASTER')
+    print(file_data['master_components'])
+
+    print('DETTAGLIO COMPONENTI')
+    print(file_data['components'])
+
+    pdb.set_trace()
+
 """
 # cell_1 = Excel.rowcol_to_cell(row, 4)
 # cell_2 = Excel.rowcol_to_cell(row, 5)
