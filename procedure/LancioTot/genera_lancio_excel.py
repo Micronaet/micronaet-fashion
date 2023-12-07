@@ -494,8 +494,10 @@ row += 1
 start_row = row
 empty_component = ['', '', '']
 empty_component.extend(empty_center)
+merge_from = len(empty_component)
 empty_component.extend(['' for cell in tg_block])
 empty_component.extend([''])
+merge_to = len(empty_component)
 
 for master_key in file_data['master']:
     mrp_name, block_name, color_name = master_key
@@ -519,8 +521,14 @@ for master_key in file_data['master']:
         excel_line[2] = component
         Excel.write_xls_line(
             detail_page, row, excel_line, f_text)
-    row += 1
 
+    # Merge TG cells:
+    for this_col in range(merge_from, merge_to + 1):
+        Excel.merge_cell(
+            detail_page, [
+                start_row, this_col, row, this_col])
+
+    row += 1
 
 excel_line = file_data['total_tg'][:]
 excel_line.append(file_data['total'])
