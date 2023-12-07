@@ -502,6 +502,7 @@ start_row = row
 for master_key in file_data['master']:
     block_row = row
 
+    print(master_key)
     mrp_name, block_name, color_name = master_key
     fabric_name = '%s %s' % (block_name, color_name)
     tg_block = file_data['master'][master_key][
