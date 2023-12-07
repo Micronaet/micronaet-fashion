@@ -310,7 +310,7 @@ for master_key in file_data['master']:
 # Create WB:
 Excel = ExcelWriter(xlsx_file, verbose=True)
 # Create WS:
-detail_page = 'Lanciati totali'
+detail_page = u'Lanciati totali'
 Excel.create_worksheet(detail_page)
 Excel.close_workbook()
 sys.exit()
