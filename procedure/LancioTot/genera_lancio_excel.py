@@ -32,7 +32,7 @@ except:
 
 ExcelWriter = excel_export.excelwriter.ExcelWriter
 
-debug = True
+debug = False
 
 # -----------------------------------------------------------------------------
 # Utility:
