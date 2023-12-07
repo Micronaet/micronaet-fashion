@@ -567,8 +567,11 @@ Excel.row_height(
     detail_page, tuple(range(start_row, row)), height=pixel['h_data'])
 
 if debug:
-    print('DETTAGLIO COMPONENTI:')
+    print('DETTAGLIO COLLEGAMENTO COMPONENTI:')
     print(file_data['master_component'])
+
+    print('DETTAGLIO COMPONENTI:')
+    print(file_data['components_check'])
     pdb.set_trace()
 
 """
