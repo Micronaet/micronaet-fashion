@@ -209,14 +209,19 @@ for line in open(file_job, 'r'):
         row = clean(part[1])
         mrp_product = clean(part[2])
         description = clean(part[3])
-        mrp_key = tuple(description.split(' '))
 
+        mrp_name = (mrp_product[:mrp_product.index('ART.')]).replace(' ', '')
+        mrp_art = 'ART.%s' % mrp_product[8:11]
+        mrp_color = 'COL.%s' % mrp_product[12:15]
+        mrp_key = mrp_name, mrp_art, mrp_color
+
+        # mrp_key = tuple(description.split(' '))
         # Compact extra data for key:
-        if len(mrp_key) > 3:
-            new_key = list(mrp_key[:2])
-            key3 = ' '.join(mrp_key[2:])
-            new_key.append(key3)
-            mrp_key = tuple(new_key)
+        # if len(mrp_key) > 3:
+        #    new_key = list(mrp_key[:2])
+        #    key3 = ' '.join(mrp_key[2:])
+        #    new_key.append(key3)
+        #    mrp_key = tuple(new_key)
 
         mrp_name, article_name, color = mrp_key  # Must be 3 here!
 
