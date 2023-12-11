@@ -213,7 +213,7 @@ for line in open(file_job, 'r'):
         mrp_name = (description[:description.index('ART.')]).replace(' ', '')
         mrp_art = 'ART.%s' % mrp_product[8:11]
         mrp_color = 'COL.%s' % mrp_product[12:15]
-        mrp_key = mrp_name, mrp_art, mrp_color
+        mrp_key = mrp_name, mrp_art, mrp_color  # not present extra description
 
         # mrp_key = tuple(description.split(' '))
         # Compact extra data for key:
