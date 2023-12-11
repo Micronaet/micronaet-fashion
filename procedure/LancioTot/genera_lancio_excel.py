@@ -273,7 +273,7 @@ block = {
     'right': len(file_data['active_col_tg']),
     }
 
-for mrp_key in file_data['master']:
+for mrp_key in sorted(file_data['master']):
     if debug:
         print(mrp_key)
     subtotal = sum(tuple(file_data['master'][mrp_key]))
@@ -542,7 +542,7 @@ empty_component.extend([''])
 merge_to = len(empty_component)
 
 start_row = row
-for mrp_key in file_data['master']:
+for mrp_key in sorted(file_data['master']):
     block_row = row
 
     mrp_name, block_name, color_name = mrp_key
