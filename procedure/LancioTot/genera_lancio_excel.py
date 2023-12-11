@@ -294,10 +294,10 @@ for mrp_key in file_data['master']:
         if job_line_key not in file_data['components']:
             print('\n\n\n')
             print('*' * 100)
-            print('ERRORE: Non riesco a trovare gli impegni delle BL'
-                  'per il lanciato {} riga {}'
+            print('ERRORE: Non riesco a trovare gli impegni delle BL '
+                  'per il lanciato {} riga {}.\n'
                   'Procedura bloccata, chiudere questa videata e '
-                  'rilanciare una volta corretto il problema nel'
+                  'rilanciare una volta corretto il problema nel '
                   'gestionale.'.format(
                         job_line_key[0], job_line_key[1],
                   ))
