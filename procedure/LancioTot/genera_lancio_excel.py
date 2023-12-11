@@ -292,10 +292,17 @@ for mrp_key in file_data['master']:
     file_data['components_set'][mrp_key] = []  # Save component record
     for job_line_key in file_data['master_jobs'][mrp_key]:
         if job_line_key not in file_data['components']:
+            print('\n\n\n')
+            print('*' * 100)
             print('ERRORE: Non riesco a trovare gli impegni delle BL'
-                  'per il lanciato {} riga {}'.format(
+                  'per il lanciato {} riga {}'
+                  'Procedura bloccata, chiudere questa videata e '
+                  'rilanciare una volta corretto il problema nel'
+                  'gestionale.'.format(
                         job_line_key[0], job_line_key[1],
                   ))
+            print('*' * 100)
+            print('\n\n\n')
             pdb.set_trace()
         component_list = file_data['components'][job_line_key]
         for category in sorted(component_list,
