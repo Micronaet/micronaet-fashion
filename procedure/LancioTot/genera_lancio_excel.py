@@ -211,9 +211,10 @@ for line in open(file_job, 'r'):
         description = clean(part[3])
 
         mrp_name = (description[:description.index('ART.')]).replace(' ', '')
-        mrp_art = 'ART.%s' % mrp_product[8:11]
-        mrp_color = 'COL.%s' % mrp_product[12:15]
-        mrp_key = mrp_name, mrp_art, mrp_color  # not present extra description
+        article_name = 'ART.%s' % mrp_product[8:11]
+        color = 'COL.%s' % mrp_product[12:15]
+        # Not present extra description:
+        mrp_key = mrp_name, article_name, color
 
         # mrp_key = tuple(description.split(' '))
         # Compact extra data for key:
@@ -222,8 +223,7 @@ for line in open(file_job, 'r'):
         #    key3 = ' '.join(mrp_key[2:])
         #    new_key.append(key3)
         #    mrp_key = tuple(new_key)
-
-        mrp_name, article_name, color = mrp_key  # Must be 3 here!
+        # mrp_name, article_name, color = mrp_key  # Must be 3 here!
 
         if not file_data['mrp_name']:
             file_data['mrp_name'] = mrp_name  # always the same?
