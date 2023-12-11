@@ -77,11 +77,15 @@ def clean(value):
 def clean_float(value):
     """ Clean float
     """
+    value = value.strip()
     if not value:
         return 0.0
-    value = value.strip()
     value = value.replace(',', '.')
-    return float(value)
+    try:
+        return float(value)
+    except:
+        print('Error converting float: [{}]'.format(value))
+        return 0.0
 
 
 def get_category(default_code):
