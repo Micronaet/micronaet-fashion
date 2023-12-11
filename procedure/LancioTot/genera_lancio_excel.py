@@ -210,7 +210,7 @@ for line in open(file_job, 'r'):
         mrp_product = clean(part[2])
         description = clean(part[3])
 
-        mrp_name = (mrp_product[:mrp_product.index('ART.')]).replace(' ', '')
+        mrp_name = (description[:description.index('ART.')]).replace(' ', '')
         mrp_art = 'ART.%s' % mrp_product[8:11]
         mrp_color = 'COL.%s' % mrp_product[12:15]
         mrp_key = mrp_name, mrp_art, mrp_color
