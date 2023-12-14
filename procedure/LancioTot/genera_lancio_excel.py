@@ -32,7 +32,7 @@ except:
 
 ExcelWriter = excel_export.excelwriter.ExcelWriter
 debug = False
-final_debug = False
+final_debug = True
 
 # -----------------------------------------------------------------------------
 # Utility:
@@ -188,6 +188,7 @@ empty_tg = [0 for i in range(tg_cols)]  # No TOT col
 empty_center = ['' for i in range(center_cols)]  # Center empty cols
 
 pos = 0
+get_name = {}
 for line in open(file_job, 'r'):
     part = line.split(';')
 
@@ -210,11 +211,16 @@ for line in open(file_job, 'r'):
         mrp_product = clean(part[2])
         description = clean(part[3])
 
-        mrp_name = (description[:description.index('ART.')]).replace(' ', '')
+        mrp_name = (
+            description[:description.index('ART.')]).replace(' ', '')
+        mrp_code = mrp_product[:8].strip('-')
+        if mrp_code not in get_name:
+            get_name[mrp_code] = mrp_name
+
         article_name = 'ART.%s' % mrp_product[8:11]
         color = 'COL.%s' % mrp_product[12:15]
         # Not present extra description:
-        mrp_key = mrp_name, article_name, color
+        mrp_key = mrp_code, article_name, color
 
         # mrp_key = tuple(description.split(' '))
         # Compact extra data for key:
@@ -550,7 +556,8 @@ start_row = row
 for mrp_key in sorted(file_data['master']):
     block_row = row
 
-    mrp_name, block_name, color_name = mrp_key
+    mrp_code, block_name, color_name = mrp_key
+    mrp_name = get_name[mrp_code]
     # fabric_name = '%s %s' % (block_name, color_name)
     tg_block = file_data['master'][mrp_key][
                file_data['range_tg'][0]:file_data['range_tg'][1] + 1]
