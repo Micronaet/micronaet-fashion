@@ -222,15 +222,6 @@ for line in open(file_job, 'r'):
         # Not present extra description:
         mrp_key = mrp_code, article_name, color
 
-        # mrp_key = tuple(description.split(' '))
-        # Compact extra data for key:
-        # if len(mrp_key) > 3:
-        #    new_key = list(mrp_key[:2])
-        #    key3 = ' '.join(mrp_key[2:])
-        #    new_key.append(key3)
-        #    mrp_key = tuple(new_key)
-        # mrp_name, article_name, color = mrp_key  # Must be 3 here!
-
         if not file_data['mrp_name']:
             file_data['mrp_name'] = mrp_name  # always the same?
         if job not in file_data['jobs']:
@@ -565,7 +556,10 @@ for mrp_key in sorted(file_data['master']):
 
     # Article first line:
     excel_line = [
-        (mrp_code, f_text_title), (block_name, f_text_title), (color_name, f_text_title)]
+        (mrp_code, f_text_title),
+        (block_name, f_text_title),
+        (color_name, f_text_title),
+    ]
     excel_line.extend(empty_center)
     excel_line.extend([(cell, f_text_center) for cell in tg_block])
     excel_line.extend([(subtotal, f_text_title_center)])
@@ -619,23 +613,4 @@ if final_debug:
 
     pdb.set_trace()
 
-"""
-# cell_1 = Excel.rowcol_to_cell(row, 4)
-# cell_2 = Excel.rowcol_to_cell(row, 5)
-# Excel.write_formula(detail_page, row, 6, '=%s*%s' % (
-#    cell_1, cell_2), f_number, subtotal)
-
-# -------------------------------------------------------------------------
-# Write formula for subtotal:
-# -------------------------------------------------------------------------
-from_cell, to_cell = sum_db[fabric]
-cell_1 = Excel.rowcol_to_cell(from_cell, 6)
-cell_2 = Excel.rowcol_to_cell(to_cell, 6)
-formula = "=SUM(%s:%s)" % (
-    cell_1,
-    cell_2,
-    )
-
-Excel.write_formula(detail_page, row, 3, formula, f_number, total_db[fabric])
-"""
 Excel.close_workbook()
