@@ -2493,7 +2493,8 @@ class fashion_form_extra_relations(osv.osv):
             'Cost Relation'),
         'accessory_rel_ids': fields.one2many('fashion.form.accessory.rel',
             'form_id', 'Accessory Relation'),
-        # 'fabric_rel_ids': fields.one2many('fashion.form.fabric.rel', 'form_id', 'Relation'), #TODO
+        # 'fabric_rel_ids': fields.one2many('fashion.form.fabric.rel',
+        # 'form_id', 'Relation'), #TODO
         'stitch_rel_ids': fields.one2many('fashion.form.stitch.rel',
             'form_id', 'Stitch Relation'),
         'partner_rel_ids': fields.one2many('fashion.form.partner.rel',

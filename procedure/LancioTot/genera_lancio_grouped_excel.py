@@ -127,6 +127,8 @@ file_data = {
     # -------------------------------------------------------------------------
     # Master detail used
     # -------------------------------------------------------------------------
+    'master_loop': {},  # Master loop (only article - color)
+
     'master': {},  # Master data for job list
     'master_jobs': {},
     # Master data for component linked:
@@ -221,6 +223,11 @@ for line in open(file_job, 'r'):
         color = 'COL.%s' % mrp_product[12:15]
         # Not present extra description:
         mrp_key = mrp_code, article_name, color
+        loop_mrp_key = article_name, color   # Master loop for report
+        if loop_mrp_key not in file_data['master_loop']:
+            file_data['master_loop'][loop_mrp_key] = []
+
+        file_data['master_loop'][loop_mrp_key].append(mrp_key)
 
         if not file_data['mrp_name']:
             file_data['mrp_name'] = mrp_name  # always the same?
@@ -324,11 +331,11 @@ for mrp_key in sorted(file_data['master']):
                     component_name = (
                         category,
                         '%s\n%s-%s\n%s' % (
-                        component_record[3].strip(),  # Component name
-                        component_record[6].strip(),  # Supplier code
-                        component_record[7].strip(),  # Supplier name
-                        component_record[8].strip(),  # Supplier name
-                        ))
+                            component_record[3].strip(),  # Component name
+                            component_record[6].strip(),  # Supplier code
+                            component_record[7].strip(),  # Supplier name
+                            component_record[8].strip(),  # Supplier name
+                            ))
                     # Save for report:
                     file_data['components_set'][mrp_key].append(component_name)
                     # Update check list:
@@ -544,44 +551,46 @@ empty_component.extend([''])
 merge_to = len(empty_component)
 
 start_row = row
-for mrp_key in sorted(file_data['master']):
-    block_row = row
+for loop_mrp_key in sorted(file_data['master_loop']):
+    # for mrp_key in sorted(file_data['master']):
+    for mrp_key in file_data['master_loop'][loop_mrp_key]:
+        block_row = row
 
-    mrp_code, block_name, color_name = mrp_key
-    mrp_name = get_name[mrp_code]
-    # fabric_name = '%s %s' % (block_name, color_name)
-    tg_block = file_data['master'][mrp_key][
-               file_data['range_tg'][0]:file_data['range_tg'][1] + 1]
-    subtotal = sum(tuple(file_data['master'][mrp_key]))
+        mrp_code, block_name, color_name = mrp_key
+        mrp_name = get_name[mrp_code]
+        # fabric_name = '%s %s' % (block_name, color_name)
+        tg_block = file_data['master'][mrp_key][
+                   file_data['range_tg'][0]:file_data['range_tg'][1] + 1]
+        subtotal = sum(tuple(file_data['master'][mrp_key]))
 
-    # Article first line:
-    excel_line = [
-        (mrp_code, f_text_title),
-        (block_name, f_text_title),
-        (color_name, f_text_title),
-    ]
-    excel_line.extend(empty_center)
-    excel_line.extend([(cell, f_text_center) for cell in tg_block])
-    excel_line.extend([(subtotal, f_text_title_center)])
-    Excel.write_xls_line(detail_page, row, excel_line, f_text)
-    row += 1
-
-    # -------------------------------------------------------------------------
-    # Component extra line:
-    # -------------------------------------------------------------------------
-    excel_line = empty_component[:]
-    for component_detail in file_data['components_set'][mrp_key]:
-        # Also fabric is always loaded!
-        excel_line[1] = component_detail[0]  # category
-        excel_line[2] = component_detail[1]  # component
+        # Article first line:
+        excel_line = [
+            (mrp_code, f_text_title),
+            (block_name, f_text_title),
+            (color_name, f_text_title),
+        ]
+        excel_line.extend(empty_center)
+        excel_line.extend([(cell, f_text_center) for cell in tg_block])
+        excel_line.extend([(subtotal, f_text_title_center)])
         Excel.write_xls_line(detail_page, row, excel_line, f_text)
         row += 1
 
-    # Merge TG cells:
-    for this_col in range(merge_from, merge_to):
-        Excel.merge_cell(
-            detail_page, [
-                block_row, this_col, row-1, this_col])
+        # ---------------------------------------------------------------------
+        # Component extra line:
+        # ---------------------------------------------------------------------
+        excel_line = empty_component[:]
+        for component_detail in file_data['components_set'][mrp_key]:
+            # Also fabric is always loaded!
+            excel_line[1] = component_detail[0]  # category
+            excel_line[2] = component_detail[1]  # component
+            Excel.write_xls_line(detail_page, row, excel_line, f_text)
+            row += 1
+
+        # Merge TG cells:
+        for this_col in range(merge_from, merge_to):
+            Excel.merge_cell(
+                detail_page, [
+                    block_row, this_col, row-1, this_col])
 
 excel_line = file_data['total_tg'][:]
 excel_line.append(file_data['total'])
