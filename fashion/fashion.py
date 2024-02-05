@@ -2479,6 +2479,7 @@ class res_partner(osv.osv):
             help='ID Importazione che tiene il link'),
         }
 
+
 class fashion_form_extra_relations(osv.osv):
     """Table that manage the relation forms
     """
