@@ -646,7 +646,7 @@ class fashion_form(osv.osv):
         return '%s.%s' % (model, review)
 
     def _get_draw_image_name(self, obj):
-        """ Return name of image from browese obj passed
+        """ Return name of image from browse obj passed
         """
         return ('%s.%s' % (self._get_form_name(
             obj.model, obj.review), self._default_extension)).lower()
@@ -2439,6 +2439,29 @@ class fashion_form_photo(osv.osv):
             DEFAULT_SERVER_DATE_FORMAT),
         'user_id': lambda s, cr, uid, ctx: uid,
         }
+
+
+class res_company(osv.osv):
+    """ Extra function for company
+    """
+    _inherit = 'res.company'
+
+    def get_font_image(self, cr, uid, ids, name, context=None):
+        """ Load image from file:
+        """
+        path = os.path.expanduser(os.path.join('~/fonts/image'))
+        filename = os.path.join(path, '%s.png' % name)
+        try:
+            f = open(filename, 'rb')
+            img = base64.encodestring(f.read())
+            f.close()
+            _logger.info('Loading icon: %s' % filename)
+        except:
+            img = False
+            _logger.error('Error loading icon: %s' % filename)
+        return img
+
+
 class res_partner(osv.osv):
     """ Extra fields for partner
     """
