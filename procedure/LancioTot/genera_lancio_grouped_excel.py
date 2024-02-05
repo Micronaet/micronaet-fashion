@@ -553,44 +553,87 @@ merge_to = len(empty_component)
 start_row = row
 for loop_mrp_key in sorted(file_data['master_loop']):
     # for mrp_key in sorted(file_data['master']):
+
+    # Common part data:
+    tg_block = False
+    subtotal = False
     for mrp_key in file_data['master_loop'][loop_mrp_key]:
         block_row = row
 
         mrp_code, block_name, color_name = mrp_key
         mrp_name = get_name[mrp_code]
         # fabric_name = '%s %s' % (block_name, color_name)
-        tg_block = file_data['master'][mrp_key][
-                   file_data['range_tg'][0]:file_data['range_tg'][1] + 1]
-        subtotal = sum(tuple(file_data['master'][mrp_key]))
+        # todo check if copied not as pointer!
+        this_tg_block = file_data['master'][mrp_key][
+                        file_data['range_tg'][0]:file_data['range_tg'][1] + 1]
+        if tg_block:
+            # Update totals
+            for c in range(len(this_tg_block)):
+                tg_block[c] += this_tg_block[c]
+        else:
+            # Take as is:
+            tg_block = this_tg_block
+
+        if subtotal:
+            subtotal += sum(tuple(file_data['master'][mrp_key]))
+        else:
+            subtotal = sum(tuple(file_data['master'][mrp_key]))
+
+    art_col_done = {}
+    art_col_header_done = []
+    for mrp_key in file_data['master_loop'][loop_mrp_key]:
+        mrp_code, block_name, color_name = mrp_key
 
         # Article first line:
         excel_line = [
-            (mrp_code, f_text_title),
+            ['', f_text_title],  # mrp_code
             (block_name, f_text_title),
             (color_name, f_text_title),
         ]
         excel_line.extend(empty_center)
         excel_line.extend([(cell, f_text_center) for cell in tg_block])
         excel_line.extend([(subtotal, f_text_title_center)])
-        Excel.write_xls_line(detail_page, row, excel_line, f_text)
-        row += 1
+
+        # Block header (write only once):
+        art_col_header_key = block_name, color_name
+        if art_col_header_key not in art_col_header_done:
+            art_col_header_done.append(art_col_header_key)
+            Excel.write_xls_line(detail_page, row, excel_line, f_text)
+            row += 1
 
         # ---------------------------------------------------------------------
         # Component extra line:
         # ---------------------------------------------------------------------
         excel_line = empty_component[:]
         for component_detail in file_data['components_set'][mrp_key]:
-            # Also fabric is always loaded!
-            excel_line[1] = component_detail[0]  # category
-            excel_line[2] = component_detail[1]  # component
-            Excel.write_xls_line(detail_page, row, excel_line, f_text)
-            row += 1
+            category_ref = component_detail[0]
+            component_ref = component_detail[1]
+            art_col_key = category_ref, component_ref
+            if art_col_key in art_col_done:
+                row_ref, mrp_ref = art_col_done[art_col_key]
+                new_mrp_ref = '%s\n%s' % (mrp_ref, mrp_code)
+                art_col_done[art_col_key][1] = new_mrp_ref
 
-        # Merge TG cells:
-        for this_col in range(merge_from, merge_to):
-            Excel.merge_cell(
-                detail_page, [
-                    block_row, this_col, row-1, this_col])
+                # Update first field only:
+                Excel.write_xls_line(
+                    detail_page, row_ref, [new_mrp_ref], f_text)
+                continue  # Yet printed
+            else:
+
+                # Also fabric is always loaded!
+                # todo update also category?
+                excel_line[0] = mrp_code
+                excel_line[1] = category_ref
+                excel_line[2] = component_ref
+                art_col_done[art_col_key] = [row, mrp_code]  # Save
+                Excel.write_xls_line(detail_page, row, excel_line, f_text)
+                row += 1
+
+    # Merge TG cells:
+    for this_col in range(merge_from, merge_to):
+        Excel.merge_cell(
+            detail_page, [
+                block_row, this_col, row-1, this_col])
 
 excel_line = file_data['total_tg'][:]
 excel_line.append(file_data['total'])
