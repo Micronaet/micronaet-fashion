@@ -1147,9 +1147,9 @@ class fashion_form(osv.osv):
             pass
         return True
 
-    #============================#
-    # Workflow Activity Function #
-    #============================#
+    # ==========================
+    # Workflow Activity Function
+    # ==========================
     def form_draft(self, cr, uid, ids, context=None):
         return self.write(cr, uid, ids, {'state': 'draft'}, context=context)
 
