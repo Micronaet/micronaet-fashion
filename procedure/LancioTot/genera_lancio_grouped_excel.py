@@ -611,7 +611,7 @@ for loop_mrp_key in sorted(file_data['master_loop']):
             art_col_key = category_ref, component_ref
             if art_col_key in art_col_done:
                 row_ref, mrp_ref = art_col_done[art_col_key]
-                new_mrp_ref = '%s\n%s' % (mrp_ref, mrp_code)
+                new_mrp_ref = '%s\n%s' % (mrp_ref, mrp_code[:7])
                 art_col_done[art_col_key][1] = new_mrp_ref
 
                 # Update first field only:
@@ -622,7 +622,7 @@ for loop_mrp_key in sorted(file_data['master_loop']):
 
                 # Also fabric is always loaded!
                 # todo update also category?
-                excel_line[0] = mrp_code[:7]
+                excel_line[0] = mrp_code
                 excel_line[1] = category_ref
                 excel_line[2] = component_ref
                 art_col_done[art_col_key] = [row, mrp_code]  # Save
