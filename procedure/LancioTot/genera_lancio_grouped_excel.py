@@ -622,7 +622,7 @@ for loop_mrp_key in sorted(file_data['master_loop']):
 
                 # Also fabric is always loaded!
                 # todo update also category?
-                excel_line[0] = mrp_code
+                excel_line[0] = mrp_code[:7]
                 excel_line[1] = category_ref
                 excel_line[2] = component_ref
                 art_col_done[art_col_key] = [row, mrp_code]  # Save
