@@ -33,7 +33,8 @@
 from openerp.report import report_sxw
 from openerp.report.report_sxw import rml_parse
 
-counters = {} # total counters
+counters = {}  # total counters
+
 
 class Parser(report_sxw.rml_parse):
     def __init__(self, cr, uid, name, context):
@@ -52,91 +53,93 @@ class Parser(report_sxw.rml_parse):
         })
 
     def get_fabric(self, fabric):
-        ''' generate name 
-        '''
+        """ generate name
+        """
         if not fabric:
             return ''
         return '%s [%s] (%s) %s' % (
-                fabric.code, 
-                fabric.season_id.code if fabric.season_id else '', 
+                fabric.code,
+                fabric.season_id.code if fabric.season_id else '',
                 fabric.article_code or '',
                 fabric.perc_composition or '',
                 )
-        
+
     def is_last(self, item_id):
-        ''' Check if ID passed is last        
-        '''
+        """ Check if ID passed is last
+        """
         return item_id == self.last
-        
+
     def how_much_zero(self, accessory):
-        ''' Test if there's accessory without price 
-        '''
+        """ Test if there's accessory without price
+        """
         zero = 0
         for item in accessory:
             if not item.currency:
-                zero += 1                
+                zero += 1
         return zero
 
     def get_counter(self, name):
-        ''' Return value of passed counter, if empty create with 0 value
-        '''
+        """ Return value of passed counter, if empty create with 0 value
+        """
         global counters
         if name not in counters:
-            counters[name] = 0.0        
-        return counters[name]    
+            counters[name] = 0.0
+        return counters[name]
 
     def set_counter(self, name, value, with_return=False):
-        ''' Set up counter with name passed with the value
+        """ Set up counter with name passed with the value
             if with return the method return setted value
-        '''
+        """
         global counters
-        counters[name] = value 
+        counters[name] = value
         if with_return:
             return counters[name]
-        else:    
+        else:
             return '' # Write nothing (not False)
 
     def get_partner_fabric_proxy(self, data=None):
         if data is None or not data.get('partner_fabric_id', False):
             return False
-    
-        return self.pool.get('fashion.form.partner.rel').browse(self.cr, self.uid, data.get('partner_fabric_id', False))           
+
+        return self.pool.get('fashion.form.partner.rel').browse(
+            self.cr, self.uid, data.get('partner_fabric_id', False))
 
     def get_wash_symbol(self, data=None):
-        ''' Return wash symbol for passed partner-fabric element)
-        '''
-        # TODO verificare se è il caso di testare il cliente oppure è già indicata nell'accessorio
+        """ Return wash symbol for passed partner-fabric element)
+        """
+        # todo verificare se è il caso di testare il cliente oppure è già
+        #  indicata nell'accessorio
         return ""
-        
+
     def get_objects(self, data=None, context=None):
         if data is None:
             data = {}
         if context is None:
             context = {}
-            
+
         form_ids = data.get('active_ids', [])
-        if not form_ids:            
+        if not form_ids:
             form_ids = context.get('active_ids', [])
 
-        self.last = form_ids[-1] # for new page
+        self.last = form_ids[-1]  # for new page
         return self.pool.get('fashion.form').browse(
             self.cr, self.uid, form_ids)
 
     def browse_in_cols(self, obj_proxy, cols=2):
-        ''' Browse in N cols passed browse obj
-        '''
+        """ Browse in N cols passed browse obj
+        """
         res = []
         row = 0
         col = 0
         for record in obj_proxy:
-            if not record.code: 
+            if not record.code:
                 if col == 0:
-                    res.append([False for i in range(0, cols)]) # Create an empty record
+                    res.append([False for i in range(0, cols)])  # Create an empty record
                 res[row][col] = record
-                if col == cols - 1: # last column
+                if col == cols - 1:  # last column
                     row += 1
                     col = 0
-                else:    
+                else:
                     col += 1
         return res
 

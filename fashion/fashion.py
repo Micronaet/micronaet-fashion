@@ -2450,6 +2450,11 @@ class res_company(osv.osv):
         """ Load image from file:
         """
         path = os.path.expanduser(os.path.join('~/fonts/image'))
+
+        # File System problem:
+        if name == ':':
+            name = 'DUEPUNTI'
+
         filename = os.path.join(path, '%s.png' % name)
         try:
             f = open(filename, 'rb')
@@ -2506,6 +2511,7 @@ class fashion_form_extra_relations(osv.osv):
         'photo_ids': fields.one2many('fashion.form.photo', 'form_id', 'Photo'),
         }
 
+
 class product_template(osv.osv):
     """ Remove translation from product name
     """
@@ -2514,5 +2520,3 @@ class product_template(osv.osv):
     _columns = {
         'name': fields.char('Name', size=128, required=True, select=True),
         }
-
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
