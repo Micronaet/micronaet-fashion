@@ -1505,6 +1505,7 @@ class fashion_form(osv.osv):
         'model_for_cost': False,
         }
 
+
 # -----------------------------------------------------------------------------
 #                               Object relations
 # -----------------------------------------------------------------------------
@@ -1568,6 +1569,7 @@ class fashion_form_measure_rel(osv.osv):
         'header': lambda *x: False,
         'sequence': lambda *x: 0,
         }
+
 
 class fashion_form_characteristic_rel(osv.osv):
     """Table that manage the relation characteristic/form
@@ -1640,6 +1642,7 @@ class fashion_form_characteristic_rel(osv.osv):
         'sequence': lambda *x: 1,
         }
 
+
 class fashion_form_characteristic_rel_specific(osv.osv):
     """Table that manage the specific of characteristic
     """
@@ -1707,6 +1710,7 @@ class fashion_form_characteristic_rel_specific(osv.osv):
         'active': lambda *x: True,
         }
 
+
 class fashion_form_cost_rel(osv.osv):
     """Table that manage the relation cost/form
     """
@@ -1724,6 +1728,7 @@ class fashion_form_cost_rel(osv.osv):
         'access_id': fields.integer('Access ID',
             help='ID Importazione che tiene il link'),
         }
+
 
 class fashion_form_cost_rel_pricelist(osv.osv):
     """Table that manage the pricelist elements for signle cost
@@ -1751,6 +1756,7 @@ class fashion_form_cost_rel_pricelist(osv.osv):
         'current': False,
         }
 
+
 class fashion_form_cost_rel(osv.osv):
     """Table that manage the relation cost/form
     """
@@ -1761,6 +1767,7 @@ class fashion_form_cost_rel(osv.osv):
         'pricelist_ids':fields.one2many('fashion.form.cost.rel.pricelist',
             'cost_rel_id', 'Pricelist', required=False),
         }
+
 
 class fashion_form_accessory_rel(osv.osv):
     """Table that manage the relation accessory/form
@@ -1932,6 +1939,7 @@ class fashion_form_accessory_rel(osv.osv):
         'sequence': lambda *x: 1000, # high number so letter are lower
         }
 
+
 class fashion_form_stitch_rel(osv.osv):
     """Table that manage the relation stitch/form
     """
@@ -1949,6 +1957,7 @@ class fashion_form_stitch_rel(osv.osv):
         'access_id': fields.integer('Access ID',
             help='ID Importazione che tiene il link'),
         }
+
 
 class fashion_form_comment_rel(osv.osv):
     """Table that manages the comment/form
@@ -1998,6 +2007,7 @@ class fashion_form_comment_rel(osv.osv):
         'user_id': lambda s, cr, uid, ctx: uid
         }
 
+
 class fashion_measure_rel(osv.osv):
     """Table that manages the measure/article
     """
@@ -2014,6 +2024,7 @@ class fashion_measure_rel(osv.osv):
              help='ID Importazione che tiene il link'),
          }
 
+
 class fashion_article(osv.osv):
     """
     """
@@ -2024,6 +2035,7 @@ class fashion_article(osv.osv):
         'fashion_measure_ids': fields.one2many(
             'fashion.measure.rel', 'article_id', 'Measure'),
         }
+
 
 class fashion_form_partner_rel(osv.osv):
     """ Form relation with partner, this object contain much elements useful
@@ -2275,7 +2287,7 @@ class fashion_form_partner_rel(osv.osv):
         'perc_reload': fields.float('Reloading percentage', digits=(10, 2)),
         'perc_margin': fields.float('Margin percentage', digits=(10, 2)),
 
-        # TODO eliminare appena vengono tolte dalle viste (kanban)
+        # todo eliminare appena vengono tolte dalle viste (kanban)
         #'image': fields.related('form_id', 'image', type='binary', string='Image', readonly=True),
         'draw_image_a': fields.related('form_id', 'draw_image_a',
             type='binary', string='Image', readonly=True),
@@ -2335,6 +2347,7 @@ class fashion_form_partner_rel(osv.osv):
         'access_2_id': fields.integer('Access 2 ID',
             help='ID Importazione che tiene il link con partner costi'),
         }
+
 
 class fashion_form_photo(osv.osv):
     """ Table that manages the form photo
