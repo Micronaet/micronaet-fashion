@@ -625,7 +625,7 @@ for loop_mrp_key in sorted(file_data['master_loop']):
                 excel_line[0] = mrp_code[:7]
                 excel_line[1] = category_ref
                 excel_line[2] = component_ref
-                art_col_done[art_col_key] = [row, mrp_code]  # Save
+                art_col_done[art_col_key] = [row, mrp_code[:7]]  # Save
                 Excel.write_xls_line(detail_page, row, excel_line, f_text)
                 row += 1
 
