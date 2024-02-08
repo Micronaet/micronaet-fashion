@@ -565,7 +565,8 @@ for mrp_key in sorted(file_data['master']):
 
     # Article first line:
     excel_line = [
-        (mrp_code, f_text_title), (block_name, f_text_title), (color_name, f_text_title)]
+        (mrp_code[:7], f_text_title), (block_name, f_text_title),
+        (color_name, f_text_title)]
     excel_line.extend(empty_center)
     excel_line.extend([(cell, f_text_center) for cell in tg_block])
     excel_line.extend([(subtotal, f_text_title_center)])
