@@ -619,9 +619,8 @@ for loop_mrp_key in sorted(file_data['master_loop']):
                     detail_page, row_ref, [new_mrp_ref], f_text)
                 continue  # Yet printed
             else:
-
                 # Also fabric is always loaded!
-                # todo update also category?g
+                # todo update also category?
                 excel_line[0] = mrp_code[:7]
                 excel_line[1] = category_ref
                 excel_line[2] = component_ref
