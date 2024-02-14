@@ -227,7 +227,8 @@ for line in open(file_job, 'r'):
         if loop_mrp_key not in file_data['master_loop']:
             file_data['master_loop'][loop_mrp_key] = []
 
-        file_data['master_loop'][loop_mrp_key].append(mrp_key)
+        if mrp_key not in file_data['master_loop'][loop_mrp_key]:
+            file_data['master_loop'][loop_mrp_key].append(mrp_key)
 
         if not file_data['mrp_name']:
             file_data['mrp_name'] = mrp_name  # always the same?
@@ -600,7 +601,6 @@ for loop_mrp_key in sorted(file_data['master_loop']):
             art_col_header_done.append(art_col_header_key)
             Excel.write_xls_line(detail_page, row, excel_line, f_text)
             row += 1
-
         # ---------------------------------------------------------------------
         # Component extra line:
         # ---------------------------------------------------------------------
@@ -663,5 +663,4 @@ if final_debug:
     # print(file_data['components_set'])
 
     pdb.set_trace()
-
 Excel.close_workbook()
