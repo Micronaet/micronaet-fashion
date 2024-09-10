@@ -69,11 +69,16 @@ class fashion_report_wizard(osv.osv_memory):
          'summary': fields.boolean('Summary'),   # todo Inserire i gruppi
          'total': fields.boolean('Total'),
          'image': fields.boolean('Image'),
+         'hidden': fields.boolean(
+             'Nascondi particolari',
+             help='Nascoste le misure senza spunta e la parte note sotto la '
+                  'tabella',
+            ),
     }
 
     _defaults = {
         'type': 'a',
-        'form_id': lambda s,cr,uid,ctx: s.get_form_id(cr, uid, ctx),
+        'form_id': lambda s, cr, uid, ctx: s.get_form_id(cr, uid, ctx),
         'summary': True,
         'total': False,
         'image': True,
@@ -86,7 +91,7 @@ class fashion_report_wizard(osv.osv_memory):
         """ Print report passing parameter dictionary
         """
         wiz_proxy = self.browse(cr, uid, ids, context=context)[0]
-        datas = {}
+        datas = dict()
         datas['from_wizard'] = True
         datas['active_ids'] = context.get('active_ids', [])
         datas['active_id'] = context.get('active_id', False)
@@ -97,6 +102,7 @@ class fashion_report_wizard(osv.osv_memory):
         datas['summary'] = wiz_proxy.summary
         datas['total'] = wiz_proxy.total
         datas['image'] = wiz_proxy.image
+        datas['hidden'] = wiz_proxy.hidden
         # datas['note_fabric'] =
         # wiz_proxy.partner_fabric_id.note_fabric
         # if wiz_proxy.partner_fabric_id else ''

@@ -21,6 +21,8 @@
                       <newline/>
                       <field name="image" attrs="{'invisible':[('type','in',['e'])]}"/>
                       <newline/>
+                      <field name="hidden" attrs="{'invisible':[('type','not in',['c'])]}"/>
+                      <newline/>
                       <button string='Print' name='print_report' type='object' icon='STOCK_APPLY'/>
                       <button string="Cancel" special="cancel" icon='STOCK_CANCEL'/>
                    </group>
@@ -47,6 +49,6 @@
         view_type="form"
         target="new"
         />
-    
+
   </data>
 </openerp>
