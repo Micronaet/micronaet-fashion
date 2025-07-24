@@ -2467,6 +2467,8 @@ class res_company(osv.osv):
         # File System problem:
         if name == ':':
             name = 'DUEPUNTI'
+        elif name == '?':
+            name = 'PDD'
 
         filename = os.path.join(path, '%s.png' % name)
         try:
@@ -2499,7 +2501,7 @@ class res_partner(osv.osv):
 
 
 class fashion_form_extra_relations(osv.osv):
-    """Table that manage the relation forms
+    """ Table that manage the relation forms
     """
     _inherit = 'fashion.form'
 
