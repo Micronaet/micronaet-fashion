@@ -2469,6 +2469,8 @@ class res_company(osv.osv):
             name = 'DUEPUNTI'
         elif name == '?':
             name = 'PDD'
+        elif name == '[':
+            name = 'QUADRA1'
 
         filename = os.path.join(path, '%s.png' % name)
         try:
