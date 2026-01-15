@@ -2473,6 +2473,8 @@ class res_company(osv.osv):
             name = 'QUADRA1'
         elif name == '\\':
             name = 'BACKSLASH'
+        elif name == '_':
+            name = 'UNDERSCORE'
             
         filename = os.path.join(path, '%s.png' % name)
         try:
