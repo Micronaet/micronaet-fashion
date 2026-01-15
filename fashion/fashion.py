@@ -2471,7 +2471,9 @@ class res_company(osv.osv):
             name = 'PDD'
         elif name == '[':
             name = 'QUADRA1'
-
+        elif name == '\\':
+            name = 'BACKSLASH'
+            
         filename = os.path.join(path, '%s.png' % name)
         try:
             f = open(filename, 'rb')
